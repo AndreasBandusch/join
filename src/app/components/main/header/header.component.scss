@@ -18,3 +18,9 @@
     height: 49px;
     width: 49px;
 }
+
+@media (max-width: 900px) {
+    .title {
+        display: none;
+    }
+}
