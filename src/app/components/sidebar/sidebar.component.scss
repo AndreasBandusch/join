@@ -65,3 +65,46 @@
     justify-content: center;
     margin-bottom: 66px;
 }
+
+@media (max-width: 900px) {
+    .logo {
+        display: none;
+    }
+
+    .nav-container {
+        display: row;
+        height: unset;
+        width: 100%;
+    }
+
+    .sub-nav {
+        display: none;
+    }
+
+    .main-nav {
+        width: 100%;
+        margin-top: 0px;
+  
+    }
+
+    li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 25% !important;
+        padding: 16px 0px 16px 0px !important;
+    
+
+        img {
+            margin-bottom: 8px;
+            margin-right: 0 !important;
+        }
+    }
+    ul {
+        display: flex;
+        gap: 16px;
+        padding: 0 16px;
+    }
+}
