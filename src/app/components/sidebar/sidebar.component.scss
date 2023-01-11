@@ -1,3 +1,21 @@
+a {
+    width: 100%;
+}
+
+a,
+a:visited,
+a:hover {
+    color: #fff;
+    text-decoration: none;
+
+
+}
+
+a:active>li,
+a:focus>li {
+    background-color: #091931;
+}
+
 .logo {
     display: flex;
     justify-content: center;
@@ -23,11 +41,11 @@
 .main-nav,
 .sub-nav {
     width: 100%;
-     
+
     ul {
         width: 100%;
     }
-   
+
     li {
         display: flex;
         align-items: center;
@@ -37,10 +55,8 @@
         width: 100%;
         padding: 8px 0px 8px 48px;
         cursor: pointer;
- 
-        &:hover {
-            background-color: #091931;
-        }
+
+
 
         img {
             height: 22px;
@@ -84,7 +100,6 @@
     .main-nav {
         width: 100%;
         margin-top: 0px;
-  
     }
 
     li {
@@ -92,19 +107,29 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100%;
-        width: 25% !important;
+        width: 100% !important;
+        margin-bottom: 0 !important;
         padding: 16px 0px 16px 0px !important;
-    
+        height: 100%;
 
         img {
             margin-bottom: 8px;
             margin-right: 0 !important;
         }
     }
+
     ul {
         display: flex;
         gap: 16px;
         padding: 0 16px;
+    }
+
+    a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 25%;
     }
 }

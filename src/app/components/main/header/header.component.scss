@@ -2,6 +2,12 @@
     margin-left: 116px;
 }
 
+.logo-header {
+    display: none;
+    width: auto;
+    height: 50px;
+}
+
 .right {
    display: flex;
    align-items: center;
@@ -11,7 +17,7 @@
 .question-mark {
     height: 31px;
     width: 31px;
-    margin-right: 16px;
+    margin-right: 32px;
 }
 
 .profile-picture {
@@ -22,5 +28,13 @@
 @media (max-width: 900px) {
     .title {
         display: none;
+    }
+
+    .logo-header {
+        display: flex;
+    }
+
+    .left {
+        margin-left: 32px;
     }
 }
