@@ -10,4 +10,9 @@ import { Router } from '@angular/router';
 
 
 export class SidebarComponent {
+  constructor(private router: Router) { }
+
+  navigate() {
+    this.router.navigate(['/login']);
+  }
 }

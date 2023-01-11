@@ -13,6 +13,7 @@ import { SectionContactsComponent } from './components/main/section-contacts/sec
 import { ImpressumComponent } from './components/main/impressum/impressum.component';
 import { DatenschutzComponent } from './components/main/datenschutz/datenschutz.component';
 import { LoginComponent } from './components/login/login.component';
+import { MainSiteComponent } from './components/main-site/main-site.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { LoginComponent } from './components/login/login.component';
     ImpressumComponent,
     DatenschutzComponent,
     LoginComponent,
+    MainSiteComponent,
   ],
   imports: [
     BrowserModule,

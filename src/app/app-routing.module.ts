@@ -7,17 +7,23 @@ import { SectionContactsComponent } from './components/main/section-contacts/sec
 import { ImpressumComponent } from './components/main/impressum/impressum.component';
 import { DatenschutzComponent } from './components/main/datenschutz/datenschutz.component';
 import { LoginComponent } from './components/login/login.component';
+import { MainComponent } from './components/main/main.component';
+import { MainSiteComponent } from './components/main-site/main-site.component';
 
 
 
 const routes: Routes = [
-  { path: 'summary', component: SectionSummaryComponent },
-  { path: 'add-task', component: SectionAddTaskComponent },
-  { path: 'board', component: SectionBoardComponent },
-  { path: 'contacts', component: SectionContactsComponent },
-  { path: 'impressum', component: ImpressumComponent },
-  { path: 'datenschutz', component: DatenschutzComponent },
-  { path: 'login', component: LoginComponent }
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'main-site', component: MainSiteComponent, children: [
+      { path: 'add-task', component: SectionAddTaskComponent },
+      { path: 'board', component: SectionBoardComponent },
+      { path: 'contacts', component: SectionContactsComponent },
+      { path: 'impressum', component: ImpressumComponent },
+      { path: 'datenschutz', component: DatenschutzComponent },
+    ]
+  }
 ]
 
 @NgModule({
