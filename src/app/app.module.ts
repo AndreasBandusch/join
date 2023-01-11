@@ -12,6 +12,7 @@ import { SectionAddTaskComponent } from './components/main/section-add-task/sect
 import { SectionContactsComponent } from './components/main/section-contacts/section-contacts.component';
 import { ImpressumComponent } from './components/main/impressum/impressum.component';
 import { DatenschutzComponent } from './components/main/datenschutz/datenschutz.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DatenschutzComponent } from './components/main/datenschutz/datenschutz.
     SectionContactsComponent,
     ImpressumComponent,
     DatenschutzComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

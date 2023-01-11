@@ -6,17 +6,19 @@ import { SectionBoardComponent } from './components/main/section-board/section-b
 import { SectionContactsComponent } from './components/main/section-contacts/section-contacts.component';
 import { ImpressumComponent } from './components/main/impressum/impressum.component';
 import { DatenschutzComponent } from './components/main/datenschutz/datenschutz.component';
+import { LoginComponent } from './components/login/login.component';
+
 
 
 const routes: Routes = [
-  { path: '', component: SectionSummaryComponent },
   { path: 'summary', component: SectionSummaryComponent },
   { path: 'add-task', component: SectionAddTaskComponent },
   { path: 'board', component: SectionBoardComponent },
   { path: 'contacts', component: SectionContactsComponent },
   { path: 'impressum', component: ImpressumComponent },
-  { path: 'datenschutz', component: DatenschutzComponent }
-];
+  { path: 'datenschutz', component: DatenschutzComponent },
+  { path: 'login', component: LoginComponent }
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
