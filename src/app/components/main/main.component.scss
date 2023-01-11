@@ -4,9 +4,7 @@ app-header {
     align-items: center;
     justify-content: space-between;
     top: 0;
-    // right: auto;
-    // left: auto;
-    height: 89px;
+    height: 90px;
     width: calc(100% - 232px);
     background-color: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
@@ -14,13 +12,19 @@ app-header {
     font-weight: 400;
 }
 
-.test {
-    margin-top: 121px;
+.content-wrapper {
+    margin-top: 90px;
     margin-left: 116px;
+    margin-right: 32px;
 }
+
 
 @media (max-width: 900px) {
     app-header {
         width: 100%;
+    }
+
+    .content-wrapper {
+        margin-left: 32px;
     }
 }

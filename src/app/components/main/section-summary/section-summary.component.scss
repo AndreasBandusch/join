@@ -1,0 +1,25 @@
+.content-header {
+    display: flex;
+    height: 90px;
+    margin-top: 82px;
+    border: 1px solid blue;
+    align-items: center;
+}
+
+.content-header-mobile {
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    height: 90px;
+    font-size: 16px;
+}
+
+@media (max-width: 900px) {
+    .content-header {
+        display: none;
+    }
+
+    .content-header-mobile {
+        display: flex;
+    }
+}
