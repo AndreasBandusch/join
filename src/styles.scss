@@ -7,12 +7,88 @@
 body {
     // overflow: hidden;
     font-family: 'Inter', sans-serif;
-    background-color: #F5F5F5;;
+    background-color: #F5F5F5;
+    ;
 }
 
-.section {
+
+h1 {
+    text-align: center;
     font-size: 61px;
     font-weight: 700;
 }
 
- 
+input,
+button {
+    border: unset;
+}
+
+input {
+    font-size: 21px;
+    font-weight: 400;
+    color: #000;
+}
+
+::placeholder {
+    font-size: 21px;
+    color: #D1D1D1;
+
+}
+
+a,
+a:visited,
+a:active,
+a:hover {
+    text-decoration: none;
+    color: #29ABE2;
+}
+
+
+
+.primary-btn,
+.secondary-btn {
+    font-weight: 700;
+    font-size: 21px;
+    padding: 4px 16px 4px 16px;
+    width: 145px;
+    height: 51px;
+    border-radius: 8px;
+    transition: all 75ms ease-in-out;
+
+    &:hover {
+        transition: all 75ms ease-in-out;
+        cursor: pointer;
+    }
+}
+
+.primary-btn {
+    background: #2A3647;
+    color: #fff;
+
+    &:hover {
+        background-color: #29ABE2;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    &:active {
+        background: #091931;
+    }
+}
+
+.secondary-btn {
+    color: #2A3647;
+    border: 1px solid #2A3647;
+    background-color: #fff;
+
+    &:hover {
+        border: 2px solid #29ABE2;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 8px;
+    }
+
+    &:active {
+        border: 1px solid #091931;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+        border-radius: 8px;
+    }
+}
