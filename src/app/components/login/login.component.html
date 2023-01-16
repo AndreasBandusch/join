@@ -1,11 +1,25 @@
 <div class="site">
 
     <div class="login-container">
-        <h1>Log in</h1>
+        <h1>
+            <span>Log in</span>
+            <span class="underline"></span>
+        </h1>
         <form>
             <input placeholder="Email">
             <input placeholder="Password">
+            <div class="rem-container">
+                <div class="remember-me">
+                    <input type="checkbox">
+                    <span>Remember me</span>
+                </div>
+                <span class="forgot-pw">Forgot my password</span>
+            </div>
+            <div class="btn-container">
+                <button class="primary-btn">Log in</button>
+                <button class="secondary-btn" routerLink="/kanban">Guest log in</button>
+            </div>
         </form>
     </div>
-    
+
 </div>
