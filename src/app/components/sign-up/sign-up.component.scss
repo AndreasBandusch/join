@@ -28,7 +28,6 @@
     padding-top: 32px;
     padding-bottom: 32px;
     margin-top: 130px;
-    margin-bottom: 100px;
     gap: 32px;
     background-color: #fff;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
@@ -111,6 +110,7 @@ input[type="checkbox"]:active {
         width: 100%;
         padding-left: 32px;
         padding-right: 32px;
+        margin-bottom: 32px;
     }
 }
 
@@ -126,8 +126,6 @@ input[type="checkbox"]:active {
         align-items: center;
     }
 
-    
-
     .primary-btn,
     .secondary-btn {
         font-size: 16px;
@@ -137,11 +135,5 @@ input[type="checkbox"]:active {
     h1 {
         font-size: 48px;
         width: 180px;
-    }
-}
-
-@media (max-width: 350px) {
-    .login-container {
-        margin-bottom: 130px;
     }
 }
