@@ -16,12 +16,49 @@
     left: 80px;
     width: 100px;
     height: 122px;
+    animation: logo-start 1s ease-in-out;
+}
+
+@keyframes logo-start {
+    0% {
+        top: calc(50% - 167px);
+        left: calc(50% - 137px);
+        width: 275px;
+        height: 335px;
+    }
+    50% {
+        top: calc(50% - 167px);
+        left: calc(50% - 137px);
+        width: 275px;
+        height: 335px;
+    }
+    100% {
+        top: 80px;
+        left: 80px;
+        width: 100px;
+        height: 122px;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+       opacity: 1;
+    }
 }
 
 .sign-up-container {
     position: absolute;
     top: 80px;
     right: 80px;
+    opacity: 0;
+    animation: fade-in 1s ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 500ms;
+    
 
     .primary-btn {
         height: unset;
@@ -50,6 +87,10 @@
     background-color: #fff;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     border-radius: 30px;
+    opacity: 0;
+    animation: fade-in 1s ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 500ms;
 }
 
 
@@ -119,7 +160,7 @@ input[type="checkbox"]:active {
     .logo {
         top: 32px;
         left: 32px;
-        height: 80px;
+        height: 70px;
         width: auto;
     }
 
