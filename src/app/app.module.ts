@@ -14,6 +14,7 @@ import { ImpressumComponent } from './components/main/impressum/impressum.compon
 import { DatenschutzComponent } from './components/main/datenschutz/datenschutz.component';
 import { LoginComponent } from './components/login/login.component';
 import { MainSiteComponent } from './components/main-site/main-site.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { MainSiteComponent } from './components/main-site/main-site.component';
     DatenschutzComponent,
     LoginComponent,
     MainSiteComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,

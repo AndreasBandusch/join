@@ -18,25 +18,6 @@
     height: 122px;
 }
 
-.sign-up-container {
-    position: absolute;
-    top: 80px;
-    right: 80px;
-
-    .primary-btn {
-        height: unset;
-        width: unset;
-        font-size: 16px;
-        margin-left: 32px;
-        height: 50px;
-    }
-
-    span {
-        font-size: 21px;
-        font-weight: 400;
-    }
-}
-
 .login-container {
     display: flex;
     flex-direction: column;
@@ -59,8 +40,9 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 185px;
+    width: 230px;
     gap: 16px;
+
 
     .underline {
         border-top: 3px solid #29ABE2;
@@ -77,10 +59,7 @@ form {
     width: 100%;
 }
 
-.rem-container {
-    display: flex;
-    justify-content: space-evenly;
-}
+
 
 input[type="checkbox"],
 input[type="checkbox"]:active {
@@ -110,11 +89,6 @@ input[type="checkbox"]:active {
         top: 32px;
         left: 32px;
     }
-
-    .sign-up-container {
-        top: 32px;
-        right: 32px;
-    }
 }
 
 @media (max-width: 750px) {
@@ -125,17 +99,13 @@ input[type="checkbox"]:active {
         width: auto;
     }
 
-    .sign-up-container {
-        top: unset;
-        right: auto;
-        left: auto;
-        margin: 0 16px;
-        bottom: 32px;
-    }
+    
 
     .site {
         padding: 0 32px;
     }
+
+    
 
     .login-container {
         width: 100%;
@@ -149,20 +119,14 @@ input[type="checkbox"]:active {
         padding: 0 16px;
     }
 
-    .rem-container {
-        flex-direction: column;
-        justify-content: space-evenly;
-        gap: 32px;
-    }
+   
 
     .btn-container {
         flex-direction: column;
         align-items: center;
     }
 
-    .sign-up-container {
-        bottom: 16px
-    }
+    
 
     .primary-btn,
     .secondary-btn {
@@ -172,23 +136,12 @@ input[type="checkbox"]:active {
 
     h1 {
         font-size: 48px;
-        width: 150px;
+        width: 180px;
     }
 }
 
 @media (max-width: 350px) {
     .login-container {
         margin-bottom: 130px;
-    }
-
-    .sign-up-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-
-        .primary-btn {
-            margin-left: 0;
-        }
     }
 }

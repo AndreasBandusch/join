@@ -16,6 +16,7 @@ h1 {
     text-align: center;
     font-size: 61px;
     font-weight: 700;
+    // border: 1px solid green;
 }
 
 input,
@@ -27,6 +28,24 @@ input {
     font-size: 21px;
     font-weight: 400;
     color: #000;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 13px 21px;
+    outline: none;
+    background-repeat: no-repeat;
+    background-position: right 16px top 50%;
+}
+
+.input-name {
+    background-image: url('/assets/img/icons/input-name.png');
+}
+
+.input-email {
+    background-image: url('/assets/img/icons/input-email.png');
+}
+
+.input-password {
+    background-image: url('/assets/img/icons/input-password.png');
 }
 
 ::placeholder {

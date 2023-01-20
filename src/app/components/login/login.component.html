@@ -2,7 +2,7 @@
     <img class="logo" src="/assets/img/logo-dark.png">
     <div class="sign-up-container">
         <span>Not a Join user?</span>
-        <button class="primary-btn">Sign up</button>
+        <a routerLink="sign-up"><button class="primary-btn">Sign up</button></a>
     </div>
     <div class="login-container">
         <h1>
@@ -10,8 +10,8 @@
             <span class="underline"></span>
         </h1>
         <form>
-            <input placeholder="Email" class="email">
-            <input placeholder="Password" class="password">
+            <input placeholder="Email" class="input-email">
+            <input placeholder="Password" class="input-password">
             <div class="rem-container">
                 <div class="remember-me">
                     <input type="checkbox">
@@ -21,7 +21,7 @@
             </div>
             <div class="btn-container">
                 <button class="primary-btn">Log in</button>
-                <button type="button" class="secondary-btn" routerLink="/kanban">Guest log in</button>
+                <button type="button" class="secondary-btn" routerLink="kanban">Guest log in</button>
             </div>
         </form>
     </div>
