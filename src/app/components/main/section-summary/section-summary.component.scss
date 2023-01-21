@@ -1,8 +1,7 @@
 .content-header {
     display: flex;
     height: 90px;
-    margin-top: 82px;
-    border: 1px solid blue;
+    margin-top: 150px;
     align-items: center;
 }
 
@@ -12,6 +11,80 @@
     justify-content: flex-start;
     height: 90px;
     font-size: 16px;
+}
+
+
+.title {
+    padding-right: 32px;
+    border-right: 3px solid #29ABE2;
+}
+
+.sub-title {
+    margin-left: 32px;
+    font-size: 27px;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+}
+
+.overview {
+    display: flex;
+    width: 60%;
+    min-height: 400px;
+    margin-right: 90px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    min-height: 400px;  
+}
+
+.greetings {
+    font-size: 47px;
+    font-weight: 500;
+    color: #2A3647;
+
+}
+
+.greetings-name {
+    font-size: 64px;
+    font-weight: 700;
+    color: #29ABE2;
+}
+
+.sum-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 170px;
+    width: 170px;
+    background-color: #fff;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    padding: 25px;
+}
+
+.sum-name {
+    text-align: center;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.sum-number {
+    font-size: 64px;
+    font-weight: 600;
 }
 
 @media (max-width: 900px) {
