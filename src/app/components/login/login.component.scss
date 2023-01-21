@@ -19,36 +19,7 @@
     animation: logo-start 1s ease-in-out;
 }
 
-@keyframes logo-start {
-    0% {
-        top: calc(50% - 167px);
-        left: calc(50% - 137px);
-        width: 275px;
-        height: 335px;
-    }
-    50% {
-        top: calc(50% - 167px);
-        left: calc(50% - 137px);
-        width: 275px;
-        height: 335px;
-    }
-    100% {
-        top: 80px;
-        left: 80px;
-        width: 100px;
-        height: 122px;
-    }
-}
 
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-
-    to {
-       opacity: 1;
-    }
-}
 
 .sign-up-container {
     position: absolute;
@@ -162,6 +133,7 @@ input[type="checkbox"]:active {
         left: 32px;
         height: 70px;
         width: auto;
+        animation: logo-start-mobile  1s ease-in-out;
     }
 
     .sign-up-container {
@@ -187,6 +159,8 @@ input[type="checkbox"]:active {
     .site {
         padding: 0 16px;
     }
+
+   
 
     .login-container {
         margin-top: 130px;
@@ -220,6 +194,9 @@ input[type="checkbox"]:active {
     }
 }
 
+
+
+
 @media (max-width: 350px) {
     .login-container {
         margin-bottom: 130px;
@@ -234,5 +211,57 @@ input[type="checkbox"]:active {
         .primary-btn {
             margin-left: 0;
         }
+    }
+}
+
+@keyframes logo-start {
+    0% {
+        top: calc(50% - 167px);
+        left: calc(50% - 137px);
+        width: 275px;
+        height: 335px;
+    }
+    50% {
+        top: calc(50% - 167px);
+        left: calc(50% - 137px);
+        width: 275px;
+        height: 335px;
+    }
+    100% {
+        top: 80px;
+        left: 80px;
+        width: 100px;
+        height: 122px;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+       opacity: 1;
+    }
+}
+
+@keyframes logo-start-mobile {
+    0% {
+        top: calc(50% - 61px);
+        left: calc(50% - 50px);
+        height: 122px;
+        width: 100px;
+    }
+    50% {
+        top: calc(50% - 61px);
+        left: calc(50% - 50px);
+        height: 122px;
+        width: 100px;
+    }
+    100% {
+        top: 32px;
+        left: 32px;
+        height: 70px;
+        width: auto;
     }
 }

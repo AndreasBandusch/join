@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full', },
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
+  { path: 'kanban', redirectTo: 'kanban/summary'},
   {
     path: 'kanban', component: MainSiteComponent, children: [
       { path: 'summary', component: SectionSummaryComponent },
