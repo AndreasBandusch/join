@@ -1,4 +1,4 @@
-.sum-name, .urgent-text, .deadline-text, .date, .greetings, .sub-title {
+.sum-name, .urgent-text, .deadline-text, .date, .sub-title {
     color: #2A3647;
 }
 
@@ -150,23 +150,11 @@
     align-items: center;
 }
 
-.welcome {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 48px;
-}
 
-.greetings {
-    font-size: 47px;
-    font-weight: 500;
-}
 
-.greetings-name {
-    font-size: 64px;
-    font-weight: 700;
-    color: #29ABE2;
-}
+
+
+
 
 @media (max-width: 900px) {
     .content-header {

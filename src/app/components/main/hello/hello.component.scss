@@ -1,0 +1,19 @@
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 48px;
+    height: 100%;
+}
+
+.greetings {
+    font-size: 47px;
+    font-weight: 500;
+    color: #2A3647;
+}
+
+.greetings-name {
+    font-size: 64px;
+    font-weight: 700;
+    color: #29ABE2;
+}
