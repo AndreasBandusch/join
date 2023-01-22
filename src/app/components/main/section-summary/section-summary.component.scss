@@ -1,3 +1,7 @@
+.sum-name, .urgent-text, .deadline-text, .date, .greetings {
+    color: #2A3647;
+}
+
 .content-header {
     display: flex;
     height: 90px;
@@ -30,12 +34,13 @@
     width: 100%;
 }
 
+
+
 .overview {
     display: flex;
     flex-direction: column;
     width: 580px; 
     gap: 32px; 
-
 }
 
 .row {
@@ -43,25 +48,6 @@
     justify-content: space-between;
     width: 100%;
     gap: 32px;
-}
-
-.welcome {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 48px;
-}
-
-.greetings {
-    font-size: 47px;
-    font-weight: 500;
-    color: #2A3647;
-}
-
-.greetings-name {
-    font-size: 64px;
-    font-weight: 700;
-    color: #29ABE2;
 }
 
 .cont {
@@ -97,6 +83,17 @@
     img {
         margin-right: 16px;
     }
+}
+
+.sum-number, .todo-number {
+    font-size: 64px;
+    font-weight: 600;
+}
+
+.sum-name {
+    text-align: center;
+    font-size: 21px;
+    font-weight: 400;
 }
 
 .urgent, .deadline {
@@ -142,23 +139,6 @@
 .date {
     font-size: 21px;
     font-weight: 700;
-    color: #2A3647;   
-}
-
-
-.sum-name {
-    text-align: center;
-    font-size: 21px;
-    font-weight: 400;
-}
-
-.sum-number, .todo-number {
-    font-size: 64px;
-    font-weight: 600;
-}
-
-.todo-text {
-    font-size: 21px;
 }
 
 .todo-inner {
@@ -167,6 +147,41 @@
     align-items: center;
 }
 
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 48px;
+}
+
+.greetings {
+    font-size: 47px;
+    font-weight: 500;
+}
+
+.greetings-name {
+    font-size: 64px;
+    font-weight: 700;
+    color: #29ABE2;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.todo-text {
+    font-size: 21px;
+}
+
+
+                          
 
 @media (max-width: 900px) {
     .content-header {
