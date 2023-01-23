@@ -4,6 +4,7 @@ app-header {
     align-items: center;
     justify-content: space-between;
     top: 0;
+    left: 232px;
     height: 90px;
     width: 100%;
     background-color: #FFFFFF;
@@ -16,7 +17,7 @@ app-header {
 
 .content-wrapper {
     margin-top: 90px;
-    padding-left: 116px;
+    padding-left: 348px;
     padding-right: 48px;
 }
 
@@ -28,6 +29,7 @@ app-header {
 
 @media (max-width: 920px) {
     app-header {
+        left: 0;
         width: 100%;
     }
 
