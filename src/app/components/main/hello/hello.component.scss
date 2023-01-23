@@ -5,7 +5,7 @@
     align-items: flex-start;
     padding-left: 48px;
     height: 100%;
-    width: 100%;
+    padding-right: 32px;
 }
 
 .greetings {
@@ -18,5 +18,35 @@
     font-size: 64px;
     font-weight: 700;
     color: #29ABE2;
+}
+
+@media (max-width: 1440px) {
+    .greetings {
+        font-size: 40px;
+    }
+
+    .greetings-name {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .greetings {
+        font-size: 28px;
+    }
+
+    .greetings-name {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .greetings {
+        font-size: 21px;
+    }
+
+    .greetings-name {
+        font-size: 32px;
+    }
 }
 

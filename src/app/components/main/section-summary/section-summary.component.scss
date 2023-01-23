@@ -52,7 +52,7 @@
     background-color: #fff;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
-    padding: 25px;
+    padding: 25px 0px 25px 0px;
 }
 
 .sum-cont {
@@ -160,8 +160,22 @@ app-hello {
 }
 
 
+@media (max-width: 1300px) {
+    app-hello {
+        display: none;
+    }
 
-@media (max-width: 900px) {
+    
+}
+
+
+
+
+@media (max-width: 920px) {
+
+    .content {
+        justify-content: center;
+    }
     .content-header {
         display: none;
     }
