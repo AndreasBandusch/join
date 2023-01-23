@@ -25,7 +25,13 @@
     width: 49px;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1300px) {
+    .left {
+        margin-left: 48px;
+    }
+}
+
+@media (max-width: 920px) {
     .title {
         display: none;
     }

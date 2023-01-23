@@ -163,9 +163,13 @@ app-hello {
 @media (max-width: 1300px) {
     app-hello {
         display: none;
-    }
+    }  
+}
 
-    
+@media (max-width: 1000px) {
+    .sub-title {
+        font-size: 21px;
+    }
 }
 
 
