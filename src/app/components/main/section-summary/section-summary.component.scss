@@ -207,8 +207,53 @@ app-hello {
     
 }
 
-@media (max-width: 720px) {
+@media (max-width: 650px) {
+    .overview {
+        width: 450px;
+        border: 1px solid green;
+    }
+    .sum-cont {
+        height: 110px;
+        width: 110px;  
+    } 
+
+    .urgent-cont, .todo-cont {
+        height: 110px;
+    }
+
+    .urgent, .todo-cont {
+        img {
+            height: 40px;
+            width: 40px;
+        }
+    }
+
+    .sum-number, .todo-number {
+        font-size: 47px;
+    }
+
+    .todo-text, .sum-name, .urgent-text, .deadline-text {
+        font-size: 14px;
+    }
+
+    .date {
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 520px){
     .overview {
         width: 400px;
+       
     }
 }
+
+@media (max-width: 450px) {
+    .overview {
+        width: 350px;
+       
+    }
+}
+
+

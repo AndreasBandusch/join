@@ -36,7 +36,19 @@ app-header {
     .content-wrapper {
         padding-left: 68px;
         padding-right: 68px;
-    }
+    } 
+}
 
-   
+@media (max-width: 750px) {
+    .content-wrapper {
+        padding-left: 32px;
+        padding-right: 32px;
+    } 
+}
+
+@media (max-width: 470px) {
+    .content-wrapper {
+        padding-left: 16px;
+        padding-right: 16px;
+    } 
 }
