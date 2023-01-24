@@ -231,18 +231,17 @@ app-hello {
     }
 
     .overview {
-        width: 450px;
+        width: 520px;
 
     }
 
     .sum-cont {
-        height: 110px;
-        width: 110px;
+        height: 140px;
     }
 
     .urgent-cont,
     .todo-cont {
-        height: 110px;
+        height: 140px;
     }
 
     .urgent,
@@ -278,7 +277,7 @@ app-hello {
 
 @media (max-width: 520px) {
     .overview {
-        width: 400px;
+        width: 100%;
 
     }
 
@@ -294,11 +293,19 @@ app-hello {
     .deadline {
         padding-left: 32px;
     }
+
+    .sum-cont {
+        height: 120px;
+    }
+
+    .urgent-cont,
+    .todo-cont {
+        height: 120px;
+    }
 }
 
 @media (max-width: 450px) {
     .overview {
-        width: 100%;
         gap: 16px;
     }
 
@@ -308,13 +315,12 @@ app-hello {
     }
 
     .sum-cont {
-        height: 95px;
-        width: 95px;
+        height: 110px;
     }
 
     .urgent-cont,
     .todo-cont {
-        height: 95px;
+        height: 110px;
     }
 
     .urgent {
@@ -348,13 +354,12 @@ app-hello {
     }
 
     .sum-cont {
-        height: 80px;
-        width: 80px;
+        height: 85px;
     }
 
     .urgent-cont,
     .todo-cont {
-        height: 80px;
+        height: 85px;
     }
 
     .sum-name {
