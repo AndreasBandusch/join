@@ -254,8 +254,13 @@ app-hello {
     }
 
     .sum-number,
-    .todo-number {
+    .todo-number
+     {
         font-size: 47px;
+    }
+
+    .urgent-number {
+        font-size: 40px;
     }
 
     .todo-text,
@@ -272,18 +277,125 @@ app-hello {
 }
 
 @media (max-width: 520px) {
-
-
-
     .overview {
         width: 400px;
 
+    }
+
+    .cont {
+        border-radius: 20px;
+        //     padding: 25px 0px 25px 0px;
+    }
+
+    .urgent {
+        padding-right: 32px;
+    }
+
+    .deadline {
+        padding-left: 32px;
     }
 }
 
 @media (max-width: 450px) {
     .overview {
-        width: 350px;
+        width: 100%;
+        gap: 16px;
+    }
 
+    .row {
+
+        gap: 16px;
+    }
+
+    .sum-cont {
+        height: 95px;
+        width: 95px;
+    }
+
+    .urgent-cont,
+    .todo-cont {
+        height: 95px;
+    }
+
+    .urgent {
+        padding-right: 16px;
+    }
+
+    .deadline {
+        padding-left: 16px;
+    }
+
+
+
+    .sum-number,
+    .todo-number
+     {
+        font-size: 40px;
+    }
+
+    .urgent-number {
+        font-size: 32px;
+    }
+
+
+}
+
+@media (max-width: 350px) {
+
+    .overview,
+    .row {
+        gap: 12px;
+    }
+
+    .sum-cont {
+        height: 80px;
+        width: 80px;
+    }
+
+    .urgent-cont,
+    .todo-cont {
+        height: 80px;
+    }
+
+    .sum-name {
+        font-size: 12px
+    }
+
+    .sum-number,
+    .todo-number
+     {
+        font-size: 32px;
+    }
+
+    .urgent-number {
+        font-size: 28px;
+    }
+
+    .urgent {
+        img {
+            margin-right: 4px;
+            height: 35px;
+            width: 35px;
+        }
+    }
+
+    .content-header-mobile {
+        font-size: 15px;
+    }
+
+    .date {
+        font-size: 13px;
+    }
+
+    .deadline-text {
+        font-size: 11px;
+    }
+
+    .urgent {
+        padding-right: 8px;
+    }
+
+    .deadline {
+        padding-left: 12px;
     }
 }
