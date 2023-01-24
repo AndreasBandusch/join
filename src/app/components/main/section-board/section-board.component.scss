@@ -1,0 +1,276 @@
+.content-header {
+    display: flex;
+    height: 90px;
+    margin-top: 150px;
+    margin-bottom: 60px;
+    align-items: center;
+}
+
+.content-header-mobile {
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    height: 90px;
+    font-size: 16px;
+}
+
+
+.title {
+    padding-right: 32px;
+    border-right: 3px solid #29ABE2;
+}
+
+.sub-title {
+    margin-left: 32px;
+    font-size: 27px;
+}
+
+.sub-title {
+    color: #2A3647;
+}
+
+@media (max-width: 1000px) {
+    .sub-title {
+        font-size: 21px;
+    }
+}
+
+
+
+
+@media (max-width: 920px) {
+    .content {
+        justify-content: center;
+        margin-bottom: 120px;
+        margin-top: 16px;
+    }
+
+    .content-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-top: 116px;
+        margin-bottom: 80px;
+
+
+        .sub-title {
+            order: 3;
+            margin-left: 0;
+        }
+
+        .title {
+            order: 2;
+            font-size: 47px;
+        }
+
+        .underline {
+            border-bottom: 3px solid #29ABE2;
+            width: 40%;
+            padding-bottom: 16px;
+        }
+    }
+
+    .content-header-mobile {
+        display: flex;
+    }
+
+    .title {
+        border-right: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .content-header {
+        margin-bottom: 100px;
+    }
+
+    .overview {
+        width: 520px;
+
+    }
+
+    .sum-cont {
+        height: 140px;
+    }
+
+    .urgent-cont,
+    .todo-cont {
+        height: 140px;
+    }
+
+    .urgent,
+    .todo-cont {
+        img {
+            height: 40px;
+            width: 40px;
+        }
+    }
+
+    .sum-number,
+    .todo-number
+     {
+        font-size: 47px;
+    }
+
+    .urgent-number {
+        font-size: 40px;
+    }
+
+    .todo-text,
+    .sum-name,
+    .urgent-text,
+    .deadline-text {
+        font-size: 14px;
+    }
+
+    .date {
+        font-size: 16px;
+    }
+
+}
+
+@media (max-width: 520px) {
+    .overview {
+        width: 100%;
+
+    }
+
+    .cont {
+        border-radius: 20px;
+        //     padding: 25px 0px 25px 0px;
+    }
+
+    .urgent {
+        padding-right: 32px;
+    }
+
+    .deadline {
+        padding-left: 32px;
+    }
+
+    .sum-cont {
+        height: 120px;
+    }
+
+    .urgent-cont,
+    .todo-cont {
+        height: 120px;
+    }
+}
+
+@media (max-width: 450px) {
+    .overview {
+        gap: 16px;
+    }
+
+    .row {
+
+        gap: 16px;
+    }
+
+    .sum-cont {
+        height: 110px;
+    }
+
+    .urgent-cont,
+    .todo-cont {
+        height: 110px;
+    }
+
+    .urgent {
+        padding-right: 16px;
+    }
+
+    .deadline {
+        padding-left: 16px;
+    }
+
+
+
+    .sum-number,
+    .todo-number
+     {
+        font-size: 40px;
+    }
+
+    .urgent-number {
+        font-size: 32px;
+    }
+
+    .title {
+        font-size: 40px !important;
+    }
+
+    .sub-title {
+        font-size: 18px;
+    }
+
+
+}
+
+@media (max-width: 350px) {
+
+    .overview,
+    .row {
+        gap: 12px;
+    }
+
+    .sum-cont {
+        height: 85px;
+    }
+
+    .urgent-cont,
+    .todo-cont {
+        height: 85px;
+    }
+
+    .sum-name {
+        font-size: 12px
+    }
+
+    .sum-number,
+    .todo-number
+     {
+        font-size: 32px;
+    }
+
+    .urgent-number {
+        font-size: 28px;
+    }
+
+    .urgent {
+        img {
+            margin-right: 4px;
+            height: 35px;
+            width: 35px;
+        }
+    }
+
+    .content-header-mobile {
+        font-size: 15px;
+    }
+
+    .date {
+        font-size: 13px;
+    }
+
+    .deadline-text {
+        font-size: 11px;
+    }
+
+    .urgent {
+        padding-right: 8px;
+    }
+
+    .deadline {
+        padding-left: 12px;
+    }
+
+    .title {
+        font-size: 32px !important;
+    }
+
+    .sub-title {
+        font-size: 14px;
+    }
+}

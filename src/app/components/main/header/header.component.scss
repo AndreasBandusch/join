@@ -41,10 +41,34 @@
     }
 
     .left {
+        margin-left: 68px;
+    }
+
+    .right {
+        margin-right: 68px;
+    }
+}
+
+@media (max-width: 750px) {
+    .left {
         margin-left: 32px;
     }
 
     .right {
         margin-right: 32px;
+    }
+}
+
+@media (max-width: 470px) {
+    .left {
+        margin-left: 16px;
+    }
+
+    .right {
+        margin-right: 16px;
+    }
+
+    .question-mark {
+        margin-right: 16px;
     }
 }

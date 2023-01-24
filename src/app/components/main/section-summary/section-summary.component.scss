@@ -209,9 +209,7 @@ app-hello {
         .underline {
             border-bottom: 3px solid #29ABE2;
             width: 40%;
-
             padding-bottom: 16px;
-
         }
     }
 
@@ -222,7 +220,6 @@ app-hello {
     .title {
         border-right: none;
     }
-
 }
 
 @media (max-width: 650px) {
@@ -343,6 +340,14 @@ app-hello {
         font-size: 32px;
     }
 
+    .title {
+        font-size: 40px !important;
+    }
+
+    .sub-title {
+        font-size: 18px;
+    }
+
 
 }
 
@@ -402,5 +407,13 @@ app-hello {
 
     .deadline {
         padding-left: 12px;
+    }
+
+    .title {
+        font-size: 32px !important;
+    }
+
+    .sub-title {
+        font-size: 14px;
     }
 }

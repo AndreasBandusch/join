@@ -122,7 +122,8 @@ a:focus>li {
     ul {
         display: flex;
         gap: 16px;
-        padding: 0 32px;
+        padding-left: 68px;
+        padding-right: 68px;
     }
 
     a {
@@ -132,5 +133,37 @@ a:focus>li {
         align-items: center;
         height: 100%;
         width: 25%;
+    }
+}
+
+@media (max-width: 920px) {
+    ul {
+        padding-left: 68px;
+        padding-right: 68px;
+    }
+
+}
+
+@media (max-width: 750px) {
+    ul {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+@media (max-width: 470px) {
+    ul {
+        padding-left: 16px;
+        padding-right: 16px;
+    } 
+
+    .nav-container {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 350px) {
+    .nav-container {
+        font-size: 11px;
     }
 }
