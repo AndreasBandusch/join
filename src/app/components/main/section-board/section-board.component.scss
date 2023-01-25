@@ -2,20 +2,40 @@
     display: flex;
     height: 90px;
     margin-top: 150px;
-    margin-bottom: 60px;
+    margin-bottom: 32px !important;
     align-items: center;
-    justify-content: space-between;
+
 
     .primary-btn {
         width: 140px;
         font-size: 21px;
+        height: 50px;
         padding: 18 10 18 10px;
     }
 
-    input {
-        width: 250px;
-        margin-right: 32px;
+    .primary-btn-mobile {
+        width: 40px;
+        height: 40px;
+        font-size: 40px;
+        font-weight: 100;
+        justify-content: center;
+        align-items: center;
+        display: none;
     }
+
+
+}
+
+.input-search {
+    width: 250px;
+    margin-right: 32px;
+   
+}
+
+.input-search-mobile {
+    display: none;
+    width: 250px;
+    
 }
 
 .content-header-mobile {
@@ -26,6 +46,14 @@
     font-size: 16px;
 }
 
+.board-menu {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
 
 .title {
     padding-right: 32px;
@@ -42,6 +70,9 @@
 
 
 
+
+
+
 @media (max-width: 1000px) {
     .sub-title {
         font-size: 21px;
@@ -49,13 +80,38 @@
 }
 
 
+@media (max-width: 950px) {
+    .content-header {
+        input {
+            width: 225px;
+        }
 
+    }
+
+
+}
 
 @media (max-width: 920px) {
     .content {
         justify-content: center;
         margin-bottom: 120px;
         margin-top: 16px;
+    }
+
+    .input-search {
+        display: none;
+    }
+
+    .input-search-mobile {
+        display: flex;
+    }
+
+    .primary-btn-mobile {
+        display: flex !important;
+    }
+
+    .primary-btn {
+        display: none;
     }
 
     .content-header {
@@ -65,6 +121,11 @@
         margin-top: 116px;
         margin-bottom: 80px;
 
+        .board-menu {
+            flex-direction: row-reverse;
+
+            justify-content: space-between;
+        }
 
         .sub-title {
             order: 3;
@@ -120,8 +181,7 @@
     }
 
     .sum-number,
-    .todo-number
-     {
+    .todo-number {
         font-size: 47px;
     }
 
@@ -201,8 +261,7 @@
 
 
     .sum-number,
-    .todo-number
-     {
+    .todo-number {
         font-size: 40px;
     }
 
@@ -242,8 +301,7 @@
     }
 
     .sum-number,
-    .todo-number
-     {
+    .todo-number {
         font-size: 32px;
     }
 
