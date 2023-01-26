@@ -19,9 +19,10 @@
     animation: logo-start 1s ease-in-out;
 }
 
-
-
 .sign-up-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     position: absolute;
     top: 80px;
     right: 80px;
@@ -203,7 +204,6 @@ input[type="checkbox"]:active {
     }
 
     .sign-up-container {
-        display: flex;
         flex-direction: column;
         align-items: center;
         gap: 16px;
