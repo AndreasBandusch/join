@@ -45,6 +45,7 @@
 .details-content {
     display: flex;
     flex-direction: column;
+    gap: 48px;
 }
 
 .details-name-cont {
@@ -83,17 +84,18 @@
     cursor: pointer;
 }
 
-.details-info {
-    margin-top: 32px;
-}
+
 
 .info-header {
     display: flex;
+    align-items: flex-end;
+    margin-bottom: 48px;
 }
 
 .info-header-text {
     font-size: 21px;
     margin-right: 60px;
+    
 }
 
 .edit-contact {
@@ -104,6 +106,38 @@
         margin-right: 8px;
     }
 }
+
+.info-body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.info-email-cont, .info-phone-cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-email-header, .info-phone-header {
+    font-weight: 700;
+}
+
+.new-contact-btn {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    width: 193px;
+    padding-right: 8px;
+    padding-left: 8px;
+
+    img {
+        height: 30px;
+        width: 33px;
+        margin-left: 12px;
+    }
+}
+
+
 
 
 
