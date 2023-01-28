@@ -15,7 +15,7 @@
     <div class="sub-nav">
         <ul>
             <a routerLink="impressum" (click)="setActive('impress')" [class.active]="isImpressActive"><li><img src="assets/img/icons/legal-notice-icon.png">Impresssum</li></a>
-            <a (click)="navigate()"><li><img src="assets/img/icons/legal-notice-icon.png">Datenschutz</li></a>
+            <a routerLink="datenschutz" (click)="setActive('privacy')" [class.active]="isPrivacyActive"><li><img src="assets/img/icons/legal-notice-icon.png">Datenschutz</li></a>
         </ul>
     </div>
 </div>

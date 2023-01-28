@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./section-contacts.component.scss']
 })
 export class SectionContactsComponent {
+isAntonActive = false;
 
+setActive(clickedContact: string) {
+  this.isAntonActive = clickedContact === 'anton';
+}
 }

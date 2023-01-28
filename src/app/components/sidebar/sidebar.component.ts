@@ -23,6 +23,8 @@ export class SidebarComponent {
     this.router.navigate(['/login']);
   }
 
+
+  // Sets the active link
   setActive(clickedLink: string): void {
     this.isSummaryActive = clickedLink === 'summary';
     this.isBoardActive = clickedLink === 'board';
