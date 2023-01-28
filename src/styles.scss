@@ -176,7 +176,16 @@ a:hover {
     padding-right: 32px;  
 }
 
+.sub-title {
+    margin-left: 32px;
+    font-size: 27px;
+}
 
+@media (max-width: 1440px) {
+    .sub-title {
+        font-size: 21px;
+    }
+}
 
 @media (max-width: 1300px) {
     .content-inner {

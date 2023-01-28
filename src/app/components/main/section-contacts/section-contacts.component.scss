@@ -1,4 +1,4 @@
-.catagory-body>a {
+a {
     cursor: pointer;
     margin-top: 8px;
 }
@@ -6,16 +6,15 @@
 a:hover {
     background: linear-gradient(180deg, #F9F9F9 0%, #F0F0F0 100%);
     border-radius: 10px;
-    transition: all 75 ease-in-ou
+    transition: all 75 ease-in-out
 }
 
 a:active>div {
     background: #2A3647;
     border-radius: 10px;
-    color: #fff;
 }
 
-a:focus {
+a:focus>div {
     cursor: auto;
 }
 
@@ -24,10 +23,7 @@ a:focus {
     border-right: 3px solid #29ABE2;
 }
 
-.sub-title {
-    margin-left: 32px;
-    font-size: 27px;
-}
+
 
 .content {
     padding-top: 0;
@@ -113,7 +109,8 @@ a:focus {
 }
 
 .name {
-    font-size: 21px
+    font-size: 21px;
+    color: #000;
 }
 
 .email {
@@ -161,19 +158,20 @@ a:focus {
 .active {
     background: #2A3647;
     border-radius: 10px;
-    color: #fff;
     cursor: auto;
-    pointer-events: none;
+    
+    .name {
+        color: #fff;
+    }
 }
-
-
-
-
-
 
 
 @media (max-width: 1440px) {
     .sub-title {
-        font-size: 21px;
+        font-size: 20px;
     }
 }
+
+
+
+
