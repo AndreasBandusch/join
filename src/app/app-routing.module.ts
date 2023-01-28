@@ -9,6 +9,7 @@ import { DatenschutzComponent } from './components/main/datenschutz/datenschutz.
 import { LoginComponent } from './components/login/login.component';
 import { MainSiteComponent } from './components/main-site/main-site.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ContactDetailsComponent } from './components/main/section-contacts/contact-details/contact-details.component';
 
 
 
@@ -16,15 +17,19 @@ const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full', },
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
-  { path: 'kanban', redirectTo: 'kanban/summary'},
+  { path: 'kanban', redirectTo: 'kanban/summary' },
   {
     path: 'kanban', component: MainSiteComponent, children: [
       { path: 'summary', component: SectionSummaryComponent },
       { path: 'add-task', component: SectionAddTaskComponent },
       { path: 'board', component: SectionBoardComponent },
-      { path: 'contacts', component: SectionContactsComponent },
       { path: 'impressum', component: ImpressumComponent },
       { path: 'datenschutz', component: DatenschutzComponent },
+      {
+        path: 'contacts', component: SectionContactsComponent, children: [
+          { path: 'contact', component: ContactDetailsComponent }
+        ]
+      },
     ]
   }
 ]

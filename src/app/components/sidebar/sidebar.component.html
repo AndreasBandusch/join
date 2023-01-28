@@ -5,17 +5,17 @@
 <div class="nav-container">
     <div class="main-nav">
         <ul>
-            <a routerLink="summary"><li><img src="../../../assets/img/icons/summary-icon.png">Summary</li></a>
-            <a routerLink="board"><li><img src="../../../assets/img/icons/board-icon.png">Board</li></a>
-            <a routerLink="add-task"><li><img src="../../../assets/img/icons/add-task-icon.png">Add Task</li></a>
-            <a routerLink="contacts"><li><img src="../../../assets/img/icons/contacts-icon.png">Contacts</li></a>
+            <a routerLink="summary" (click)="setActive('summary')" [class.active]="isSummaryActive"><li><img src="assets/img/icons/summary-icon.png">Summary</li></a>
+            <a routerLink="board" (click)="setActive('board')" [class.active]="isBoardActive"><li><img src="assets/img/icons/board-icon.png">Board</li></a>
+            <a routerLink="add-task" (click)="setActive('addTask')" [class.active]="isAddTaskActive"><li><img src="assets/img/icons/add-task-icon.png">Add Task</li></a>
+            <a routerLink="contacts" (click)="setActive('contacts')" [class.active]="isContactsActive"><li><img src="assets/img/icons/contacts-icon.png">Contacts</li></a>
         </ul>
     </div>
 
     <div class="sub-nav">
         <ul>
-            <a routerLink="impressum"><li><img src="../../../assets/img/icons/legal-notice-icon.png">Impresssum</li></a>
-            <a (click)="navigate()"><li><img src="../../../assets/img/icons/legal-notice-icon.png">Datenschutz</li></a>
+            <a routerLink="impressum" (click)="setActive('impress')" [class.active]="isImpressActive"><li><img src="assets/img/icons/legal-notice-icon.png">Impresssum</li></a>
+            <a (click)="navigate()"><li><img src="assets/img/icons/legal-notice-icon.png">Datenschutz</li></a>
         </ul>
     </div>
 </div>

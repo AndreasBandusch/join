@@ -7,13 +7,12 @@ a:visited,
 a:hover {
     color: #fff;
     text-decoration: none;
-
-
 }
 
-a:active>li,
-a:focus>li {
-    background-color: #091931;
+.active {
+    li {
+        background-color: #091931;
+    }
 }
 
 .logo {
@@ -53,7 +52,7 @@ a:focus>li {
         margin-bottom: 16px;
         list-style-type: none;
         width: 100%;
-        padding: 8px 0px 8px 48px;
+        padding: 20px 0px 20px 48px;
         text-align: center;
         cursor: pointer;
 
@@ -82,6 +81,9 @@ a:focus>li {
     justify-content: center;
     margin-bottom: 66px;
 }
+
+
+
 
 @media (max-width: 920px) {
     .logo {
@@ -121,7 +123,7 @@ a:focus>li {
 
     ul {
         display: flex;
-        gap: 16px;
+        gap: 20px;
         padding-left: 68px;
         padding-right: 68px;
     }
@@ -155,7 +157,7 @@ a:focus>li {
     ul {
         padding-left: 16px;
         padding-right: 16px;
-    } 
+    }
 
     .nav-container {
         font-size: 14px;
