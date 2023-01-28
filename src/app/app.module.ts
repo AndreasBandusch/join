@@ -16,6 +16,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MainSiteComponent } from './components/main-site/main-site.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HelloComponent } from './components/main/hello/hello.component';
+import { ContactDetailsComponent } from './components/main/section-contacts/contact-details/contact-details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { HelloComponent } from './components/main/hello/hello.component';
     MainSiteComponent,
     SignUpComponent,
     HelloComponent,
+    ContactDetailsComponent,
   ],
   imports: [
     BrowserModule,
