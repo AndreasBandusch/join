@@ -173,5 +173,23 @@ a:focus>div {
 }
 
 
+@media (max-width: 920px) {
+    
+    .contact-details {
+        display: none;
+    }
+
+    .contacts { 
+        position: static;
+        width: 100%;
+    }
+
+    .content-inner {
+        margin-right: 0;
+    }
+}
+
+
+
 
 
