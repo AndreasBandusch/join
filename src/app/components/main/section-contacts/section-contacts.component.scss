@@ -103,6 +103,8 @@ a:focus>div {
     display: flex;
 }
 
+
+
 .letter {
     margin-left: 32px;
     font-size: 21px;
@@ -146,7 +148,7 @@ a:focus>div {
     width: 42px;
     border: 2px solid #fff;
     border-radius: 100%;
-    background-color: #FF7A00;
+    // background-color: #FF7A00;
     color: #fff;
 }
 
@@ -173,7 +175,7 @@ a:focus>div {
 }
 
 
-@media (max-width: 920px) {
+@media (max-width: 1300px) {
     
     .contact-details {
         display: none;

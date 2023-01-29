@@ -3,114 +3,28 @@
 
         <div class="contacts">
             <div class="contacts-inner">
-                <div class="catagory">
+                <div *ngFor="let initial of initialsFirstnames;" class="catagory">
                     <div class="catagory-header">
-                        <span class="letter">A</span>
+                        <span class="letter">{{initial}}</span>
                     </div>
-                    <div class="catagory-body">
-                        <a routerLink="contact">
-                            <div class="catagory-body-cont" (click)="setActive('anton')" [class.active]="isAntonActive">
-                                <div class="contact-initials">
-                                    AM
+                    <div *ngFor="let contact of fullNames; index as i">
+                        <div *ngIf="getFirstLetter(contact) === initial" class="catagory-body">
+                            <a routerLink="contact">
+                                <div class="catagory-body-cont"(click)="setActive('anton')"
+                                    [class.active]="isAntonActive">
+                                    <div class="contact-initials" [style.background-color]="setBgColor()" >
+                                        AM
+                                    </div>
+                                    <div class="contact-infos">
+                                        <span class="name">{{ contact }}</span>
+                                        <span class="email">{{ db[i].email }}</span>
+                                    </div>
                                 </div>
-                                <div class="contact-infos">
-                                    <span class="name">Anton Meyer</span>
-                                    <span class="email">antom@gmail.com</span>
-                                </div>
-                            </div>
-                        </a>
-
-                        <a routerLink="contact">
-                        <div class="catagory-body-cont">
-                            <div class="contact-initials">
-                                AM
-                            </div>
-                            <div class="contact-infos">
-                                <span class="name">Anton Meyer</span>
-                                <span class="email">antom@gmail.com</span>
-                            </div>
-                        </div>
-                    </a>
-                    </div>
-                </div>
-                <div class="catagory">
-                    <div class="catagory-header">
-                        <span class="letter">B</span>
-                    </div>
-                    <div class="catagory-body">
-                        <div class="catagory-body-cont">
-                            <div class="contact-initials">
-                                AM
-                            </div>
-                            <div class="contact-infos">
-                                <span class="name">Anton Meyer</span>
-                                <span class="email">antom@gmail.com</span>
-                            </div>
-                        </div>
-
-                        <div class="catagory-body-cont">
-                            <div class="contact-initials">
-                                AM
-                            </div>
-                            <div class="contact-infos">
-                                <span class="name">Anton Meyer</span>
-                                <span class="email">antom@gmail.com</span>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="catagory">
-                    <div class="catagory-header">
-                        <span class="letter">C</span>
-                    </div>
-                    <div class="catagory-body">
-                        <div class="catagory-body-cont">
-                            <div class="contact-initials">
-                                AM
-                            </div>
-                            <div class="contact-infos">
-                                <span class="name">Anton Meyer</span>
-                                <span class="email">antom@gmail.com</span>
-                            </div>
-                        </div>
 
-                        <div class="catagory-body-cont">
-                            <div class="contact-initials">
-                                AM
-                            </div>
-                            <div class="contact-infos">
-                                <span class="name">Anton Meyer</span>
-                                <span class="email">antom@gmail.com</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="catagory">
-                    <div class="catagory-header">
-                        <span class="letter">D</span>
-                    </div>
-                    <div class="catagory-body">
-                        <div class="catagory-body-cont">
-                            <div class="contact-initials">
-                                AM
-                            </div>
-                            <div class="contact-infos">
-                                <span class="name">Anton Meyer</span>
-                                <span class="email">antom@gmail.com</span>
-                            </div>
-                        </div>
-
-                        <div class="catagory-body-cont">
-                            <div class="contact-initials">
-                                AM
-                            </div>
-                            <div class="contact-infos">
-                                <span class="name">Anton Meyer</span>
-                                <span class="email">antom@gmail.com</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="contact-details">
