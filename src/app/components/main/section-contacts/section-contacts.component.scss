@@ -184,10 +184,36 @@ a:focus>div {
     .contacts { 
         position: static;
         width: 100%;
+        padding-left: 48px;
+        padding-right: 48px;
     }
-
+        .content {
+            margin-right: 0px;
+        }
     .content-inner {
         margin-right: 0;
+        width: 100%;
+    }
+}
+
+@media (max-width: 930px) {
+    .contacts { 
+        padding-left: 68px;
+        padding-right: 68px;
+    }
+}
+
+@media (max-width: 750px) {
+    .contacts { 
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+@media (max-width: 450px) {
+    .contacts { 
+        padding-left: 16px;
+        padding-right: 16px;
     }
 }
 

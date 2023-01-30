@@ -20,6 +20,12 @@ app-header {
     height: 100%; 
 }
 
+@media (max-width: 1300px) {
+    .content-wrapper {
+        margin-right: 0;
+    }
+}
+
 
 @media (max-width: 920px) {
     app-header {
