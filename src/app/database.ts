@@ -42,6 +42,20 @@ export const db = [
         bgColor: ''
     },
     {
+        firstName: 'Axel',
+        lastName: 'Stein',
+        email: 'axel@mailfreak.com',
+        phone: '+49 45454 d4',
+        bgColor: ''
+    },
+    {
+        firstName: 'Marzena',
+        lastName: 'Beiner',
+        email: 'marzena.beiner@mode.com',
+        phone: '+49 45454 32434',
+        bgColor: ''
+    },
+    {
         firstName: 'Marcel',
         lastName: 'Bauer',
         email: 'marcel-bauer@web.de',
@@ -57,13 +71,7 @@ export const db = [
     },
 
    
-    {
-        firstName: 'Mustafa',
-        lastName: 'Celik',
-        email: 'm.celik@hotmail.com',
-        phone: '+49 22 334 55',
-        bgColor: ''
-    },
+   
     
   ];
   

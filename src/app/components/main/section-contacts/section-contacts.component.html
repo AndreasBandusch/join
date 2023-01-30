@@ -3,7 +3,7 @@
 
         <div class="contacts">
             <div class="contacts-inner">
-                <div *ngFor="let initial of initialsFirstnames;" class="catagory">
+                <div *ngFor="let initial of catagoryInitials;" class="catagory">
                     <div class="catagory-header">
                         <span class="letter">{{initial}}</span>
                     </div>
@@ -12,7 +12,7 @@
                             <a routerLink="contact">
                                 <div class="catagory-body-cont"(click)="setActive('anton')"
                                     [class.active]="isAntonActive">
-                                    <div class="contact-initials" [style.background-color]="setBgColor()" >
+                                    <div class="contact-initials" [ngStyle]="{'background-color': colors[i % colors.length]}" >
                                         AM
                                     </div>
                                     <div class="contact-infos">

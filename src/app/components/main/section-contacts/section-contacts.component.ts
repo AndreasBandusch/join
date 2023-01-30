@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { db } from '../../../database';
 
 @Component({
@@ -14,35 +13,44 @@ export class SectionContactsComponent implements OnInit {
     '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A'];
 
   db = db;
-  initialsFirstnames: string[] = [];
+  catagoryInitials: string[] = [];
+  initialsLastNames: string[] = [];
+  initals: string[] = [];
 
 
-  firstNames: string[] = db.map(function (db) {
+  firstNames: string[] = this.db.map(function (db) {
     return db.firstName;
   });
 
-  lastNames: string[] = db.map(function (db) {
+  lastNames: string[] = this.db.map(function (db) {
     return db.lastName;
   });
 
-  fullNames: string[] = db.map(function (db) {
+  fullNames: string[] = this.db.map(function (db) {
     return db.firstName + ' ' + db.lastName;
   });
 
 
-  ngOnInit() {
-    this.firstNames.forEach(firstName => {
-      let initial = firstName[0];
-      if (!this.initialsFirstnames.includes(initial)) {
-        this.initialsFirstnames.push(initial);
-        this.initialsFirstnames.sort();
-      }
-    });
 
-    console.log(this.colors.length);
-    console.log(this.currentColor);
+
+  ngOnInit() {
+    this.getCatagoryInitials();
+    console.log(this.catagoryInitials);
+    
+
+   
+   
   }
 
+  getCatagoryInitials() {
+    this.firstNames.forEach(firstName => {
+      let initial = firstName[0];
+      if (!this.catagoryInitials.includes(initial)) {
+        this.catagoryInitials.push(initial);
+        this.catagoryInitials.sort();
+      }
+    });
+  }
   setActive(clickedContact: string) {
     this.isAntonActive = clickedContact === 'anton';
   }
@@ -51,18 +59,9 @@ export class SectionContactsComponent implements OnInit {
     return currentContact.charAt(0);
   }
 
-  setBgColor(): string {
-    let color: string;
-   
-    if (this.currentColor > this.colors.length) {
-      this.currentColor = 0;
-      color = this.colors[this.currentColor];
-    } else {
-      color = this.colors[this.currentColor];
-      
-    }
-    console.log('Current Color: ', this.currentColor);
-    this.currentColor ++;
-     return color;
-  }
+  // createInitals() {
+  //   for (let i = 0; i < this.initialsFirstames.length; i++) {
+  //     this.initals.push(this.initialsFirstnames[i] + ' ' + this.lastNames[i].charAt(0))
+  //   }
+  // }
 }
