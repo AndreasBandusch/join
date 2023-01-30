@@ -40,12 +40,10 @@ a:focus>div {
     padding-top: 16px;
     padding-bottom: 16px;
     padding-right: 48px;
-    bottom: 16px;
+    bottom: 32px;
     right: 0;
     width: 100%;
     height: 90px;
-
-
 }
 
 .content-inner {
@@ -237,11 +235,19 @@ a:focus>div {
         padding-left: 32px;
         padding-right: 32px;
     }
+
+    .btn-cont {
+        padding-right: 32px;
+    }
 }
 
 @media (max-width: 450px) {
     .contacts {
         padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .btn-cont {
         padding-right: 16px;
     }
 }
