@@ -179,6 +179,8 @@ a:focus>div {
 }
 
 
+
+
 @media (max-width: 1440px) {
     .sub-title {
         font-size: 20px;
@@ -190,6 +192,15 @@ a:focus>div {
 
     .contact-details {
         display: none;
+    }
+
+    .d-none {
+        display: none;
+    }
+
+    .display {
+        display: flex;
+        margin-left: 48px;
     }
 
     .contacts {
@@ -223,6 +234,7 @@ a:focus>div {
         background-color: #fff;
         padding-right: 68px;
     }
+    
 
     .catagory {
         &:first-child {

@@ -8,6 +8,7 @@ import { db } from '../../../database';
 })
 export class SectionContactsComponent implements OnInit {
   isAntonActive = false;
+  test: boolean = false;
   currentColor: number = 0;
   colors: string[] = [
     '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A'];
@@ -53,6 +54,7 @@ export class SectionContactsComponent implements OnInit {
   }
   setActive(clickedContact: string) {
     this.isAntonActive = clickedContact === 'anton';
+    this.test = true;
   }
 
   getFirstLetter(currentContact: string) {

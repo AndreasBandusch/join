@@ -5,7 +5,7 @@
     </div>
     <div class="content-inner">
 
-        <div class="contacts">
+        <div class="contacts" [class.d-none]="test">
             <div class="contacts-inner">
                 <div *ngFor="let initial of catagoryInitials;" class="catagory">
                     <div class="catagory-header">
@@ -31,7 +31,7 @@
 
             </div>
         </div>
-        <div class="contact-details">
+        <div class="contact-details" [class.display]="test">
             <div class="contact-details-inner">
                 <div class="content-header">
                     <div class="content-header-mobile">Kanban Project Management Tool</div>
