@@ -198,6 +198,8 @@ a:focus>div {
         display: none;
     }
 
+
+
     .display {
         display: flex;
         margin-left: 48px;
@@ -234,7 +236,15 @@ a:focus>div {
         background-color: #fff;
         padding-right: 68px;
     }
-    
+
+    .btn-no-bg {
+        background-color: unset;
+        top: unset;
+        bottom: 106px;
+    }
+
+
+
 
     .catagory {
         &:first-child {
@@ -263,17 +273,20 @@ a:focus>div {
     .btn-cont {
         padding-right: 16px;
     }
+
     .name {
         font-size: 18px;
-    } 
+    }
+
     .email {
         font-size: 14px;
-    } 
+    }
 
     .catagory-body-cont {
         padding-left: 0px;
         padding-right: 0px;
     }
+
     .contact-initials {
         margin-right: 16px;
     }
@@ -286,5 +299,5 @@ a:focus>div {
         width: 35px;
     }
 
-    
+
 }
