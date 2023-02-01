@@ -61,6 +61,10 @@ export class SectionContactsComponent implements OnInit {
     return currentContact.charAt(0);
   }
 
+  closeDetails() {
+    this.test = false;
+  }
+
   // createInitals() {
   //   for (let i = 0; i < this.initialsFirstames.length; i++) {
   //     this.initals.push(this.initialsFirstnames[i] + ' ' + this.lastNames[i].charAt(0))

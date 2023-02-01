@@ -1,12 +1,11 @@
 <div class="content">
     <div class="btn-cont" [class.btn-no-bg]="test">
-        <button class="primary-btn new-contact-btn">New contact <img
-                src="assets/img/icons/new-contact-icon.png">
+        <button class="primary-btn new-contact-btn">New contact <img src="assets/img/icons/new-contact-icon.png">
         </button>
-                <img class="add-mobile-btn" src="assets/img/icons/add-contact-icon.png" [class.add-contact-mobile]="test">
+        <img class="add-mobile-btn" src="assets/img/icons/add-contact-icon.png" [class.add-contact-mobile]="test">
     </div>
     <div class="content-inner">
-
+        <img src="assets/img/icons/back2-icon.png" class="back-to-contacts" [class.show-btn]="test" (click)="closeDetails()">
         <div class="contacts" [class.d-none]="test">
             <div class="contacts-inner">
                 <div *ngFor="let initial of catagoryInitials;" class="catagory">
@@ -31,7 +30,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="contact-details" [class.display]="test">

@@ -187,6 +187,16 @@ a:focus>div {
     }
 }
 
+.back-to-contacts {
+    display: none;
+    position: absolute;
+    top: 150px;
+    right: 32px;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+}
+
 
 
 
@@ -207,8 +217,10 @@ a:focus>div {
         display: none;
     }
 
-
-
+    .show-btn {
+        display: block;
+    }
+    
     .display {
         display: flex;
         margin-left: 48px;
@@ -229,16 +241,8 @@ a:focus>div {
         margin-right: 0;
         width: 100%;
     }
-}
 
-@media (max-width: 930px) {
-    .contacts {
-        padding-left: 68px;
-        padding-right: 68px;
-    }
-
-
-
+    
     .btn-cont {
         bottom: unset;
         top: 90px;
@@ -251,6 +255,29 @@ a:focus>div {
         top: unset;
         bottom: 106px;
     }
+
+}
+
+@media (max-width: 930px) {
+    .contacts {
+        padding-left: 68px;
+        padding-right: 68px;
+    }
+
+
+
+    // .btn-cont {
+    //     bottom: unset;
+    //     top: 90px;
+    //     background-color: #fff;
+    //     padding-right: 68px;
+    // }
+
+    // .btn-no-bg {
+    //     background-color: unset;
+    //     top: unset;
+    //     bottom: 106px;
+    // }
 
 
 
