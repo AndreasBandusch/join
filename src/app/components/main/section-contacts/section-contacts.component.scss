@@ -45,6 +45,11 @@ a:focus>div {
     right: 0;
     width: 100%;
     height: 90px;
+
+}
+
+.add-mobile-btn {
+    display: none;
 }
 
 .content-inner {
@@ -98,6 +103,10 @@ a:focus>div {
         width: 33px;
         margin-left: 12px;
     }
+}
+
+.add-contact-mobile {
+    display: none;
 }
 
 .catagory {
@@ -264,6 +273,19 @@ a:focus>div {
     }
 }
 
+
+@media (max-width: 500px) {
+    .add-contact-mobile {
+        display: block;
+    }
+
+    .btn-no-bg {
+        .new-contact-btn {
+            display: none;
+        }
+    }
+}
+
 @media (max-width: 450px) {
     .contacts {
         padding-left: 16px;
@@ -273,6 +295,10 @@ a:focus>div {
     .btn-cont {
         padding-right: 16px;
     }
+
+
+
+
 
     .name {
         font-size: 18px;
