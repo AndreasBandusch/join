@@ -18,11 +18,9 @@ a:focus>div {
     cursor: auto;
 }
 
-
 .title {
     border-right: 3px solid #29ABE2;
 }
-
 
 .content {
     padding-top: 0;
@@ -267,6 +265,10 @@ a:focus>div {
         &:first-child {
             margin-top: 90px;
         }
+    }
+
+    .btn-cont {
+            bottom: 122px;
     }
 
 }
