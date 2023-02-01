@@ -13,26 +13,26 @@ body {
 }
 
 /* ===== Scrollbar CSS ===== */
-  /* Firefox */
-  * {
+/* Firefox */
+* {
     scrollbar-width: auto;
     scrollbar-color: #a8a8a8 #ffffff;
-  }
+}
 
-  /* Chrome, Edge, and Safari */
-  *::-webkit-scrollbar {
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
     width: 12px;
-  }
+}
 
-  *::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background: #ffffff;
-  }
+}
 
-  *::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar-thumb {
     background-color: #a8a8a8;
     border-radius: 12px;
     border: 3px solid #ffffff;
-  }
+}
 
 
 h1 {
@@ -151,7 +151,7 @@ a:hover {
 }
 
 .content-inner {
-    margin-left: 116px; 
+    margin-left: 116px;
 }
 
 .content-header {
@@ -173,7 +173,7 @@ a:hover {
 }
 
 .title {
-    padding-right: 32px;  
+    padding-right: 32px;
 }
 
 .sub-title {
@@ -190,7 +190,9 @@ a:hover {
 @media (max-width: 1300px) {
     .content-inner {
         margin-left: 48px;
+        margin-right: 48px;
     }
+   
 }
 
 @media (max-width: 920px) {
@@ -206,7 +208,7 @@ a:hover {
     .content-inner {
         margin-left: 68px;
         margin-right: 68px;
-      
+
     }
 
     .content-header {
@@ -215,8 +217,19 @@ a:hover {
         gap: 8px;
         margin-bottom: 48px;
 
+        .sub-title {
+            margin-left: 0;
+        }
+
         .title {
             font-size: 47px;
+            border-right: none;
+        }
+
+        .underline {
+            border-bottom: 3px solid #29ABE2;
+            width: 40%;
+            padding-bottom: 16px;
         }
     }
 
@@ -239,7 +252,7 @@ a:hover {
     .content-inner {
         margin-right: 16px;
         margin-left: 16px;
-    } 
+    }
 
     .title {
         font-size: 40px !important;

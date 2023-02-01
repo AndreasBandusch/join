@@ -211,6 +211,8 @@ a:focus>div {
 
     .contact-details {
         display: none;
+        width: 100%;
+        margin-right: 48px;
     }
 
     .d-none {
@@ -220,7 +222,7 @@ a:focus>div {
     .show-btn {
         display: block;
     }
-    
+
     .display {
         display: flex;
         margin-left: 48px;
@@ -242,7 +244,7 @@ a:focus>div {
         width: 100%;
     }
 
-    
+
     .btn-cont {
         bottom: unset;
         top: 90px;
@@ -258,29 +260,20 @@ a:focus>div {
 
 }
 
-@media (max-width: 930px) {
+@media (max-width: 920px) {
     .contacts {
         padding-left: 68px;
         padding-right: 68px;
     }
 
+    .contact-details {
+        margin-right: 68px;
+        margin-left: 68px;
+    }
 
-
-    // .btn-cont {
-    //     bottom: unset;
-    //     top: 90px;
-    //     background-color: #fff;
-    //     padding-right: 68px;
-    // }
-
-    // .btn-no-bg {
-    //     background-color: unset;
-    //     top: unset;
-    //     bottom: 106px;
-    // }
-
-
-
+    .title {
+        border-right: none;
+    }
 
     .catagory {
         &:first-child {
@@ -293,6 +286,11 @@ a:focus>div {
     .contacts {
         padding-left: 32px;
         padding-right: 32px;
+    }
+
+    .contact-details {
+        margin-right: 32px;
+        margin-left: 32px;
     }
 
     .btn-cont {
@@ -317,6 +315,11 @@ a:focus>div {
     .contacts {
         padding-left: 16px;
         padding-right: 16px;
+    }
+
+    .contact-details {
+        margin-right: 16px;
+        margin-left: 16px;
     }
 
     .btn-cont {

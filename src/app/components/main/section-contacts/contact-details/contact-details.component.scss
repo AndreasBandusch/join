@@ -81,3 +81,17 @@
     font-weight: 700;
 }
 
+
+@media (max-width: 1300px) {
+    
+}
+
+@media (max-width: 650px) {
+    .details-name {
+        span {
+            font-size: 40px;
+        }
+
+       
+    }
+}

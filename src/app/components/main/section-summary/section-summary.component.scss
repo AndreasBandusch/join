@@ -163,13 +163,10 @@ app-hello {
 
         .title {
             order: 2;
+            border-right: none;
         }
 
-        .underline {
-            border-bottom: 3px solid #29ABE2;
-            width: 40%;
-            padding-bottom: 16px;
-        }
+      
     }
 
 }
