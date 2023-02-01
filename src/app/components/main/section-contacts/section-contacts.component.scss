@@ -53,6 +53,7 @@ a:focus>div {
 }
 
 .content-inner {
+    position: relative;
     display: flex;
     height: 100%;
     margin-left: 0;
@@ -190,8 +191,8 @@ a:focus>div {
 .back-to-contacts {
     display: none;
     position: absolute;
-    top: 150px;
-    right: 32px;
+    top: 170px;
+    right: 48px;
     height: 16px;
     width: 16px;
     cursor: pointer;
@@ -255,8 +256,19 @@ a:focus>div {
     .btn-no-bg {
         background-color: unset;
         top: unset;
-        bottom: 106px;
+        bottom: 32px;
+
+        .new-contact-btn {
+            display: none;
+        }
     }
+
+    .add-contact-mobile {
+        display: block;
+        cursor: pointer;
+    }
+
+   
 
 }
 
@@ -304,11 +316,7 @@ a:focus>div {
         display: block;
     }
 
-    .btn-no-bg {
-        .new-contact-btn {
-            display: none;
-        }
-    }
+    
 }
 
 @media (max-width: 450px) {
