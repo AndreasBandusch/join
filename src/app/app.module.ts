@@ -17,6 +17,8 @@ import { MainSiteComponent } from './components/main-site/main-site.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HelloComponent } from './components/main/hello/hello.component';
 import { ContactDetailsComponent } from './components/main/section-contacts/contact-details/contact-details.component';
+import { ContactCatagoryComponent } from './components/main/section-contacts/contact-catagory/contact-catagory.component';
+import { ContactComponent } from './components/main/section-contacts/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { ContactDetailsComponent } from './components/main/section-contacts/cont
     SignUpComponent,
     HelloComponent,
     ContactDetailsComponent,
+    ContactCatagoryComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
