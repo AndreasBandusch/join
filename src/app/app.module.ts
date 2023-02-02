@@ -19,6 +19,12 @@ import { HelloComponent } from './components/main/hello/hello.component';
 import { ContactDetailsComponent } from './components/main/section-contacts/contact-details/contact-details.component';
 import { ContactCatagoryComponent } from './components/main/section-contacts/contact-catagory/contact-catagory.component';
 import { ContactComponent } from './components/main/section-contacts/contact/contact.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+
 
 @NgModule({
   declarations: [
@@ -42,7 +48,11 @@ import { ContactComponent } from './components/main/section-contacts/contact/con
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]

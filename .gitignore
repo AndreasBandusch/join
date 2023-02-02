@@ -43,3 +43,8 @@ Thumbs.db
 
 #Own Area
 database.js
+
+# Firebase
+.firebase
+*-debug.log
+.runtimeconfig.json
