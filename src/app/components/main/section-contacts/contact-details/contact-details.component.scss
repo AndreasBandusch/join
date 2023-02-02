@@ -136,13 +136,42 @@
 
     .details-name {
         span {
-            font-size: 28px;
+            font-size: 32px;
         }  
+    }
+
+    .initials {
+        margin-right: 16px;
     }
 
 }
 
+
 @media (max-width: 450px) {
-    
+
+    .details-name {
+        span {
+            font-size: 26px;
+        }  
+    }
+
+}
+@media (max-width: 350px) {
+    .details-name {
+        span {
+            font-size: 21px;
+        }
+    }
+    .initials {
+        height: 60px;
+        width: 60px;
+        font-size: 21px;
+    }
+
+    .info-header-text {
+        font-size: 18px;
+    }
+
+  
     
 }
