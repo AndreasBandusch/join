@@ -54,15 +54,19 @@ export class SectionContactsComponent implements OnInit {
   }
   setActive(clickedContact: string) {
     this.isAntonActive = clickedContact === 'anton';
-    this.test = true;
+    
   }
 
   getFirstLetter(currentContact: string) {
     return currentContact.charAt(0);
   }
 
-  closeDetails() {
-    this.test = false;
+  toggleDetails(isActiveContact: boolean) {
+    this.test = isActiveContact;
+
+    if (isActiveContact) {
+      this.setActive('anton');
+    }
   }
 
   // createInitals() {

@@ -5,7 +5,7 @@
         <img class="edit-mobile-btn" src="assets/img/icons/edit-contact-icon-mobile.png" [class.edit-contact-mobile]="test">
     </div>
     <div class="content-inner">
-        <img src="assets/img/icons/back2-icon.png" class="back-to-contacts" [class.show-btn]="test" (click)="closeDetails()">
+        <img src="assets/img/icons/back2-icon.png" class="back-to-contacts" [class.show-btn]="test" (click)="toggleDetails(false)">
         <div class="contacts" [class.d-none]="test">
             <div class="contacts-inner">
                 <div *ngFor="let initial of catagoryInitials;" class="catagory">
@@ -15,7 +15,7 @@
                     <div *ngFor="let contact of fullNames; index as i">
                         <div *ngIf="getFirstLetter(contact) === initial" class="catagory-body">
                             <a routerLink="contact">
-                                <div class="catagory-body-cont" (click)="setActive('anton')"
+                                <div class="catagory-body-cont" (click)="toggleDetails(true)"
                                     [class.active]="isAntonActive">
                                     <div class="contact-initials"
                                         [ngStyle]="{'background-color': colors[i % colors.length]}">
