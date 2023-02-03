@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Contact } from 'src/app/models/contact.model';
+
 
 
 @Component({
@@ -22,10 +23,12 @@ export class SectionContactsComponent implements OnInit {
   contacts: any[] = [];
   currentContact: string = '';
 
+  testModel = new Contact('Andreas', 'Bandusch', 'bandusch@web.de');
+  
 
 
 constructor(public firestore: AngularFirestore) {
- 
+   
 }
 
 
@@ -34,7 +37,7 @@ constructor(public firestore: AngularFirestore) {
 ngOnInit() {
 
   this.firestore.collection('contacts').valueChanges().subscribe((updates: any) => {
-    this.contacts = updates;
+   this.contacts = updates;
     
     this.getCatagoryInitials();
     console.log(this.catagoryInitials);
@@ -42,6 +45,7 @@ ngOnInit() {
     console.log('colors', this.colors);
   })
 
+    console.log(this.testModel.initials);
 }
 
 
@@ -69,13 +73,11 @@ getFirstLetter(currentContact: string) {
 toggleDetails(isActiveContact: boolean) {
   this.test = isActiveContact;
 
-  if (isActiveContact) {
-    this.setActive('anton');
-  }
+ 
 }
 
-getIndex(i: number) {
-  console.log(i);
+addContact() {
+
 }
 
 }
