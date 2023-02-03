@@ -18,7 +18,7 @@
                                 <div class="catagory-body-cont" (click)="toggleDetails(true)"
                                     [class.active]="isAntonActive">
                                     <div class="contact-initials"
-                                        [ngStyle]="{'background-color': colors[i % colors.length]}">
+                                        [ngStyle]="{'background-color': colors[(i + colors.length) % colors.length]}">
                                         {{contact.initials}}
                                     </div>
                                     <div class="contact-infos">

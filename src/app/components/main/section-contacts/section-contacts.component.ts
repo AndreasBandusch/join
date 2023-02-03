@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
@@ -23,7 +23,6 @@ export class SectionContactsComponent implements OnInit {
 
 
 
-
 constructor(public firestore: AngularFirestore) {
  
 }
@@ -38,7 +37,8 @@ ngOnInit() {
     
     this.getCatagoryInitials();
     console.log(this.catagoryInitials);
-    console.log('All contatcts', this.contacts);
+    console.log('contacts', this.contacts);
+    console.log('colors', this.colors);
   })
 
 }
@@ -71,6 +71,10 @@ toggleDetails(isActiveContact: boolean) {
   if (isActiveContact) {
     this.setActive('anton');
   }
+}
+
+getIndex(i: number) {
+  console.log(i);
 }
 
 }

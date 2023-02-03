@@ -24,6 +24,8 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
+import { AddContactComponent } from './components/main/section-contacts/add-contact/add-contact.component';
+import { EditContactComponent } from './components/main/section-contacts/edit-contact/edit-contact.component';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { AngularFireModule } from '@angular/fire/compat';
     ContactDetailsComponent,
     ContactCatagoryComponent,
     ContactComponent,
+    AddContactComponent,
+    EditContactComponent,
   ],
   imports: [
     BrowserModule,
