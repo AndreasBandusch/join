@@ -254,6 +254,12 @@ a:focus>div {
         right: 48px;
         
     }
+
+    .catagory {
+        &:first-child {
+            padding-top: 90px;
+        }
+    }
 }
 
 @media (max-width: 920px) {
@@ -271,11 +277,6 @@ a:focus>div {
         border-right: none;
     }
 
-    .catagory {
-        &:first-child {
-            margin-top: 90px;
-        }
-    }
 
     .btn-cont {
         bottom: 122px;
