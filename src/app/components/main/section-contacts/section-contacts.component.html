@@ -2,10 +2,12 @@
     <div class="btn-cont" [class.btn-no-bg]="test">
         <button class="primary-btn new-contact-btn">New contact <img src="assets/img/icons/new-contact-icon.png">
         </button>
-        <img class="edit-mobile-btn" src="assets/img/icons/edit-contact-icon-mobile.png" [class.edit-contact-mobile]="test">
+        <img class="edit-mobile-btn" src="assets/img/icons/edit-contact-icon-mobile.png"
+            [class.edit-contact-mobile]="test">
     </div>
     <div class="content-inner">
-        <img src="assets/img/icons/back2-icon.png" class="back-to-contacts" [class.show-btn]="test" (click)="toggleDetails(false)">
+        <img src="assets/img/icons/back2-icon.png" class="back-to-contacts" [class.show-btn]="test"
+            (click)="toggleDetails(false)">
         <div class="contacts" [class.d-none]="test">
             <div class="contacts-inner">
                 <div *ngFor="let initial of catagoryInitials;" class="catagory">
@@ -15,8 +17,8 @@
                     <div *ngFor="let contact of contacts; index as i">
                         <div *ngIf="getFirstLetter(contact.firstName) === initial" class="catagory-body">
                             <a routerLink="contact">
-                                <div class="catagory-body-cont" (click)="toggleDetails(true)"
-                                    [class.active]="isAntonActive">
+                                <div class="catagory-body-cont" (click)="currentContact = contact.email"
+                                    [class.active]="currentContact === contact.email">
                                     <div class="contact-initials"
                                         [ngStyle]="{'background-color': colors[(i + colors.length) % colors.length]}">
                                         {{contact.initials}}

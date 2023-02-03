@@ -20,6 +20,7 @@ export class SectionContactsComponent implements OnInit {
   initialsLastNames: string[] = [];
   initals: any[] = [];    
   contacts: any[] = [];
+  currentContact: string = '';
 
 
 
