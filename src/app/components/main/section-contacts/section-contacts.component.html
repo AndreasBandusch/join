@@ -10,20 +10,20 @@
             <div class="contacts-inner">
                 <div *ngFor="let initial of catagoryInitials;" class="catagory">
                     <div class="catagory-header">
-                        <span class="letter">{{initial | titlecase}}</span>
+                        <span class="letter">{{initial}}</span>
                     </div>
-                    <div *ngFor="let item of contacts; index as i">
-                        <div *ngIf="getFirstLetter(item.firstName) === initial" class="catagory-body">
+                    <div *ngFor="let contact of contacts; index as i">
+                        <div *ngIf="getFirstLetter(contact.firstName) === initial" class="catagory-body">
                             <a routerLink="contact">
                                 <div class="catagory-body-cont" (click)="toggleDetails(true)"
                                     [class.active]="isAntonActive">
                                     <div class="contact-initials"
                                         [ngStyle]="{'background-color': colors[i % colors.length]}">
-                                        {{initial | titlecase }}
+                                        {{contact.initials}}
                                     </div>
                                     <div class="contact-infos">
-                                        <span class="name">{{ item?.firstName | titlecase }} {{ item?.lastName | titlecase }}</span>
-                                        <span class="email">{{ item?.email }}</span>
+                                        <span class="name">{{ contact?.firstName }} {{ contact?.lastName }}</span>
+                                        <span class="email">{{ contact?.email }}</span>
                                     </div>
                                 </div>
                             </a>

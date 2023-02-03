@@ -21,10 +21,6 @@ export class SectionContactsComponent implements OnInit {
   initals: any[] = [];    
   contacts: any[] = [];
 
- firstNames: any[] = [];
- lastNames: any[] = [];
- fullNames: any[] = [];
-
 
 
 
@@ -37,50 +33,29 @@ constructor(public firestore: AngularFirestore) {
 
 ngOnInit() {
 
-
-  this.firestore.collection('contacts').valueChanges().subscribe((test: any) => {
-    this.contacts = test;
-
-
-    this.contacts.forEach(contact => {
-      this.firstNames.push(contact.firstName)
-    })
-   
-
-    this.contacts.forEach(contact => {
-      this.lastNames.push(contact.lastName)
-    })
-
-
-
-   
-    console.log(this.catagoryInitials);
-
-    this.contacts.forEach(contact => {
-      this.fullNames.push(contact.firstName + '' + contact.lastName)
-    })
-   
+  this.firestore.collection('contacts').valueChanges().subscribe((updates: any) => {
+    this.contacts = updates;
+    
     this.getCatagoryInitials();
-    this.createInitals();
-    
-    
-    console.log('initals: ', this.initals);
-    console.log('catagoryInitials: ', this.catagoryInitials);
-    console.log(this.contacts);
-
+    console.log(this.catagoryInitials);
+    console.log('All contatcts', this.contacts);
   })
 
 }
 
+
+
 getCatagoryInitials() {
-  this.firstNames.forEach(firstName => {
-    let initial = firstName[0];
+  this.catagoryInitials = [];
+  this.contacts.forEach(contact => {
+    let initial = contact.initials[0];
   if (!this.catagoryInitials.includes(initial)) {
      this.catagoryInitials.push(initial);
-     this.catagoryInitials.sort();
+     this.catagoryInitials.sort();          
      }
   });
 }
+
 setActive(clickedContact: string) {
   this.isAntonActive = clickedContact === 'anton';
 
@@ -98,9 +73,5 @@ toggleDetails(isActiveContact: boolean) {
   }
 }
 
-  createInitals() {
-   for (let i = 0; i < this.catagoryInitials.length; i++) {
-     this.initals.push(this.catagoryInitials[i] + ' ' + this.lastNames[i].charAt(0))
-     }
-   }
 }
+
