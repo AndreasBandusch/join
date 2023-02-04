@@ -1,3 +1,27 @@
+h1 {
+    color: #fff;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+}
+
+.primary-btn {
+    width: 209px;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.subtext {
+    font-size: 27px;
+    color: #fff;
+}
+
 .add-contact {
     position: absolute;
     z-index: 99;
@@ -6,8 +30,10 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.10);
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
 }
+
 .add-contact-cont {
     position: absolute;
     z-index: 100;
@@ -16,6 +42,80 @@
     transform: translate(-50%, -50%);
     background-color: #fff;
     border-radius: 30px;
+    height: 600px;
     min-height: 600px;
     width: 1200px;
+    display: flex;
+    justify-self: center;
+    align-items: center;
+
+}
+
+.add-contact-inner {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.title-cont {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    background-color: #2A3647;
+    padding: 46px;
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+    gap: 16px;
+}
+
+.add-contact-picture {
+    position: absolute;
+    right: -190px;
+    top: calc(50% - 60px);
+    height: 120px;
+    width: 120px;
+}
+
+.content-cont {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    height: 100%;
+    padding: 46px;
+}
+
+
+
+.logo {
+    img {
+        height: 66px;
+        width: 55px;
+    }
+}
+
+.form-cont {
+    display: flex;
+    flex-direction: column;
+    width: 422px;
+    gap: 32px;
+}
+
+.close-dialog {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
+}
+
+.button-cont {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 16px;
+    width: 100%;
+    gap: 32px;
 }

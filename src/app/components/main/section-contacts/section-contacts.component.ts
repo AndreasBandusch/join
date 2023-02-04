@@ -77,7 +77,7 @@ export class SectionContactsComponent implements OnInit {
   }
 
   addContact() {
-    this.openDialog.addContactOpen = true;
+    this.openDialog.addContactDialogOpen = true;
    
   }
 

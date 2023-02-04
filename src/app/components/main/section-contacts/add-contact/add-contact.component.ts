@@ -11,4 +11,12 @@ export class AddContactComponent {
   constructor(public openDialog: OpendialogService)  {
 
   }
+
+
+
+   
+  // Verhindert das Schließen des inneren Containers beim Klicken
+  public dontCloseByClick(event: Event) {
+    event.stopPropagation();
+  }
 }
