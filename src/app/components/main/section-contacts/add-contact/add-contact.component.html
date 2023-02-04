@@ -7,9 +7,10 @@
                     </div>
                     <div class="text">
                         <h1>Add contact</h1>
-                        <span class="subtext">
+                        <div class="subtext">
                             Tasks are better with a team!
-                        </span>
+                            <div class="underline"></div>
+                        </div>
                     </div>
                     <img src="assets/img/profile-picture-add-contact.png" class="add-contact-picture">
                 </div>
@@ -21,12 +22,18 @@
                         <input type="text" class="input-phone" placeholder="Phone">
 
                         <div class="button-cont">
-                            <button class="secondary-btn">Cancel</button>
-                            <button class="primary-btn">Create Contact</button>
+                            <button class="secondary-btn" (click)="openDialog.addContactDialogOpen = false">
+                                Cancel
+                                <img src="assets/img/icons/cancel-icon.png">
+                            </button>
+                            <button class="primary-btn">
+                                Create Contact
+                                <img src="assets/img/icons/checked-icon.png">
+                            </button>
                         </div>
                     </div>
                 </div>
         </div>
-        <img src="assets/img/icons/close-dialog-icon.png" class="close-dialog" (click)="openDialog.addContactDialogOpen = false">
+        <img src="assets/img/icons/close-icon.png" class="close-dialog" (click)="openDialog.addContactDialogOpen = false">
     </div>
 </div>

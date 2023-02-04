@@ -8,7 +8,21 @@ input {
 }
 
 .primary-btn {
-    width: 209px;
+    width: 215px;
+
+    img {
+        height: 24px;
+        width: 24px;
+        margin-left: 8px;
+    }
+}
+
+.secondary-btn {
+    img {
+        height: 24px;
+        width: 24px;
+        margin-left: 8px;
+    }
 }
 
 .text {
@@ -20,6 +34,12 @@ input {
 .subtext {
     font-size: 27px;
     color: #fff;
+}
+
+.underline {
+    border-bottom: 3px solid #29ABE2;
+    width: 30%;
+    padding-bottom: 8px;
 }
 
 .add-contact {
@@ -35,7 +55,7 @@ input {
 }
 
 .add-contact-cont {
-    position: absolute;
+    position: relative;
     z-index: 100;
     top: 50%;
     left: 50%;
@@ -118,4 +138,20 @@ input {
     margin-top: 16px;
     width: 100%;
     gap: 32px;
+}
+
+@media (max-width: 1300px) {
+
+    .add-contact {
+        padding-left: 48px;
+        padding-right: 48px;
+    }
+
+    .add-contact-cont {
+        width: 100%;
+    }
+
+    .add-contact-picture {
+        right: -150px;
+    }
 }

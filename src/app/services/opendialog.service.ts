@@ -10,5 +10,5 @@ export class OpendialogService {
   
   ) { }
 
-  addContactDialogOpen = true;
+  addContactDialogOpen = false;
 }
