@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { OpendialogService } from 'src/app/services/opendialog.service';
 @Component({
   selector: 'app-add-contact',
   templateUrl: './add-contact.component.html',
@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AddContactComponent {
 
+
+  constructor(public openDialog: OpendialogService)  {
+
+  }
 }
