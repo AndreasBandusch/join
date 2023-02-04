@@ -23,7 +23,7 @@ export class SectionContactsComponent implements OnInit {
   contacts: any[] = [];
   currentContact: string = '';
 
-  testModel = new Contact('Andreas', 'Bandusch', 'bandusch@web.de');
+  
   
 
 
@@ -45,7 +45,7 @@ ngOnInit() {
     console.log('colors', this.colors);
   })
 
-    console.log(this.testModel.initials);
+   
 }
 
 
@@ -77,8 +77,15 @@ toggleDetails(isActiveContact: boolean) {
 }
 
 addContact() {
+  console.log('jep');
+  let newContact: Contact = new Contact('Andreas', 'Bandusch', 'bandusch@web.de');
+  // this.firestore
+  //   .collection('contacts')
+  //   .add(newContact.toJSON());
+
+  console.log(newContact);
 
 }
-
+  
 }
 

@@ -16,10 +16,26 @@ export class Contact {
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
+
+        this.checkPhoneExist(phone)
         this.getInitials();
+        
+    }
+    private checkPhoneExist(phone?: string) {
+        if (!phone) this.phone = 'No phone number exists';  
     }
 
-    getInitials() {
+    private getInitials() {
         this.initials = this.firstName.charAt(0) + this.lastName.charAt(0);
+    }
+
+    public toJSON() {
+        return {
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+            phone: this.phone,
+            initials: this.initials,
+        };
     }
 }
