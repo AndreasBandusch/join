@@ -7,19 +7,23 @@ export class Contact {
     public initials: string = '';
 
     constructor(
-        firstName: string,
-        lastName: string,
+        fullName: string,
         email: string,
         phone?: string,
     ) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+
         this.email = email;
         this.phone = phone;
-
+        this.transformName(fullName);
         this.initContact(phone);
+
     }
 
+    private transformName(fullName: string) {
+        let splittedName = fullName.trim().replace(/\s+/g, ' ').split(" ");
+        this.firstName = splittedName[0];
+        this.lastName = splittedName[splittedName.length - 1];
+    }
 
     private initContact(phone?: string): void {
         this.createId();
