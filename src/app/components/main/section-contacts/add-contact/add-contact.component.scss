@@ -122,14 +122,18 @@ input {
     gap: 48px;
 }
 
-.close-dialog {
+.close-dialog,
+.close-dialog-mobile {
     position: absolute;
-
     top: 32px;
     right: 32px;
     height: 32px;
     width: 32px;
     cursor: pointer;
+}
+
+.close-dialog-mobile {
+    display: none;
 }
 
 .button-cont {
@@ -264,6 +268,14 @@ input {
     .secondary-btn {
         font-size: 21px;
     }
+
+    .close-dialog-mobile {
+        display: block;
+    }
+
+    .close-dialog {
+        display: none;
+    }
 }
 
 @media (max-width: 750px) {
@@ -337,8 +349,14 @@ input {
         border-top-left-radius: 0;
         border-top-right-radius: 0;
     }
+
     .form-cont {
         gap: 32px;
+    }
+
+    .close-dialog-mobile {
+        top: 16px;
+        right: 16px;
     }
 }
 
