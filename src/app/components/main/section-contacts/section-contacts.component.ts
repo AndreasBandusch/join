@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Contact } from 'src/app/models/contact.model';
-import { OpendialogService } from 'src/app/services/opendialog.service';
+import { ControlService} from 'src/app/services/control.service';
 
 
 
@@ -29,7 +29,7 @@ export class SectionContactsComponent implements OnInit {
 
 
 
-  constructor(public firestore: AngularFirestore, public openDialog: OpendialogService) {}
+  constructor(public firestore: AngularFirestore, public control: ControlService) {}
 
 
 
@@ -77,7 +77,7 @@ export class SectionContactsComponent implements OnInit {
   }
 
   addContact() {
-    this.openDialog.addContactDialogOpen = true;
+    this.control.addContactDialogOpen = true;
    
   }
 

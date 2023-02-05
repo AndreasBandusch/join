@@ -26,6 +26,7 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AddContactComponent } from './components/main/section-contacts/add-contact/add-contact.component';
 import { EditContactComponent } from './components/main/section-contacts/edit-contact/edit-contact.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { EditContactComponent } from './components/main/section-contacts/edit-co
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
