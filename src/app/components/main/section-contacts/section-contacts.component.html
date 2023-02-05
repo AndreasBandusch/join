@@ -16,7 +16,7 @@
                     </div>
                     <div *ngFor="let contact of contacts; index as i">
                         <div *ngIf="getFirstLetter(contact.firstName) === initial" class="catagory-body">
-                            <a routerLink="contact" (click)="currentContact = contact.email" (click)="toggleDetails(true)">
+                            <a routerLink="contact" (click)="currentContact = contact.id" (click)="toggleDetails(true)">
                                 <div class="catagory-body-cont" 
                                     [class.active]="currentContact === contact.id">
                                     <div class="contact-initials"
