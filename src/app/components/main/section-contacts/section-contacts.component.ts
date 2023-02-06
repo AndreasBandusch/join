@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Contact } from 'src/app/models/contact.model';
 import { ControlService} from 'src/app/services/control.service';
+import { ContactService } from 'src/app/services/contact.service';
 
 
 
@@ -14,22 +15,17 @@ export class SectionContactsComponent implements OnInit {
   
   isAntonActive = false;
   test: boolean = false;
-  currentColor: number = 0;
-  colors: string[] = [
-    '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A'];
-
-
   catagoryInitials: string[] = [];
   initialsLastNames: string[] = [];
   initals: any[] = [];
-  contacts: any[] = [];
+  
   currentContact: string = '';
 
 
 
 
 
-  constructor(public firestore: AngularFirestore, public control: ControlService) {}
+  constructor(public firestore: AngularFirestore, public control: ControlService, public contactServ: ContactService ) {}
 
 
 
@@ -37,12 +33,11 @@ export class SectionContactsComponent implements OnInit {
   ngOnInit() {
 
     this.firestore.collection('contacts').valueChanges().subscribe((updates: any) => {
-      this.contacts = updates;
+      this.contactServ.contacts = updates;
 
       this.getCatagoryInitials();
-      console.log(this.catagoryInitials);
-      console.log('contacts', this.contacts);
-      console.log('colors', this.colors);
+      console.log(this.currentContact);
+
     })
 
 
@@ -52,7 +47,7 @@ export class SectionContactsComponent implements OnInit {
 
   getCatagoryInitials() {
     this.catagoryInitials = [];
-    this.contacts.forEach(contact => {
+    this.contactServ.contacts.forEach(contact => {
       let initial = contact.initials[0];
       if (!this.catagoryInitials.includes(initial)) {
         this.catagoryInitials.push(initial);

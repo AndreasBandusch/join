@@ -27,7 +27,7 @@ const routes: Routes = [
       { path: 'datenschutz', component: DatenschutzComponent },
       {
         path: 'contacts', component: SectionContactsComponent, children: [
-          { path: 'contact', component: ContactDetailsComponent }
+          { path: 'contact/:id', component: ContactDetailsComponent }
         ]
       },
     ]

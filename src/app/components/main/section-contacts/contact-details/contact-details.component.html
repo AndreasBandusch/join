@@ -1,11 +1,11 @@
 <div class="details-content">
     <div class="details-name-cont">
         <div>
-            <span class="initials">AM</span>
+            <span class="initials" [ngStyle]="{'background-color': currentContact.color}">{{ currentContact.initials}}</span>
         </div>
         
         <div class="details-name">
-            <span>Andreas Bandusch</span>
+            <span>{{ currentContact.firstName }} {{ currentContact.lastName }}</span>
             <div class="add-task">+ Add Task</div>
         </div>
     </div>
@@ -21,12 +21,12 @@
         <div class="info-body">
             <div class="info-email-cont">
                 <span class="info-email-header">Email</span>
-                <span class="info-email">antom@gmail.com</span>
+                <span class="info-email">{{ currentContact.email }}</span>
             </div>
 
             <div class="info-phone-cont">
                 <span class="info-phone-header">Phone</span>
-                <span class="info-phone">+49 1111 111 11 1</span>
+                <span class="info-phone">{{ currentContact.phone}}</span>
             </div>
         </div>
     </div>

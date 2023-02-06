@@ -14,13 +14,13 @@
                     <div class="catagory-header">
                         <span class="letter">{{initial}}</span>
                     </div>
-                    <div *ngFor="let contact of contacts; index as i">
+                    <div *ngFor="let contact of contactServ.contacts; index as i">
                         <div *ngIf="getFirstLetter(contact.firstName) === initial" class="catagory-body">
-                            <a routerLink="contact" (click)="currentContact = contact.id" (click)="toggleDetails(true)">
+                            <a [routerLink]="['contact', contact.id]" (click)="currentContact = contact.id" (click)="toggleDetails(true)">
                                 <div class="catagory-body-cont" 
                                     [class.active]="currentContact === contact.id">
                                     <div class="contact-initials"
-                                        [ngStyle]=" {'background-color': colors[i % this.colors.length]}">
+                                        [ngStyle]="{'background-color': contact.color}">
                                         {{contact?.initials}}
                                     </div>
                                     <div class="contact-infos">
