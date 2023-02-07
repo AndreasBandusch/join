@@ -8,12 +8,13 @@ input {
 
     &.ng-touched, &.ng-dirty {
 
-        &.ng-invalid {
-            border-color: green;
-        }
+        // &.ng-invalid {
+        //     border-color: green;
+        // }
 
         &.ng-invalid {
-            border-color: red;
+            border: 2px solid #2A3647;
+        
         }
     }
 }

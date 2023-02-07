@@ -11,6 +11,11 @@ export function phoneNumber(c: AbstractControl) {
   return telephonePattern.test(c.value) ? null : { invalidTelephone: true };
 }
 
+export function name(c: AbstractControl) {
+  const namePattern = /^ *[A-Za-z]{2,} *( +[A-Za-z]{2,})* *$/;
+  return namePattern.test(c.value) ? null : { invalidName: true };
+}
+
 @Component({
   selector: 'app-add-contact',
   templateUrl: './add-contact.component.html',
@@ -26,7 +31,8 @@ export class AddContactComponent {
  
   public createContactForm: FormGroup = new FormGroup({
     name: new FormControl('', [
-      Validators.required
+      Validators.required,
+      name
     ], []),
     email: new FormControl('', [
       Validators.required,
