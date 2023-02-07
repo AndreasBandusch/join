@@ -1,20 +1,9 @@
 import { Component} from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
-
+import { FormControl, FormGroup, Validators, } from '@angular/forms';
 import { Contact } from 'src/app/models/contact.model';
 import { ControlService } from 'src/app/services/control.service';
-
-
-export function phoneNumber(c: AbstractControl) {
-  const telephonePattern = /[0-9\+\-\ ]/;
-  return telephonePattern.test(c.value) ? null : { invalidTelephone: true };
-}
-
-export function name(c: AbstractControl) {
-  const namePattern = /^ *[A-Za-z]{2,} *( +[A-Za-z]{2,})* *$/;
-  return namePattern.test(c.value) ? null : { invalidName: true };
-}
+import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
 
 @Component({
   selector: 'app-add-contact',
@@ -32,7 +21,7 @@ export class AddContactComponent {
   public createContactForm: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.required,
-      name
+      this.fcontrol.name
     ], []),
     email: new FormControl('', [
       Validators.required,
@@ -40,13 +29,13 @@ export class AddContactComponent {
       Validators.minLength(10)
     ], []),
     phone: new FormControl('', [
-      phoneNumber,
+      this.fcontrol.phoneNumber,
       Validators.minLength(10)
     ])
   });
  
 
-  constructor(public control: ControlService, private firestore: AngularFirestore) {
+  constructor(public control: ControlService, private firestore: AngularFirestore, private fcontrol: CustomformcontrolModule) {
     this.createContactForm.valueChanges.subscribe(console.log)
   }
 

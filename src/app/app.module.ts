@@ -28,6 +28,7 @@ import { AddContactComponent } from './components/main/section-contacts/add-cont
 import { EditContactComponent } from './components/main/section-contacts/edit-contact/edit-contact.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CustomformcontrolModule } from './modules/customformcontrol/customformcontrol.module';
 
 
 
@@ -63,7 +64,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [CustomformcontrolModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
