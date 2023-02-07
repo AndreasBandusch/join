@@ -1,41 +1,47 @@
 <div class="add-contact" (click)="control.addContactDialogOpen = false">
     <div class="add-contact-cont" (click)="dontCloseByClick($event)">
         <div class="add-contact-inner">
-                <div class="title-cont">
-                    <div class="logo">
-                        <img src="assets/img/logo.png">
-                    </div>
-                    <div class="text">
-                        <h1>Add contact</h1>
-                        <div class="subtext">
-                            Tasks are better with a team!
-                            <div class="underline"></div>
-                        </div>
-                    </div>
-                    <img src="assets/img/profile-picture-add-contact.png" class="add-contact-picture">
+            <div class="title-cont">
+                <div class="logo">
+                    <img src="assets/img/logo.png">
                 </div>
-
-                <div  class="content-cont">
-                    <div class="form-cont">
-                        <input type="text" class="input-name" placeholder="Name"  [(ngModel)]="inputName">
-                        <input type="email" class="input-email" placeholder="Email" [(ngModel)]="inputEmail">
-                        <input type="text" class="input-phone" placeholder="Phone" [(ngModel)]="inputPhone">
-
-                        <div class="button-cont">
-                            <button class="secondary-btn" (click)="control.addContactDialogOpen = false">
-                                Cancel
-                                <img src="assets/img/icons/cancel-icon.png">
-                            </button>
-                            <button class="primary-btn" (click)="createContact()">
-                                Create Contact
-                                <img src="assets/img/icons/checked-icon.png">
-                            </button>
-                        </div>
+                <div class="text">
+                    <h1>Add contact</h1>
+                    <div class="subtext">
+                        Tasks are better with a team!
+                        <div class="underline"></div>
                     </div>
                 </div>
+                <img src="assets/img/profile-picture-add-contact.png" class="add-contact-picture">
+            </div>
+
+            <div class="content-cont">
+                <form class="form-cont" [formGroup]="createContactForm" (submit)="createContact()">
+                    <input formControlName="name" type="text" class="input-name" placeholder="Name *"
+                        [(ngModel)]="inputName">
+                    <input formControlName="email" type="email" class="input-email" placeholder="Email *"
+                        [(ngModel)]="inputEmail">
+                    <input formControlName="phone" type="tel" class="input-phone" placeholder="Phone"
+                        [(ngModel)]="inputPhone">
+
+                    <div class="button-cont">
+                        <button class="secondary-btn" (click)="control.addContactDialogOpen = false">
+                            Cancel
+                            <img src="assets/img/icons/cancel-icon.png">
+                        </button>
+                        <button [disabled]="!((createContactForm.valid) 
+                            && (createContactForm.dirty 
+                            || createContactForm.touched))" type="submit" class="primary-btn">
+                            Create Contact
+                            <img src="assets/img/icons/checked-icon.png">
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
-        
+
         <img src="assets/img/icons/close-icon.png" class="close-dialog" (click)="control.addContactDialogOpen = false">
-        <img src="assets/img/icons/close-icon-mobile.png" class="close-dialog-mobile" (click)="control.addContactDialogOpen = false">
+        <img src="assets/img/icons/close-icon-mobile.png" class="close-dialog-mobile"
+            (click)="control.addContactDialogOpen = false">
     </div>
 </div>
