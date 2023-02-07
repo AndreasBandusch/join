@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'impressum', component: ImpressumComponent },
       { path: 'datenschutz', component: DatenschutzComponent },
       {
-        path: 'contacts', component: SectionContactsComponent, children: [
+        path: 'contact-list', component: SectionContactsComponent, children: [
           { path: 'contact/:id', component: ContactDetailsComponent }
         ]
       },
