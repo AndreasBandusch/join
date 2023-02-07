@@ -7,7 +7,7 @@ import { ControlService } from 'src/app/services/control.service';
 
 
 export function phoneNumber(c: AbstractControl) {
-  const telephonePattern = /^\d{10}$/;
+  const telephonePattern = /[0-9\+\-\ ]/;
   return telephonePattern.test(c.value) ? null : { invalidTelephone: true };
 }
 
@@ -30,11 +30,13 @@ export class AddContactComponent {
     ], []),
     email: new FormControl('', [
       Validators.required,
-      Validators.email
+      Validators.email,
+      Validators.minLength(10)
     ], []),
     phone: new FormControl('', [
-      phoneNumber
-    ], [])
+      phoneNumber,
+      Validators.minLength(10)
+    ])
   });
  
 

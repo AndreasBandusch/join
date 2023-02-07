@@ -17,14 +17,23 @@ export class Contact {
         this.phone = phone;
         this.transformName(fullName);
         this.initContact(phone);
+
+        console.log(this.color);
+
     }
 
     private transformName(fullName: string) {
+        let firstName;
+        let lastName;
         let splittedName = fullName.trim().replace(/\s+/g, ' ').split(" ");
-        this.firstName = splittedName[0];
-        this.lastName = splittedName[splittedName.length - 1];
+        firstName = splittedName[0].toLocaleLowerCase();
+        lastName = splittedName[splittedName.length - 1].toLocaleLowerCase();
 
-        
+        firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+        lastName = lastName.charAt(0).toUpperCase() + lastName.slice(1);
+
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     private initContact(phone?: string): void {
@@ -49,27 +58,27 @@ export class Contact {
     }
 
     private getRandomColor() {
-        let colors = 
-            ['#FFB900', '#E60073', '#1D7AFF', '#FF55E6', '#00FF6E', '#FF0048', 
-            '#7A00FF','#FFCF40', '#7A00E6', '#40FFCF', '#E67A00', '#00FFCF', 
-            '#E60048', '#CF40FF','#FFA900', '#E6009C', '#00A9FF', '#9C00E6', 
-            '#00FFA9', '#E6006D', '#9C7AFF', '#FF7A00', '#9327FF', '#29ABE2', 
-            '#FC71FF', '#02CF2F', '#AF1616', '#462F8A'
-        ];
+        let colors =
+            ['#FFB900', '#E60073', '#1D7AFF', '#FF55E6', '#00FF6E', '#FF0048',
+                '#7A00FF', '#FFCF40', '#7A00E6', '#40FFCF', '#E67A00', '#00FFCF',
+                '#E60048', '#CF40FF', '#FFA900', '#E6009C', '#00A9FF', '#9C00E6',
+                '#00FFA9', '#E6006D', '#9C7AFF', '#FF7A00', '#9327FF', '#29ABE2',
+                '#FC71FF', '#02CF2F', '#AF1616', '#462F8A'
+            ];
 
         this.color = colors[Math.floor(Math.random() * colors.length)];
-        
+
     }
 
     public toJSON(): object {
-    return {
-        id: this.id,
-        firstName: this.firstName,
-        lastName: this.lastName,
-        email: this.email,
-        phone: this.phone,
-        initials: this.initials,
-        color: this.color,
-    };
-}
+        return {
+            id: this.id,
+            firstName: this.firstName,
+            lastName: this.lastName,
+            email: this.email,
+            phone: this.phone,
+            initials: this.initials,
+            color: this.color,
+        };
+    }
 }
