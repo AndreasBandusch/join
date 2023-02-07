@@ -17,9 +17,8 @@
 
             <div class="content-cont">
                 <form class="form-cont" [formGroup]="createContactForm" (click)="createContact()">
-                    <input formControlName="name" type="text" class="input-name" placeholder="Name *"
+                    <input formControlName="name" type="text" class="input-name" placeholder="First and last name *"
                         [(ngModel)]="inputName">
-                        <!-- <p *ngIf="createContactForm.controls['email'].errors.email">Test</p> -->
                     <input formControlName="email" type="email" class="input-email" placeholder="Email *"
                         [(ngModel)]="inputEmail" (blur)="checkErrors()">
                     <input formControlName="phone" type="tel" class="input-phone" placeholder="Phone"
