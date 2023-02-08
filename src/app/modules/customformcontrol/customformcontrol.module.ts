@@ -19,6 +19,6 @@ export class CustomformcontrolModule {
   
   name(c: AbstractControl) {
     const namePattern = /^ *[A-Za-z]{2,} *( +[A-Za-z]{2,})* +[A-Za-z]{2,} *$/;
-    return namePattern.test(c.value) ? null : { invalidName: true };
+    return c.value === '' || namePattern.test(c.value) ? null : { invalidName: true };
   }
 }

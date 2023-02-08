@@ -21,9 +21,14 @@
                         [(ngModel)]="inputName" (blur)="checkErrors('name')">
                     <input formControlName="email" type="email" class="input-email" placeholder="Email *"
                         [(ngModel)]="inputEmail" (blur)="checkErrors('email')">
-                    <ng-container *ngIf="createContactForm.controls['name'].dirty || createContactForm.controls['name'].touched">
-                        <p *ngIf="createContactForm.controls['name'].errors?.['required']">First Name is required</p>
-                    </ng-container>
+                    <!-- <ng-container
+                        *ngIf="createContactForm.controls['name'].dirty || createContactForm.controls['name'].touched">
+                        <p class="error" *ngIf="createContactForm.controls['name'].errors?.['required']">First Name is
+                            required</p>
+                        <p class="error" *ngIf="createContactForm.controls['name'].errors?.['invalidName']">Please enter
+                            a first and Last name with at least 2 characters each</p>
+
+                    </ng-container> -->
                     <input formControlName="phone" type="tel" class="input-phone" placeholder="Phone"
                         [(ngModel)]="inputPhone" (blur)="checkErrors('phone')">
 
