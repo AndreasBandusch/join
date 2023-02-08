@@ -21,7 +21,9 @@
                         [(ngModel)]="inputName" (blur)="checkErrors('name')">
                     <input formControlName="email" type="email" class="input-email" placeholder="Email *"
                         [(ngModel)]="inputEmail" (blur)="checkErrors('email')">
-                        <p class="error">Test</p>
+                    <ng-container *ngIf="createContactForm.controls['name'].dirty || createContactForm.controls['name'].touched">
+                        <p *ngIf="createContactForm.controls['name'].errors?.['required']">First Name is required</p>
+                    </ng-container>
                     <input formControlName="phone" type="tel" class="input-phone" placeholder="Phone"
                         [(ngModel)]="inputPhone" (blur)="checkErrors('phone')">
 
@@ -30,7 +32,9 @@
                             Cancel
                             <img src="assets/img/icons/cancel-icon.png">
                         </button>
-                        <button type="submit" [disabled]="!((createContactForm.valid) && (createContactForm.dirty || createContactForm.touched))" type="submit" class="primary-btn">
+                        <button type="submit"
+                            [disabled]="!((createContactForm.valid) && (createContactForm.dirty || createContactForm.touched))"
+                            type="submit" class="primary-btn">
                             Create Contact
                             <img src="assets/img/icons/checked-icon.png">
                         </button>
