@@ -16,22 +16,21 @@
             </div>
 
             <div class="content-cont">
-                <form class="form-cont" [formGroup]="createContactForm" (click)="createContact()">
+                <form class="form-cont" [formGroup]="createContactForm" (submit)="createContact()">
                     <input formControlName="name" type="text" class="input-name" placeholder="First and last name *"
-                        [(ngModel)]="inputName">
+                        [(ngModel)]="inputName" (blur)="checkErrors('name')">
                     <input formControlName="email" type="email" class="input-email" placeholder="Email *"
-                        [(ngModel)]="inputEmail" (blur)="checkErrors()">
+                        [(ngModel)]="inputEmail" (blur)="checkErrors('email')">
+                        <p class="error">Test</p>
                     <input formControlName="phone" type="tel" class="input-phone" placeholder="Phone"
-                        [(ngModel)]="inputPhone">
+                        [(ngModel)]="inputPhone" (blur)="checkErrors('phone')">
 
                     <div class="button-cont">
                         <button class="secondary-btn" (click)="control.addContactDialogOpen = false">
                             Cancel
                             <img src="assets/img/icons/cancel-icon.png">
                         </button>
-                        <button [disabled]="!((createContactForm.valid) 
-                            && (createContactForm.dirty 
-                            || createContactForm.touched))" type="submit" class="primary-btn">
+                        <button type="submit" [disabled]="!((createContactForm.valid) && (createContactForm.dirty || createContactForm.touched))" type="submit" class="primary-btn">
                             Create Contact
                             <img src="assets/img/icons/checked-icon.png">
                         </button>

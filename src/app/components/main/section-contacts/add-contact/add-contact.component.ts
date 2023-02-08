@@ -23,7 +23,7 @@ export class AddContactComponent {
     public control: ControlService,
     private firestore: AngularFirestore,
     private fcontrol: CustomformcontrolModule) {
-    this.createContactForm.valueChanges.subscribe(console.log)
+    // this.createContactForm.valueChanges.subscribe(console.log)
   }
 
   public createContactForm: FormGroup = new FormGroup({
@@ -38,7 +38,6 @@ export class AddContactComponent {
     ], []),
     phone: new FormControl('', [
       this.fcontrol.phoneNumber,
-      Validators.minLength(10)
     ])
   });
 
@@ -61,11 +60,8 @@ export class AddContactComponent {
     event.stopPropagation();
   }
 
-  checkErrors() {
-    console.log('Errors :', this.createContactForm.controls['email'].errors);
-
-
-
+  checkErrors(field: string) {
+    console.log(field + ': ', this.createContactForm.controls[field].errors);
   }
 
 }

@@ -13,12 +13,12 @@ import { AbstractControl } from '@angular/forms';
 export class CustomformcontrolModule { 
 
   phoneNumber(c: AbstractControl) {
-    const telephonePattern = /[0-9\+\-\ ]/;
-    return telephonePattern.test(c.value) ? null : { invalidTelephone: true };
+    const telephonePattern = /^[0-9\+\-\ ]{8,}$/;
+    return c.value === '' || telephonePattern.test(c.value) ? null : { invalidTelephone: true };;
   }
   
   name(c: AbstractControl) {
-    const namePattern = /^ *[A-Za-z]{2,} *( +[A-Za-z]{2,})* *$/;
+    const namePattern = /^ *[A-Za-z]{2,} *( +[A-Za-z]{2,})* +[A-Za-z]{2,} *$/;
     return namePattern.test(c.value) ? null : { invalidName: true };
   }
 }
