@@ -11,4 +11,5 @@ export class ControlService {
   ) { }
 
   addContactDialogOpen = false;
+  editContactDialogOpen = false;
 }

@@ -23,7 +23,6 @@ export class AddContactComponent {
     public control: ControlService,
     private firestore: AngularFirestore,
     private fcontrol: CustomformcontrolModule) {
-    // this.createContactForm.valueChanges.subscribe(console.log)
   }
 
   public createContactForm: FormGroup = new FormGroup({
@@ -43,7 +42,6 @@ export class AddContactComponent {
 
 
   createContact() {
-    // this.control.addContactDialogOpen = false;
     let newContact: Contact = new Contact(this.inputName, this.inputEmail, this.inputPhone);
     this.saveContact(newContact);
   }
@@ -52,6 +50,7 @@ export class AddContactComponent {
     this.firestore
       .collection('contacts')
       .add(newContact.toJSON());
+      this.control.editContactDialogOpen = false;
   }
 
 
@@ -63,7 +62,6 @@ export class AddContactComponent {
   checkErrors(field: string) {
     console.log(field + ': ', this.createContactForm.controls[field].errors);
   }
-
 }
 
 

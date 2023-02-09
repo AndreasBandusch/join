@@ -1,6 +1,7 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ContactService } from 'src/app/services/contact.service';
+import { ControlService } from 'src/app/services/control.service';
 
 @Component({
   selector: 'app-contact-details',
@@ -11,7 +12,7 @@ export class ContactDetailsComponent implements OnInit, OnChanges {
 currentId: string = '';
 currentContact: any = [];
 
-  constructor(public contactServ: ContactService, public route: ActivatedRoute) {
+  constructor(public contactServ: ContactService, public route: ActivatedRoute, public control: ControlService) {
 
   }
 
