@@ -42,12 +42,6 @@ input {
 .text {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-}
-
-.subtext {
-    font-size: 27px;
-    color: #fff;
 }
 
 .underline {
@@ -105,10 +99,18 @@ input {
 
 .add-contact-picture {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     right: -190px;
-    top: calc(50% - 60px);
+    top: calc(50% - 120px);
     height: 120px;
     width: 120px;
+    color: #ffffff;
+    font-size: 47px;
+    font-weight: 500;
+    border: 2px solid #fff;
+    border-radius: 100%;
 }
 
 .content-cont {
@@ -179,16 +181,13 @@ input {
 
     .add-contact-picture {
         right: -150px;
+        top: calc(50% - 100px);
     }
 }
 
 @media (max-width: 1200px) {
     h1 {
         font-size: 48px;
-    }
-
-    .subtext {
-        font-size: 21px;
     }
 
     .add-contact-picture {
@@ -202,10 +201,6 @@ input {
 
     h1 {
         font-size: 40px;
-    }
-
-    .subtext {
-        font-size: 18px;
     }
 
     .add-contact-picture {
@@ -240,10 +235,6 @@ input {
 @media (max-width: 920px) {
     h1 {
         font-size: 61px;
-    }
-
-    .subtext {
-        font-size: 27px;
     }
 
     .add-contact-cont {
@@ -330,19 +321,11 @@ input {
     h1 {
         font-size: 48px;
     }
-
-    .subtext {
-        font-size: 21px;
-    }
 }
 
 @media (max-width: 450px) {
     h1 {
         font-size: 40px;
-    }
-
-    .subtext {
-        font-size: 18px;
     }
 
     .add-contact {
@@ -385,10 +368,6 @@ input {
 
     .title-cont {
         padding: 16px;
-    }
-
-    .subtext {
-        font-size: 18px;
     }
 
     .content-cont {

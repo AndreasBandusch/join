@@ -3,7 +3,7 @@
         <button class="primary-btn new-contact-btn" (click)="addContact()">New contact <img src="assets/img/icons/new-contact-icon.png">
         </button>
         <img class="edit-mobile-btn" src="assets/img/icons/edit-contact-icon-mobile.png"
-            [class.edit-contact-mobile]="test">
+            [class.edit-contact-mobile]="test" (click)="control.editContactDialogOpen = true">
     </div>
     <div class="content-inner">
         <img src="assets/img/icons/back2-icon.png" class="back-to-contacts" [class.show-btn]="test"

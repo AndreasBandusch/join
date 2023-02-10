@@ -9,7 +9,6 @@ import { ControlService } from 'src/app/services/control.service';
   styleUrls: ['./contact-details.component.scss']
 })
 export class ContactDetailsComponent implements OnInit, OnChanges {
-currentId: string = '';
 currentContact: any = [];
 
   constructor(public contactServ: ContactService, public route: ActivatedRoute, public control: ControlService) {
@@ -18,11 +17,11 @@ currentContact: any = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.currentId = params['id'];
+      this.contactServ.currentId = params['id'];
 
       
   this.contactServ.contacts.forEach((contact) => {
-    if (contact.id == this.currentId) {
+    if (contact.id == this.contactServ.currentId) {
       
       this.currentContact = contact;
 

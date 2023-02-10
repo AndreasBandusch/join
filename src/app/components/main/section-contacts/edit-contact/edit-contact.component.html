@@ -7,12 +7,10 @@
                 </div>
                 <div class="text">
                     <h1>Edit contact</h1>
-                    <div class="subtext">
-                        Tasks are better with a team!
-                        <div class="underline"></div>
-                    </div>
+                    <div class="underline"></div>
                 </div>
-                <img src="assets/img/profile-picture-add-contact.png" class="add-contact-picture">
+                <div class="add-contact-picture" [style.background-color]="currentContact.color">{{
+                    currentContact?.initials }}</div>
             </div>
 
             <div class="content-cont">
@@ -33,8 +31,7 @@
                         [(ngModel)]="inputPhone" (blur)="checkErrors('phone')">
 
                     <div class="button-cont">
-                        <button type="submit"
-                            [disabled]="!((createContactForm.valid) && (createContactForm.dirty || createContactForm.touched))"
+                        <button type="submit" [disabled]="!((createContactForm.valid) && (createContactForm.dirty))"
                             type="submit" class="primary-btn">
                             Save
                             <img src="assets/img/icons/checked-icon.png">
@@ -46,6 +43,6 @@
 
         <img src="assets/img/icons/close-icon.png" class="close-dialog" (click)="control.editContactDialogOpen = false">
         <img src="assets/img/icons/close-icon-mobile.png" class="close-dialog-mobile"
-            (click)="control.addContactDialogOpen = false">
+            (click)="control.editContactDialogOpen = false" (click)="control.addContactDialogOpen = false">
     </div>
 </div>
