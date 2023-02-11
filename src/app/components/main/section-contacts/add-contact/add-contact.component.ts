@@ -43,6 +43,7 @@ export class AddContactComponent {
 
   createContact() {
     let newContact: Contact = new Contact(this.inputName, this.inputEmail, this.inputPhone);
+    newContact.getRandomColor();
     this.saveContact(newContact);
   }
 

@@ -18,31 +18,17 @@ export class SectionContactsComponent implements OnInit {
   catagoryInitials: string[] = [];
   initialsLastNames: string[] = [];
   initals: any[] = [];
-  
   currentContact: string = '';
-
-
-
-
 
   constructor(public firestore: AngularFirestore, public control: ControlService, public contactServ: ContactService ) {}
 
 
-
-
   ngOnInit() {
-
     this.firestore.collection('contacts').valueChanges().subscribe((updates: any) => {
       this.contactServ.contacts = updates;
-
       this.getCatagoryInitials();
-      console.log(this.currentContact);
-
     })
-
-
   }
-
 
 
   getCatagoryInitials() {
@@ -56,35 +42,24 @@ export class SectionContactsComponent implements OnInit {
     });
   }
 
+
   setActive(clickedContact: string) {
     this.isAntonActive = clickedContact === 'anton';
-
   }
+
 
   getFirstLetter(currentContact: string) {
     return currentContact.charAt(0);
   }
 
+
   toggleDetails(isActiveContact: boolean) {
     this.test = isActiveContact;
-
-
   }
+
 
   addContact() {
     this.control.addContactDialogOpen = true;
-   
-  }
-
-  saveContact() {
-    let newContact: Contact = new Contact('Andreas', 'Bandusch', 'bandusch@web.de');
-    // this.firestore
-    //    .collection('contacts')
-    //    .add(newContact.toJSON());
-
-    console.log(newContact);
-    console.log(newContact.id);
-
   }
 
 }

@@ -17,9 +17,6 @@ export class Contact {
         this.phone = phone;
         this.transformName(fullName);
         this.initContact(phone);
-
-        console.log(this.color);
-
     }
 
     private transformName(fullName: string) {
@@ -40,7 +37,6 @@ export class Contact {
         this.createId();
         this.checkPhoneNumberExist(phone)
         this.getInitials();
-        this.getRandomColor()
     }
 
     private checkPhoneNumberExist(phone?: string) {
@@ -57,7 +53,7 @@ export class Contact {
         this.initials = this.firstName.charAt(0) + this.lastName.charAt(0);
     }
 
-    private getRandomColor() {
+    public getRandomColor() {
         let colors =
             ['#FFB900', '#E60073', '#1D7AFF', '#FF55E6', '#00FF6E', '#FF0048',
                 '#7A00FF', '#FFCF40', '#7A00E6', '#40FFCF', '#E67A00', '#00FFCF',
@@ -65,8 +61,14 @@ export class Contact {
                 '#00FFA9', '#E6006D', '#9C7AFF', '#FF7A00', '#9327FF', '#29ABE2',
                 '#FC71FF', '#02CF2F', '#AF1616', '#462F8A'
             ];
+        
+           
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+           
+              
+         
 
-        this.color = colors[Math.floor(Math.random() * colors.length)];
+        
 
     }
 
