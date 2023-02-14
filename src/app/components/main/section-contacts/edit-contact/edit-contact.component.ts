@@ -16,8 +16,9 @@ export class EditContactComponent implements OnInit {
   inputName: string = '';
   inputEmail: string = '';
   inputPhone: string = '';
-  currentContact: any;
-  documentId: string = '';
+  allContacts: any[] = [];
+  currentContact: any = {};
+
   color: string = '';
 
   constructor(
@@ -28,21 +29,8 @@ export class EditContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.contactServ.contacts.forEach((contact) => {
-      if (contact.id == this.contactServ.currentId) {
-        this.currentContact = contact;
-      }
-    })
-    this.inputName = this.currentContact.firstName + ' ' + this.currentContact.lastName;
-    this.inputEmail = this.currentContact.email;
-    this.inputPhone = this.checkPhoneNumber();
-
-
+    console.log('Aktuelle Id: ', this.contactServ.currentId);
     this.loadContacts();
-
-
-      console.log('Dok-Id: ', this.documentId);
   }
 
 
@@ -51,16 +39,22 @@ export class EditContactComponent implements OnInit {
       .collection('contacts')
       .valueChanges({ idField: 'docId' })
       .subscribe((changes: any) => {
-        this.contactServ.contacts = changes;
-       
+        this.allContacts = changes;
+
         this.contactServ.contacts.forEach(contact => {
-          if (contact.id == this.contactServ.currentId) {
-            this.documentId = contact.docId;
-            console.log(contact.docId);
+          if (contact.docId == this.contactServ.currentId) {
+
+            this.currentContact = contact;
+            console.log('Currenttttt: ', this.currentContact);
+
+            this.inputName = this.currentContact.firstName + ' ' + this.currentContact.lastName;
+            this.inputEmail = this.currentContact.email;
+            this.inputPhone = this.checkPhoneNumber();
           }
         })
       });
-      
+
+
   }
 
 
@@ -94,7 +88,6 @@ export class EditContactComponent implements OnInit {
 
 
   createContact() {
-    console.log(this.documentId);
     this.color = this.currentContact.color;
     let newContact = new Contact(this.inputName, this.inputEmail, this.inputPhone);
     newContact.color = this.color;
@@ -104,29 +97,29 @@ export class EditContactComponent implements OnInit {
   updateContact(newContact: any) {
     // this.loading = true;
     this.firestore
-     .collection('contacts')
-     .doc(this.documentId)
-     .update(newContact.toJSON())
-     .then(() => {
+      .collection('contacts')
+      .doc(this.contactServ.currentId)
+      .update(newContact.toJSON())
+      .then(() => {
         // this.loading = false;
         // this.dialog.close();
         this.control.editContactDialogOpen = false
-   });
-  
+      });
+
+    }
+
+    // Verhindert das Schließen des inneren Div-Containers beim Klicken
+    dontCloseByClick(event: Event) {
+      event.stopPropagation();
+    }
+
+    checkErrors(field: string) {
+      console.log(field + ': ', this.createContactForm.controls[field].errors);
+    }
+
+
+
+
   }
-
-  // Verhindert das Schließen des inneren Div-Containers beim Klicken
-  dontCloseByClick(event: Event) {
-    event.stopPropagation();
-  }
-
-  checkErrors(field: string) {
-    console.log(field + ': ', this.createContactForm.controls[field].errors);
-  }
-
-
-
-
-}
 
 

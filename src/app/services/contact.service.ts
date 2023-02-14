@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ContactService {
   contacts: any[] = [];
-  currentId: number = 0;
+  currentId: string = '';
 
   constructor() { }
 }
