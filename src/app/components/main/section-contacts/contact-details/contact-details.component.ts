@@ -33,9 +33,7 @@ contactId: string = '';
       .subscribe((contact: any) => {
         this.currentContact = contact;
         console.log('Current contact: ', this.currentContact);
-      });
-
-      
+      });   
   }
 
   }   
