@@ -9,14 +9,14 @@
         <img src="assets/img/icons/back2-icon.png" class="back-to-contacts" [class.show-btn]="test"
             (click)="toggleDetails(false)">
         <div class="contacts" [class.d-none]="test">
-            <div class="contacts-inner">
+            <div *ngIf="contactServ.contactsAvailable" class="contacts-inner">
                 <div *ngFor="let initial of catagoryInitials;" class="catagory">
                     <div class="catagory-header">
                         <span class="letter">{{initial}}</span>
                     </div>
-                    <div *ngFor="let contact of contactServ.contacts; index as i">
+                    <div *ngFor="let contact of allContacts; index as i">
                         <div *ngIf="getFirstLetter(contact.firstName) === initial" class="catagory-body">
-                            <a [routerLink]="['contact', contact.id]" (click)="currentContact = contact.id" (click)="toggleDetails(true)">
+                            <a [routerLink]="['contact', contact.docId]" (click)="currentContact = contact.id" (click)="toggleDetails(true)">
                                 <div class="catagory-body-cont" 
                                     [class.active]="currentContact === contact.id">
                                     <div class="contact-initials"

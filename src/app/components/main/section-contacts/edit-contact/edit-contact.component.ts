@@ -29,7 +29,7 @@ export class EditContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('Aktuelle Id: ', this.contactServ.currentId);
+    
     this.loadContacts();
   }
 
@@ -41,7 +41,7 @@ export class EditContactComponent implements OnInit {
       .subscribe((changes: any) => {
         this.allContacts = changes;
 
-        this.contactServ.contacts.forEach(contact => {
+        this.allContacts.forEach(contact => {
           if (contact.docId == this.contactServ.currentId) {
 
             this.currentContact = contact;

@@ -23,6 +23,7 @@ export class AddContactComponent {
   newContactId:  string = '';
   currentContactId: number = 0;
   allContacts: any[] = [];
+  test2: boolean = false;
 
 
   constructor(
@@ -92,6 +93,16 @@ export class AddContactComponent {
   checkErrors(field: string) {
     console.log(field + ': ', this.createContactForm.controls[field].errors);
   }
+
+  test() {
+    this.test2 = true;
+    setTimeout(() => {
+      this.control.addContactDialogOpen = false;
+    }, 500);
+
+   
+  }
+   
 }
 
 

@@ -1,5 +1,5 @@
-<div class="add-contact" (click)="control.addContactDialogOpen = false">
-    <div class="add-contact-cont" (click)="dontCloseByClick($event)">
+<div class="add-contact fade-in" [class.slide-out]="test2" [class.fade-out]="test2" (click)="test()">
+    <div class="add-contact-cont slide-in" (click)="dontCloseByClick($event)" [class.slide-out]="test2">
         <div class="add-contact-inner">
             <div class="title-cont">
                 <div class="logo">
@@ -48,8 +48,8 @@
             </div>
         </div>
 
-        <img src="assets/img/icons/close-icon.png" class="close-dialog" (click)="control.addContactDialogOpen = false">
+        <img src="assets/img/icons/close-icon.png" class="close-dialog" (click)="test()">
         <img src="assets/img/icons/close-icon-mobile.png" class="close-dialog-mobile"
-            (click)="control.addContactDialogOpen = false">
+        (click)="test()">
     </div>
 </div>
