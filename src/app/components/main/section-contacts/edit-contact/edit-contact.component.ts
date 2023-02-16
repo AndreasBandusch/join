@@ -104,6 +104,7 @@ export class EditContactComponent implements OnInit {
         // this.loading = false;
         // this.dialog.close();
         this.control.editContactDialogOpen = false
+        this.control.getMessage('Contact succesfully edited');
       });
 
   }
@@ -123,10 +124,7 @@ export class EditContactComponent implements OnInit {
     setTimeout(() => {
       this.control.editContactDialogOpen = false;
     }, 225);
-
-
   }
-
 }
 
 

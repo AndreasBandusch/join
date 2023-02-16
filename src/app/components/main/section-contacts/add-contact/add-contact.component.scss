@@ -103,10 +103,10 @@ input {
 
 .add-contact-picture {
     position: absolute;
-    right: -190px;
-    top: calc(50% - 120px);
     height: 120px;
     width: 120px;
+    top: 185px;
+    right: -207px;
 }
 
 .content-cont {
@@ -175,8 +175,8 @@ input {
     }
 
     .add-contact-picture {
-        right: -150px;
-        top: calc(50% - 100px);
+        right: -155px;
+        // top: calc(50% - 100px);
     }
 }
 
@@ -190,9 +190,8 @@ input {
     }
 
     .add-contact-picture {
-        height: 90px;
-        width: 90px;
-        right: -110px
+       
+        right: -140px;
     }
 }
 
@@ -207,9 +206,10 @@ input {
     }
 
     .add-contact-picture {
-        height: 90px;
-        width: 90px;
-        right: -100px
+        height: 100px;
+        width: 100px;
+        top: 170px;
+        right: -117px;
     }
 
     title.cont,
@@ -232,6 +232,13 @@ input {
     .primary-btn,
     .secondary-btn {
         font-size: 16px;
+    }
+
+    .add-contact-picture {
+        top: 177px;
+        right: -96px;
+        height: 80px;
+        width: 80px;
     }
 }
 

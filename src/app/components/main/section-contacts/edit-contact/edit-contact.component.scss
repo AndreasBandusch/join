@@ -6,7 +6,8 @@ h1 {
 input {
     width: 100%;
 
-    &.ng-touched, &.ng-dirty {
+    &.ng-touched,
+    &.ng-dirty {
 
         // &.ng-invalid {
         //     border-color: green;
@@ -14,7 +15,7 @@ input {
 
         &.ng-invalid {
             border: 2px solid #2A3647;
-        
+
         }
     }
 }
@@ -103,10 +104,10 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-    right: -190px;
-    top: calc(50% - 120px);
     height: 120px;
     width: 120px;
+    top: 185px;
+    right: -207px;
     color: #ffffff;
     font-size: 47px;
     font-weight: 500;
@@ -169,6 +170,9 @@ input {
     right: 500px;
 }
 
+
+
+
 @media (max-width: 1300px) {
 
     .add-contact {
@@ -181,9 +185,10 @@ input {
     }
 
     .add-contact-picture {
-        right: -150px;
-        top: calc(50% - 100px);
+        right: -155px;
     }
+
+
 }
 
 @media (max-width: 1200px) {
@@ -192,10 +197,10 @@ input {
     }
 
     .add-contact-picture {
-        height: 90px;
-        width: 90px;
-        right: -110px
+        right: -140px;
     }
+
+
 }
 
 @media (max-width: 1100px) {
@@ -205,9 +210,11 @@ input {
     }
 
     .add-contact-picture {
-        height: 90px;
-        width: 90px;
-        right: -100px
+        height: 100px;
+        width: 100px;
+        top: 170px;
+        right: -117px;
+        font-size: 40px;
     }
 
     title.cont,
@@ -230,6 +237,13 @@ input {
     .primary-btn,
     .secondary-btn {
         font-size: 16px;
+    }
+
+    .add-contact-picture {
+        top: 177px;
+        right: -96px;
+        height: 80px;
+        width: 80px;
     }
 }
 
@@ -273,7 +287,7 @@ input {
     .underline {
         width: 20%;
     }
- 
+
     .primary-btn,
     .secondary-btn {
         font-size: 21px;
