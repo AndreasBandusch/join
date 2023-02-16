@@ -6,5 +6,6 @@ import { Injectable } from '@angular/core';
 export class ContactService {
   currentId: string = '';
   contactsAvailable: boolean = false;
+  currentContact: string = '';
   constructor() { }
 }

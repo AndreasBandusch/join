@@ -63,9 +63,8 @@ export class AddContactComponent {
       .add(newContact.toJSON());
       this.control.addContactDialogOpen = false;
       this.getNewContactId();
-      this.control.getMessage('Contact succesfully created');
-     
-     
+      this.contactServ.currentContact = newContact.id;
+      this.control.getMessage('Contact succesfully created');  
   }
 
   getNewContactId() {
@@ -75,7 +74,6 @@ export class AddContactComponent {
         this.allContacts.forEach(contact => {
           if (contact.id == this.currentContactId) {
             this.newContactId = contact.docId;
-            console.log('Neue Doku-id ', this.newContactId);
             this.route.navigate(['kanban/contact-list/contact/' + this.newContactId]); 
           }
        })

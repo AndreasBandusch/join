@@ -13,12 +13,12 @@ import { ContactService } from 'src/app/services/contact.service';
 export class SectionContactsComponent implements OnInit {
   
   allContacts: any[] = [];
-  isAntonActive = false;
+  // isActive = false;
   test: boolean = false;
   catagoryInitials: string[] = [];
   initialsLastNames: string[] = [];
   initals: any[] = [];
-  currentContact: string = '';
+  
   
 
   constructor(public firestore: AngularFirestore, public control: ControlService, public contactServ: ContactService ) {}
@@ -45,14 +45,15 @@ export class SectionContactsComponent implements OnInit {
       if (!this.catagoryInitials.includes(initial)) {
         this.catagoryInitials.push(initial);
         this.catagoryInitials.sort();
+        console.log('initalen: ', this.catagoryInitials);
       }
     });
   }
 
 
-  setActive(clickedContact: string) {
-    this.isAntonActive = clickedContact === 'anton';
-  }
+  // setActive(clickedContact: string) {
+  //   this.isActive = clickedContact === 'anton';
+  // }
 
 
   getFirstLetter(currentContact: string) {

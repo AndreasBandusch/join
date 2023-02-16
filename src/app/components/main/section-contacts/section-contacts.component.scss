@@ -108,11 +108,12 @@ a:focus>div {
 }
 
 .catagory-header {
-    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #D1D1D1;
 }
 
 .catagory-body {
-    border-top: 1px solid #D1D1D1;
+   
     display: flex;
 }
 
