@@ -20,6 +20,7 @@ export class EditContactComponent implements OnInit {
   currentContact: any = {};
   animationStatus: boolean = false;
   color: string = '';
+  currentContactId: number = 0;
 
   constructor(
     public control: ControlService,
@@ -29,7 +30,8 @@ export class EditContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.log('Die Id: ', this.contactServ.currentContact);
+    this.currentContactId = this.contactServ.currentContact;
     this.loadContacts();
   }
 
@@ -91,6 +93,7 @@ export class EditContactComponent implements OnInit {
     this.color = this.currentContact.color;
     let newContact = new Contact(this.inputName, this.inputEmail, this.inputPhone);
     newContact.color = this.color;
+    newContact.id = this.currentContactId ;
     this.updateContact(newContact);
   }
 

@@ -25,8 +25,10 @@ export class SectionContactsComponent implements OnInit {
 
 
   ngOnInit() {
+    this.contactServ.currentContact = 0;
     this.firestore.collection('contacts').valueChanges({ idField: 'docId' }).subscribe((updates: any) => {
       this.allContacts = updates;
+
       // this.getCatagoryInitials();
       if (this.allContacts.length > 0) {
         this.getCatagoryInitials();
