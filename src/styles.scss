@@ -190,6 +190,87 @@ a:hover {
     font-size: 27px;
 }
 
+.slide-in {
+    animation: slide-in-right 225ms ease-in-out;
+}
+
+.slide-out {
+    animation: slide-out-right 225ms ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.fade-in {
+    animation: fade-in 225ms ease-in-out;
+ 
+}
+
+.fade-out {
+    animation: fade-out 225ms ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slide-in-right {
+    from {
+      
+        transform: translate(100%, -50%);
+    }
+    to {
+       
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes slide-out-right {
+    from {
+        
+        transform: translate(-50%, -50%);
+    }
+    to {
+        
+        transform: translate(100%, -50%);
+    }
+}
+
+@keyframes slide-in-bottom {
+    from {
+      
+        transform: translate(-50%, 100%);
+    }
+    to {
+       
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+@keyframes slide-out-bottom {
+    from {
+        transform: translate(-50%, -50%);
+    }
+    to {
+        transform: translate(-50%, 100%);
+    }
+}
+
 @media (max-width: 1440px) {
     .sub-title {
         font-size: 21px;
@@ -239,7 +320,7 @@ a:hover {
             border-bottom: 3px solid #29ABE2;
             width: 40%;
             padding-bottom: 16px;
-        }
+        } 
     }
 
     .content-header-mobile {
@@ -254,6 +335,15 @@ a:hover {
     .title {
         font-size: 47px;
         border-right: none;
+    }
+
+    .slide-in-mobile {
+        animation: slide-in-bottom 225ms ease-in-out;
+    }
+
+    .slide-out-mobile {
+        animation: slide-out-bottom 225ms ease-out;
+        
     }
 }
 

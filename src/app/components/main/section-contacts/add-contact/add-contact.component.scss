@@ -67,7 +67,7 @@ input {
 
 .add-contact-cont {
     position: relative;
-    z-index: 100;
+    z-index: 150;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -80,87 +80,7 @@ input {
     align-items: center;
 }
 
-.slide-in {
-    animation: slide-in-right 500ms ease-in-out;
-}
 
-.slide-out {
-    animation: slide-out-right 500ms ease-in-out;
-    animation-fill-mode: forwards;
-}
-
-.fade-in {
-    animation: fade-in 500ms ease-in-out;
- 
-}
-
-.fade-out {
-    animation: fade-out 500ms ease-in-out;
-    animation-fill-mode: forwards;
-}
-
-
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fade-out {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes slide-in-right {
-    from {
-      
-        transform: translate(100%, -50%);
-    }
-    to {
-       
-        transform: translate(-50%, -50%);
-    }
-}
-
-@keyframes slide-in-bottom {
-    from {
-      
-        transform: translate(-50%, 100%);
-    }
-    to {
-       
-        transform: translate(-50%, -50%);
-    }
-}
-
-@keyframes slide-out-right {
-    from {
-        
-        transform: translate(-50%, -50%);
-    }
-    to {
-        
-        transform: translate(100%, -50%);
-    }
-}
-
-@keyframes slide-out-bottom {
-    from {
-        
-        transform: translate(-50%, -50%);
-    }
-    to {
-        
-        transform: translate(-50%, 100%);
-    }
-}
 
 .add-contact-inner {
     display: flex;
@@ -377,16 +297,7 @@ input {
          display: none;
      }
 
-     .slide-in {
-        animation: slide-in-bottom 500ms ease-in-out;
-    }
-
-    .slide-out {
-        animation: unset;
-        animation: slide-out-bottom 500ms ease-in-out;
-        // animation-fill-mode: forwards;
-    }
-
+     
 }
 
 @media (max-width: 750px) {

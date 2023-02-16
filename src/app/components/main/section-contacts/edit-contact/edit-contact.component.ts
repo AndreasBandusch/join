@@ -18,7 +18,7 @@ export class EditContactComponent implements OnInit {
   inputPhone: string = '';
   allContacts: any[] = [];
   currentContact: any = {};
-
+  animationStatus: boolean = false;
   color: string = '';
 
   constructor(
@@ -29,7 +29,7 @@ export class EditContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this.loadContacts();
   }
 
@@ -91,7 +91,7 @@ export class EditContactComponent implements OnInit {
     this.color = this.currentContact.color;
     let newContact = new Contact(this.inputName, this.inputEmail, this.inputPhone);
     newContact.color = this.color;
-    this.updateContact(newContact); 
+    this.updateContact(newContact);
   }
 
   updateContact(newContact: any) {
@@ -106,20 +106,27 @@ export class EditContactComponent implements OnInit {
         this.control.editContactDialogOpen = false
       });
 
-    }
+  }
 
-    // Verhindert das Schließen des inneren Div-Containers beim Klicken
-    dontCloseByClick(event: Event) {
-      event.stopPropagation();
-    }
+  // Verhindert das Schließen des inneren Div-Containers beim Klicken
+  dontCloseByClick(event: Event) {
+    event.stopPropagation();
+  }
 
-    checkErrors(field: string) {
-      console.log(field + ': ', this.createContactForm.controls[field].errors);
-    }
+  checkErrors(field: string) {
+    console.log(field + ': ', this.createContactForm.controls[field].errors);
+  }
 
 
+  closeDialog() {
+    this.animationStatus = true;
+    setTimeout(() => {
+      this.control.editContactDialogOpen = false;
+    }, 225);
 
 
   }
+
+}
 
 

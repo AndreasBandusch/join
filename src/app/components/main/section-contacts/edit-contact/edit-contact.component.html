@@ -1,5 +1,6 @@
-<div class="add-contact" (click)="control.editContactDialogOpen = false">
-    <div class="add-contact-cont" (click)="dontCloseByClick($event)">
+<div class="add-contact" [class.slide-out]="animationStatus" [class.fade-out]="animationStatus" [class.fade-in]="!animationStatus" (click)="closeDialog()">
+    <div class="add-contact-cont" (click)="dontCloseByClick($event)" [class.slide-out]="animationStatus" [class.slide-in]="!animationStatus"
+    [class.slide-out-mobile]="animationStatus" [class.slide-in-mobile]="!animationStatus">
         <div class="add-contact-inner">
             <div class="title-cont">
                 <div class="logo">
@@ -41,8 +42,7 @@
             </div>
         </div>
 
-        <img src="assets/img/icons/close-icon.png" class="close-dialog" (click)="control.editContactDialogOpen = false">
-        <img src="assets/img/icons/close-icon-mobile.png" class="close-dialog-mobile"
-            (click)="control.editContactDialogOpen = false" (click)="control.addContactDialogOpen = false">
+        <img src="assets/img/icons/close-icon.png" class="close-dialog" (click)="closeDialog()">
+        <img src="assets/img/icons/close-icon-mobile.png" class="close-dialog-mobile" (click)="closeDialog()">
     </div>
 </div>

@@ -23,7 +23,7 @@ export class AddContactComponent {
   newContactId:  string = '';
   currentContactId: number = 0;
   allContacts: any[] = [];
-  test2: boolean = false;
+  animationStatus: boolean = false;
 
 
   constructor(
@@ -94,11 +94,11 @@ export class AddContactComponent {
     console.log(field + ': ', this.createContactForm.controls[field].errors);
   }
 
-  test() {
-    this.test2 = true;
+  closeDialog() {
+    this.animationStatus = true;
     setTimeout(() => {
       this.control.addContactDialogOpen = false;
-    }, 500);
+    }, 225);
 
    
   }
