@@ -15,9 +15,11 @@ app-header {
 }
 
 .content-wrapper {
+    position: relative;
     margin-left: 232px;
     margin-right: 48px;
     height: 100%; 
+    overflow: hidden;
 }
 
 @media (max-width: 1300px) {

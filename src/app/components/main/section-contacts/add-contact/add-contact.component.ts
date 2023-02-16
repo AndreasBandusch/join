@@ -63,6 +63,7 @@ export class AddContactComponent {
       .add(newContact.toJSON());
       this.control.addContactDialogOpen = false;
       this.getNewContactId();
+      this.control.getMessage('Contact succesfully created');
      
      
   }
@@ -98,9 +99,9 @@ export class AddContactComponent {
     this.animationStatus = true;
     setTimeout(() => {
       this.control.addContactDialogOpen = false;
+      
     }, 225);
-
-   
+    
   }
    
 }

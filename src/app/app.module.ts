@@ -17,8 +17,6 @@ import { MainSiteComponent } from './components/main-site/main-site.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HelloComponent } from './components/main/hello/hello.component';
 import { ContactDetailsComponent } from './components/main/section-contacts/contact-details/contact-details.component';
-import { ContactCatagoryComponent } from './components/main/section-contacts/contact-catagory/contact-catagory.component';
-import { ContactComponent } from './components/main/section-contacts/contact/contact.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -29,6 +27,7 @@ import { EditContactComponent } from './components/main/section-contacts/edit-co
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomformcontrolModule } from './modules/customformcontrol/customformcontrol.module';
+import { FeedbackMessageComponent } from './components/feedback-message/feedback-message.component';
 
 
 
@@ -49,10 +48,9 @@ import { CustomformcontrolModule } from './modules/customformcontrol/customformc
     SignUpComponent,
     HelloComponent,
     ContactDetailsComponent,
-    ContactCatagoryComponent,
-    ContactComponent,
     AddContactComponent,
     EditContactComponent,
+    FeedbackMessageComponent,
   ],
   imports: [
     BrowserModule,
