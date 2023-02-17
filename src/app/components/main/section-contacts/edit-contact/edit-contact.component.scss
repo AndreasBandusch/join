@@ -343,16 +343,6 @@ input {
         font-size: 40px;
     }
 
-    .add-contact {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .add-contact-cont {
-        height: 100%;
-        border-radius: 0;
-    }
-
     .add-contact-picture {
         height: 100px;
         width: 100px;
@@ -362,8 +352,6 @@ input {
 
     .title-cont {
         padding: 32px;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
     }
 
     .form-cont {
@@ -381,9 +369,24 @@ input {
         font-size: 38px;
     }
 
-    .title-cont {
-        padding: 16px;
+    .add-contact {
+        padding-left: 0;
+        padding-right: 0;
     }
+
+    .add-contact-cont {
+        height: 100%;
+        border-radius: 0;
+    }
+
+
+
+.title-cont {
+        padding: 16px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
 
     .content-cont {
         padding: 16px;

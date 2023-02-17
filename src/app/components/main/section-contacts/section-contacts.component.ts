@@ -3,8 +3,6 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ControlService} from 'src/app/services/control.service';
 import { ContactService } from 'src/app/services/contact.service';
 
-
-
 @Component({
   selector: 'app-section-contacts',
   templateUrl: './section-contacts.component.html',
@@ -13,23 +11,22 @@ import { ContactService } from 'src/app/services/contact.service';
 export class SectionContactsComponent implements OnInit {
   
   allContacts: any[] = [];
-  // isActive = false;
-  test: boolean = false;
+  switchView: boolean = false;
   catagoryInitials: string[] = [];
   initialsLastNames: string[] = [];
   initals: any[] = [];
   
-  
-
-  constructor(public firestore: AngularFirestore, public control: ControlService, public contactServ: ContactService ) {}
-
+  constructor(public firestore: AngularFirestore, public control: ControlService, public contactServ: ContactService) {}
 
   ngOnInit() {
     this.contactServ.currentContact = 0;
-    this.firestore.collection('contacts').valueChanges({ idField: 'docId' }).subscribe((updates: any) => {
+    this.loadContacts();
+  }
+
+  loadContacts() {
+    this.firestore.collection('contacts').valueChanges({idField: 'docId'}).subscribe((updates: any) => {
       this.allContacts = updates;
 
-      // this.getCatagoryInitials();
       if (this.allContacts.length > 0) {
         this.getCatagoryInitials();
         this.contactServ.contactsAvailable = true;
@@ -47,15 +44,9 @@ export class SectionContactsComponent implements OnInit {
       if (!this.catagoryInitials.includes(initial)) {
         this.catagoryInitials.push(initial);
         this.catagoryInitials.sort();
-        console.log('initalen: ', this.catagoryInitials);
       }
     });
   }
-
-
-  // setActive(clickedContact: string) {
-  //   this.isActive = clickedContact === 'anton';
-  // }
 
 
   getFirstLetter(currentContact: string) {
@@ -64,13 +55,12 @@ export class SectionContactsComponent implements OnInit {
 
 
   toggleDetails(isActiveContact: boolean) {
-    this.test = isActiveContact;
+    this.switchView = isActiveContact;
   }
 
 
   addContact() {
     this.control.addContactDialogOpen = true;
   }
-
 }
 

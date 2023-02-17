@@ -165,7 +165,6 @@ a:focus>div {
 .active {
     background: #2A3647;
     border-radius: 10px;
-    // cursor: auto;
 
     .name {
         color: #fff;
@@ -292,8 +291,6 @@ a:focus>div {
     .back-to-contacts {
         right: 68px;
     }
-
-
 }
 
 @media (max-width: 750px) {
@@ -314,7 +311,6 @@ a:focus>div {
     .back-to-contacts {
         right: 32px;
     }
-
 }
 
 @media (max-width: 500px) {
@@ -360,8 +356,6 @@ a:focus>div {
         height: 16px;
         width: 16px;
     }
-
-
 }
 
 @media (max-width: 350px) {
