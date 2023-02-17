@@ -7,14 +7,11 @@ import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/custo
 import { ContactService } from 'src/app/services/contact.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-add-contact',
   templateUrl: './add-contact.component.html',
   styleUrls: ['./add-contact.component.scss']
 })
-
-
 
 export class AddContactComponent {
   inputName: string = '';
@@ -25,7 +22,6 @@ export class AddContactComponent {
   allContacts: any[] = [];
   animationStatus: boolean = false;
 
-
   constructor(
     public control: ControlService,
     private firestore: AngularFirestore,
@@ -33,6 +29,7 @@ export class AddContactComponent {
     private contactServ: ContactService,
     private route: Router) {
   }
+
 
   public createContactForm: FormGroup = new FormGroup({
     name: new FormControl('', [
@@ -56,6 +53,7 @@ export class AddContactComponent {
     this.saveContact(newContact);
   }
 
+  
   saveContact(newContact: any) {
     this.currentContactId = newContact.id;
     this.firestore

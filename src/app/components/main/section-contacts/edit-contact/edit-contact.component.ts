@@ -6,12 +6,12 @@ import { ControlService } from 'src/app/services/control.service';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
 import { Contact } from 'src/app/models/contact.model';
 
-
 @Component({
   selector: 'app-edit-contact',
   templateUrl: './edit-contact.component.html',
   styleUrls: ['./edit-contact.component.scss']
 })
+
 export class EditContactComponent implements OnInit {
   inputName: string = '';
   inputEmail: string = '';
@@ -21,62 +21,20 @@ export class EditContactComponent implements OnInit {
   animationStatus: boolean = false;
   color: string = '';
   currentContactId: number = 0;
+  isLoading: boolean = false;
 
   constructor(
-    public control: ControlService,
+    private control: ControlService,
     private firestore: AngularFirestore,
-    private fcontrol: CustomformcontrolModule,
-    public contactServ: ContactService) {
+    private fControl: CustomformcontrolModule,
+    private contactServ: ContactService) {
   }
-
-  ngOnInit(): void {
-    console.log('Die Id: ', this.contactServ.currentContact);
-    this.currentContactId = this.contactServ.currentContact;
-    this.loadContacts();
-  }
-
-
-  loadContacts() {
-    this.firestore
-      .collection('contacts')
-      .valueChanges({ idField: 'docId' })
-      .subscribe((changes: any) => {
-        this.allContacts = changes;
-
-        this.allContacts.forEach(contact => {
-          if (contact.docId == this.contactServ.currentId) {
-
-            this.currentContact = contact;
-            console.log('Currenttttt: ', this.currentContact);
-
-            this.inputName = this.currentContact.firstName + ' ' + this.currentContact.lastName;
-            this.inputEmail = this.currentContact.email;
-            this.inputPhone = this.checkPhoneNumber();
-          }
-        })
-      });
-
-
-  }
-
-
-  checkPhoneNumber(): string {
-    let phone: string = '';
-    if (this.currentContact.phone === 'No phone number exists') {
-    } else {
-      phone = this.currentContact.phone;
-    }
-
-    return phone;
-  }
-
-
 
 
   public createContactForm: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.required,
-      this.fcontrol.name
+      this.fControl.name
     ], []),
     email: new FormControl('', [
       Validators.required,
@@ -84,41 +42,82 @@ export class EditContactComponent implements OnInit {
       Validators.minLength(10)
     ], []),
     phone: new FormControl('', [
-      this.fcontrol.phoneNumber,
+      this.fControl.phoneNumber,
     ])
   });
 
 
-  createContact() {
+  ngOnInit(): void {
+    this.currentContactId = this.contactServ.currentContact;
+    this.loadAllContacts();
+  }
+
+
+  loadAllContacts(): void {
+    this.firestore
+      .collection('contacts')
+      .valueChanges({ idField: 'docId' })
+      .subscribe((changes: any) => {
+        this.allContacts = changes;
+        this.setCurrentContact();
+      });
+  }
+
+
+  setCurrentContact(): void {
+    this.allContacts.forEach(contact => {
+      if (contact.docId == this.contactServ.currentId) {
+        this.currentContact = contact;
+        this.loadDataIntoInputFields();
+      }
+    })
+  }
+
+
+  loadDataIntoInputFields(): void {
+    this.inputName = this.currentContact.firstName + ' ' + this.currentContact.lastName;
+    this.inputEmail = this.currentContact.email;
+    this.inputPhone = this.checkPhoneNumber();
+  }
+
+
+  checkPhoneNumber(): string {
+    let phone: string = '';
+    this.currentContact.phone !== 'No phone number exists' ? phone = this.currentContact.phone : false;
+    return phone;
+  }
+
+
+  createContact(): void {
     this.color = this.currentContact.color;
     let newContact = new Contact(this.inputName, this.inputEmail, this.inputPhone);
     newContact.color = this.color;
-    newContact.id = this.currentContactId ;
+    newContact.id = this.currentContactId;
     this.updateContact(newContact);
   }
 
+
   updateContact(newContact: any) {
-    // this.loading = true;
+    this.isLoading = true;
     this.firestore
       .collection('contacts')
       .doc(this.contactServ.currentId)
       .update(newContact.toJSON())
       .then(() => {
-        // this.loading = false;
-        // this.dialog.close();
-        this.control.editContactDialogOpen = false
-        this.control.getMessage('Contact succesfully edited');
+        this.isLoading = false;
+        this.showFeedbackMessage();
       });
-
   }
 
-  // Verhindert das Schließen des inneren Div-Containers beim Klicken
+
+  showFeedbackMessage() {
+    this.closeDialog();
+    this.control.getMessage('Contact succesfully edited');
+  }
+
+
   dontCloseByClick(event: Event) {
     event.stopPropagation();
-  }
-
-  checkErrors(field: string) {
-    console.log(field + ': ', this.createContactForm.controls[field].errors);
   }
 
 

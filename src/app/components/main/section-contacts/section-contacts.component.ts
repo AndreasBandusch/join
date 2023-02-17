@@ -8,19 +8,24 @@ import { ContactService } from 'src/app/services/contact.service';
   templateUrl: './section-contacts.component.html',
   styleUrls: ['./section-contacts.component.scss']
 })
-export class SectionContactsComponent implements OnInit {
 
+export class SectionContactsComponent implements OnInit {
   allContacts: any[] = [];
   switchView: boolean = false;
   catagoryInitials: string[] = [];
   initialsLastNames: string[] = [];
   initals: any[] = [];
 
-  constructor(public firestore: AngularFirestore, public control: ControlService, public contactServ: ContactService) { }
+  constructor(
+    private firestore: AngularFirestore, 
+    public control: ControlService, 
+    public contactServ: ContactService) { }
+
 
   ngOnInit() {
     this.loadContacts();
   }
+
 
   loadContacts() {
     this.contactServ.currentContact = 0;

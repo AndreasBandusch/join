@@ -1,6 +1,8 @@
-<div class="add-contact" [class.slide-out]="animationStatus" [class.fade-out]="animationStatus" [class.fade-in]="!animationStatus" (click)="closeDialog()">
-    <div class="add-contact-cont" (click)="dontCloseByClick($event)" [class.slide-out]="animationStatus" [class.slide-in]="!animationStatus"
-    [class.slide-out-mobile]="animationStatus" [class.slide-in-mobile]="!animationStatus">
+<div class="add-contact" [class.slide-out]="animationStatus" [class.fade-out]="animationStatus"
+    [class.fade-in]="!animationStatus" (click)="closeDialog()">
+    <div class="add-contact-cont" (click)="dontCloseByClick($event)" [class.slide-out]="animationStatus"
+        [class.slide-in]="!animationStatus" [class.slide-out-mobile]="animationStatus"
+        [class.slide-in-mobile]="!animationStatus">
         <div class="add-contact-inner">
             <div class="title-cont">
                 <div class="logo">
@@ -17,20 +19,11 @@
             <div class="content-cont">
                 <form class="form-cont" [formGroup]="createContactForm" (submit)="createContact()">
                     <input formControlName="name" type="text" class="input-name" placeholder="First and last name *"
-                        [(ngModel)]="inputName" (blur)="checkErrors('name')">
+                        [(ngModel)]="inputName">
                     <input formControlName="email" type="email" class="input-email" placeholder="Email *"
-                        [(ngModel)]="inputEmail" (blur)="checkErrors('email')">
-                    <!-- <ng-container
-                        *ngIf="createContactForm.controls['name'].dirty || createContactForm.controls['name'].touched">
-                        <p class="error" *ngIf="createContactForm.controls['name'].errors?.['required']">First Name is
-                            required</p>
-                        <p class="error" *ngIf="createContactForm.controls['name'].errors?.['invalidName']">Please enter
-                            a first and Last name with at least 2 characters each</p>
-
-                    </ng-container> -->
+                        [(ngModel)]="inputEmail">
                     <input formControlName="phone" type="tel" class="input-phone" placeholder="Phone"
-                        [(ngModel)]="inputPhone" (blur)="checkErrors('phone')">
-
+                        [(ngModel)]="inputPhone">
                     <div class="button-cont">
                         <button type="submit" [disabled]="!((createContactForm.valid) && (createContactForm.dirty))"
                             type="submit" class="primary-btn">
@@ -41,7 +34,6 @@
                 </form>
             </div>
         </div>
-
         <img src="assets/img/icons/close-icon.png" class="close-dialog" (click)="closeDialog()">
         <img src="assets/img/icons/close-icon-mobile.png" class="close-dialog-mobile" (click)="closeDialog()">
     </div>
