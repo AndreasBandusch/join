@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { ControlService} from 'src/app/services/control.service';
+import { ControlService } from 'src/app/services/control.service';
 import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
@@ -9,31 +9,35 @@ import { ContactService } from 'src/app/services/contact.service';
   styleUrls: ['./section-contacts.component.scss']
 })
 export class SectionContactsComponent implements OnInit {
-  
+
   allContacts: any[] = [];
   switchView: boolean = false;
   catagoryInitials: string[] = [];
   initialsLastNames: string[] = [];
   initals: any[] = [];
-  
-  constructor(public firestore: AngularFirestore, public control: ControlService, public contactServ: ContactService) {}
+
+  constructor(public firestore: AngularFirestore, public control: ControlService, public contactServ: ContactService) { }
 
   ngOnInit() {
-    this.contactServ.currentContact = 0;
     this.loadContacts();
   }
 
   loadContacts() {
-    this.firestore.collection('contacts').valueChanges({idField: 'docId'}).subscribe((updates: any) => {
+    this.contactServ.currentContact = 0;
+    this.firestore.collection('contacts').valueChanges({ idField: 'docId' }).subscribe((updates: any) => {
       this.allContacts = updates;
-
-      if (this.allContacts.length > 0) {
-        this.getCatagoryInitials();
-        this.contactServ.contactsAvailable = true;
-      } else {
-        this.contactServ.contactsAvailable = false;
-      }
+      this.checkIfContactsAvailable();
     })
+  }
+
+
+  checkIfContactsAvailable() {
+    if (this.allContacts.length > 0) {
+      this.getCatagoryInitials();
+      this.contactServ.contactsAvailable = true;
+    } else {
+      this.contactServ.contactsAvailable = false;
+    }
   }
 
 

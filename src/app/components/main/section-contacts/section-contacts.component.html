@@ -1,6 +1,7 @@
 <div class="content">
     <div class="btn-cont" [class.btn-no-bg]="switchView">
-        <button class="primary-btn new-contact-btn" (click)="addContact()">New contact <img src="assets/img/icons/new-contact-icon.png">
+        <button class="primary-btn new-contact-btn" (click)="addContact()">New contact <img
+                src="assets/img/icons/new-contact-icon.png">
         </button>
         <img class="edit-mobile-btn" src="assets/img/icons/edit-contact-icon-mobile.png"
             [class.edit-contact-mobile]="switchView" (click)="control.editContactDialogOpen = true">
@@ -16,11 +17,11 @@
                     </div>
                     <div *ngFor="let contact of allContacts; index as i">
                         <div *ngIf="getFirstLetter(contact.firstName) === initial" class="catagory-body">
-                            <a [routerLink]="['contact', contact.docId]" (click)="contactServ.currentContact = contact.id" (click)="toggleDetails(true)">
-                                <div class="catagory-body-cont" 
+                            <a [routerLink]="['contact', contact.docId]"
+                                (click)="contactServ.currentContact = contact.id" (click)="toggleDetails(true)">
+                                <div class="catagory-body-cont"
                                     [class.active]="contactServ.currentContact === contact.id">
-                                    <div class="contact-initials"
-                                        [ngStyle]="{'background-color': contact.color}">
+                                    <div class="contact-initials" [ngStyle]="{'background-color': contact.color}">
                                         {{contact?.initials}}
                                     </div>
                                     <div class="contact-infos">
