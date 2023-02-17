@@ -17,7 +17,7 @@ export class AddContactComponent {
   inputName: string = '';
   inputEmail: string = '';
   inputPhone: string = '';
-  newContactId:  string = '';
+  newContactId: string = '';
   currentContactId: number = 0;
   allContacts: any[] = [];
   animationStatus: boolean = false;
@@ -25,7 +25,7 @@ export class AddContactComponent {
   constructor(
     public control: ControlService,
     private firestore: AngularFirestore,
-    private fcontrol: CustomformcontrolModule,
+    private fControl: CustomformcontrolModule,
     private contactServ: ContactService,
     private route: Router) {
   }
@@ -34,7 +34,7 @@ export class AddContactComponent {
   public createContactForm: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.required,
-      this.fcontrol.name
+      this.fControl.name
     ], []),
     email: new FormControl('', [
       Validators.required,
@@ -42,7 +42,7 @@ export class AddContactComponent {
       Validators.minLength(10)
     ], []),
     phone: new FormControl('', [
-      this.fcontrol.phoneNumber,
+      this.fControl.phoneNumber,
     ])
   });
 
@@ -50,56 +50,51 @@ export class AddContactComponent {
   createContact() {
     let newContact: Contact = new Contact(this.inputName, this.inputEmail, this.inputPhone);
     newContact.getRandomColor();
+    this.currentContactId = newContact.id;
     this.saveContact(newContact);
+    this.control.addContactDialogOpen = false;
+    this.loadContacts();
+    this.contactServ.currentContact = newContact.id;
+    this.control.getMessage('Contact succesfully created');
   }
 
-  
+
   saveContact(newContact: any) {
-    this.currentContactId = newContact.id;
     this.firestore
       .collection('contacts')
-      .add(newContact.toJSON());
-      this.control.addContactDialogOpen = false;
-      this.getNewContactId();
-      this.contactServ.currentContact = newContact.id;
-      this.control.getMessage('Contact succesfully created');  
+      .add(newContact.toJSON()); 
   }
 
-  getNewContactId() {
+
+  loadContacts() {
     this.firestore.collection('contacts').valueChanges({ idField: 'docId' }).subscribe(changes => {
-        this.allContacts = changes;
-
-        this.allContacts.forEach(contact => {
-          if (contact.id == this.currentContactId) {
-            this.newContactId = contact.docId;
-            this.route.navigate(['kanban/contact-list/contact/' + this.newContactId]); 
-          }
-       })
+      this.allContacts = changes;
+      this.reloadContactDetails();
     })
-
-   
   }
 
 
+  reloadContactDetails() {
+    this.allContacts.forEach(contact => {
+      if (contact.id == this.currentContactId) {
+        this.newContactId = contact.docId;
+        this.route.navigate(['kanban/contact-list/contact/' + this.newContactId]);
+      }
+    })
+  }
 
-  // Verhindert das Schließen des inneren Div-Containers beim Klicken
-  public dontCloseByClick(event: Event) {
+
+  dontCloseByClick(event: Event) {
     event.stopPropagation();
   }
 
-  checkErrors(field: string) {
-    console.log(field + ': ', this.createContactForm.controls[field].errors);
-  }
 
   closeDialog() {
     this.animationStatus = true;
     setTimeout(() => {
       this.control.addContactDialogOpen = false;
-      
     }, 225);
-    
   }
-   
 }
 
 

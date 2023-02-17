@@ -87,7 +87,6 @@
 .deadline {
     display: flex;
     align-items: center;
-
     height: 100%;
 }
 
@@ -141,7 +140,6 @@ app-hello {
     justify-content: center;
 }
 
-
 @media (max-width: 1300px) {
     app-hello {
         display: none;
@@ -164,11 +162,8 @@ app-hello {
         .title {
             order: 2;
             border-right: none;
-        }
-
-      
+        }  
     }
-
 }
 
 @media (max-width: 650px) {

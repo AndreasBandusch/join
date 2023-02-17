@@ -15,7 +15,6 @@
                 <div class="add-contact-picture" [style.background-color]="currentContact.color">{{
                     currentContact?.initials }}</div>
             </div>
-
             <div class="content-cont">
                 <form class="form-cont" [formGroup]="createContactForm" (submit)="createContact()">
                     <input formControlName="name" type="text" class="input-name" placeholder="First and last name *"
@@ -25,7 +24,7 @@
                     <input formControlName="phone" type="tel" class="input-phone" placeholder="Phone"
                         [(ngModel)]="inputPhone">
                     <div class="button-cont">
-                        <button type="submit" [disabled]="!((createContactForm.valid) && (createContactForm.dirty))"
+                        <button type="submit" [disabled]="!((createContactForm.valid) && (createContactForm.dirty) || isLoading)"
                             type="submit" class="primary-btn">
                             Save
                             <img src="assets/img/icons/checked-icon.png">

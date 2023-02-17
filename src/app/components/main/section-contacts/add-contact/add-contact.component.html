@@ -19,9 +19,9 @@
             <div class="content-cont">
                 <form class="form-cont" [formGroup]="createContactForm" (submit)="createContact()">
                     <input formControlName="name" type="text" class="input-name" placeholder="First and last name *"
-                        [(ngModel)]="inputName" (blur)="checkErrors('name')">
+                        [(ngModel)]="inputName">
                     <input formControlName="email" type="email" class="input-email" placeholder="Email *"
-                        [(ngModel)]="inputEmail" (blur)="checkErrors('email')">
+                        [(ngModel)]="inputEmail">
                     <!-- <ng-container
                         *ngIf="createContactForm.controls['name'].dirty || createContactForm.controls['name'].touched">
                         <p class="error" *ngIf="createContactForm.controls['name'].errors?.['required']">First Name is
@@ -31,7 +31,7 @@
 
                     </ng-container> -->
                     <input formControlName="phone" type="tel" class="input-phone" placeholder="Phone"
-                        [(ngModel)]="inputPhone" (blur)="checkErrors('phone')">
+                        [(ngModel)]="inputPhone">
 
                     <div class="button-cont">
                         <button class="secondary-btn" (click)="control.addContactDialogOpen = false">
@@ -48,7 +48,6 @@
                 </form>
             </div>
         </div>
-
         <img src="assets/img/icons/close-icon.png" class="close-dialog" (click)="closeDialog()">
         <img src="assets/img/icons/close-icon-mobile.png" class="close-dialog-mobile" (click)="closeDialog()">
     </div>
