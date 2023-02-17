@@ -19,7 +19,7 @@ export class SectionContactsComponent implements OnInit {
   constructor(
     private firestore: AngularFirestore, 
     public control: ControlService, 
-    public contactServ: ContactService) { }
+    public contactServ: ContactService) {}
 
 
   ngOnInit() {

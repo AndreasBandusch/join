@@ -55,7 +55,7 @@ button {
     }
 }
 
-input {
+input, textarea, .dropdown {
     font-size: 21px;
     font-weight: 400;
     color: #000;
@@ -66,6 +66,16 @@ input {
     background-repeat: no-repeat;
     background-position: right 16px top 50%;
     height: 50px;
+}
+
+.dropdown {
+    background-color: #fff;
+    overflow: hidden;
+}
+
+textarea {
+    height: 120px;
+    resize: none;
 }
 
 .input-name {
@@ -157,6 +167,8 @@ a:hover {
     margin-bottom: 112px;
     width: 100%;
     height: 100%;
+    max-width: 1320px;
+    // border: 1px solid green;
 }
 
 .content-inner {
