@@ -10,6 +10,7 @@ export class ControlService {
   
   ) { }
 
+  showAddTaskBotton = false;
   addContactDialogOpen = false;
   editContactDialogOpen = false;
   showMessage = false;
