@@ -10,22 +10,14 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   @HostListener('window:resize')
   onResize() {
-    if (window.innerWidth <= 1100) {
-      this.control.showAddTaskBotton = true;
-    } else {
-      this.control.showAddTaskBotton = false;
-    }
+    this.checkMaxWidth(1100);
   }
 
-  constructor(private control: ControlService) {}
+  constructor(public control: ControlService) {}
 
 
   ngOnInit(): void {
-    if (window.innerWidth <= 1100) {
-      this.control.showAddTaskBotton = true;
-    } else {
-      this.control.showAddTaskBotton = false;
-    }
+    this.checkMaxWidth(1100);
   }
 
 
@@ -33,4 +25,12 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.control.showAddTaskBotton = false;
   }
 
+
+  checkMaxWidth(maxWidth: number) {
+    if (window.innerWidth <= maxWidth) {
+      this.control.showAddTaskBotton = true;
+    } else {
+      this.control.showAddTaskBotton = false;
+    }
+  }
 }

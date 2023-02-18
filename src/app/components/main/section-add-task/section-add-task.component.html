@@ -50,7 +50,7 @@
                     <span>Subtasks</span>
                     <input type="text">
                 </div>
-                <div class="btn-cont">
+                <div *ngIf="!control.showAddTaskBotton" class="btn-cont">
                     <button class="secondary-btn">
                         Clear <span>x</span>
                     </button>
