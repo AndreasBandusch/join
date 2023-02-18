@@ -52,17 +52,17 @@ export class AddContactComponent {
     newContact.getRandomColor();
     this.currentContactId = newContact.id;
     this.saveContact(newContact);
-    this.control.addContactDialogOpen = false;
     this.loadContacts();
     this.contactServ.currentContact = newContact.id;
-    this.control.getMessage('Contact succesfully created');
   }
 
-
+  
   saveContact(newContact: any) {
     this.firestore
       .collection('contacts')
-      .add(newContact.toJSON()); 
+      .add(newContact.toJSON()).then(() => {
+        this.showFeedbackMessage();
+      });
   }
 
 
@@ -88,6 +88,11 @@ export class AddContactComponent {
     event.stopPropagation();
   }
 
+
+  showFeedbackMessage() {
+    this.closeDialog();
+    this.control.getMessage('Contact succesfully created');
+  }
 
   closeDialog() {
     this.animationStatus = true;
