@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { ControlService } from 'src/app/services/control.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { ControlService } from 'src/app/services/control.service';
   templateUrl: './section-add-task.component.html',
   styleUrls: ['./section-add-task.component.scss']
 })
-export class SectionAddTaskComponent implements OnInit {
+export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   @HostListener('window:resize')
   onResize() {
@@ -26,6 +26,11 @@ export class SectionAddTaskComponent implements OnInit {
     } else {
       this.control.showAddTaskBotton = false;
     }
+  }
+
+
+  ngOnDestroy(): void {
+    this.control.showAddTaskBotton = false;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ControlService } from 'src/app/services/control.service';
 import { ContactService } from 'src/app/services/contact.service';
@@ -9,7 +9,7 @@ import { ContactService } from 'src/app/services/contact.service';
   styleUrls: ['./section-contacts.component.scss']
 })
 
-export class SectionContactsComponent implements OnInit {
+export class SectionContactsComponent implements OnInit, OnDestroy {
   allContacts: any[] = [];
   switchView: boolean = false;
   catagoryInitials: string[] = [];
@@ -22,8 +22,12 @@ export class SectionContactsComponent implements OnInit {
     public contactServ: ContactService) {}
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadContacts();
+  }
+
+  ngOnDestroy(): void {
+    this.contactServ.currentContact = 0;
   }
 
 

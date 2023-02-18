@@ -20,7 +20,7 @@
                             <a [routerLink]="['contact', contact.docId]"
                                 (click)="contactServ.currentContact = contact.id" (click)="toggleDetails(true)">
                                 <div class="catagory-body-cont"
-                                    [class.active]="contactServ.currentContact === contact.id">
+                                    [class.active]="contactServ.currentContact === contact.id && contactServ.currentContact != 0">
                                     <div class="contact-initials" [ngStyle]="{'background-color': contact.color}">
                                         {{contact?.initials}}
                                     </div>
