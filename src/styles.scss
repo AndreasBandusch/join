@@ -128,6 +128,20 @@ a:hover {
         transition: all 75ms ease-in-out;
         cursor: pointer;
     }
+
+    img {
+        height: 24px;
+        width: 24px;  
+    }
+
+    img, span {
+        margin-left: 8px;
+        
+    }
+
+    span {
+        font-size: 24px;
+    }
 }
 
 .primary-btn {
@@ -151,6 +165,7 @@ a:hover {
 
     &:hover {
         border: 2px solid #29ABE2;
+        color: #29ABE2;
         filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
         border-radius: 8px;
     }

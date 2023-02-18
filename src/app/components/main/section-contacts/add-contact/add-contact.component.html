@@ -35,8 +35,7 @@
 
                     <div class="button-cont">
                         <button class="secondary-btn" (click)="control.addContactDialogOpen = false">
-                            Cancel
-                            <img src="assets/img/icons/cancel-icon.png">
+                            Cancel<span>x</span>
                         </button>
                         <button type="submit"
                             [disabled]="!((createContactForm.valid) && (createContactForm.dirty || createContactForm.touched))"
