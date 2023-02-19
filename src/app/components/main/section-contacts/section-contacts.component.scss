@@ -245,6 +245,7 @@ a:active>div {
     }
 
     .btn-cont {
+        position: fixed;
         bottom: unset;
         top: 90px;
         background-color: #fff;
@@ -318,7 +319,6 @@ a:active>div {
 
 
     .btn-cont {
-        position: fixed;
         bottom: 122px;
         padding-right: 68px;
     }
