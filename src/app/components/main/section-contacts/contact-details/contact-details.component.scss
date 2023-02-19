@@ -81,6 +81,23 @@
     font-weight: 700;
 }
 
+.slide-in {
+    animation: slide-in 225ms ease-in-out;
+}
+
+
+@keyframes slide-in {
+    from {
+      
+        transform: translateX(150%);
+    }
+    to {
+       
+        transform: translateX(0%);
+    }
+
+}
+
 @media (max-width: 1440px) {
    .initials {
     margin-right: 32px;
@@ -104,6 +121,10 @@
 
     .edit-contact {
         display: none;
+    }
+
+    .slide-in {
+        animation: unset;
     }
 }
 
@@ -170,8 +191,5 @@
 
     .info-header-text {
         font-size: 18px;
-    }
-
-  
-    
+    }  
 }

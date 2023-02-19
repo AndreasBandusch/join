@@ -12,6 +12,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class ContactDetailsComponent implements OnInit {
 currentContact: any = {};
 contactId: string = '';
+slideIn: boolean = true;
+
+
   constructor(public contactServ: ContactService, public route: ActivatedRoute, public control: ControlService, private afs: AngularFirestore) {
 
   }
@@ -22,7 +25,15 @@ contactId: string = '';
       console.log('Contact-Id: ', this.contactId);
       this.getCurrentContact();
       this.contactServ.currentId = this.contactId;
+      this.testMe();
     });
+  }
+
+  testMe() {
+    this.slideIn = true;
+    setTimeout(() => {
+      this.slideIn = false
+    }, 250);
   }
 
   getCurrentContact() {
@@ -34,7 +45,10 @@ contactId: string = '';
         this.currentContact = contact;
         console.log('Current contact: ', this.currentContact);
       });   
+
+     
+    }
   }
 
-  }   
+    
 

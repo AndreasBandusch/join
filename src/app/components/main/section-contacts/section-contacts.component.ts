@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ControlService } from 'src/app/services/control.service';
 import { ContactService } from 'src/app/services/contact.service';
@@ -15,6 +15,7 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
   catagoryInitials: string[] = [];
   initialsLastNames: string[] = [];
   initals: any[] = [];
+ 
 
   constructor(
     private firestore: AngularFirestore, 

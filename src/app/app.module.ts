@@ -17,10 +17,10 @@ import { MainSiteComponent } from './components/main-site/main-site.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HelloComponent } from './components/main/hello/hello.component';
 import { ContactDetailsComponent } from './components/main/section-contacts/contact-details/contact-details.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AddContactComponent } from './components/main/section-contacts/add-contact/add-contact.component';
 import { EditContactComponent } from './components/main/section-contacts/edit-contact/edit-contact.component';
@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomformcontrolModule } from './modules/customformcontrol/customformcontrol.module';
 import { FeedbackMessageComponent } from './components/feedback-message/feedback-message.component';
+import { RouterModule } from '@angular/router'
 
 
 
@@ -53,6 +54,7 @@ import { FeedbackMessageComponent } from './components/feedback-message/feedback
     FeedbackMessageComponent,
   ],
   imports: [
+    RouterModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

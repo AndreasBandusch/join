@@ -1,4 +1,4 @@
-<div *ngIf="contactServ.contactsAvailable" class="details-content">
+<div *ngIf="contactServ.contactsAvailable" class="details-content" [class.slide-in]="slideIn">
     <div class="details-name-cont">
         <div>
             <span class="initials" [ngStyle]="{'background-color': currentContact.color}">{{ currentContact.initials}}</span>
