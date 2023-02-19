@@ -131,6 +131,14 @@ a:active>div {
 
 .email {
     color: #007CEE;
+    
+}
+
+.name, .email {
+    white-space: nowrap; /* Verhindert Zeilenumbrüche */
+    overflow: hidden; /* Versteckt den überschüssigen Text */
+    text-overflow: ellipsis; /* Zeigt Auslassungspunkte (...) an */
+    max-width: 265px; /* Begrenzt die Breite des Textes */
 }
 
 .catagory-body {
@@ -144,6 +152,7 @@ a:active>div {
     align-items: center;
     padding: 16px;
     transition: all 75 ease-in-out;
+    
 }
 
 .contact-initials {
@@ -262,6 +271,16 @@ a:active>div {
             padding-top: 90px;
         }
     }
+
+    .name, .email {
+        max-width: 660px; 
+    }
+}
+
+@media (max-width: 1100px) {
+    .name, .email {
+        max-width: 480px; 
+    }
 }
 
 @media (max-width: 920px) {
@@ -294,6 +313,10 @@ a:active>div {
     .back-to-contacts {
         right: 68px;
     }
+
+    .name, .email {
+        max-width: 490px; 
+    }
 }
 
 @media (max-width: 750px) {
@@ -314,11 +337,25 @@ a:active>div {
     .back-to-contacts {
         right: 32px;
     }
+
+    .name, .email {
+        max-width: 420px; 
+    }
+}
+
+@media (max-width: 600px) {
+    .name, .email {
+        max-width: 320px; 
+    }
 }
 
 @media (max-width: 500px) {
     .add-contact-mobile {
         display: block;
+    }
+
+    .name, .email {
+        max-width: 240px; 
     }
 }
 
@@ -343,6 +380,10 @@ a:active>div {
 
     .email {
         font-size: 14px;
+    }
+
+    .name, .email {
+        max-width: 220px; 
     }
 
     .catagory-body-cont {
@@ -376,5 +417,9 @@ a:active>div {
             height: 25px;
             width: 25px;
         }
+    }
+
+    .name, .email {
+        max-width: 170px; 
     }
 }
