@@ -106,13 +106,13 @@
     height: auto;
     padding: unset;
 
-    
+
     .select-menu {
         position: relative;
         display: flex;
         justify-content: space-between;
         width: 100%;
-        padding: 18px 21px 18px 21px;
+        padding: 13px 21px;
 
         .icon {
             width: 16px;
@@ -126,18 +126,18 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-       
+
     }
 
     .cat {
         cursor: pointer;
         display: flex;
         align-items: center;
-        padding: 18px 21px 18px 21px;
+        padding: 13px 21px;
         transition: all 75ms ease-in-out;
         display: flex;
         width: 100%;
-       
+
 
         &:hover {
             background-color: #D1D1D1;
@@ -157,6 +157,15 @@
     .cat-header {
         display: flex;
         align-items: center
+    }
+
+    .new-cat-placeholder {
+        color: #D1D1D1;
+    }
+
+    .new-cat {
+        padding: 13px 21px;
+        outline: none;
     }
 }
 

@@ -28,7 +28,8 @@
                             </div>
                             <div class="select-catagory">
                                 <ng-container *ngIf="showCategorys">
-                                    <span *ngIf="allCategorys" class="cat" (click)="createCategory()">New category</span>
+                                    <span *ngIf="allCategorys" class="cat" (click)="createCategory()">New
+                                        category</span>
                                     <ng-container *ngFor="let cat of allCategorys">
                                         <div class="cat" (click)="selectCategory(cat.name, cat.color)">
                                             <span>{{cat.name}}</span>
@@ -38,8 +39,11 @@
                                 </ng-container>
                             </div>
                         </ng-container>
-                        <ng-template #elseBlock>Create new category</ng-template>
-
+                        <ng-template #elseBlock>
+                           <div class="new-cat" [class.new-cat-placeholder]="placeholder"  contenteditable (click)="placeholder = ''">
+                                {{placeholder}}      
+                            </div>                
+                        </ng-template>
                     </div>
                 </div>
                 <div class="field-group">

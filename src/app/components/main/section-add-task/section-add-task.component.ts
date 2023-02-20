@@ -22,6 +22,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   catText: string = 'Select task catagory';
   catColor: string = '';
   newCategory: boolean = false;
+  placeholder: string = 'New category name';
 
   @HostListener('window:resize')
   onResize() {
@@ -81,4 +82,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   toggleCategorys() {
     this.showCategorys = !this.showCategorys;
   }
+
+  
 }
