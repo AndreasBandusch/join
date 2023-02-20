@@ -16,8 +16,9 @@
                 </div>
                 <div class="field-group">
                     <span>Category</span>
+                    <ng-container *ngIf="!newCategory; else elseBlock">
                     <div class="dropdown">
-                        <ng-container *ngIf="!newCategory; else elseBlock">
+                       
                             <div class="select-menu">
                                 <div class="cat-header">
                                     <span>{{catText}}</span>
@@ -38,13 +39,17 @@
                                     </ng-container>
                                 </ng-container>
                             </div>
+                        </div>
                         </ng-container>
                         <ng-template #elseBlock>
-                           <div class="new-cat" [class.new-cat-placeholder]="placeholder"  contenteditable (click)="placeholder = ''">
-                                {{placeholder}}      
-                            </div>                
+                            <div class="new-category">
+                                <input class="test" type="text" name="categoryname" [(ngModel)]="categoryName" (keyup)="inputView()">
+                                <div>
+                                    <img src="assets/img/icons/check-icon-black.png">
+                                </div>
+                            </div> 
                         </ng-template>
-                    </div>
+                    
                 </div>
                 <div class="field-group">
                     <span>Assigned to</span>
