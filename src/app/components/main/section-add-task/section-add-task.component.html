@@ -17,25 +17,28 @@
                 <div class="field-group">
                     <span>Category</span>
                     <div class="dropdown">
-                        <div class="select-menu">
-                            <div class="cat-header">
-                                <span>{{catText}}</span>
-                                <div class="cat-color" [style.backgroundColor]="catColor"></div>
+                        <ng-container *ngIf="!newCategory; else elseBlock">
+                            <div class="select-menu">
+                                <div class="cat-header">
+                                    <span>{{catText}}</span>
+                                    <div class="cat-color" [style.backgroundColor]="catColor"></div>
+                                </div>
+                                <div class="icon" (click)="toggleCategorys()"><img class="arrow"
+                                        src="assets/img/icons/menu-arrow-down.png"></div>
                             </div>
-                            <div class="icon" (click)="toggleCategorys()"><img class="arrow"
-                                    src="assets/img/icons/menu-arrow-down.png"></div>
-                        </div>
-                        <div class="select-catagory">
-                            <ng-container *ngIf="showCategorys">
-                                <span *ngIf="allCategorys" class="cat" (click)="createCategory()">New category</span>
-                                <ng-container *ngFor="let cat of allCategorys">
-                                    <div class="cat" (click)="selectCategory(cat.name, cat.color)">
-                                        <span>{{cat.name}}</span>
-                                        <div class="cat-color" [style.backgroundColor]="cat.color"></div>
-                                    </div>
+                            <div class="select-catagory">
+                                <ng-container *ngIf="showCategorys">
+                                    <span *ngIf="allCategorys" class="cat" (click)="createCategory()">New category</span>
+                                    <ng-container *ngFor="let cat of allCategorys">
+                                        <div class="cat" (click)="selectCategory(cat.name, cat.color)">
+                                            <span>{{cat.name}}</span>
+                                            <div class="cat-color" [style.backgroundColor]="cat.color"></div>
+                                        </div>
+                                    </ng-container>
                                 </ng-container>
-                            </ng-container>
-                        </div>
+                            </div>
+                        </ng-container>
+                        <ng-template #elseBlock>Create new category</ng-template>
 
                     </div>
                 </div>

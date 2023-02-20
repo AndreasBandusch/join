@@ -21,7 +21,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   selectedCategory: string = '';
   catText: string = 'Select task catagory';
   catColor: string = '';
-  newCategory: boolean = true;
+  newCategory: boolean = false;
 
   @HostListener('window:resize')
   onResize() {
@@ -74,6 +74,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   createCategory() {
     console.log('Neue Kategorie');
+    this.newCategory = true;
   }
 
 
