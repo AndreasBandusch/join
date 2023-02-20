@@ -18,6 +18,10 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   subTasks: string[] = [];
   showCategorys: boolean = false;
   allCategorys: any[] = [];
+  selectedCategory: string = '';
+  catText: string = 'Select task catagory';
+  catColor: string = '';
+  newCategory: boolean = true;
 
   @HostListener('window:resize')
   onResize() {
@@ -44,13 +48,9 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   loadCategorys() {
     this.afs.collection('categorys').valueChanges().subscribe((changes) => {
        this.allCategorys = changes;
-       this.allCategorys.unshift({name: 'New category'});
        console.log(this.allCategorys);
-    });
- 
-    
+    }); 
   }
-
 
   checkMaxWidth(maxWidth: number) {
     if (window.innerWidth <= maxWidth) {
@@ -62,6 +62,18 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   inputView() {
     console.log(this.description);
+  }
+
+  selectCategory(category: string, color: string) {
+    this.selectedCategory = category;
+    this.catText = category;
+    this.catColor = color;
+    this.showCategorys = false;
+   
+  }
+
+  createCategory() {
+    console.log('Neue Kategorie');
   }
 
 
