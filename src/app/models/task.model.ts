@@ -8,6 +8,7 @@ export class Task {
     public prio: string = '';
     public subTasks?: string[] = [];
     public status: string = 'todo';
+    public color: string = '';
 
     constructor(
         title: string, 

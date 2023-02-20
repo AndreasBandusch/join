@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { ControlService } from 'src/app/services/control.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-section-add-task',
@@ -7,22 +8,47 @@ import { ControlService } from 'src/app/services/control.service';
   styleUrls: ['./section-add-task.component.scss']
 })
 export class SectionAddTaskComponent implements OnInit, OnDestroy {
+  id: number = 0;
+  title: string = '';
+  description: string = '';
+  category: string = '';
+  assignedTo: number[] = [];
+  dueDate: number = 0;
+  prio: string = '';
+  subTasks: string[] = [];
+  showCategorys: boolean = false;
+  allCategorys: any[] = [];
 
   @HostListener('window:resize')
   onResize() {
     this.checkMaxWidth(1100);
   }
 
-  constructor(public control: ControlService) {}
+  constructor(
+    public control: ControlService,
+    private afs: AngularFirestore
+    ) { }
 
 
   ngOnInit(): void {
     this.checkMaxWidth(1100);
+
+    this.loadCategorys();
   }
 
 
   ngOnDestroy(): void {
     this.control.showAddTaskBotton = false;
+  }
+
+  loadCategorys() {
+    this.afs.collection('categorys').valueChanges().subscribe((changes) => {
+       this.allCategorys = changes;
+       this.allCategorys.unshift({name: 'New category'});
+       console.log(this.allCategorys);
+    });
+ 
+    
   }
 
 
@@ -32,5 +58,14 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     } else {
       this.control.showAddTaskBotton = false;
     }
+  }
+
+  inputView() {
+    console.log(this.description);
+  }
+
+
+  toggleCategorys() {
+    this.showCategorys = !this.showCategorys;
   }
 }

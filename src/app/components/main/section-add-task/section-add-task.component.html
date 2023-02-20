@@ -8,19 +8,33 @@
             <div class="content-left">
                 <div class="field-group">
                     <span>Title</span>
-                    <input type="text" placeholder="Enter a title">
+                    <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="title">
                 </div>
                 <div class="field-group">
                     <span>Description</span>
-                    <textarea></textarea>
+                    <textarea name="description" [(ngModel)]="description" (keyup)="inputView()"></textarea>
                 </div>
                 <div class="field-group">
-                    <span>Catagory</span>
-                    <div class="dropdown">Select task catagory</div>
+                    <span>Category</span>
+                    <div class="dropdown">
+                        <div class="select-menu">
+                            <span>Select task catagory</span>
+                            <div class="icon" (click)="toggleCategorys()"><img class="arrow"
+                                    src="assets/img/icons/menu-arrow-down.png"></div>
+                        </div>
+                        <div *ngFor="let cat of allCategorys" class="select-catagory">
+                            <ng-container *ngIf="showCategorys">
+                                <span class="cat">{{cat.name}}</span>
+                                <div *ngIf="cat.color" class="cat-color" [style.backgroundColor]="cat.color"></div>
+                            </ng-container>
+                        </div>
+
+                    </div>
                 </div>
                 <div class="field-group">
                     <span>Assigned to</span>
-                    <div class="dropdown">Select contacts to assign</div>
+                    <div class="dropdown">Select contacts to assign
+                    </div>
                 </div>
             </div>
 
@@ -54,15 +68,14 @@
                     <button class="secondary-btn">
                         Clear <span>x</span>
                     </button>
-                    <button type="submit"
-                        type="submit" class="primary-btn">
+                    <button type="submit" type="submit" class="primary-btn">
                         Create Task
                         <img src="assets/img/icons/checked-icon.png">
                     </button>
                 </div>
             </div>
         </form>
-        
+
     </div>
 
 </div>

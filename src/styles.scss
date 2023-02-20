@@ -55,7 +55,9 @@ button {
     }
 }
 
-input, textarea, .dropdown {
+input,
+textarea,
+.dropdown {
     font-size: 21px;
     font-weight: 400;
     color: #000;
@@ -68,10 +70,7 @@ input, textarea, .dropdown {
     height: 50px;
 }
 
-.dropdown {
-    background-color: #fff;
-    overflow: hidden;
-}
+
 
 textarea {
     height: 120px;
@@ -131,12 +130,13 @@ a:hover {
 
     img {
         height: 24px;
-        width: 24px;  
+        width: 24px;
     }
 
-    img, span {
+    img,
+    span {
         margin-left: 8px;
-        
+
     }
 
     span {
@@ -227,7 +227,7 @@ a:hover {
 
 .fade-in {
     animation: fade-in 225ms ease-in-out;
- 
+
 }
 
 .fade-out {
@@ -240,6 +240,7 @@ a:hover {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -249,6 +250,7 @@ a:hover {
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
     }
@@ -256,33 +258,36 @@ a:hover {
 
 @keyframes slide-in-right {
     from {
-      
+
         transform: translate(100%, -50%);
     }
+
     to {
-       
+
         transform: translate(-50%, -50%);
     }
 }
 
 @keyframes slide-out-right {
     from {
-        
+
         transform: translate(-50%, -50%);
     }
+
     to {
-        
+
         transform: translate(100%, -50%);
     }
 }
 
 @keyframes slide-in-bottom {
     from {
-      
+
         transform: translate(-50%, 100%);
     }
+
     to {
-       
+
         transform: translate(-50%, -50%);
     }
 }
@@ -292,6 +297,7 @@ a:hover {
     from {
         transform: translate(-50%, -50%);
     }
+
     to {
         transform: translate(-50%, 100%);
     }
@@ -308,7 +314,7 @@ a:hover {
         margin-left: 48px;
         margin-right: 48px;
     }
-   
+
 }
 
 @media (max-width: 920px) {
@@ -346,7 +352,7 @@ a:hover {
             border-bottom: 3px solid #29ABE2;
             width: 40%;
             padding-bottom: 16px;
-        } 
+        }
     }
 
     .content-header-mobile {
@@ -369,7 +375,7 @@ a:hover {
 
     .slide-out-mobile {
         animation: slide-out-bottom 225ms ease-out;
-        
+
     }
 }
 
