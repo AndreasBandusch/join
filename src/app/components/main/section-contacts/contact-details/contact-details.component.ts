@@ -15,9 +15,14 @@ contactId: string = '';
 slideIn: boolean = true;
 
 
-  constructor(public contactServ: ContactService, public route: ActivatedRoute, public control: ControlService, private afs: AngularFirestore) {
+  constructor(
+    public contactServ: ContactService, 
+    public route: ActivatedRoute, 
+    public control: ControlService, 
+    private afs: AngularFirestore) {
 
   }
+
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -25,16 +30,18 @@ slideIn: boolean = true;
       console.log('Contact-Id: ', this.contactId);
       this.getCurrentContact();
       this.contactServ.currentId = this.contactId;
-      this.testMe();
+      this.toggleAnimationClass();
     });
   }
 
-  testMe() {
+
+  toggleAnimationClass() {
     this.slideIn = true;
     setTimeout(() => {
       this.slideIn = false
     }, 250);
   }
+
 
   getCurrentContact() {
     this.afs
@@ -45,8 +52,6 @@ slideIn: boolean = true;
         this.currentContact = contact;
         console.log('Current contact: ', this.currentContact);
       });   
-
-     
     }
   }
 
