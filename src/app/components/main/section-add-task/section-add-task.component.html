@@ -65,7 +65,7 @@
 
                             <div class="color-cont">
                                 <div *ngFor="let color of catColors" class="color" [style.backgroundColor]="color"
-                                    [class.color-active]="currentCatColor == color" (click)="currentCatColor = color">
+                                    [class.color-active]="catColor == color" (click)="catColor = color">
                                 </div>
                             </div>
                         </div>

@@ -25,7 +25,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   newCategory: boolean = false;
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
-  currentCatColor: string = '';
+  // currentCatColor: string = '';
 
 
   @HostListener('window:resize')
@@ -85,14 +85,14 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   saveCategory() {
     console.log('Name:', this.categoryName);
-    console.log('Farbe:', this.currentCatColor);
+    console.log('Farbe:', this.catColor);
 
     this.afs
       .collection('categorys')
       .add(
         {
           'name': this.categoryName,
-          'color': this.currentCatColor
+          'color': this.catColor
         }
       ).then(() => {
         this.catText = this.categoryName;
@@ -110,7 +110,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   cancel() {
     this.showCategorys = !this.showCategorys;
     this.newCategory = false;
-    this.currentCatColor = '';
+    this.catColor = '';
     this.catText = this.catStartText;
     this.catColor = '';
     this.categoryName = '';
