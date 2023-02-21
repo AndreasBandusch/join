@@ -81,6 +81,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   createCategory() {
     console.log('Neue Kategorie');
     this.newCategory = true;
+    this.categoryName = '';
   }
 
   saveCategory() {
