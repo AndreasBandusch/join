@@ -73,7 +73,7 @@
 
                 </div>
                 <div class="field-group">
-
+                    <span>Assigned to</span>
                     <div class="dropdown">
 
                         <div class="select-menu">
@@ -87,10 +87,16 @@
             </div>
 
             <div class="content-right">
+
                 <div class="field-group">
-                    <span>Due date</span>
-                    <input type="date">
+                    <span>Due Date</span>
+                    <div class="input-field">
+                        <div class="field">
+                            <input name="date" type="date">
+                        </div>
+                    </div>
                 </div>
+
                 <div class="field-group">
                     <span>Prio</span>
                     <div class="prio-cont">
@@ -110,7 +116,15 @@
                 </div>
                 <div class="field-group">
                     <span>Subtasks</span>
-                    <input type="text">
+                    <div class="dropdown">
+
+                        <div class="select-menu">
+                            <div class="cat-header">
+                                <span>Select contacts to assign</span>
+                            </div>
+                            <div class="icon"><img class="arrow" src="assets/img/icons/menu-arrow-down.png"></div>
+                        </div>
+                    </div>
                 </div>
                 <div *ngIf="!control.showAddTaskBotton" class="btn-cont">
                     <button class="secondary-btn">
