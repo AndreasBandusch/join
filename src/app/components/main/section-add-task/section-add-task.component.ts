@@ -19,14 +19,14 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   showCategorys: boolean = false;
   allCategorys: any[] = [];
   selectedCategory: string = '';
-  catText: string = 'Select task catagory';
+  catText: string = '';
+  catStartText: string = 'Select task catagory';
   catColor: string = '';
   newCategory: boolean = false;
-  placeholder: string = 'New category name';
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   currentCatColor: string = '';
- 
+
 
   @HostListener('window:resize')
   onResize() {
@@ -36,10 +36,11 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   constructor(
     public control: ControlService,
     private afs: AngularFirestore
-    ) { }
+  ) { }
 
 
   ngOnInit(): void {
+    this.catText = this.catStartText
     this.checkMaxWidth(1100);
 
     this.loadCategorys();
@@ -52,9 +53,9 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   loadCategorys() {
     this.afs.collection('categorys').valueChanges().subscribe((changes) => {
-       this.allCategorys = changes;
-       console.log(this.allCategorys);
-    }); 
+      this.allCategorys = changes;
+      console.log(this.allCategorys);
+    });
   }
 
   checkMaxWidth(maxWidth: number) {
@@ -74,7 +75,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.catText = category;
     this.catColor = color;
     this.showCategorys = false;
-   
+
   }
 
   createCategory() {
@@ -83,7 +84,22 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
   saveCategory() {
-    console.log('Category has ben saved!');
+    console.log('Name:', this.categoryName);
+    console.log('Farbe:', this.currentCatColor);
+
+    this.afs
+      .collection('categorys')
+      .add(
+        {
+          'name': this.categoryName,
+          'color': this.currentCatColor
+        }
+      ).then(() => {
+        this.catText = this.categoryName;
+        this.showCategorys = !this.showCategorys;
+  
+        this.newCategory = false;
+      });
   }
 
 
@@ -94,7 +110,11 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   cancel() {
     this.showCategorys = !this.showCategorys;
     this.newCategory = false;
+    this.currentCatColor = '';
+    this.catText = this.catStartText;
+    this.catColor = '';
+    this.categoryName = '';
   }
 
-  
+
 }
