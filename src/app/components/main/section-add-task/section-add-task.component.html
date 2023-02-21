@@ -64,16 +64,24 @@
                             </div>
 
                             <div class="color-cont">
-                                <div *ngFor="let color of catColors" class="color" [style.backgroundColor]="color" [class.color-active]="currentCatColor == color"
-                                    (click)="currentCatColor = color"></div>
+                                <div *ngFor="let color of catColors" class="color" [style.backgroundColor]="color"
+                                    [class.color-active]="currentCatColor == color" (click)="currentCatColor = color">
+                                </div>
                             </div>
                         </div>
                     </ng-template>
 
                 </div>
                 <div class="field-group">
-                    <span>Assigned to</span>
-                    <div class="dropdown">Select contacts to assign
+
+                    <div class="dropdown">
+
+                        <div class="select-menu">
+                            <div class="cat-header">
+                                <span>Select contacts to assign</span>
+                            </div>
+                            <div class="icon"><img class="arrow" src="assets/img/icons/menu-arrow-down.png"></div>
+                        </div>
                     </div>
                 </div>
             </div>
