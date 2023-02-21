@@ -64,7 +64,8 @@
                             </div>
 
                             <div class="color-cont">
-                                <div *ngFor="let color of catColors" class="color" [style.backgroundColor]="color"></div>
+                                <div *ngFor="let color of catColors" class="color" [style.backgroundColor]="color" [class.color-active]="currentCatColor == color"
+                                    (click)="currentCatColor = color"></div>
                             </div>
                         </div>
                     </ng-template>
