@@ -54,10 +54,10 @@
                                         (keyup)="inputView()" placeholder="New category name">
                                 </div>
                                 <div class="icon">
-                                    <div class="left-icon">
+                                    <div class="left-icon" (click)="cancel()">
                                         <img src="assets/img/icons/cancel-icon-black.png">
                                     </div>
-                                    <div class="right-icon">
+                                    <div class="right-icon" (click)="saveCategory()">
                                         <img src="assets/img/icons/check-icon-black.png">
                                     </div>
                                 </div>
