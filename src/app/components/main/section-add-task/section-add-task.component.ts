@@ -21,7 +21,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   selectedCategory: string = '';
   catText: string = 'Select task catagory';
   catColor: string = '';
-  newCategory: boolean = true;
+  newCategory: boolean = false;
   placeholder: string = 'New category name';
   categoryName: string = '';
 

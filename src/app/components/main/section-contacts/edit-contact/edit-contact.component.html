@@ -17,12 +17,34 @@
             </div>
             <div class="content-cont">
                 <form class="form-cont" [formGroup]="createContactForm" (submit)="createContact()">
-                    <input formControlName="name" type="text" class="input-name" placeholder="First and last name *"
-                        [(ngModel)]="inputName">
-                    <input formControlName="email" type="email" class="input-email" placeholder="Email *"
-                        [(ngModel)]="inputEmail">
-                    <input formControlName="phone" type="tel" class="input-phone" placeholder="Phone"
-                        [(ngModel)]="inputPhone">
+                    <div class="input-field">
+                        <div class="field">
+                            <input name="name" type="text" placeholder="First and last name *" 
+                            formControlName="name" [(ngModel)]="inputName">
+                        </div>
+                        <div class="icon">
+                            <img src="/assets/img/icons/input-name.png">
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <div class="field">
+                            <input name="email" type="email" placeholder="Email *" 
+                            formControlName="email" [(ngModel)]="inputEmail">
+                        </div>
+                        <div class="icon">
+                            <img src="/assets/img/icons/input-email.png">
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <div class="field">
+                            <input name="phone" type="tel" placeholder="Phone *" 
+                            formControlName="phone" [(ngModel)]="inputPhone">
+                        </div>
+                        <div class="icon">
+                            <img src="/assets/img/icons/input-phone.png">
+                        </div>
+                    </div>
+
                     <div class="button-cont">
                         <button type="submit" [disabled]="!((createContactForm.valid) && (createContactForm.dirty) || isLoading)"
                             type="submit" class="primary-btn">
