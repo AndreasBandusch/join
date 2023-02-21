@@ -24,6 +24,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   newCategory: boolean = false;
   placeholder: string = 'New category name';
   categoryName: string = '';
+  catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
 
   @HostListener('window:resize')
   onResize() {

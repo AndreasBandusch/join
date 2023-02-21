@@ -8,17 +8,22 @@
             <div class="content-left">
                 <div class="field-group">
                     <span>Title</span>
-                    <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="title">
+                    <div class="input-field">
+                        <div class="field">
+                            <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="title">
+                        </div>
+                    </div>
                 </div>
                 <div class="field-group">
                     <span>Description</span>
-                    <textarea name="description" [(ngModel)]="description" (keyup)="inputView()"></textarea>
+                    <textarea name="description" [(ngModel)]="description" (keyup)="inputView()"
+                        placeholder="Enter a Description"></textarea>
                 </div>
                 <div class="field-group">
                     <span>Category</span>
                     <ng-container *ngIf="!newCategory; else elseBlock">
-                    <div class="dropdown">
-                       
+                        <div class="dropdown">
+
                             <div class="select-menu">
                                 <div class="cat-header">
                                     <span>{{catText}}</span>
@@ -40,16 +45,30 @@
                                 </ng-container>
                             </div>
                         </div>
-                        </ng-container>
-                        <ng-template #elseBlock>
-                            <div class="new-category">
-                                <input class="test" type="text" name="categoryname" [(ngModel)]="categoryName" (keyup)="inputView()">
-                                <div>
-                                    <img src="assets/img/icons/check-icon-black.png">
+                    </ng-container>
+                    <ng-template #elseBlock>
+                        <div class="new-category">
+                            <div class="input-field">
+                                <div class="field">
+                                    <input name="categoryname" type="text" [(ngModel)]="categoryName"
+                                        (keyup)="inputView()" placeholder="New category name">
                                 </div>
-                            </div> 
-                        </ng-template>
-                    
+                                <div class="icon">
+                                    <div class="left-icon">
+                                        <img src="assets/img/icons/cancel-icon-black.png">
+                                    </div>
+                                    <div class="right-icon">
+                                        <img src="assets/img/icons/check-icon-black.png">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="color-cont">
+                                <div *ngFor="let color of catColors" class="color" [style.backgroundColor]="color"></div>
+                            </div>
+                        </div>
+                    </ng-template>
+
                 </div>
                 <div class="field-group">
                     <span>Assigned to</span>

@@ -62,33 +62,25 @@ textarea,
     outline: none;
     border: unset;
     background-color: unset;
-
+    font-family: 'Inter', sans-serif;
+   
 }
 
-textarea {
+textarea, .dropdown {
     height: 120px;
     resize: none;
+    font-size: 21px;
+    font-weight: 400;
+    color: #000;
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 13px 21px;
+    outline: none;
+    width: 100%;
+    background-color: #fff;
 }
 
-.input-name {
-    background-image: url('/assets/img/icons/input-name.png');
-}
 
-.input-email {
-    background-image: url('/assets/img/icons/input-email.png');
-}
-
-.input-password {
-    background-image: url('/assets/img/icons/input-password.png');
-}
-
-// .input-search {
-//     background-image: url('/assets/img/icons/input-search.png');
-// }
-
-.input-phone {
-    background-image: url('/assets/img/icons/input-phone.png');
-}
 
 ::placeholder {
     font-size: 21px;
