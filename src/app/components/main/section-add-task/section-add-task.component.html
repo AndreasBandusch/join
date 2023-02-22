@@ -21,23 +21,22 @@
                 </div>
                 <div class="field-group">
                     <span>Category</span>
-                    <ng-container *ngIf="!newCategory; else elseBlock">
+                    <ng-container *ngIf="!showNewCategory; else elseBlock">
                         <div class="dropdown">
-
                             <div class="select-menu">
                                 <div class="cat-header">
                                     <span>{{catText}}</span>
                                     <div class="cat-color" [style.backgroundColor]="catColor"></div>
                                 </div>
-                                <div class="icon" (click)="toggleCategorys()"><img class="arrow"
+                                <div class="icon" (click)="showCategorys = !showCategorys"><img class="arrow"
                                         src="assets/img/icons/menu-arrow-down.png"></div>
                             </div>
                             <div class="select-catagory">
                                 <ng-container *ngIf="showCategorys">
-                                    <span *ngIf="allCategorys" class="cat" (click)="createCategory()">New
+                                    <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
                                         category</span>
                                     <ng-container *ngFor="let cat of allCategorys">
-                                        <div class="cat" (click)="selectCategory(cat.name, cat.color)">
+                                        <div class="item" (click)="selectCategory(cat.name, cat.color)">
                                             <span>{{cat.name}}</span>
                                             <div class="cat-color" [style.backgroundColor]="cat.color"></div>
                                         </div>
@@ -74,16 +73,25 @@
                 </div>
                 <div class="field-group">
                     <span>Assigned to</span>
-                    <div class="dropdown">
 
+                    <div class="dropdown">
                         <div class="select-menu">
                             <div class="cat-header">
-                                <span>Select contacts to assign</span>
+                                <span>{{assignedTotext}}</span>
+                                <div class="cat-color" [style.backgroundColor]="catColor"></div>
                             </div>
-                            <div class="icon"><img class="arrow" src="assets/img/icons/menu-arrow-down.png"></div>
+                            <div class="icon" (click)="showAssignedTo = !showAssignedTo"><img class="arrow"
+                                    src="assets/img/icons/menu-arrow-down.png"></div>
                         </div>
+                        <ng-container *ngIf="showAssignedTo">
+                            <div class="select-contacts" *ngFor="let contact of allContacts">
+                                <div class="item">{{contact.firstName}} {{contact.lastName}}</div>
+                            </div>
+                        </ng-container>
                     </div>
+
                 </div>
+
             </div>
 
             <div class="content-right">
@@ -117,7 +125,6 @@
                 <div class="field-group">
                     <span>Subtasks</span>
                     <div class="dropdown">
-
                         <div class="select-menu">
                             <div class="cat-header">
                                 <span>Select contacts to assign</span>

@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { ControlService } from 'src/app/services/control.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Category } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-section-add-task',
@@ -18,13 +19,17 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   subTasks: string[] = [];
   showCategorys: boolean = false;
   allCategorys: any[] = [];
+  allContacts: any[] = [];
   selectedCategory: string = '';
   catText: string = '';
+  assignedTotext = 'select Contacts to assign'
   catStartText: string = 'Select task catagory';
-  catColor: string = '';
-  newCategory: boolean = false;
+  catColor: any = '';
+  showNewCategory: boolean = false;
+  showAssignedTo: boolean = false;
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
+  newCategory: Category = new Category(this.categoryName);
   
 
 
@@ -40,10 +45,11 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.catText = this.catStartText
+    this.catText = this.catStartText;
     this.checkMaxWidth(1100);
 
     this.loadCategorys();
+    this.loadContacts();
   }
 
 
@@ -55,6 +61,13 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.afs.collection('categorys').valueChanges().subscribe((changes) => {
       this.allCategorys = changes;
       console.log(this.allCategorys);
+    });
+  }
+
+  loadContacts() {
+    this.afs.collection('contacts').valueChanges().subscribe((changes) => {
+      this.allContacts = changes;
+      console.log(this.allContacts);
     });
   }
 
@@ -79,39 +92,33 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
   createCategory() {
-    console.log('Neue Kategorie');
-    this.newCategory = true;
+   
+    this.showNewCategory = true;
     this.categoryName = '';
     this.catColor = '';
   }
 
   saveCategory() {
-    console.log('Name:', this.categoryName);
-    console.log('Farbe:', this.catColor);
-
+    this.newCategory = new Category(this.categoryName, this.catColor);
     this.afs
       .collection('categorys')
       .add(
-        {
-          'name': this.categoryName,
-          'color': this.catColor
-        }
+        this.newCategory.toJson()
       ).then(() => {
+        this.catColor = this.newCategory.color;
         this.catText = this.categoryName;
         this.showCategorys = !this.showCategorys;
-  
-        this.newCategory = false;
+        this.showNewCategory = false;
       });
+  
   }
 
 
-  toggleCategorys() {
-    this.showCategorys = !this.showCategorys;
-  }
+ 
 
   cancel() {
     this.showCategorys = !this.showCategorys;
-    this.newCategory = false;
+    this.showNewCategory = false;
     this.catColor = '';
     this.catText = this.catStartText;
     this.catColor = '';
