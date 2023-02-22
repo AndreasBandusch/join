@@ -22,7 +22,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   allContacts: any[] = [];
   selectedCategory: string = '';
   catText: string = '';
-  assignedTotext = 'select Contacts to assign'
+  assignedTotext = 'Select Contacts to assign'
   catStartText: string = 'Select task catagory';
   catColor: any = '';
   showNewCategory: boolean = false;
