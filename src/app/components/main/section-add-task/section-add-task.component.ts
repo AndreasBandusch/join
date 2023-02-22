@@ -25,7 +25,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   newCategory: boolean = false;
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
-  // currentCatColor: string = '';
+  
 
 
   @HostListener('window:resize')
@@ -82,6 +82,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     console.log('Neue Kategorie');
     this.newCategory = true;
     this.categoryName = '';
+    this.catColor = '';
   }
 
   saveCategory() {

@@ -12,7 +12,6 @@ export class Contact {
         email: string,
         phone?: string,
     ) {
-
         this.email = email.trim().toLocaleLowerCase();
         this.phone = phone;
         this.transformName(fullName);
@@ -64,12 +63,6 @@ export class Contact {
         
            
                 this.color = colors[Math.floor(Math.random() * colors.length)];
-           
-              
-         
-
-        
-
     }
 
     public toJSON(): object {
