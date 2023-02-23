@@ -17,10 +17,12 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   dueDate: number = 0;
   prio: string = '';
   subTasks: string[] = [];
-  selectedContacts: any[] = [];
   showCategorys: boolean = false;
+  isActive = true;
   allCategorys: any[] = [];
   allContacts: any[] = [];
+  selectedContacts: any[] = [];
+  assignedContactIdsForTask: any[] = [];
   selectedCategory: string = '';
   catText: string = '';
   assignedTotext = 'Select Contacts to assign'
@@ -31,7 +33,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
-  test: any[] = [];
+ 
 
 
 
@@ -119,9 +121,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   }
 
-
-
-
   cancel() {
     this.showCategorys = !this.showCategorys;
     this.showNewCategory = false;
@@ -132,16 +131,12 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
   updateSelectedContacts() {
-    this.test = [];
+    this.assignedContactIdsForTask = [];
     for (let key in this.selectedContacts) {
       if (this.selectedContacts[key]) {
-        this.test.push(key);
+        this.assignedContactIdsForTask.push(key);
       }
     }
-    console.log(this.test);
-
-
-
+    console.log(this.assignedContactIdsForTask);
   }
-
 }
