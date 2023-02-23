@@ -139,4 +139,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     }
     console.log(this.assignedContactIdsForTask);
   }
+
+  test() {
+    console.log('From send');
+  }
 }

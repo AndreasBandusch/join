@@ -4,7 +4,7 @@
             <div class="content-header-mobile">Kanban Project Management Tool</div>
             <h1 class="title">Add Task</h1>
         </div>
-        <form class="content-body">
+        <form class="content-body" (ngSubmit)="test()">
             <div class="content-left">
                 <div class="field-group">
                     <span>Title</span>
@@ -141,7 +141,7 @@
                     </div>
                 </div>
                 <div *ngIf="!control.showAddTaskBotton" class="btn-cont">
-                    <button class="secondary-btn">
+                    <button class="secondary-btn" type="reset" (click)="showCategorys = false; showNewCategory = false">
                         Clear <span>x</span>
                     </button>
                     <button type="submit" type="submit" class="primary-btn">
