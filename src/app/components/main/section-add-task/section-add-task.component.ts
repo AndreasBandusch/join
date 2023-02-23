@@ -9,6 +9,7 @@ import { Category } from 'src/app/models/category.model';
   styleUrls: ['./section-add-task.component.scss']
 })
 export class SectionAddTaskComponent implements OnInit, OnDestroy {
+
   id: number = 0;
   title: string = '';
   description: string = '';
@@ -18,7 +19,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   prio: string = '';
   subTasks: string[] = [];
   showCategorys: boolean = false;
-  isActive = true;
+  activePrio: string = '';
   allCategorys: any[] = [];
   allContacts: any[] = [];
   selectedContacts: any[] = [];

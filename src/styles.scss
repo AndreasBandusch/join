@@ -175,11 +175,13 @@ a:hover {
 }
 
 .medium-color {
-    background-color: #FFA800;
+    background-color: #FFA800 !important;
+    color: white;
 }
 
 .low-color {
-    background-color: #7AE229;
+    background-color: #7AE229 !important;
+    color: white;
 }
 
 

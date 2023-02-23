@@ -115,15 +115,15 @@
                 <div class="field-group">
                     <span>Prio</span>
                     <div class="prio-cont">
-                        <div class="prio urgent" [class.urgent-color]="isActive">
+                        <div class="prio urgent" [class.urgent-color]="activePrio === 'urgent'" (click)="activePrio = 'urgent'">
                             Urgent
                             <img src="assets/img/icons/add-task-urgent.png">
                         </div>
-                        <div class="prio medium">
+                        <div class="prio medium" [class.medium-color]="activePrio === 'medium'" (click)="activePrio = 'medium'">
                             Medium
                             <img src="assets/img/icons/add-task-medium.png">
                         </div>
-                        <div class="prio low">
+                        <div class="prio low" [class.low-color]="activePrio === 'low'" (click)="activePrio = 'low'">
                             Low
                             <img src="assets/img/icons/add-task-low.png">
                         </div>
