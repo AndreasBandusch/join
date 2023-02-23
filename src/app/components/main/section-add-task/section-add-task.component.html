@@ -84,7 +84,15 @@
                         </div>
                         <ng-container *ngIf="showAssignedTo">
                             <div class="select-contacts" *ngFor="let contact of allContacts">
-                                <div class="item">{{contact.firstName}} {{contact.lastName}}</div>
+                                <div class="contact">
+                                    <label class="contact" for="{{contact.id}}">{{contact.firstName}} {{contact.lastName}}
+                                    <input  type="checkbox" id="{{contact.id}}"
+                                        name="{{contact.id}}"
+                                        value="{{contact.firstName}} {{contact.lastName}}"
+                                        [(ngModel)]="selectedContacts[contact.id]"
+                                        (ngModelChange)="updateSelectedContacts()">
+                                    </label>
+                                </div>
                             </div>
                         </ng-container>
                     </div>

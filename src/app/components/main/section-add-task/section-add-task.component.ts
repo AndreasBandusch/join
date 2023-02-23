@@ -17,6 +17,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   dueDate: number = 0;
   prio: string = '';
   subTasks: string[] = [];
+  selectedContacts: any[] = [];
   showCategorys: boolean = false;
   allCategorys: any[] = [];
   allContacts: any[] = [];
@@ -30,7 +31,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
-  
+  test: any[] = [];
+
 
 
   @HostListener('window:resize')
@@ -50,6 +52,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
     this.loadCategorys();
     this.loadContacts();
+
+
   }
 
 
@@ -67,8 +71,10 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   loadContacts() {
     this.afs.collection('contacts').valueChanges().subscribe((changes) => {
       this.allContacts = changes;
-      console.log(this.allContacts);
+
     });
+
+
   }
 
   checkMaxWidth(maxWidth: number) {
@@ -92,7 +98,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
   createCategory() {
-   
+
     this.showNewCategory = true;
     this.categoryName = '';
     this.catColor = '';
@@ -110,11 +116,11 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
         this.showCategorys = !this.showCategorys;
         this.showNewCategory = false;
       });
-  
+
   }
 
 
- 
+
 
   cancel() {
     this.showCategorys = !this.showCategorys;
@@ -125,5 +131,17 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.categoryName = '';
   }
 
+  updateSelectedContacts() {
+    this.test = [];
+    for (let key in this.selectedContacts) {
+      if (this.selectedContacts[key]) {
+        this.test.push(key);
+      }
+    }
+    console.log(this.test);
+
+
+
+  }
 
 }
