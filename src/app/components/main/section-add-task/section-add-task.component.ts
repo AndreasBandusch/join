@@ -166,8 +166,24 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
       this.description, 
       this.selectedCategory, 
       this.assignedContactIdsForTask, 
-      this.dueDate, this.activePrio);
+      this.dueDate, 
+      this.activePrio);
 
       console.log('New Task:', newTask);
+  }
+
+  resetForm() {
+    this.description = '';
+    this.selectedCategory = '';
+    this.selectedContacts = [];
+    this.dueDate = 0;
+    this.activePrio = '';
+    this.showCategorys = false;
+    this.showSubtask = false;
+    this.title = '';
+    this.catText = this.catStartText;
+    this.catColor = '';
+    this.allSubtasks = [];
+    this.showAssignedTo = false;
   }
 }

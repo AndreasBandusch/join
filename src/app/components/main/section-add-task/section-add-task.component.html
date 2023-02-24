@@ -165,7 +165,7 @@
 
                 </div>
                 <div *ngIf="!control.showAddTaskBotton" class="btn-cont">
-                    <button class="secondary-btn" type="reset" (click)="showCategorys = false; showNewCategory = false">
+                    <button class="secondary-btn" (click)="showCategorys = false; showNewCategory = false" (click)="resetForm()">
                         Clear <span>x</span>
                     </button>
                     <button type="submit" class="primary-btn" (click)="createTask()">
