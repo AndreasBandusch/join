@@ -117,15 +117,18 @@
                     <div class="prio-cont">
                         <div class="prio urgent" [class.urgent-color]="activePrio === 'urgent'" (click)="activePrio = 'urgent'">
                             Urgent
-                            <img src="assets/img/icons/add-task-urgent.png">
+                            <img *ngIf="activePrio !== 'urgent'" src="assets/img/icons/add-task-urgent.png">
+                            <img *ngIf="activePrio === 'urgent'" src="assets/img/icons/add-task-urgent-white.png">
                         </div>
                         <div class="prio medium" [class.medium-color]="activePrio === 'medium'" (click)="activePrio = 'medium'">
                             Medium
-                            <img src="assets/img/icons/add-task-medium.png">
+                            <img *ngIf="activePrio !== 'medium'" src="assets/img/icons/add-task-medium.png">
+                            <img *ngIf="activePrio === 'medium'" src="assets/img/icons/add-task-medium-white.png">
                         </div>
                         <div class="prio low" [class.low-color]="activePrio === 'low'" (click)="activePrio = 'low'">
                             Low
-                            <img src="assets/img/icons/add-task-low.png">
+                            <img *ngIf="activePrio !== 'low'" src="assets/img/icons/add-task-low.png">
+                            <img *ngIf="activePrio === 'low'" src="assets/img/icons/add-task-low-white.png">
                         </div>
                     </div>
                 </div>

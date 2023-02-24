@@ -66,10 +66,16 @@
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     width: 30%;
+    transition: all 75ms ease-in-out;
 
     img {
         margin-left: 16px;
         width: 20px;
+    }
+
+    &:hover {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        transition: all 75ms ease-in-out;
     }
 }
 
@@ -98,6 +104,8 @@
     height: 90px;
     gap: 32px;
 }
+
+
 
 .dropdown {
     display: flex;
@@ -229,6 +237,23 @@
 
 .color-active {
     transform: scale(1.2);
+}
+
+.urgent-color, .medium-color, .low-color {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+.urgent-color {
+    background-color: #FF3D00 !important;   
+}
+
+.medium-color {
+    background-color: #FFA800 !important;
+}
+
+.low-color {
+    background-color: #7AE229 !important;
 }
 
 
