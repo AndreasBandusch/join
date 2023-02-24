@@ -15,7 +15,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   id: number = 0;
   title: string = '';
   description: string = '';
-  category: string = '';
+  // category: string = '';
   assignedTo: number[] = [];
   dueDate: number = 0;
   // prio: string = '';
@@ -121,6 +121,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
         this.catText = this.categoryName;
         this.showCategorys = !this.showCategorys;
         this.showNewCategory = false;
+        this.selectedCategory = this.categoryName;
       });
 
   }
@@ -163,7 +164,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   createTask() {
     let newTask = new Task(this.title, 
       this.description, 
-      this.category, 
+      this.selectedCategory, 
       this.assignedContactIdsForTask, 
       this.dueDate, this.activePrio);
 
