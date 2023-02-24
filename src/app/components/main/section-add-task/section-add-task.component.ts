@@ -170,6 +170,9 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
       this.activePrio);
 
       console.log('New Task:', newTask);
+
+      this.resetForm();
+      this.control.getMessage('Test');
   }
 
   resetForm() {
