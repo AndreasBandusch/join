@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { ControlService } from 'src/app/services/control.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Category } from 'src/app/models/category.model';
@@ -10,6 +10,7 @@ import { Category } from 'src/app/models/category.model';
 })
 export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
+  @ViewChild('addSubtask') inputField: ElementRef = new ElementRef(null);
   id: number = 0;
   title: string = '';
   description: string = '';
@@ -31,6 +32,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   catColor: any = '';
   showNewCategory: boolean = false;
   showAssignedTo: boolean = false;
+  showSubtask: boolean = false;
+  currentSubtask: string = '';
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
@@ -55,8 +58,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
     this.loadCategorys();
     this.loadContacts();
-
-
   }
 
 
@@ -143,5 +144,10 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   test() {
     console.log('From send');
+  }
+
+  setFocus() {
+    this.inputField.nativeElement.focus();
+    this.showSubtask = true;
   }
 }

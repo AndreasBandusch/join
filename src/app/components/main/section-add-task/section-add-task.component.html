@@ -85,12 +85,12 @@
                         <ng-container *ngIf="showAssignedTo">
                             <div class="select-contacts" *ngFor="let contact of allContacts">
                                 <div class="contact">
-                                    <label class="contact" for="{{contact.id}}">{{contact.firstName}} {{contact.lastName}}
-                                    <input  type="checkbox" id="{{contact.id}}"
-                                        name="{{contact.id}}"
-                                        value="{{contact.firstName}} {{contact.lastName}}"
-                                        [(ngModel)]="selectedContacts[contact.id]"
-                                        (ngModelChange)="updateSelectedContacts()">
+                                    <label class="contact" for="{{contact.id}}">{{contact.firstName}}
+                                        {{contact.lastName}}
+                                        <input type="checkbox" id="{{contact.id}}" name="{{contact.id}}"
+                                            value="{{contact.firstName}} {{contact.lastName}}"
+                                            [(ngModel)]="selectedContacts[contact.id]"
+                                            (ngModelChange)="updateSelectedContacts()">
                                     </label>
                                 </div>
                             </div>
@@ -115,12 +115,14 @@
                 <div class="field-group">
                     <span>Prio</span>
                     <div class="prio-cont">
-                        <div class="prio urgent" [class.urgent-color]="activePrio === 'urgent'" (click)="activePrio = 'urgent'">
+                        <div class="prio urgent" [class.urgent-color]="activePrio === 'urgent'"
+                            (click)="activePrio = 'urgent'">
                             Urgent
                             <img *ngIf="activePrio !== 'urgent'" src="assets/img/icons/add-task-urgent.png">
                             <img *ngIf="activePrio === 'urgent'" src="assets/img/icons/add-task-urgent-white.png">
                         </div>
-                        <div class="prio medium" [class.medium-color]="activePrio === 'medium'" (click)="activePrio = 'medium'">
+                        <div class="prio medium" [class.medium-color]="activePrio === 'medium'"
+                            (click)="activePrio = 'medium'">
                             Medium
                             <img *ngIf="activePrio !== 'medium'" src="assets/img/icons/add-task-medium.png">
                             <img *ngIf="activePrio === 'medium'" src="assets/img/icons/add-task-medium-white.png">
@@ -134,12 +136,21 @@
                 </div>
                 <div class="field-group">
                     <span>Subtasks</span>
-                    <div class="dropdown">
-                        <div class="select-menu">
-                            <div class="cat-header">
-                                <span>Select contacts to assign</span>
-                            </div>
-                            <div class="icon"><img class="arrow" src="assets/img/icons/menu-arrow-down.png"></div>
+                    <div class="input-field">
+                        <div class="field">
+                            <input #addSubtask name="subtask" type="text" placeholder="Add new subtask" [(ngModel)]="currentSubtask">
+                        </div>
+                        <div class="icon">
+                            <img *ngIf="!currentSubtask && !showSubtask" src="assets/img/icons/add-subtask-icon.png" class="add-subtask" (click)="setFocus()">
+                            <ng-container *ngIf="currentSubtask || showSubtask">
+                                <div class="left-icon">
+                                    <img src="assets/img/icons/cancel-icon-black.png" (click)="currentSubtask = ''; showSubtask = false">
+                                </div>
+                                <div class="right-icon">
+                                    <img src="assets/img/icons/check-icon-black.png">
+                                </div>
+                            </ng-container>
+
                         </div>
                     </div>
                 </div>
