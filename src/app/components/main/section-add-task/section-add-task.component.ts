@@ -23,6 +23,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   activePrio: string = '';
   allCategorys: any[] = [];
   allContacts: any[] = [];
+  allSubtasks: any[] = [];
   selectedContacts: any[] = [];
   assignedContactIdsForTask: any[] = [];
   selectedCategory: string = '';
@@ -149,5 +150,12 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   setFocus() {
     this.inputField.nativeElement.focus();
     this.showSubtask = true;
+  }
+
+  createSubtask() {
+    this.allSubtasks.push({name: this.currentSubtask});
+    console.log('All subtasks: ', this.allSubtasks);
+    this.currentSubtask = '';
+    this.showSubtask = false;
   }
 }

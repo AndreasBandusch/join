@@ -147,12 +147,15 @@
                                     <img src="assets/img/icons/cancel-icon-black.png" (click)="currentSubtask = ''; showSubtask = false">
                                 </div>
                                 <div class="right-icon">
-                                    <img src="assets/img/icons/check-icon-black.png">
+                                    <img src="assets/img/icons/check-icon-black.png" (click)="createSubtask()">
                                 </div>
                             </ng-container>
 
                         </div>
                     </div>
+                    <div *ngFor="let subtasks of allSubtasks">
+                        <span>{{subtasks.name}}</span>
+                     </div>
                 </div>
                 <div *ngIf="!control.showAddTaskBotton" class="btn-cont">
                     <button class="secondary-btn" type="reset" (click)="showCategorys = false; showNewCategory = false">
