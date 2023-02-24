@@ -107,7 +107,7 @@
                     <span>Due Date</span>
                     <div class="input-field">
                         <div class="field">
-                            <input name="date" type="date">
+                            <input name="date" type="date" [(ngModel)]="dueDate">
                         </div>
                     </div>
                 </div>
@@ -138,13 +138,16 @@
                     <span>Subtasks</span>
                     <div class="input-field">
                         <div class="field">
-                            <input #addSubtask name="subtask" type="text" placeholder="Add new subtask" [(ngModel)]="currentSubtask">
+                            <input #addSubtask name="subtask" type="text" placeholder="Add new subtask"
+                                [(ngModel)]="currentSubtask">
                         </div>
                         <div class="icon">
-                            <img *ngIf="!currentSubtask && !showSubtask" src="assets/img/icons/add-subtask-icon.png" class="add-subtask" (click)="setFocus()">
+                            <img *ngIf="!currentSubtask && !showSubtask" src="assets/img/icons/add-subtask-icon.png"
+                                class="add-subtask" (click)="setFocus()">
                             <ng-container *ngIf="currentSubtask || showSubtask">
                                 <div class="left-icon">
-                                    <img src="assets/img/icons/cancel-icon-black.png" (click)="currentSubtask = ''; showSubtask = false">
+                                    <img src="assets/img/icons/cancel-icon-black.png"
+                                        (click)="currentSubtask = ''; showSubtask = false">
                                 </div>
                                 <div class="right-icon">
                                     <img src="assets/img/icons/check-icon-black.png" (click)="createSubtask()">
@@ -153,15 +156,19 @@
 
                         </div>
                     </div>
-                    <div *ngFor="let subtasks of allSubtasks">
-                        <span>{{subtasks.name}}</span>
-                     </div>
+
+                    <div *ngIf="allSubtasks.length > 0" class="subtasks-area">
+                        <div *ngFor="let subtasks of allSubtasks">
+                            <span>{{subtasks.name}}</span>
+                        </div>
+                    </div>
+
                 </div>
                 <div *ngIf="!control.showAddTaskBotton" class="btn-cont">
                     <button class="secondary-btn" type="reset" (click)="showCategorys = false; showNewCategory = false">
                         Clear <span>x</span>
                     </button>
-                    <button type="submit" type="submit" class="primary-btn">
+                    <button type="submit" class="primary-btn" (click)="createTask()">
                         Create Task
                         <img src="assets/img/icons/checked-icon.png">
                     </button>

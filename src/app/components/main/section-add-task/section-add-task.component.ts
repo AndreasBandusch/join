@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit, OnDestroy, ElementRef, ViewChild } fro
 import { ControlService } from 'src/app/services/control.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Category } from 'src/app/models/category.model';
+import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-section-add-task',
@@ -17,7 +18,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   category: string = '';
   assignedTo: number[] = [];
   dueDate: number = 0;
-  prio: string = '';
+  // prio: string = '';
   subTasks: string[] = [];
   showCategorys: boolean = false;
   activePrio: string = '';
@@ -157,5 +158,15 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     console.log('All subtasks: ', this.allSubtasks);
     this.currentSubtask = '';
     this.showSubtask = false;
+  }
+
+  createTask() {
+    let newTask = new Task(this.title, 
+      this.description, 
+      this.category, 
+      this.assignedContactIdsForTask, 
+      this.dueDate, this.activePrio);
+
+      console.log('New Task:', newTask);
   }
 }
