@@ -265,6 +265,12 @@
     font-size: 16px;
 }
 
+.subtask {
+    display: flex;
+    gap: 16px;
+    margin-top: 4px;
+}
+
 
 
 @media (max-width: 1440px) {

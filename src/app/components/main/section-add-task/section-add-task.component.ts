@@ -21,26 +21,26 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   // prio: string = '';
   subTasks: string[] = [];
   showCategorys: boolean = false;
-  activePrio: string = '';
+  showNewCategory: boolean = false;
+  showAssignedTo: boolean = false;
+  showSubtask: boolean = false;
   allCategorys: any[] = [];
   allContacts: any[] = [];
   allSubtasks: any[] = [];
   selectedContacts: any[] = [];
   assignedContactIdsForTask: any[] = [];
-  selectedCategory: string = '';
-  catText: string = '';
+  assignedSubtasks: any[] = [];
   assignedTotext = 'Select Contacts to assign'
   catStartText: string = 'Select task catagory';
+  activePrio: string = '';
+  selectedCategory: string = '';
+  catText: string = '';
   catColor: any = '';
-  showNewCategory: boolean = false;
-  showAssignedTo: boolean = false;
-  showSubtask: boolean = false;
   currentSubtask: string = '';
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
- 
-
+  selectedSubtasks: any[] = [];
 
 
   @HostListener('window:resize')
@@ -70,7 +70,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   loadCategorys() {
     this.afs.collection('categorys').valueChanges().subscribe((changes) => {
       this.allCategorys = changes;
-      console.log(this.allCategorys);
     });
   }
 
@@ -142,12 +141,19 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
         this.assignedContactIdsForTask.push(key);
       }
     }
-    console.log(this.assignedContactIdsForTask);
   }
 
-  test() {
-    console.log('From send');
+  updateAssignedSubtasks() {
+    this.assignedSubtasks = [];
+    for (let key in this.selectedSubtasks) {
+      if (this.selectedSubtasks[key]) {
+        this.assignedSubtasks.push({ name: key, done: false });
+      }
+    }
+    console.log('Assigned subtasks: ', this.assignedSubtasks);
   }
+
+
 
   setFocus() {
     this.inputField.nativeElement.focus();
@@ -155,24 +161,34 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
   createSubtask() {
-    this.allSubtasks.push({name: this.currentSubtask});
+    this.selectedSubtasks = [];
+    this.allSubtasks.push({ name: this.currentSubtask });
     console.log('All subtasks: ', this.allSubtasks);
     this.currentSubtask = '';
     this.showSubtask = false;
   }
 
   createTask() {
-    let newTask = new Task(this.title, 
-      this.description, 
-      this.selectedCategory, 
-      this.assignedContactIdsForTask, 
-      this.dueDate, 
-      this.activePrio);
 
-      console.log('New Task:', newTask);
+    console.log('Assigned subtasks: ', this.assignedSubtasks);
+    let newTask = new Task(this.title,
+      this.description,
+      this.selectedCategory,
+      this.assignedContactIdsForTask,
+      this.dueDate,
+      this.activePrio,
+      this.assignedSubtasks);
 
-      this.resetForm();
-      this.control.getMessage('Test');
+    console.log('New Task:', newTask);
+    this.saveTask();
+    this.resetForm();
+
+    this.control.getMessage('Test');
+  }
+
+
+  saveTask() {
+    console.log('Task saved!');
   }
 
   resetForm() {
@@ -188,5 +204,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.catColor = '';
     this.allSubtasks = [];
     this.showAssignedTo = false;
+    this.selectedSubtasks = [];
   }
 }

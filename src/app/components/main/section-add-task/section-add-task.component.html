@@ -4,7 +4,7 @@
             <div class="content-header-mobile">Kanban Project Management Tool</div>
             <h1 class="title">Add Task</h1>
         </div>
-        <form class="content-body" (ngSubmit)="test()">
+        <form class="content-body">
             <div class="content-left">
                 <div class="field-group">
                     <span>Title</span>
@@ -73,7 +73,6 @@
                 </div>
                 <div class="field-group">
                     <span>Assigned to</span>
-
                     <div class="dropdown">
                         <div class="select-menu">
                             <div class="cat-header">
@@ -158,8 +157,11 @@
                     </div>
 
                     <div *ngIf="allSubtasks.length > 0" class="subtasks-area">
-                        <div *ngFor="let subtasks of allSubtasks">
-                            <span>{{subtasks.name}}</span>
+                        <div *ngFor="let subtask of allSubtasks; index as i;">
+                            <label for="subtask-{{+ i}}" class="subtask">
+                                <input type="checkbox" id="subtask-{{+ i}}" name="{{subtask.name}}" [(ngModel)]="selectedSubtasks[subtask.name]" (ngModelChange)="updateAssignedSubtasks()"> 
+                                <span>{{subtask.name}}</span>
+                            </label>
                         </div>
                     </div>
 
