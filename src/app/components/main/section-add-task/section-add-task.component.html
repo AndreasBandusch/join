@@ -108,7 +108,7 @@
                     <span>Due Date</span>
                     <div class="input-field">
                         <div class="field">
-                            <input name="date" type="date" [(ngModel)]="dueDate">
+                            <input name="date" type="date" [(ngModel)]="dueDate" (ngModelChange)="getTimestamp()">
                         </div>
                     </div>
                 </div>

@@ -16,7 +16,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   title: string = '';
   description: string = '';
   assignedTo: number[] = [];
-  dueDate: number = 0;
+  dueDate: string = '';
+  dueDateTimestamp: number = 0;
   showCategorys: boolean = false;
   showNewCategory: boolean = false;
   showAssignedTo: boolean = false;
@@ -38,8 +39,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
   selectedSubtasks: any[] = [];
-
-
+  
   @HostListener('window:resize')
   onResize() {
     this.checkMaxWidth(1100);
@@ -54,7 +54,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.catText = this.catStartText;
     this.checkMaxWidth(1100);
-
     this.loadCategorys();
     this.loadContacts();
   }
@@ -99,12 +98,13 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   }
 
-  createCategory() {
 
+  createCategory() {
     this.showNewCategory = true;
     this.categoryName = '';
     this.catColor = '';
   }
+
 
   saveCategory() {
     this.newCategory = new Category(this.categoryName, this.catColor);
@@ -170,7 +170,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
       this.description,
       this.selectedCategory,
       this.assignedContactIdsForTask,
-      this.dueDate,
+      this.dueDateTimestamp,
       this.activePrio,
       this.assignedSubtasks);
 
@@ -195,7 +195,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.description = '';
     this.selectedCategory = '';
     this.selectedContacts = [];
-    this.dueDate = 0;
+    this.dueDate = '';
     this.activePrio = '';
     this.showCategorys = false;
     this.showSubtask = false;
@@ -209,7 +209,13 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.assignedContactIdsForTask = [];
   }
 
+
   test() {
     this.control.addContactDialogOpen = true;
+  }
+
+
+  getTimestamp() {
+    this.dueDateTimestamp = new Date(this.dueDate).getTime();
   }
 }
