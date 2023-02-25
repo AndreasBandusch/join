@@ -15,11 +15,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   id: number = 0;
   title: string = '';
   description: string = '';
-  // category: string = '';
   assignedTo: number[] = [];
   dueDate: number = 0;
-  // prio: string = '';
-  subTasks: string[] = [];
   showCategorys: boolean = false;
   showNewCategory: boolean = false;
   showAssignedTo: boolean = false;
@@ -146,7 +143,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   updateAssignedSubtasks() {
     this.assignedSubtasks = [];
     for (let key in this.selectedSubtasks) {
-      if (this.selectedSubtasks[key]) {
+      if (this.selectedSubtasks[key] && !this.assignedContactIdsForTask.includes(key)) {
         this.assignedSubtasks.push({ name: key, done: false });
       }
     }
@@ -161,7 +158,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
   createSubtask() {
-    this.selectedSubtasks = [];
+    // this.selectedSubtasks = [];
     this.allSubtasks.push({ name: this.currentSubtask });
     console.log('All subtasks: ', this.allSubtasks);
     this.currentSubtask = '';
@@ -169,8 +166,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
   createTask() {
-
-    console.log('Assigned subtasks: ', this.assignedSubtasks);
     let newTask = new Task(this.title,
       this.description,
       this.selectedCategory,
@@ -205,5 +200,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.allSubtasks = [];
     this.showAssignedTo = false;
     this.selectedSubtasks = [];
+    this.assignedSubtasks = [];
+    this.assignedContactIdsForTask = [];
   }
 }
