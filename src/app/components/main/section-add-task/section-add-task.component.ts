@@ -203,4 +203,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.assignedSubtasks = [];
     this.assignedContactIdsForTask = [];
   }
+
+  test() {
+    this.control.addContactDialogOpen = true;
+  }
 }

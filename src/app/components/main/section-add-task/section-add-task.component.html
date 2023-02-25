@@ -82,7 +82,7 @@
                                     src="assets/img/icons/menu-arrow-down.png"></div>
                         </div>
                         <ng-container *ngIf="showAssignedTo">
-                            <div class="select-contacts" *ngFor="let contact of allContacts">
+                            <div *ngFor="let contact of allContacts" class="select-contacts">
                                 <div class="contact">
                                     <label class="contact" for="{{contact.id}}">{{contact.firstName}}
                                         {{contact.lastName}}
@@ -93,7 +93,9 @@
                                     </label>
                                 </div>
                             </div>
+                            <span class="item" (click)="test()">Add new Contact</span>
                         </ng-container>
+                        
                     </div>
 
                 </div>
