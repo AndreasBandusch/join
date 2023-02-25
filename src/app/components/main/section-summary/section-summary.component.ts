@@ -23,8 +23,6 @@ export class SectionSummaryComponent implements OnInit {
       this.allTasks = changes;
       this.getSummaryNumbers();
     });
-
-
   }
 
 
@@ -33,7 +31,7 @@ export class SectionSummaryComponent implements OnInit {
     this.taskInBoard = this.allTasks.length;
     this.allTasks.forEach(task => {
       this.getNumberOfUrgentTasks(task);
-      this.getNumbersOfTaskStatus(task.status);
+      this.setNumbersOfTaskStatus(task.status);
     });
   }
 
@@ -54,7 +52,7 @@ export class SectionSummaryComponent implements OnInit {
   }
 
 
-  getNumbersOfTaskStatus(taskStatus: any): void {
+  setNumbersOfTaskStatus(taskStatus: any): void {
     switch (taskStatus) {
       case 'todo':
         this.todo++;
