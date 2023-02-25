@@ -12,15 +12,15 @@
             <div class="overview">
                 <div class="row">
                     <div class="cont sum-cont">
-                        <span class="sum-number">5</span>
+                        <span class="sum-number">{{taskInBoard}}</span>
                         <span class="sum-name">Tasks in <br> Board</span>
                     </div>
                     <div class="cont sum-cont">
-                        <span class="sum-number">2</span>
+                        <span class="sum-number">{{taskInProgress}}</span>
                         <span class="sum-name">Tasks in <br> Progress</span>
                     </div>
                     <div class="cont sum-cont">
-                        <span class="sum-number">2</span>
+                        <span class="sum-number">{{awaitingFeedback}}</span>
                         <span class="sum-name">Awaiting <br> Feedback</span>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <div class="urgent">
                             <img src="assets/img/icons/urgent-high-icon.png">
                             <div class="urgent-inner">
-                                <span class="urgent-number">1</span>
+                                <span class="urgent-number">{{urgent}}</span>
                                 <span class="urgent-text">Urgent</span>
                             </div>
                         </div>
@@ -43,14 +43,14 @@
                     <div class="cont todo-cont">
                         <img src="assets/img/icons/edit-icon.png">
                         <div class="todo-inner">
-                            <span class="todo-number">1</span>
+                            <span class="todo-number">{{todo}}</span>
                             <span class="todo-text">To-do</span>
                         </div>
                     </div>
                     <div class="cont todo-cont">
                         <img src="assets/img/icons/done-icon.png">
                         <div class="todo-inner">
-                            <span class="todo-number">1</span>
+                            <span class="todo-number">{{done}}</span>
                             <span class="todo-text">Done</span>
                         </div>
                     </div>

@@ -8,16 +8,16 @@ export class Task {
     public prio: string = '';
     public subTasks?: string[] = [];
     public status: string = 'todo';
-   
+
     constructor(
-        title: string, 
+        title: string,
         description: string,
         category: string,
         assignedTo: number[],
         dueDate: number,
         prio: string,
         subTasks?: string[]
-    ){
+    ) {
         this.createId();
         this.title = title;
         this.description = description;
@@ -36,5 +36,19 @@ export class Task {
 
     private createId(): void {
         this.id = Date.now();
+    }
+
+    public toJSON() {
+        return {
+            id: this.id,
+            title: this.title,
+            description: this.description,
+            category: this.category,
+            assignedTo: this.assignedTo,
+            dueDate: this.dueDate,
+            prio: this.prio,
+            subTasks: this.subTasks,
+            status: this.status
+        }
     }
 }

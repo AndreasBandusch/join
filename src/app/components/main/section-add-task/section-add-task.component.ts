@@ -175,16 +175,21 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
       this.assignedSubtasks);
 
     console.log('New Task:', newTask);
-    this.saveTask();
+    this.saveTask(newTask);
     this.resetForm();
 
-    this.control.getMessage('Test');
   }
 
 
-  saveTask() {
-    console.log('Task saved!');
-  }
+  
+    saveTask(newTask: any) {
+      this.afs
+        .collection('tasks')
+        .add(newTask.toJSON()).then(() => {
+          this.control.getMessage('Test');
+        });
+    }
+  
 
   resetForm() {
     this.description = '';
