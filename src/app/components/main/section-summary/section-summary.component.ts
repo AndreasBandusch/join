@@ -14,6 +14,8 @@ export class SectionSummaryComponent implements OnInit {
   urgent: number = 0;
   todo: number = 0;
   done: number = 0;
+  dueDate: number = 0;
+  dueDateOutput: string = 'No tasks available';
 
   constructor(private afs: AngularFirestore) { }
 
@@ -32,6 +34,9 @@ export class SectionSummaryComponent implements OnInit {
     this.allTasks.forEach(task => {
       this.getNumberOfUrgentTasks(task);
       this.setNumbersOfTaskStatus(task.status);
+      this.getDueDate(task.dueDate);
+      this.setDueDateOutput();
+      console.log(this.dueDate);
     });
   }
 
@@ -42,6 +47,7 @@ export class SectionSummaryComponent implements OnInit {
     this.taskInProgress = 0;
     this.done = 0;
     this.awaitingFeedback = 0;
+    this.dueDate = 0;
   }
 
 
@@ -67,6 +73,21 @@ export class SectionSummaryComponent implements OnInit {
         this.done++;
         break;
     }
+  }
+
+
+  getDueDate(currentDate: number): void {
+    if (this.dueDate === 0 || (currentDate < this.dueDate)) {
+      this.dueDate = currentDate;
+    }
+  }
+
+
+  setDueDateOutput() {
+    let date = new Date(this.dueDate);
+    this.dueDateOutput = date.toLocaleString('en-EN', { month: 'long' })
+      + ' ' + date.getDate() + ', '
+      + date.getFullYear();
   }
 }
 
