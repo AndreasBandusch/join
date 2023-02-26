@@ -86,7 +86,7 @@ export class SectionSummaryComponent implements OnInit {
   setDueDateOutput() {
     let date = new Date(this.dueDate);
     this.dueDateOutput = date.toLocaleString('en-EN', { month: 'long' })
-      + ' ' + date.getDate() + ', '
+      + ' ' + date.toLocaleString('en-US', { day: '2-digit' }) + ', '
       + date.getFullYear();
   }
 }
