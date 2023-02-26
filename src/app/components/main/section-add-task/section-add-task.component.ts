@@ -39,7 +39,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
   selectedSubtasks: any[] = [];
-  
+
   @HostListener('window:resize')
   onResize() {
     this.checkMaxWidth(1100);
@@ -174,22 +174,24 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
       this.activePrio,
       this.assignedSubtasks);
 
-    console.log('New Task:', newTask);
+
     this.saveTask(newTask);
     this.resetForm();
 
   }
 
 
-  
-    saveTask(newTask: any) {
-      this.afs
-        .collection('tasks')
-        .add(newTask.toJSON()).then(() => {
-          this.control.getMessage('Test');
-        });
-    }
-  
+
+  saveTask(newTask: any) {
+    console.log('New task: ', newTask);
+    this.control.getMessage('Task added to board', 'assets/img/icons/add-task-board-icon.png');
+    // this.afs
+    //   .collection('tasks')
+    //   .add(newTask.toJSON()).then(() => {
+    //     this.control.getMessage('Test');
+    //   });
+  }
+
 
   resetForm() {
     this.description = '';

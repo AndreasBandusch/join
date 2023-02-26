@@ -93,9 +93,14 @@
                                     </label>
                                 </div>
                             </div>
-                            <span class="item" (click)="test()">Add new Contact</span>
+                            <div>
+                                 <div class="item new-contact" (click)="test()">
+                                    <span>Add new Contact</span>
+                                    <img src="assets/img/icons/add-new-contact-icon.png">
+                                </div>
+                            </div>
                         </ng-container>
-                        
+
                     </div>
 
                 </div>
@@ -161,7 +166,9 @@
                     <div *ngIf="allSubtasks.length > 0" class="subtasks-area">
                         <div *ngFor="let subtask of allSubtasks; index as i;">
                             <label for="subtask-{{+ i}}" class="subtask">
-                                <input type="checkbox" id="subtask-{{+ i}}" name="{{subtask.name}}" [(ngModel)]="selectedSubtasks[subtask.name]" (ngModelChange)="updateAssignedSubtasks()"> 
+                                <input type="checkbox" id="subtask-{{+ i}}" name="{{subtask.name}}"
+                                    [(ngModel)]="selectedSubtasks[subtask.name]"
+                                    (ngModelChange)="updateAssignedSubtasks()">
                                 <span>{{subtask.name}}</span>
                             </label>
                         </div>
@@ -169,7 +176,8 @@
 
                 </div>
                 <div *ngIf="!control.showAddTaskBotton" class="btn-cont">
-                    <button class="secondary-btn" (click)="showCategorys = false; showNewCategory = false" (click)="resetForm()">
+                    <button class="secondary-btn" (click)="showCategorys = false; showNewCategory = false"
+                        (click)="resetForm()">
                         Clear <span>x</span>
                     </button>
                     <button type="submit" class="primary-btn" (click)="createTask()">

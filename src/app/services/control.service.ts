@@ -15,9 +15,11 @@ export class ControlService {
   editContactDialogOpen = false;
   showMessage = false;
   messageText: string = '';
+  messageImage?: string = '';
 
-  getMessage(message: string) {
+  getMessage(message: string, image?: string) {
     this.messageText = message;
+    this.messageImage = image;
     this.showMessage = true;
     setTimeout(() => {
       this.showMessage = false;

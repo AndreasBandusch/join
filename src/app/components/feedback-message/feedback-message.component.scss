@@ -18,6 +18,17 @@
     z-index: 5;
 }
 
+.message, .image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    margin-left: 32px;
+}
+
+
 
 @keyframes message-slide-in {
     0% {
