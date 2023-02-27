@@ -10,10 +10,10 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class SectionBoardComponent implements OnInit {
   allContacts: any[] = [];
   allTasks: any[] = [];
-  todo: any[] = [];
-  inProgress: any[] = [];
-  awaitingFeedback: any[] = [];
-  done: any[] = [];
+  allTodos: any[] = [];
+  allInProgress: any[] = [];
+  allAwaitingFeedback: any[] = [];
+  allDone: any[] = [];
 
   constructor(private afs: AngularFirestore) {
 
@@ -43,19 +43,19 @@ export class SectionBoardComponent implements OnInit {
     this.allTasks.forEach(task => {
       switch (task.status) {
         case 'todo':
-          this.todo.push(task);
+          this.allTodos.push(task);
           break;
 
         case 'inProgress':
-          this.inProgress.push(task);
+          this.allInProgress.push(task);
           break;
 
           case 'awaitingFeedback':
-          this.awaitingFeedback.push(task);
+          this.allAwaitingFeedback.push(task);
           break;
 
           case 'done':
-          this.done.push(task);
+          this.allDone.push(task);
           break;
       }
     })

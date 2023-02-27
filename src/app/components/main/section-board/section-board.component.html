@@ -30,11 +30,55 @@
                     <span>To do</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" id="todo" cdkDropList
-                [cdkDropListData]="todo"
-                class="example-list"
-                (cdkDropListDropped)="drop($event)">
-                    <div class="task">
+                <div class="status-content" id="todo" #todo cdkDropList [cdkDropListData]="allTodos" class="example-list"
+                    (cdkDropListDropped)="drop($event)">
+                    <div class="task" *ngFor="let item of allTodos" cdkDrag>
+                        <div class="category">
+                            {{item.category}}
+                        </div>
+                        <span class="title">{{item.title}}</span>
+                        <div class="desciption">
+                            {{item.description}}
+                        </div>
+                        <div class="progress-cont">
+                            <div class="bar">
+
+                            </div>
+
+                            <div class="progress">
+                                <span>1/2 Done</span>
+                            </div>
+                        </div>
+                        <div class="bottom-cont">
+                            <div class="assigned">
+                                <div class="contact">
+                                    AB
+                                </div>
+                                <div class="contact cont2">
+                                    MB
+                                </div>
+                                <div class="contact cont3">
+                                    DB
+                                </div>
+                            </div>
+                            <div class="prio">
+                                <img src="assets/img/icons/add-task-low.png">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="status">
+                <div class="status-header">
+                    <span>In progress</span>
+                    <img src="assets/img/icons/board-add-task-icon.png">
+                </div>
+                <div class="status-content" id="inProgress" #inProgress cdkDropList [cdkDropListData]="allInProgress"
+                    class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="task" *ngFor="let item of allInProgress" cdkDrag>
                         <div class="category">
                             Sales
                         </div>
@@ -68,18 +112,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
-                   
-                </div>
-            </div>
-            <div class="status">
-                <div class="status-header">
-                    <span>In progress</span>
-                    <img src="assets/img/icons/board-add-task-icon.png">
-                </div>
-                <div class="status-content" id="inProgress">
-                   
                 </div>
             </div>
 
@@ -88,8 +120,42 @@
                     <span>Awaiting Feedback</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" id="awaitingFeedback">
-                   
+                <div class="status-content" id="awaitingFeeback" #awaitingFeedback cdkDropList [cdkDropListData]="allAwaitingFeedback"
+                    class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="task" *ngFor="let item of allAwaitingFeedback" cdkDrag>
+                        <div class="category">
+                            Sales
+                        </div>
+                        <span class="title">Website redesign</span>
+                        <div class="desciption">
+                            Modify the contents of the main website...
+                        </div>
+                        <div class="progress-cont">
+                            <div class="bar">
+
+                            </div>
+
+                            <div class="progress">
+                                <span>1/2 Done</span>
+                            </div>
+                        </div>
+                        <div class="bottom-cont">
+                            <div class="assigned">
+                                <div class="contact">
+                                    AB
+                                </div>
+                                <div class="contact cont2">
+                                    MB
+                                </div>
+                                <div class="contact cont3">
+                                    DB
+                                </div>
+                            </div>
+                            <div class="prio">
+                                <img src="assets/img/icons/add-task-low.png">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -98,8 +164,42 @@
                     <span>Done</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" id="done">
-                    
+                <div class="status-content" id="done" #done cdkDropList [cdkDropListData]="allDone"
+                    class="example-list" (cdkDropListDropped)="drop($event)">
+                    <div class="task" *ngFor="let item of allDone" cdkDrag>
+                        <div class="category">
+                            Sales
+                        </div>
+                        <span class="title">Website redesign</span>
+                        <div class="desciption">
+                            Modify the contents of the main website...
+                        </div>
+                        <div class="progress-cont">
+                            <div class="bar">
+
+                            </div>
+
+                            <div class="progress">
+                                <span>1/2 Done</span>
+                            </div>
+                        </div>
+                        <div class="bottom-cont">
+                            <div class="assigned">
+                                <div class="contact">
+                                    AB
+                                </div>
+                                <div class="contact cont2">
+                                    MB
+                                </div>
+                                <div class="contact cont3">
+                                    DB
+                                </div>
+                            </div>
+                            <div class="prio">
+                                <img src="assets/img/icons/add-task-low.png">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
