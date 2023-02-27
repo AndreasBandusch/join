@@ -30,8 +30,11 @@
                     <span>To do</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" id="todo" #todo cdkDropList [cdkDropListData]="allTodos" class="example-list"
-                    (cdkDropListDropped)="drop($event)">
+                <div class="status-content" cdkDropList 
+                #todos="cdkDropList"  
+                [cdkDropListData]="allTodos"
+                [cdkDropListConnectedTo]="[inProgress, awaitingFeedback, done]"
+                (cdkDropListDropped)="drop($event)">
                     <div class="task" *ngFor="let item of allTodos" cdkDrag>
                         <div class="category">
                             {{item.category}}
@@ -76,9 +79,12 @@
                     <span>In progress</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" id="inProgress" #inProgress cdkDropList [cdkDropListData]="allInProgress"
-                    class="example-list" (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of allInProgress" cdkDrag>
+                <div class="status-content" cdkDropList
+                #inProgress="cdkDropList"  
+                [cdkDropListData]="allInProgress"
+                [cdkDropListConnectedTo]="[todos, awaitingFeedback, done]"
+                (cdkDropListDropped)="drop($event)">
+                    <div class="task" *ngFor="let inProgress of allInProgress" cdkDrag>
                         <div class="category">
                             Sales
                         </div>
@@ -120,9 +126,12 @@
                     <span>Awaiting Feedback</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" id="awaitingFeeback" #awaitingFeedback cdkDropList [cdkDropListData]="allAwaitingFeedback"
-                    class="example-list" (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of allAwaitingFeedback" cdkDrag>
+                <div class="status-content" cdkDropList
+                #awaitingFeedback="cdkDropList"  
+                [cdkDropListData]="allAwaitingFeedback"
+                [cdkDropListConnectedTo]="[todos, inProgress, done]"
+                (cdkDropListDropped)="drop($event)">
+                    <div class="task" *ngFor="let awaitingFeeback of allAwaitingFeedback" cdkDrag>
                         <div class="category">
                             Sales
                         </div>
@@ -164,9 +173,12 @@
                     <span>Done</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" id="done" #done cdkDropList [cdkDropListData]="allDone"
-                    class="example-list" (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of allDone" cdkDrag>
+                <div class="status-content" cdkDropList 
+                #done="cdkDropList"  
+                [cdkDropListData]="allDone"
+                [cdkDropListConnectedTo]="[todos, awaitingFeedback, inProgress]"
+                (cdkDropListDropped)="drop($event)">
+                    <div class="task" *ngFor="let done of allDone" cdkDrag>
                         <div class="category">
                             Sales
                         </div>

@@ -60,10 +60,10 @@ export class SectionBoardComponent implements OnInit {
       }
     })
 
-    // console.log('Todo: ', this.todo);
-    // console.log('In progress: ', this.inProgress);
-    // console.log('Awaiting Feedback: ', this.awaitingFeedback);
-    // console.log('Done: ', this.done);
+    console.log('Todo: ', this.allTodos);
+    console.log('In progress: ', this.allInProgress);
+    console.log('Awaiting Feedback: ', this.allAwaitingFeedback);
+    console.log('Done: ', this.allDone);
   }
 
 
