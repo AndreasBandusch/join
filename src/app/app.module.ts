@@ -28,7 +28,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CustomformcontrolModule } from './modules/customformcontrol/customformcontrol.module';
 import { FeedbackMessageComponent } from './components/feedback-message/feedback-message.component';
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 
 
 
@@ -63,6 +64,7 @@ import { RouterModule } from '@angular/router'
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    NoopAnimationsModule,
   ],
   providers: [CustomformcontrolModule],
   bootstrap: [AppComponent]

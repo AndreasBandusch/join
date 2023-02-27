@@ -183,13 +183,11 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
 
   saveTask(newTask: any) {
-    console.log('New task: ', newTask);
-    this.control.getMessage('Task added to board', 'assets/img/icons/add-task-board-icon.png');
-    // this.afs
-    //   .collection('tasks')
-    //   .add(newTask.toJSON()).then(() => {
-    //     this.control.getMessage('Test');
-    //   });
+    this.afs
+      .collection('tasks')
+      .add(newTask.toJSON()).then(() => {
+        this.control.getMessage('Task added to board', 'assets/img/icons/add-task-board-icon.png');
+      });
   }
 
 

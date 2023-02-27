@@ -23,12 +23,12 @@ export class SectionSummaryComponent implements OnInit {
   ngOnInit() {
     this.afs.collection('tasks').valueChanges().subscribe(changes => {
       this.allTasks = changes;
-      this.getSummaryNumbers();
+      this.getSummaryContent();
     });
   }
 
 
-  getSummaryNumbers() {
+  getSummaryContent() {
     this.unsetSummaryNumbers();
     this.taskInBoard = this.allTasks.length;
     this.allTasks.forEach(task => {
