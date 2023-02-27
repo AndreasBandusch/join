@@ -10,10 +10,10 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class SectionBoardComponent implements OnInit {
   allContacts: any[] = [];
   allTasks: any[] = [];
-  allTodos: any[] = [];
-  allInProgress: any[] = [];
-  allAwaitingFeedback: any[] = [];
-  allDone: any[] = [];
+  todoTasks: any[] = [];
+  inProgressTasks: any[] = [];
+  awaitingFeedbackTasks: any[] = [];
+  doneTasks: any[] = [];
 
   constructor(private afs: AngularFirestore) {
 
@@ -43,27 +43,27 @@ export class SectionBoardComponent implements OnInit {
     this.allTasks.forEach(task => {
       switch (task.status) {
         case 'todo':
-          this.allTodos.push(task);
+          this.todoTasks.push(task);
           break;
 
         case 'inProgress':
-          this.allInProgress.push(task);
+          this.inProgressTasks.push(task);
           break;
 
           case 'awaitingFeedback':
-          this.allAwaitingFeedback.push(task);
+          this.awaitingFeedbackTasks.push(task);
           break;
 
           case 'done':
-          this.allDone.push(task);
+          this.doneTasks.push(task);
           break;
       }
     })
 
-    console.log('Todo: ', this.allTodos);
-    console.log('In progress: ', this.allInProgress);
-    console.log('Awaiting Feedback: ', this.allAwaitingFeedback);
-    console.log('Done: ', this.allDone);
+    console.log('Todo: ', this.todoTasks);
+    console.log('In progress: ', this.inProgressTasks);
+    console.log('Awaiting Feedback: ', this.awaitingFeedbackTasks);
+    console.log('Done: ', this.doneTasks);
   }
 
 
