@@ -1,3 +1,7 @@
+.content-inner {
+    padding-bottom: 48px;
+}
+
 .content-body {
     gap: 32px;
 }
@@ -64,6 +68,11 @@
 .status-content {
     display: flex;
     flex-direction: column;
+    padding-top: 32px;
+    // gap: 32px;
+}
+
+.cdk-drop-list {
     margin-top: 32px;
     gap: 32px;
 }
@@ -77,6 +86,7 @@
     border-radius: 30px;
     padding: 16px 24px;
     gap: 16px;
+    min-height: 200px;
 }
 
 .category {

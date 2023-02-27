@@ -30,7 +30,10 @@
                     <span>To do</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" id="todo">
+                <div class="status-content" id="todo" cdkDropList
+                [cdkDropListData]="todo"
+                class="example-list"
+                (cdkDropListDropped)="drop($event)">
                     <div class="task">
                         <div class="category">
                             Sales
@@ -65,74 +68,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="task">
-                        <div class="category">
-                            Sales
-                        </div>
-                        <span class="title">Website redesign</span>
-                        <div class="desciption">
-                            Modify the contents of the main website...
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
-
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task">
-                        <div class="category">
-                            Sales
-                        </div>
-                        <span class="title">Website redesign</span>
-                        <div class="desciption">
-                            Modify the contents of the main website...
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
-
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
-                        </div>
-                    </div>
+                    
+                    
+                   
                 </div>
             </div>
             <div class="status">
@@ -141,108 +79,7 @@
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
                 <div class="status-content" id="inProgress">
-                    <div class="task">
-                        <div class="category">
-                            Sales
-                        </div>
-                        <span class="title">Website redesign</span>
-                        <div class="desciption">
-                            Modify the contents of the main website...
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
-
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task">
-                        <div class="category">
-                            Sales
-                        </div>
-                        <span class="title">Website redesign</span>
-                        <div class="desciption">
-                            Modify the contents of the main website...
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
-
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task">
-                        <div class="category">
-                            Sales
-                        </div>
-                        <span class="title">Website redesign</span>
-                        <div class="desciption">
-                            Modify the contents of the main website...
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
-
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
 
@@ -252,108 +89,7 @@
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
                 <div class="status-content" id="awaitingFeedback">
-                    <div class="task">
-                        <div class="category">
-                            Sales
-                        </div>
-                        <span class="title">Website redesign</span>
-                        <div class="desciption">
-                            Modify the contents of the main website...
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
-
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task">
-                        <div class="category">
-                            Sales
-                        </div>
-                        <span class="title">Website redesign</span>
-                        <div class="desciption">
-                            Modify the contents of the main website...
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
-
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task">
-                        <div class="category">
-                            Sales
-                        </div>
-                        <span class="title">Website redesign</span>
-                        <div class="desciption">
-                            Modify the contents of the main website...
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
-
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
 
@@ -363,108 +99,7 @@
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
                 <div class="status-content" id="done">
-                    <div class="task">
-                        <div class="category">
-                            Sales
-                        </div>
-                        <span class="title">Website redesign</span>
-                        <div class="desciption">
-                            Modify the contents of the main website...
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
-
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task">
-                        <div class="category">
-                            Sales
-                        </div>
-                        <span class="title">Website redesign</span>
-                        <div class="desciption">
-                            Modify the contents of the main website...
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
-
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="task">
-                        <div class="category">
-                            Sales
-                        </div>
-                        <span class="title">Website redesign</span>
-                        <div class="desciption">
-                            Modify the contents of the main website...
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
-
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

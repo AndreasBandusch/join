@@ -30,6 +30,7 @@ import { CustomformcontrolModule } from './modules/customformcontrol/customformc
 import { FeedbackMessageComponent } from './components/feedback-message/feedback-message.component';
 import { RouterModule } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -65,6 +66,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations'
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     NoopAnimationsModule,
+    DragDropModule
   ],
   providers: [CustomformcontrolModule],
   bootstrap: [AppComponent]
