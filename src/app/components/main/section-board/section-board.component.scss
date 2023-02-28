@@ -1,9 +1,12 @@
 .content-inner {
+    height: calc(100% - 92px);
     padding-bottom: 48px;
+   
 }
 
 .content-body {
     gap: 32px;
+    height: 100%;
 }
 
 .control-cont {
@@ -68,7 +71,6 @@
 .status-content {
     display: flex;
     flex-direction: column;
-    padding-top: 32px;
     height: 100%;
     width: 100%;
     // gap: 32px;

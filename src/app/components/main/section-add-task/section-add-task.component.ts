@@ -39,6 +39,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
   selectedSubtasks: any[] = [];
+  categoryId: number = 0;
 
   @HostListener('window:resize')
   onResize() {
@@ -90,12 +91,12 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     console.log(this.categoryName);
   }
 
-  selectCategory(category: string, color: string) {
+  selectCategory(category: string, color: string, id: number) {
     this.selectedCategory = category;
     this.catText = category;
     this.catColor = color;
     this.showCategorys = false;
-
+    this.categoryId = id;
   }
 
 
@@ -108,6 +109,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   saveCategory() {
     this.newCategory = new Category(this.categoryName, this.catColor);
+    this.categoryId = this.newCategory.id;
     this.afs
       .collection('categorys')
       .add(
@@ -147,7 +149,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
         this.assignedSubtasks.push({ name: key, done: false });
       }
     }
-    console.log('Assigned subtasks: ', this.assignedSubtasks);
   }
 
 
@@ -168,7 +169,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   createTask() {
     let newTask = new Task(this.title,
       this.description,
-      this.selectedCategory,
+      this.categoryId,
       this.assignedContactIdsForTask,
       this.dueDateTimestamp,
       this.activePrio,

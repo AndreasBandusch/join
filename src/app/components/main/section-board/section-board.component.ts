@@ -15,6 +15,7 @@ export class SectionBoardComponent implements OnInit {
   awaitingFeedbackTasks: any[] = [];
   doneTasks: any[] = [];
 
+
   constructor(private afs: AngularFirestore) {
 
   }
@@ -22,6 +23,26 @@ export class SectionBoardComponent implements OnInit {
   ngOnInit() {
     this.loadContacts();
     this.loadTasks();
+    
+  }
+
+  testMe() {
+    
+
+    for (let task of this.allTasks) {
+      let contacts = [];
+      for (let assignedToId of task.assignedTo) {
+        let contact = this.allContacts.find(contact => contact.id == assignedToId);
+        if (contact) {
+          contacts.push(contact.initials);
+        }
+      }
+      task.contacts = contacts;
+      
+    }
+
+   
+    
   }
 
 
@@ -36,6 +57,8 @@ export class SectionBoardComponent implements OnInit {
     this.afs.collection('tasks').valueChanges().subscribe(changes => {
       this.allTasks = changes;
       this.seperateStatus();
+
+      this.testMe();
     })
   }
 
@@ -50,11 +73,11 @@ export class SectionBoardComponent implements OnInit {
           this.inProgressTasks.push(task);
           break;
 
-          case 'awaitingFeedback':
+        case 'awaitingFeedback':
           this.awaitingFeedbackTasks.push(task);
           break;
 
-          case 'done':
+        case 'done':
           this.doneTasks.push(task);
           break;
       }

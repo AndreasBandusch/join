@@ -36,7 +36,7 @@
                                     <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
                                         category</span>
                                     <ng-container *ngFor="let cat of allCategorys">
-                                        <div class="item" (click)="selectCategory(cat.name, cat.color)">
+                                        <div class="item" (click)="selectCategory(cat.name, cat.color, cat.id)">
                                             <span>{{cat.name}}</span>
                                             <div class="cat-color" [style.backgroundColor]="cat.color"></div>
                                         </div>

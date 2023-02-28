@@ -51,7 +51,10 @@
                         </div>
                         <div class="bottom-cont">
                             <div class="assigned">
-                                <div class="contact">
+                                <div *ngFor="let contact of item.contacts">
+                                    {{contact.initials}}
+                                </div>
+                                <!-- <div class="contact">
                                     AB
                                 </div>
                                 <div class="contact cont2">
@@ -59,7 +62,8 @@
                                 </div>
                                 <div class="contact cont3">
                                     DB
-                                </div>
+                                </div>  -->
+
                             </div>
                             <div class="prio">
                                 <img src="assets/img/icons/add-task-low.png">

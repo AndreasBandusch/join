@@ -2,7 +2,7 @@ export class Task {
     public id: number = 0;
     public title: string = '';
     public description: string = '';
-    public category: string = '';
+    public category: number = 0;
     public assignedTo: number[] = [];
     public dueDate: number = 0;
     public prio: string = '';
@@ -12,7 +12,7 @@ export class Task {
     constructor(
         title: string,
         description: string,
-        category: string,
+        categoryId: number,
         assignedTo: number[],
         dueDate: number,
         prio: string,
@@ -21,7 +21,7 @@ export class Task {
         this.createId();
         this.title = title;
         this.description = description;
-        this.category = category;
+        this.category = categoryId;
         this.assignedTo = assignedTo;
         this.dueDate = dueDate;
         this.prio = prio;
