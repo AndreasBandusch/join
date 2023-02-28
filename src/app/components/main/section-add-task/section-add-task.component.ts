@@ -178,7 +178,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
     this.saveTask(newTask);
     this.resetForm();
-
   }
 
 
@@ -189,6 +188,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
       .add(newTask.toJSON()).then(() => {
         this.control.getMessage('Task added to board', 'assets/img/icons/add-task-board-icon.png');
       });
+
   }
 
 
@@ -208,6 +208,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.selectedSubtasks = [];
     this.assignedSubtasks = [];
     this.assignedContactIdsForTask = [];
+    this.categoryId = 0;
   }
 
 
