@@ -33,8 +33,8 @@
                 [cdkDropListConnectedTo]="[inProgress, awaitingFeedback, done]"
                 (cdkDropListDropped)="drop($event)">
                     <div class="task" *ngFor="let item of todoTasks" cdkDrag>
-                        <div class="category">
-                            {{item.category}}
+                        <div class="category" [style.backgroundColor]="item.category.color">
+                            {{item.category.name}}
                         </div>
                         <span class="title">{{item.title}}</span>
                         <div class="desciption">
@@ -42,7 +42,6 @@
                         </div>
                         <div class="progress-cont">
                             <div class="bar">
-
                             </div>
 
                             <div class="progress">
@@ -51,20 +50,10 @@
                         </div>
                         <div class="bottom-cont">
                             <div class="assigned">
-                                <div *ngFor="let contact of item.contacts">
+                                <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="getContactIntialsStyles(contact.color, i)">
                                     {{contact.initials}}
                                 </div>
-                                <!-- <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>  -->
-
-                            </div>
+                            </div>                  
                             <div class="prio">
                                 <img src="assets/img/icons/add-task-low.png">
                             </div>

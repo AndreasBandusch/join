@@ -16,6 +16,8 @@ export class SectionBoardComponent implements OnInit {
   inProgressTasks: any[] = [];
   awaitingFeedbackTasks: any[] = [];
   doneTasks: any[] = [];
+  // contactInitialsOffset: number = 0;
+  
 
 
   constructor(private afs: AngularFirestore) {
@@ -43,7 +45,7 @@ export class SectionBoardComponent implements OnInit {
 
 
       this.loadAssignedContactsInAllTasks();
-      
+
 
     })
   }
@@ -52,7 +54,7 @@ export class SectionBoardComponent implements OnInit {
   loadCategorys() {
     this.afs.collection('categorys').valueChanges().subscribe(changes => {
       this.allCategorys = changes;
-      this.loadAssignedCategroryInAllTasks();
+      this.loadAssignedCategoryInAllTasks();
     })
 
   }
@@ -63,7 +65,6 @@ export class SectionBoardComponent implements OnInit {
       let contacts = [];
       for (let assignedToId of task.assignedTo) {
         let contact = this.allContacts.find(contact => contact.id == assignedToId);
-       
         if (contact) {
           contacts.push(contact);
         }
@@ -73,7 +74,7 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  loadAssignedCategroryInAllTasks() {
+  loadAssignedCategoryInAllTasks() {
     for (let task of this.allTasks) {
       let category = this.allCategorys.find(cat => cat.id === task.category);
       if (category) {
@@ -123,5 +124,17 @@ export class SectionBoardComponent implements OnInit {
         event.currentIndex,
       );
     }
+  }
+
+
+  getContactIntialsStyles(color: string, index: number): object {
+    let styles = {
+      'background-color': color,
+      'transform': `translateX(${index * 75}%)`
+      
+    }
+    
+    
+    return styles;
   }
 }

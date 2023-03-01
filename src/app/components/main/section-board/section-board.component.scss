@@ -92,7 +92,6 @@
     border-radius: 30px;
     padding: 16px 24px;
     gap: 16px;
-    min-height: 200px;
 }
 
 .category {
@@ -146,28 +145,17 @@
 .contact {
     position: absolute;
     left: 0;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 35px;
     width: 35px;
-    background-color: #EE00D6;
     color: #fff;
     font-size: 12px;
     border-radius: 100%;     
 }
 
-.cont2 {
-    transform: translateX(75%);
-    z-index: 22;
-    background-color: #02CF2F;
-}
-
-.cont3 {
-    transform: translateX(150%);
-    z-index: 33;
-    background-color: #0190E0;
-}
 
 .prio {
     img {
