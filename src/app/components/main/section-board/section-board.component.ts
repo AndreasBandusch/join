@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
+
 @Component({
   selector: 'app-section-board',
   templateUrl: './section-board.component.html',
@@ -10,6 +11,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class SectionBoardComponent implements OnInit {
   allContacts: any[] = [];
   allTasks: any[] = [];
+  allCategorys: any[] = [];
   todoTasks: any[] = [];
   inProgressTasks: any[] = [];
   awaitingFeedbackTasks: any[] = [];
@@ -23,26 +25,7 @@ export class SectionBoardComponent implements OnInit {
   ngOnInit() {
     this.loadContacts();
     this.loadTasks();
-    
-  }
-
-  testMe() {
-    
-
-    for (let task of this.allTasks) {
-      let contacts = [];
-      for (let assignedToId of task.assignedTo) {
-        let contact = this.allContacts.find(contact => contact.id == assignedToId);
-        if (contact) {
-          contacts.push(contact.initials);
-        }
-      }
-      task.contacts = contacts;
-      
-    }
-
-   
-    
+    this.loadCategorys();
   }
 
 
@@ -58,8 +41,46 @@ export class SectionBoardComponent implements OnInit {
       this.allTasks = changes;
       this.seperateStatus();
 
-      this.testMe();
+
+      this.loadAssignedContactsInAllTasks();
+      
+
     })
+  }
+
+
+  loadCategorys() {
+    this.afs.collection('categorys').valueChanges().subscribe(changes => {
+      this.allCategorys = changes;
+      this.loadAssignedCategroryInAllTasks();
+    })
+
+  }
+
+
+  loadAssignedContactsInAllTasks() {
+    for (let task of this.allTasks) {
+      let contacts = [];
+      for (let assignedToId of task.assignedTo) {
+        let contact = this.allContacts.find(contact => contact.id == assignedToId);
+       
+        if (contact) {
+          contacts.push(contact);
+        }
+      }
+      task.assignedTo = contacts;
+    }
+  }
+
+
+  loadAssignedCategroryInAllTasks() {
+    for (let task of this.allTasks) {
+      let category = this.allCategorys.find(cat => cat.id === task.category);
+      if (category) {
+        task.category = category;
+      }
+    }
+    console.log('Alltasks: ', this.allTasks);
   }
 
   seperateStatus() {
@@ -83,10 +104,6 @@ export class SectionBoardComponent implements OnInit {
       }
     })
 
-    console.log('Todo: ', this.todoTasks);
-    console.log('In progress: ', this.inProgressTasks);
-    console.log('Awaiting Feedback: ', this.awaitingFeedbackTasks);
-    console.log('Done: ', this.doneTasks);
   }
 
 
