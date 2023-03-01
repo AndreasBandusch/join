@@ -40,12 +40,12 @@
                         <div class="desciption">
                             {{item.description}}
                         </div>
-                        <div class="progress-cont">
+                        <div *ngIf="item.subTasks.length" class="progress-cont">
                             <div class="bar">
                             </div>
 
                             <div class="progress">
-                                <span>1/2 Done</span>
+                                <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
                             </div>
                         </div>
                         <div class="bottom-cont">
@@ -71,40 +71,33 @@
                 [cdkDropListData]="inProgressTasks"
                 [cdkDropListConnectedTo]="[todos, awaitingFeedback, done]"
                 (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of inProgressTasks" cdkDrag>
-                    <div class="category">
-                        {{item.category}}
+                <div class="task" *ngFor="let item of inProgressTasks" cdkDrag>
+                    <div class="category" [style.backgroundColor]="item.category.color">
+                        {{item.category.name}}
                     </div>
                     <span class="title">{{item.title}}</span>
                     <div class="desciption">
                         {{item.description}}
                     </div>
-                    <div class="progress-cont">
+                    <div *ngIf="item.subTasks.length" class="progress-cont">
                         <div class="bar">
-
                         </div>
 
                         <div class="progress">
-                            <span>1/2 Done</span>
+                            <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
                         </div>
                     </div>
                     <div class="bottom-cont">
                         <div class="assigned">
-                            <div class="contact">
-                                AB
+                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="getContactIntialsStyles(contact.color, i)">
+                                {{contact.initials}}
                             </div>
-                            <div class="contact cont2">
-                                MB
-                            </div>
-                            <div class="contact cont3">
-                                DB
-                            </div>
-                        </div>
+                        </div>                  
                         <div class="prio">
                             <img src="assets/img/icons/add-task-low.png">
                         </div>
                     </div>
-                    </div>
+                </div>
                 </div>
             </div>
 
@@ -118,40 +111,33 @@
                 [cdkDropListData]="awaitingFeedbackTasks"
                 [cdkDropListConnectedTo]="[todos, inProgress, done]"
                 (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of awaitingFeedbackTasks" cdkDrag>
-                        <div class="category">
-                            {{item.category}}
+                <div class="task" *ngFor="let item of awaitingFeedbackTasks" cdkDrag>
+                    <div class="category" [style.backgroundColor]="item.category.color">
+                        {{item.category.name}}
+                    </div>
+                    <span class="title">{{item.title}}</span>
+                    <div class="desciption">
+                        {{item.description}}
+                    </div>
+                    <div *ngIf="item.subTasks.length" class="progress-cont">
+                        <div class="bar">
                         </div>
-                        <span class="title">{{item.title}}</span>
-                        <div class="desciption">
-                            {{item.description}}
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
 
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
+                        <div class="progress">
+                            <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
                         </div>
                     </div>
+                    <div class="bottom-cont">
+                        <div class="assigned">
+                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="getContactIntialsStyles(contact.color, i)">
+                                {{contact.initials}}
+                            </div>
+                        </div>                  
+                        <div class="prio">
+                            <img src="assets/img/icons/add-task-low.png">
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
 
@@ -165,40 +151,33 @@
                 [cdkDropListData]="doneTasks"
                 [cdkDropListConnectedTo]="[todos, awaitingFeedback, inProgress]"
                 (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of doneTasks" cdkDrag>
-                        <div class="category">
-                            {{item.category}}
+                <div class="task" *ngFor="let item of doneTasks" cdkDrag>
+                    <div class="category" [style.backgroundColor]="item.category.color">
+                        {{item.category.name}}
+                    </div>
+                    <span class="title">{{item.title}}</span>
+                    <div class="desciption">
+                        {{item.description}}
+                    </div>
+                    <div *ngIf="item.subTasks.length" class="progress-cont">
+                        <div class="bar">
                         </div>
-                        <span class="title">{{item.title}}</span>
-                        <div class="desciption">
-                            {{item.description}}
-                        </div>
-                        <div class="progress-cont">
-                            <div class="bar">
 
-                            </div>
-
-                            <div class="progress">
-                                <span>1/2 Done</span>
-                            </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div class="contact">
-                                    AB
-                                </div>
-                                <div class="contact cont2">
-                                    MB
-                                </div>
-                                <div class="contact cont3">
-                                    DB
-                                </div>
-                            </div>
-                            <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
-                            </div>
+                        <div class="progress">
+                            <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
                         </div>
                     </div>
+                    <div class="bottom-cont">
+                        <div class="assigned">
+                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="getContactIntialsStyles(contact.color, i)">
+                                {{contact.initials}}
+                            </div>
+                        </div>                  
+                        <div class="prio">
+                            <img src="assets/img/icons/add-task-low.png">
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
