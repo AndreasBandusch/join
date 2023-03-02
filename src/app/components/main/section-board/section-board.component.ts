@@ -117,34 +117,33 @@ export class SectionBoardComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
-
-      event.container.data.forEach(data => {
-        switch (event.container.id) {
-          case 'cdk-drop-list-0':
-            data.status = 'todo';
-            console.log (data.status);
-            break;
-          case 'cdk-drop-list-1':
-            data.status = 'inProgress';
-            console.log (data.status);
-            break;
-          case 'cdk-drop-list-2':
-            data.status = 'awaitingFeedback';
-            console.log (data.status);
-            break;
-          case 'cdk-drop-list-3':
-            data.status = 'done';
-            console.log (data.status);
-            break;
-        }
-      });
     }
 
-
+    this.testMe(event.container.data, event.container.id);
   }
 
 
 
+testMe(droppedData: any, dropListId: string) {
+  for (let i = 0; i < droppedData.length; i++) {
+    let status;
+    switch (dropListId) {
+      case 'cdk-drop-list-0':
+        status = 'todo';
+        break;
+      case 'cdk-drop-list-1':
+        status = 'inProgress';
+        break;
+      case 'cdk-drop-list-2':
+        status = 'awaitingFeedback';
+        break;
+      case 'cdk-drop-list-3':
+        status = 'done';
+        break;
+    }
+    console.log(status);
+  }
+}
 
 
   getContactIntialsStyles(color: string, index: number): object {
