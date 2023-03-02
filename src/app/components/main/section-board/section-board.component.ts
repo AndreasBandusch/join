@@ -125,8 +125,9 @@ export class SectionBoardComponent implements OnInit {
 
 
 testMe(droppedData: any, dropListId: string) {
+  let status;
+  let currentTask = droppedData;
   for (let i = 0; i < droppedData.length; i++) {
-    let status;
     switch (dropListId) {
       case 'cdk-drop-list-0':
         status = 'todo';
@@ -141,8 +142,10 @@ testMe(droppedData: any, dropListId: string) {
         status = 'done';
         break;
     }
-    console.log(status);
   }
+
+  currentTask.status = status;
+  console.log(currentTask);
 }
 
 
