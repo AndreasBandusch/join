@@ -41,8 +41,11 @@ export class SectionBoardComponent implements OnInit {
 
     this.afs.collection('tasks').valueChanges({ idField: 'docId' }).subscribe(changes => {
       this.allTasks = changes;
+      this.loadContacts();
+      this.loadCategorys();
       this.seperateStatus();
-
+      console.log('Tasks:', 
+      this.allTasks);
 
       this.loadAssignedContactsInAllTasks();
 
@@ -157,12 +160,11 @@ export class SectionBoardComponent implements OnInit {
           break;
       }
       currentTask[i].status = status;
-
-
+      this.updateTaskStatus(currentTask[i]);
     }
 
 
-    this.updateTaskStatus(currentTask[0]);
+    // this.updateTaskStatus(currentTask[0]);
 
   }
 
@@ -217,5 +219,9 @@ export class SectionBoardComponent implements OnInit {
       default:
         return '';
     }
+  }
+
+  testMe(color: string) {
+    console.log(color);
   }
 }
