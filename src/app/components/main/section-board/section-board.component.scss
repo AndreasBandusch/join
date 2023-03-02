@@ -92,6 +92,11 @@
     border-radius: 30px;
     padding: 16px 24px;
     gap: 16px;
+    cursor: pointer;
+
+    &:active  {
+        transform: rotate(7deg);
+    }
 }
 
 

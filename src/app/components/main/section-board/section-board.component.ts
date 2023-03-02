@@ -19,19 +19,14 @@ export class SectionBoardComponent implements OnInit {
   doneTasks: any[] = [];
   test: number = 0;
 
+  constructor(private afs: AngularFirestore) { }
 
-
-
-  constructor(private afs: AngularFirestore) {
-
-  }
 
   ngOnInit() {
     this.loadContacts();
     this.loadTasks();
     this.loadCategorys();
   }
-
 
 
   loadContacts() {
@@ -87,6 +82,7 @@ export class SectionBoardComponent implements OnInit {
     console.log('Alltasks: ', this.allTasks);
   }
 
+
   seperateStatus() {
     this.allTasks.forEach(task => {
       switch (task.status) {
@@ -111,12 +107,7 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-
-
-
-
-
-  drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<any[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -126,8 +117,34 @@ export class SectionBoardComponent implements OnInit {
         event.previousIndex,
         event.currentIndex,
       );
+
+      event.container.data.forEach(data => {
+        switch (event.container.id) {
+          case 'cdk-drop-list-0':
+            data.status = 'todo';
+            console.log (data.status);
+            break;
+          case 'cdk-drop-list-1':
+            data.status = 'inProgress';
+            console.log (data.status);
+            break;
+          case 'cdk-drop-list-2':
+            data.status = 'awaitingFeedback';
+            console.log (data.status);
+            break;
+          case 'cdk-drop-list-3':
+            data.status = 'done';
+            console.log (data.status);
+            break;
+        }
+      });
     }
+
+
   }
+
+
+
 
 
   getContactIntialsStyles(color: string, index: number): object {
@@ -137,6 +154,7 @@ export class SectionBoardComponent implements OnInit {
     }
     return styles;
   }
+
 
   getDoneSubtasksNumber(subTasks: any[]): number {
     let number = 0;
@@ -149,16 +167,19 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  getPrioImage(prio: string): any {
+  getPrioImage(prio: string): string {
     switch (prio) {
       case 'low':
         return 'add-task-low.png';
 
       case 'medium':
         return 'add-task-medium.png';
-       
+
       case 'urgent':
         return 'add-task-urgent.png';
+
+      default:
+        return '';
     }
   }
 }
