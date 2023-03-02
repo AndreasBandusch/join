@@ -33,8 +33,10 @@
                 [cdkDropListConnectedTo]="[inProgress, awaitingFeedback, done]"
                 (cdkDropListDropped)="drop($event)">
                     <div class="task" *ngFor="let item of todoTasks" cdkDrag>
-                        <div class="category" [style.backgroundColor]="item.category.color">
-                            {{item.category.name}}
+                        <div class="category">
+                            <span class="category-inner" [style.backgroundColor]="item.category.color">
+                                {{item.category.name}}
+                            </span>
                         </div>
                         <span class="title">{{item.title}}</span>
                         <div class="desciption">
@@ -55,7 +57,7 @@
                                 </div>
                             </div>                  
                             <div class="prio">
-                                <img src="assets/img/icons/add-task-low.png">
+                                <img src="assets/img/icons/{{getPrioImage(item.prio)}}">
                             </div>
                         </div>
                     </div>
@@ -72,8 +74,10 @@
                 [cdkDropListConnectedTo]="[todos, awaitingFeedback, done]"
                 (cdkDropListDropped)="drop($event)">
                 <div class="task" *ngFor="let item of inProgressTasks" cdkDrag>
-                    <div class="category" [style.backgroundColor]="item.category.color">
-                        {{item.category.name}}
+                    <div class="category">
+                        <span class="category-inner" [style.backgroundColor]="item.category.color">
+                            {{item.category.name}}
+                        </span>
                     </div>
                     <span class="title">{{item.title}}</span>
                     <div class="desciption">
@@ -112,8 +116,10 @@
                 [cdkDropListConnectedTo]="[todos, inProgress, done]"
                 (cdkDropListDropped)="drop($event)">
                 <div class="task" *ngFor="let item of awaitingFeedbackTasks" cdkDrag>
-                    <div class="category" [style.backgroundColor]="item.category.color">
-                        {{item.category.name}}
+                    <div class="category">
+                        <span class="category-inner" [style.backgroundColor]="item.category.color">
+                            {{item.category.name}}
+                        </span>
                     </div>
                     <span class="title">{{item.title}}</span>
                     <div class="desciption">
@@ -152,8 +158,10 @@
                 [cdkDropListConnectedTo]="[todos, awaitingFeedback, inProgress]"
                 (cdkDropListDropped)="drop($event)">
                 <div class="task" *ngFor="let item of doneTasks" cdkDrag>
-                    <div class="category" [style.backgroundColor]="item.category.color">
-                        {{item.category.name}}
+                    <div class="category">
+                        <span class="category-inner" [style.backgroundColor]="item.category.color">
+                            {{item.category.name}}
+                        </span>
                     </div>
                     <span class="title">{{item.title}}</span>
                     <div class="desciption">

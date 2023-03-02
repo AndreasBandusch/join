@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -9,7 +9,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./section-board.component.scss']
 })
 export class SectionBoardComponent implements OnInit {
-  
+
   allContacts: any[] = [];
   allTasks: any[] = [];
   allCategorys: any[] = [];
@@ -18,8 +18,8 @@ export class SectionBoardComponent implements OnInit {
   awaitingFeedbackTasks: any[] = [];
   doneTasks: any[] = [];
   test: number = 0;
-  
-  
+
+
 
 
   constructor(private afs: AngularFirestore) {
@@ -139,14 +139,26 @@ export class SectionBoardComponent implements OnInit {
   }
 
   getDoneSubtasksNumber(subTasks: any[]): number {
-     let number = 0;
-     subTasks.forEach(task => {
+    let number = 0;
+    subTasks.forEach(task => {
       if (task.done === true) {
         number++;
       }
-     })
-     return number;
+    })
+    return number;
   }
 
-  
+
+  getPrioImage(prio: string): any {
+    switch (prio) {
+      case 'low':
+        return 'add-task-low.png';
+
+      case 'medium':
+        return 'add-task-medium.png';
+       
+      case 'urgent':
+        return 'add-task-urgent.png';
+    }
+  }
 }
