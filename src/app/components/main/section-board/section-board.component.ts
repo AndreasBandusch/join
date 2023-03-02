@@ -38,7 +38,7 @@ export class SectionBoardComponent implements OnInit {
 
 
   loadTasks() {
-    
+
     this.afs.collection('tasks').valueChanges({ idField: 'docId' }).subscribe(changes => {
       this.allTasks = changes;
       this.seperateStatus();
@@ -85,6 +85,11 @@ export class SectionBoardComponent implements OnInit {
 
 
   seperateStatus() {
+    this.todoTasks = [];
+    this.inProgressTasks = [];
+    this.awaitingFeedbackTasks = [];
+    this.doneTasks = [];
+    
     this.allTasks.forEach(task => {
       switch (task.status) {
         case 'todo':
@@ -105,13 +110,13 @@ export class SectionBoardComponent implements OnInit {
       }
     })
 
-    
+
 
   }
 
 
   drop(event: CdkDragDrop<any[]>) {
-    
+
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -122,7 +127,7 @@ export class SectionBoardComponent implements OnInit {
         event.currentIndex,
       );
     }
-    
+
     this.setTaskStatus(event.container.data, event.container.id);
   }
 
@@ -166,12 +171,12 @@ export class SectionBoardComponent implements OnInit {
 
     let docId = task.docId;
 
-     console.log(task.status);
-     this.afs
-       .collection("tasks")
+    console.log(task.status);
+    this.afs
+      .collection("tasks")
       .doc(docId)
-       .update({ status: task.status }).then(() => {
-        
+      .update({ status: task.status }).then(() => {
+
       })
 
   }
