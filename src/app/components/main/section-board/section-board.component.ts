@@ -80,7 +80,6 @@ export class SectionBoardComponent implements OnInit {
         task.category = category;
       }
     }
-    console.log('Alltasks: ', this.allTasks);
   }
 
 
@@ -124,7 +123,7 @@ export class SectionBoardComponent implements OnInit {
 
 
 
-  setTaskStatus(droppedData: any, dropListId: string): void {
+  setTaskStatus(droppedData: any[], dropListId: string): void {
   
   let currentTask = droppedData;
   for (let i = 0; i < droppedData.length; i++) {
@@ -153,21 +152,19 @@ export class SectionBoardComponent implements OnInit {
   }
   
   
-  this.updateStatus(currentTask[0]);
+  this.updateTaskStatus(currentTask[0]);
   
 }
 
 
-updateStatus(task: any): void {
+updateTaskStatus(task: any): void {
   let docId = task.docId;
 
-  console.log(task.id);
-  this.afs
-      .collection("tasks")
-      .doc(docId)
-     .update({status: task.status}).then(() => {
-      
-     })
+  console.log(task.status);
+  // this.afs
+  //     .collection("tasks")
+  //    .doc(docId)
+  //    .update({status: task.status})
   
 }
 
