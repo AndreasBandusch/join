@@ -3,6 +3,7 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 
+
 @Component({
   selector: 'app-section-board',
   templateUrl: './section-board.component.html',
@@ -37,7 +38,7 @@ export class SectionBoardComponent implements OnInit {
 
 
   loadTasks() {
-    this.afs.collection('tasks').valueChanges().subscribe(changes => {
+    this.afs.collection('tasks').valueChanges({idField: 'docId' }).subscribe(changes => {
       this.allTasks = changes;
       this.seperateStatus();
 
@@ -118,35 +119,58 @@ export class SectionBoardComponent implements OnInit {
         event.currentIndex,
       );
     }
-
-    this.testMe(event.container.data, event.container.id);
+    this.setTaskStatus(event.container.data, event.container.id);
   }
 
 
 
-testMe(droppedData: any, dropListId: string) {
-  let status;
+  setTaskStatus(droppedData: any, dropListId: string): void {
+  
   let currentTask = droppedData;
   for (let i = 0; i < droppedData.length; i++) {
+    let status;
     switch (dropListId) {
       case 'cdk-drop-list-0':
         status = 'todo';
+        currentTask[i].status = status;
         break;
       case 'cdk-drop-list-1':
         status = 'inProgress';
+        currentTask[i].status = status;
         break;
       case 'cdk-drop-list-2':
         status = 'awaitingFeedback';
+        currentTask[i].status = status;
         break;
       case 'cdk-drop-list-3':
         status = 'done';
+        currentTask[i].status = status;
         break;
     }
+    currentTask[i].status = status;
+    
+   
   }
-
-  currentTask.status = status;
-  console.log(currentTask);
+  
+  
+  this.updateStatus(currentTask[0]);
+  
 }
+
+
+updateStatus(task: any): void {
+  let docId = task.docId;
+
+  console.log(task.id);
+  this.afs
+      .collection("tasks")
+      .doc(docId)
+     .update({status: task.status}).then(() => {
+      
+     })
+  
+}
+
 
 
   getContactIntialsStyles(color: string, index: number): object {
