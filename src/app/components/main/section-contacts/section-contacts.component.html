@@ -10,7 +10,7 @@
         <img src="assets/img/icons/back2-icon.png" class="back-to-contacts" [class.show-btn]="switchView"
             (click)="toggleDetails(false)">
         <div class="contacts" [class.d-none]="switchView">
-            <div *ngIf="contactServ.contactsAvailable" class="contacts-inner">
+            <div *ngIf="control.contactsAvailable" class="contacts-inner">
                 <div *ngFor="let initial of catagoryInitials;" class="catagory">
                     <div class="catagory-header">
                         <span class="letter">{{initial}}</span>
@@ -18,9 +18,9 @@
                     <div *ngFor="let contact of allContacts; index as i">
                         <div *ngIf="getFirstLetter(contact.firstName) === initial" class="catagory-body">
                             <a [routerLink]="['contact', contact.docId]"
-                                (click)="contactServ.currentContact = contact.id" (click)="toggleDetails(true)">
+                                (click)="control.currentContact = contact.id" (click)="toggleDetails(true)">
                                 <div class="catagory-body-cont"
-                                    [class.active]="contactServ.currentContact === contact.id && contactServ.currentContact != 0">
+                                    [class.active]="control.currentContact === contact.id && control.currentContact != 0">
                                     <div class="contact-initials" [ngStyle]="{'background-color': contact.color}">
                                         {{contact?.initials}}
                                     </div>

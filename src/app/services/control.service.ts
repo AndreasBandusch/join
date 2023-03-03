@@ -5,10 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ControlService {
 
-
-  constructor(
-  
-  ) { }
+  constructor() { }
 
   showAddTaskBotton = false;
   addContactDialogOpen = false;
@@ -16,6 +13,11 @@ export class ControlService {
   showMessage = false;
   messageText: string = '';
   messageImage?: string = '';
+
+  currentId: string = '';
+  contactsAvailable: boolean = false;
+  currentContact: number = 0;
+
 
   getMessage(message: string, image?: string) {
     this.messageText = message;

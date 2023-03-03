@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ContactService } from 'src/app/services/contact.service';
 import { ControlService } from 'src/app/services/control.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -15,8 +14,7 @@ contactId: string = '';
 slideIn: boolean = true;
 
 
-  constructor(
-    public contactServ: ContactService, 
+  constructor( 
     public route: ActivatedRoute, 
     public control: ControlService, 
     private afs: AngularFirestore) {
@@ -29,7 +27,7 @@ slideIn: boolean = true;
       this.contactId = params['id']; 
       console.log('Contact-Id: ', this.contactId);
       this.getCurrentContact();
-      this.contactServ.currentId = this.contactId;
+      this.control.currentId = this.contactId;
       this.toggleAnimationClass();
     });
   }

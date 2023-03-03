@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ContactService {
-  currentId: string = '';
-  contactsAvailable: boolean = false;
-  currentContact: number = 0;
+  
+
+
   constructor() { }
 }

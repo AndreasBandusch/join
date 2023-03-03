@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ControlService } from 'src/app/services/control.service';
-import { ContactService } from 'src/app/services/contact.service';
 
 @Component({
   selector: 'app-section-contacts',
@@ -19,8 +18,7 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
 
   constructor(
     private firestore: AngularFirestore, 
-    public control: ControlService, 
-    public contactServ: ContactService) {}
+    public control: ControlService) {}
 
 
   ngOnInit(): void {
@@ -28,12 +26,12 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.contactServ.currentContact = 0;
+    this.control.currentContact = 0;
   }
 
 
   loadContacts() {
-    this.contactServ.currentContact = 0;
+    this.control.currentContact = 0;
     this.firestore.collection('contacts').valueChanges({ idField: 'docId' }).subscribe((updates: any) => {
       this.allContacts = updates;
       this.checkIfContactsAvailable();
@@ -44,9 +42,9 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
   checkIfContactsAvailable() {
     if (this.allContacts.length > 0) {
       this.getCatagoryInitials();
-      this.contactServ.contactsAvailable = true;
+      this.control.contactsAvailable = true;
     } else {
-      this.contactServ.contactsAvailable = false;
+      this.control.contactsAvailable = false;
     }
   }
 

@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Contact } from 'src/app/models/contact.model';
 import { ControlService } from 'src/app/services/control.service';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
-import { ContactService } from 'src/app/services/contact.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,7 +25,6 @@ export class AddContactComponent {
     public control: ControlService,
     private firestore: AngularFirestore,
     private fControl: CustomformcontrolModule,
-    private contactServ: ContactService,
     private route: Router) {
   }
 
@@ -53,7 +51,7 @@ export class AddContactComponent {
     this.currentContactId = newContact.id;
     this.saveContact(newContact);
     this.loadContacts();
-    this.contactServ.currentContact = newContact.id;
+    this.control.currentContact = newContact.id;
   }
 
   

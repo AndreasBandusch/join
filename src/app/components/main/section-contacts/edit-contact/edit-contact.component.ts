@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ContactService } from 'src/app/services/contact.service';
 import { ControlService } from 'src/app/services/control.service';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
 import { Contact } from 'src/app/models/contact.model';
@@ -26,8 +25,7 @@ export class EditContactComponent implements OnInit {
   constructor(
     private control: ControlService,
     private firestore: AngularFirestore,
-    private fControl: CustomformcontrolModule,
-    private contactServ: ContactService) {
+    private fControl: CustomformcontrolModule) {
   }
 
 
@@ -48,7 +46,7 @@ export class EditContactComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.currentContactId = this.contactServ.currentContact;
+    this.currentContactId = this.control.currentContact;
     this.loadAllContacts();
   }
 
@@ -66,7 +64,7 @@ export class EditContactComponent implements OnInit {
 
   setCurrentContact(): void {
     this.allContacts.forEach(contact => {
-      if (contact.docId == this.contactServ.currentId) {
+      if (contact.docId == this.control.currentId) {
         this.currentContact = contact;
         this.loadDataIntoInputFields();
       }
@@ -101,7 +99,7 @@ export class EditContactComponent implements OnInit {
     this.isLoading = true;
     this.firestore
       .collection('contacts')
-      .doc(this.contactServ.currentId)
+      .doc(this.control.currentId)
       .update(newContact.toJSON())
       .then(() => {
         this.isLoading = false;
