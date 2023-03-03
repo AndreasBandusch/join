@@ -93,10 +93,6 @@
     padding: 16px 24px;
     gap: 16px;
     cursor: pointer;
-
-    &:active  {
-        transform: rotate(7deg);
-    }
 }
 
 
@@ -167,6 +163,11 @@
         width: 17px;
         height: auto;
     }
+}
+
+
+.is-moved {
+    transform: rotate(7deg);
 }
 
 

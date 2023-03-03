@@ -19,15 +19,20 @@ export class SectionBoardComponent implements OnInit {
   awaitingFeedbackTasks: any[] = [];
   doneTasks: any[] = [];
   test: number = 0;
+  isMovend: boolean = false;
 
   constructor(private afs: AngularFirestore) { }
 
 
   ngOnInit() {
-    this.loadContacts();
+    console.log('Loaded');
     this.loadTasks();
+    this.loadContacts();
+    
     this.loadCategorys();
   }
+
+  
 
 
   loadContacts() {
@@ -38,7 +43,6 @@ export class SectionBoardComponent implements OnInit {
 
 
   loadTasks() {
-
     this.afs.collection('tasks').valueChanges({ idField: 'docId' }).subscribe(changes => {
       this.allTasks = changes;
       this.loadContacts();
@@ -46,10 +50,7 @@ export class SectionBoardComponent implements OnInit {
       this.seperateStatus();
       console.log('Tasks:', 
       this.allTasks);
-
       this.loadAssignedContactsInAllTasks();
-
-
     })
   }
 
@@ -59,7 +60,6 @@ export class SectionBoardComponent implements OnInit {
       this.allCategorys = changes;
       this.loadAssignedCategoryInAllTasks();
     })
-
   }
 
 
@@ -112,14 +112,11 @@ export class SectionBoardComponent implements OnInit {
           break;
       }
     })
-
-
-
   }
 
 
   drop(event: CdkDragDrop<any[]>) {
-
+  
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -130,31 +127,31 @@ export class SectionBoardComponent implements OnInit {
         event.currentIndex,
       );
     }
-
+    console.log('Drop', this.allTasks);
     this.setTaskStatus(event.container.data, event.container.id);
   }
 
 
 
   setTaskStatus(droppedData: any[], dropListId: string): void {
-
     let currentTask = droppedData;
+    console.log('Currrent Task', currentTask);
     for (let i = 0; i < droppedData.length; i++) {
       let status;
       switch (dropListId) {
-        case 'cdk-drop-list-0':
+        case 'todo':
           status = 'todo';
           currentTask[i].status = status;
           break;
-        case 'cdk-drop-list-1':
+        case 'in-progress':
           status = 'inProgress';
           currentTask[i].status = status;
           break;
-        case 'cdk-drop-list-2':
+        case 'awaiting-feedback':
           status = 'awaitingFeedback';
           currentTask[i].status = status;
           break;
-        case 'cdk-drop-list-3':
+        case 'done':
           status = 'done';
           currentTask[i].status = status;
           break;
@@ -162,10 +159,6 @@ export class SectionBoardComponent implements OnInit {
       currentTask[i].status = status;
       this.updateTaskStatus(currentTask[i]);
     }
-
-
-    // this.updateTaskStatus(currentTask[0]);
-
   }
 
 
