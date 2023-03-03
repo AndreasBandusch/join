@@ -13,10 +13,10 @@ export class ControlService {
   showMessage = false;
   messageText: string = '';
   messageImage?: string = '';
-
   currentId: string = '';
   contactsAvailable: boolean = false;
   currentContact: number = 0;
+  notRouteToContactList = false;
 
 
   getMessage(message: string, image?: string) {

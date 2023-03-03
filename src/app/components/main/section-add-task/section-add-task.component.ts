@@ -150,12 +150,12 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
   
-  test() {
-    this.control.addContactDialogOpen = true;
-  }
-
-
   getTimestamp() {
     this.task.dueDateTimestamp = new Date(this.task.dueDate).getTime();
+  }
+
+  addContact() {
+    this.control.notRouteToContactList = true;
+    this.control.addContactDialogOpen = true
   }
 }

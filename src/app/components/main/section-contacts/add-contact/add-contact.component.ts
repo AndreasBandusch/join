@@ -76,7 +76,9 @@ export class AddContactComponent {
     this.allContacts.forEach(contact => {
       if (contact.id == this.currentContactId) {
         this.newContactId = contact.docId;
-        this.route.navigate(['kanban/contact-list/contact/' + this.newContactId]);
+
+        (this.control.notRouteToContactList !== true ? 
+          this.route.navigate(['kanban/contact-list/contact/' + this.newContactId]) : false);
       }
     })
   }

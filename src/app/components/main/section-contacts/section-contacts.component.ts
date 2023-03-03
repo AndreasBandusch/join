@@ -72,6 +72,7 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
 
 
   addContact() {
+    this.control.notRouteToContactList = false;
     this.control.addContactDialogOpen = true;
   }
 }

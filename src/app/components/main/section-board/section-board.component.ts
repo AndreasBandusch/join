@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-
-
 @Component({
   selector: 'app-section-board',
   templateUrl: './section-board.component.html',
@@ -50,8 +48,7 @@ export class SectionBoardComponent implements OnInit {
       this.loadCategorys();
       this.seperateStatus();
       console.log('Tasks:', 
-      this.allTasks);
-      
+      this.allTasks); 
     })
   }
 
@@ -178,7 +175,6 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-
   getContactIntialsStyles(color: string, index: number): object {
     let styles = {
       'background-color': color,
@@ -215,7 +211,7 @@ export class SectionBoardComponent implements OnInit {
     }
   }
 
-  testMe(color: string) {
-    console.log(color);
-  }
+  // testMe(color: string) {
+  //   console.log(color);
+  // }
 }
