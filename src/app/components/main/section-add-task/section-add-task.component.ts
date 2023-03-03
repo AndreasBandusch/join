@@ -1,8 +1,8 @@
 import { Component, HostListener, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { ControlService } from 'src/app/services/control.service';
+import { TaskService } from 'src/app/services/task.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Category } from 'src/app/models/category.model';
-import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-section-add-task',
@@ -13,34 +13,16 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   @ViewChild('addSubtask') inputField: ElementRef = new ElementRef(null);
   id: number = 0;
-  title: string = '';
-  description: string = '';
   assignedTo: number[] = [];
-  dueDate: string = '';
-  dueDateTimestamp: number = 0;
-  showCategorys: boolean = false;
   showNewCategory: boolean = false;
-  showAssignedTo: boolean = false;
-  showSubtask: boolean = false;
   allCategorys: any[] = [];
   allContacts: any[] = [];
-  allSubtasks: any[] = [];
-  selectedContacts: any[] = [];
-  assignedContactIdsForTask: any[] = [];
-  assignedSubtasks: any[] = [];
   assignedTotext = 'Select Contacts to assign'
-  catStartText: string = 'Select task catagory';
-  activePrio: string = '';
-  selectedCategory: string = '';
-  catText: string = '';
-  catColor: any = '';
   currentSubtask: string = '';
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
-  selectedSubtasks: any[] = [];
-  categoryId: number = 0;
-
+  
   @HostListener('window:resize')
   onResize() {
     this.checkMaxWidth(1100);
@@ -48,12 +30,13 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   constructor(
     public control: ControlService,
+    public task: TaskService,
     private afs: AngularFirestore
   ) { }
 
 
   ngOnInit(): void {
-    this.catText = this.catStartText;
+    this.task.catText = this.task.catStartText;
     this.checkMaxWidth(1100);
     this.loadCategorys();
     this.loadContacts();
@@ -73,11 +56,9 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   loadContacts() {
     this.afs.collection('contacts').valueChanges().subscribe((changes) => {
       this.allContacts = changes;
-
     });
-
-
   }
+
 
   checkMaxWidth(maxWidth: number) {
     if (window.innerWidth <= maxWidth) {
@@ -87,66 +68,68 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     }
   }
 
+
   inputView() {
     console.log(this.categoryName);
   }
 
+
   selectCategory(category: string, color: string, id: number) {
-    this.selectedCategory = category;
-    this.catText = category;
-    this.catColor = color;
-    this.showCategorys = false;
-    this.categoryId = id;
+    this.task.selectedCategory = category;
+    this.task.catText = category;
+    this.task.catColor = color;
+    this.task.showCategorys = false;
+    this.task.categoryId = id;
   }
 
 
   createCategory() {
     this.showNewCategory = true;
     this.categoryName = '';
-    this.catColor = '';
+    this.task.catColor = '';
   }
 
 
   saveCategory() {
-    this.newCategory = new Category(this.categoryName, this.catColor);
-    this.categoryId = this.newCategory.id;
+    this.newCategory = new Category(this.categoryName, this.task.catColor);
+    this.task.categoryId = this.newCategory.id;
     this.afs
       .collection('categorys')
       .add(
         this.newCategory.toJson()
       ).then(() => {
-        this.catColor = this.newCategory.color;
-        this.catText = this.categoryName;
-        this.showCategorys = !this.showCategorys;
+        this.task.catColor = this.newCategory.color;
+        this.task.catText = this.categoryName;
+        this.task.showCategorys = !this.task.showCategorys;
         this.showNewCategory = false;
-        this.selectedCategory = this.categoryName;
+        this.task.selectedCategory = this.categoryName;
       });
 
   }
 
   cancel() {
-    this.showCategorys = !this.showCategorys;
+    this.task.showCategorys = !this.task.showCategorys;
     this.showNewCategory = false;
-    this.catColor = '';
-    this.catText = this.catStartText;
-    this.catColor = '';
+    this.task.catColor = '';
+    this.task.catText = this.task.catStartText;
+    this.task.catColor = '';
     this.categoryName = '';
   }
 
   updateSelectedContacts() {
-    this.assignedContactIdsForTask = [];
-    for (let key in this.selectedContacts) {
-      if (this.selectedContacts[key]) {
-        this.assignedContactIdsForTask.push(key);
+    this.task.assignedContactIdsForTask = [];
+    for (let key in this.task.selectedContacts) {
+      if (this.task.selectedContacts[key]) {
+        this.task.assignedContactIdsForTask.push(key);
       }
     }
   }
 
   updateAssignedSubtasks() {
-    this.assignedSubtasks = [];
-    for (let key in this.selectedSubtasks) {
-      if (this.selectedSubtasks[key] && !this.assignedContactIdsForTask.includes(key)) {
-        this.assignedSubtasks.push({ name: key, done: false });
+    this.task.assignedSubtasks = [];
+    for (let key in this.task.selectedSubtasks) {
+      if (this.task.selectedSubtasks[key] && !this.task.assignedContactIdsForTask.includes(key)) {
+        this.task.assignedSubtasks.push({ name: key, done: false });
       }
     }
   }
@@ -155,69 +138,24 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   setFocus() {
     this.inputField.nativeElement.focus();
-    this.showSubtask = true;
+    this.task.showSubtask = true;
   }
 
+  
   createSubtask() {
-    // this.selectedSubtasks = [];
-    this.allSubtasks.push({ name: this.currentSubtask });
-    console.log('All subtasks: ', this.allSubtasks);
+    this.task.allSubtasks.push({ name: this.currentSubtask });
+    console.log('All subtasks: ', this.task.allSubtasks);
     this.currentSubtask = '';
-    this.showSubtask = false;
+    this.task.showSubtask = false;
   }
 
-  createTask() {
-    let newTask = new Task(this.title,
-      this.description,
-      this.categoryId,
-      this.assignedContactIdsForTask,
-      this.dueDateTimestamp,
-      this.activePrio,
-      this.assignedSubtasks);
-
-
-    this.saveTask(newTask);
-    this.resetForm();
-  }
-
-
-
-  saveTask(newTask: any) {
-    this.afs
-      .collection('tasks')
-      .add(newTask.toJSON()).then(() => {
-        this.control.getMessage('Task added to board', 'assets/img/icons/add-task-board-icon.png');
-      });
-
-  }
-
-
-  resetForm() {
-    this.description = '';
-    this.selectedCategory = '';
-    this.selectedContacts = [];
-    this.dueDate = '';
-    this.activePrio = '';
-    this.showCategorys = false;
-    this.showSubtask = false;
-    this.title = '';
-    this.catText = this.catStartText;
-    this.catColor = '';
-    this.allSubtasks = [];
-    this.showAssignedTo = false;
-    this.selectedSubtasks = [];
-    this.assignedSubtasks = [];
-    this.assignedContactIdsForTask = [];
-    this.categoryId = 0;
-  }
-
-
+  
   test() {
     this.control.addContactDialogOpen = true;
   }
 
 
   getTimestamp() {
-    this.dueDateTimestamp = new Date(this.dueDate).getTime();
+    this.task.dueDateTimestamp = new Date(this.task.dueDate).getTime();
   }
 }

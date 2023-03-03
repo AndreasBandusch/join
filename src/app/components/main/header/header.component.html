@@ -9,7 +9,7 @@
     <img class="profile-picture" src="/assets/img/profile-picture.png">
 </div>
 <div *ngIf="control.showAddTaskBotton" class="right">
-    <button type="submit" type="submit" class="primary-btn">
+    <button type="submit" type="submit" class="primary-btn" (click)="task.createTask()">
         Create
         <img src="assets/img/icons/checked-icon.png">
     </button>

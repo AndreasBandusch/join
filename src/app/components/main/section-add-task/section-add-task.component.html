@@ -10,13 +10,13 @@
                     <span>Title</span>
                     <div class="input-field">
                         <div class="field">
-                            <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="title">
+                            <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="task.title">
                         </div>
                     </div>
                 </div>
                 <div class="field-group">
                     <span>Description</span>
-                    <textarea name="description" [(ngModel)]="description" (keyup)="inputView()"
+                    <textarea name="description" [(ngModel)]="task.description" (keyup)="inputView()"
                         placeholder="Enter a Description"></textarea>
                 </div>
                 <div class="field-group">
@@ -25,14 +25,14 @@
                         <div class="dropdown">
                             <div class="select-menu">
                                 <div class="cat-header">
-                                    <span>{{catText}}</span>
-                                    <div class="cat-color" [style.backgroundColor]="catColor"></div>
+                                    <span>{{task.catText}}</span>
+                                    <div class="cat-color" [style.backgroundColor]="task.catColor"></div>
                                 </div>
-                                <div class="icon" (click)="showCategorys = !showCategorys"><img class="arrow"
+                                <div class="icon" (click)="task.showCategorys = !task.showCategorys"><img class="arrow"
                                         src="assets/img/icons/menu-arrow-down.png"></div>
                             </div>
                             <div class="select-catagory">
-                                <ng-container *ngIf="showCategorys">
+                                <ng-container *ngIf="task.showCategorys">
                                     <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
                                         category</span>
                                     <ng-container *ngFor="let cat of allCategorys">
@@ -64,7 +64,7 @@
 
                             <div class="color-cont">
                                 <div *ngFor="let color of catColors" class="color" [style.backgroundColor]="color"
-                                    [class.color-active]="catColor == color" (click)="catColor = color">
+                                    [class.color-active]="task.catColor == color" (click)="task.catColor = color">
                                 </div>
                             </div>
                         </div>
@@ -78,17 +78,17 @@
                             <div class="cat-header">
                                 <span>{{assignedTotext}}</span>
                             </div>
-                            <div class="icon" (click)="showAssignedTo = !showAssignedTo"><img class="arrow"
+                            <div class="icon" (click)="task.showAssignedTo = !task.showAssignedTo"><img class="arrow"
                                     src="assets/img/icons/menu-arrow-down.png"></div>
                         </div>
-                        <ng-container *ngIf="showAssignedTo">
+                        <ng-container *ngIf="task.showAssignedTo">
                             <div *ngFor="let contact of allContacts" class="select-contacts">
                                 <div class="contact">
                                     <label class="contact" for="{{contact.id}}">{{contact.firstName}}
                                         {{contact.lastName}}
                                         <input type="checkbox" id="{{contact.id}}" name="{{contact.id}}"
                                             value="{{contact.firstName}} {{contact.lastName}}"
-                                            [(ngModel)]="selectedContacts[contact.id]"
+                                            [(ngModel)]="task.selectedContacts[contact.id]"
                                             (ngModelChange)="updateSelectedContacts()">
                                     </label>
                                 </div>
@@ -113,7 +113,7 @@
                     <span>Due Date</span>
                     <div class="input-field">
                         <div class="field">
-                            <input name="date" type="date" [(ngModel)]="dueDate" (ngModelChange)="getTimestamp()">
+                            <input name="date" type="date" [(ngModel)]="task.dueDate" (ngModelChange)="getTimestamp()">
                         </div>
                     </div>
                 </div>
@@ -121,22 +121,22 @@
                 <div class="field-group">
                     <span>Prio</span>
                     <div class="prio-cont">
-                        <div class="prio urgent" [class.urgent-color]="activePrio === 'urgent'"
-                            (click)="activePrio = 'urgent'">
+                        <div class="prio urgent" [class.urgent-color]="task.activePrio === 'urgent'"
+                            (click)="task.activePrio = 'urgent'">
                             Urgent
-                            <img *ngIf="activePrio !== 'urgent'" src="assets/img/icons/add-task-urgent.png">
-                            <img *ngIf="activePrio === 'urgent'" src="assets/img/icons/add-task-urgent-white.png">
+                            <img *ngIf="task.activePrio !== 'urgent'" src="assets/img/icons/add-task-urgent.png">
+                            <img *ngIf="task.activePrio === 'urgent'" src="assets/img/icons/add-task-urgent-white.png">
                         </div>
-                        <div class="prio medium" [class.medium-color]="activePrio === 'medium'"
-                            (click)="activePrio = 'medium'">
+                        <div class="prio medium" [class.medium-color]="task.activePrio === 'medium'"
+                            (click)="task.activePrio = 'medium'">
                             Medium
-                            <img *ngIf="activePrio !== 'medium'" src="assets/img/icons/add-task-medium.png">
-                            <img *ngIf="activePrio === 'medium'" src="assets/img/icons/add-task-medium-white.png">
+                            <img *ngIf="task.activePrio !== 'medium'" src="assets/img/icons/add-task-medium.png">
+                            <img *ngIf="task.activePrio === 'medium'" src="assets/img/icons/add-task-medium-white.png">
                         </div>
-                        <div class="prio low" [class.low-color]="activePrio === 'low'" (click)="activePrio = 'low'">
+                        <div class="prio low" [class.low-color]="task.activePrio === 'low'" (click)="task.activePrio = 'low'">
                             Low
-                            <img *ngIf="activePrio !== 'low'" src="assets/img/icons/add-task-low.png">
-                            <img *ngIf="activePrio === 'low'" src="assets/img/icons/add-task-low-white.png">
+                            <img *ngIf="task.activePrio !== 'low'" src="assets/img/icons/add-task-low.png">
+                            <img *ngIf="task.activePrio === 'low'" src="assets/img/icons/add-task-low-white.png">
                         </div>
                     </div>
                 </div>
@@ -148,12 +148,12 @@
                                 [(ngModel)]="currentSubtask">
                         </div>
                         <div class="icon">
-                            <img *ngIf="!currentSubtask && !showSubtask" src="assets/img/icons/add-subtask-icon.png"
+                            <img *ngIf="!currentSubtask && !task.showSubtask" src="assets/img/icons/add-subtask-icon.png"
                                 class="add-subtask" (click)="setFocus()">
-                            <ng-container *ngIf="currentSubtask || showSubtask">
+                            <ng-container *ngIf="currentSubtask || task.showSubtask">
                                 <div class="left-icon">
                                     <img src="assets/img/icons/cancel-icon-black.png"
-                                        (click)="currentSubtask = ''; showSubtask = false">
+                                        (click)="currentSubtask = ''; task.showSubtask = false">
                                 </div>
                                 <div class="right-icon">
                                     <img src="assets/img/icons/check-icon-black.png" (click)="createSubtask()">
@@ -163,11 +163,11 @@
                         </div>
                     </div>
 
-                    <div *ngIf="allSubtasks.length > 0" class="subtasks-area">
-                        <div *ngFor="let subtask of allSubtasks; index as i;">
+                    <div *ngIf="task.allSubtasks.length > 0" class="subtasks-area">
+                        <div *ngFor="let subtask of task.allSubtasks; index as i;">
                             <label for="subtask-{{+ i}}" class="subtask">
                                 <input type="checkbox" id="subtask-{{+ i}}" name="{{subtask.name}}"
-                                    [(ngModel)]="selectedSubtasks[subtask.name]"
+                                    [(ngModel)]="task.selectedSubtasks[subtask.name]"
                                     (ngModelChange)="updateAssignedSubtasks()">
                                 <span>{{subtask.name}}</span>
                             </label>
@@ -176,11 +176,11 @@
 
                 </div>
                 <div *ngIf="!control.showAddTaskBotton" class="btn-cont">
-                    <button class="secondary-btn" (click)="showCategorys = false; showNewCategory = false"
-                        (click)="resetForm()">
+                    <button class="secondary-btn" (click)="task.showCategorys = false; showNewCategory = false"
+                        (click)="task.resetForm()">
                         Clear <span>x</span>
                     </button>
-                    <button type="submit" class="primary-btn" (click)="createTask()">
+                    <button type="submit" class="primary-btn" (click)="task.createTask()">
                         Create Task
                         <img src="assets/img/icons/checked-icon.png">
                     </button>
