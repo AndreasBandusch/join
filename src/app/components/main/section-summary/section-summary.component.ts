@@ -7,7 +7,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./section-summary.component.scss']
 })
 export class SectionSummaryComponent implements OnInit {
-  allTasks: any[] = [];
+  tasks: any[] = [];
   taskInBoard: number = 0;
   taskInProgress: number = 0;
   awaitingFeedback: number = 0;
@@ -22,21 +22,20 @@ export class SectionSummaryComponent implements OnInit {
 
   ngOnInit() {
     this.afs.collection('tasks').valueChanges().subscribe(changes => {
-      this.allTasks = changes;
+      this.tasks = changes;
       this.getSummaryContent();
     });
   }
 
-
+  
   getSummaryContent() {
     this.unsetSummaryNumbers();
-    this.taskInBoard = this.allTasks.length;
-    this.allTasks.forEach(task => {
+    this.taskInBoard = this.tasks.length;
+    this.tasks.forEach(task => {
       this.getNumberOfUrgentTasks(task);
       this.setNumbersOfTaskStatus(task.status);
       this.getDueDate(task.dueDate);
       this.setDueDateOutput();
-      console.log(this.dueDate);
     });
   }
 
