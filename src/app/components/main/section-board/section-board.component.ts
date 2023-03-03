@@ -26,10 +26,10 @@ export class SectionBoardComponent implements OnInit {
 
   ngOnInit() {
     console.log('Loaded');
-    this.loadTasks();
+   
     this.loadContacts();
-    
     this.loadCategorys();
+    this.loadTasks();
   }
 
   
@@ -38,6 +38,7 @@ export class SectionBoardComponent implements OnInit {
   loadContacts() {
     this.afs.collection('contacts').valueChanges().subscribe(changes => {
       this.allContacts = changes;
+      this.loadAssignedContactsInAllTasks();
     })
   }
 
@@ -50,7 +51,7 @@ export class SectionBoardComponent implements OnInit {
       this.seperateStatus();
       console.log('Tasks:', 
       this.allTasks);
-      this.loadAssignedContactsInAllTasks();
+      
     })
   }
 
