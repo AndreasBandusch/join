@@ -15,7 +15,6 @@
 
 .content-inner {
     height: calc(100% - 138px);
-
 }
 
 .content-body {
@@ -115,6 +114,11 @@
     height: auto;
     padding: unset;
 
+    .dropdown-content {
+        max-height: 250px;
+        overflow-y: auto;
+        width: 100%;
+    }
 
     .select-menu {
         position: relative;
@@ -135,10 +139,9 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-
     }
 
-    
+
 
     .item {
         cursor: pointer;
@@ -184,7 +187,7 @@
         }
     }
 
-    
+
 
     .cat-color {
         display: flex;
@@ -199,9 +202,9 @@
         display: flex;
         align-items: center
     }
-    
-    
-    
+
+
+
 }
 
 
@@ -209,10 +212,11 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    
+
 }
 
-.left-icon, .right-icon {
+.left-icon,
+.right-icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -246,13 +250,15 @@
     transform: scale(1.2);
 }
 
-.urgent-color, .medium-color, .low-color {
+.urgent-color,
+.medium-color,
+.low-color {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     color: white;
 }
 
 .urgent-color {
-    background-color: #FF3D00 !important;   
+    background-color: #FF3D00 !important;
 }
 
 .medium-color {
@@ -270,6 +276,9 @@
 .subtasks-area {
     margin-top: 16px;
     font-size: 16px;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 100%;
 }
 
 .subtask {
@@ -313,6 +322,7 @@
     .content-left,
     .content-right {
         width: 100%;
+        height: auto;
     }
 
     .content-left {

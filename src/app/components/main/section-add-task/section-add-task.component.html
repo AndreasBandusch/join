@@ -32,7 +32,7 @@
                                         src="assets/img/icons/menu-arrow-down.png"></div>
                             </div>
                             <div class="select-catagory">
-                                <ng-container *ngIf="task.showCategorys">
+                                <div *ngIf="task.showCategorys" class="dropdown-content">
                                     <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
                                         category</span>
                                     <ng-container *ngFor="let cat of allCategorys">
@@ -41,7 +41,7 @@
                                             <div class="cat-color" [style.backgroundColor]="cat.color"></div>
                                         </div>
                                     </ng-container>
-                                </ng-container>
+                                </div>
                             </div>
                         </div>
                     </ng-container>
@@ -81,7 +81,7 @@
                             <div class="icon" (click)="task.showAssignedTo = !task.showAssignedTo"><img class="arrow"
                                     src="assets/img/icons/menu-arrow-down.png"></div>
                         </div>
-                        <ng-container *ngIf="task.showAssignedTo">
+                        <div *ngIf="task.showAssignedTo" class="dropdown-content">
                             <div *ngFor="let contact of allContacts" class="select-contacts">
                                 <div class="contact">
                                     <label class="contact" for="{{contact.id}}">{{contact.firstName}}
@@ -99,7 +99,7 @@
                                     <img src="assets/img/icons/add-new-contact-icon.png">
                                 </div>
                             </div>
-                        </ng-container>
+                        </div>
 
                     </div>
 
@@ -164,7 +164,7 @@
                     </div>
 
                     <div *ngIf="task.allSubtasks.length > 0" class="subtasks-area">
-                        <div *ngFor="let subtask of task.allSubtasks; index as i;">
+                        <div *ngFor="let subtask of task.allSubtasks; index as i">
                             <label for="subtask-{{+ i}}" class="subtask">
                                 <input type="checkbox" id="subtask-{{+ i}}" name="{{subtask.name}}"
                                     [(ngModel)]="task.selectedSubtasks[subtask.name]"

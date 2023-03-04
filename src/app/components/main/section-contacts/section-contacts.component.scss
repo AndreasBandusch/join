@@ -31,6 +31,7 @@ a:active>div {
     margin-bottom: 112px;
 }
 
+    
 .btn-cont {
     position: absolute;
     display: flex;
@@ -105,18 +106,21 @@ a:active>div {
     display: none;
 }
 
-.catagory {
+.category {
     width: 100%;
     padding-top: 16px;
+
+    &:last-child {
+        padding-bottom: 48px;
+    }
 }
 
-.catagory-header {
+.category-header {
     padding-bottom: 16px;
     border-bottom: 1px solid #D1D1D1;
 }
 
-.catagory-body {
-
+.category-body {
     display: flex;
 }
 
@@ -147,18 +151,17 @@ a:active>div {
     /* Begrenzt die Breite des Textes */
 }
 
-.catagory-body {
+.category-body {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.catagory-body-cont {
+.category-body-cont {
     display: flex;
     align-items: center;
     padding: 16px;
     transition: all 75 ease-in-out;
-
 }
 
 .contact-initials {
@@ -273,7 +276,7 @@ a:active>div {
 
     }
 
-    .catagory {
+    .category {
         &:first-child {
             padding-top: 90px;
         }
@@ -301,6 +304,12 @@ a:active>div {
     .contacts-inner {
         padding-bottom: 118px;
     }
+    }
+
+    .category {
+        &:last-child {
+            padding-bottom: 0;
+        }
     }
 
     .contacts {
@@ -410,7 +419,7 @@ a:active>div {
         max-width: 220px;
     }
 
-    .catagory-body-cont {
+    .category-body-cont {
         padding-left: 8px;
         padding-right: 8px;
     }

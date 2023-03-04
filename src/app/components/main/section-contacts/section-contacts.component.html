@@ -11,15 +11,15 @@
             (click)="toggleDetails(false)">
         <div class="contacts" [class.d-none]="switchView">
             <div *ngIf="control.contactsAvailable" class="contacts-inner">
-                <div *ngFor="let initial of catagoryInitials;" class="catagory">
-                    <div class="catagory-header">
+                <div *ngFor="let initial of categoryInitials;" class="category">
+                    <div class="category-header">
                         <span class="letter">{{initial}}</span>
                     </div>
                     <div *ngFor="let contact of allContacts; index as i">
-                        <div *ngIf="getFirstLetter(contact.firstName) === initial" class="catagory-body">
+                        <div *ngIf="getFirstLetter(contact.firstName) === initial" class="category-body">
                             <a [routerLink]="['contact', contact.docId]"
                                 (click)="control.currentContact = contact.id" (click)="toggleDetails(true)">
-                                <div class="catagory-body-cont"
+                                <div class="category-body-cont"
                                     [class.active]="control.currentContact === contact.id && control.currentContact != 0">
                                     <div class="contact-initials" [ngStyle]="{'background-color': contact.color}">
                                         {{contact?.initials}}

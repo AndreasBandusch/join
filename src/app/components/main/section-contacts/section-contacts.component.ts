@@ -11,7 +11,7 @@ import { ControlService } from 'src/app/services/control.service';
 export class SectionContactsComponent implements OnInit, OnDestroy {
   allContacts: any[] = [];
   switchView: boolean = false;
-  catagoryInitials: string[] = [];
+  categoryInitials: string[] = [];
   initialsLastNames: string[] = [];
   initals: any[] = [];
  
@@ -50,12 +50,12 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
 
 
   getCatagoryInitials() {
-    this.catagoryInitials = [];
+    this.categoryInitials = [];
     this.allContacts.forEach(contact => {
       let initial = contact.initials[0];
-      if (!this.catagoryInitials.includes(initial)) {
-        this.catagoryInitials.push(initial);
-        this.catagoryInitials.sort();
+      if (!this.categoryInitials.includes(initial)) {
+        this.categoryInitials.push(initial);
+        this.categoryInitials.sort();
       }
     });
   }
