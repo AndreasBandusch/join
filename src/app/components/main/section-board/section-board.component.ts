@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragMove} from '@angular/cdk/drag-drop';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
@@ -18,6 +18,7 @@ export class SectionBoardComponent implements OnInit {
   doneTasks: any[] = [];
   test: number = 0;
   isMovend: boolean = false;
+  testme: boolean = false;
 
   constructor(private afs: AngularFirestore) { }
 
@@ -211,7 +212,5 @@ export class SectionBoardComponent implements OnInit {
     }
   }
 
-  // testMe(color: string) {
-  //   console.log(color);
-  // }
+  
 }

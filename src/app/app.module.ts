@@ -29,7 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CustomformcontrolModule } from './modules/customformcontrol/customformcontrol.module';
 import { FeedbackMessageComponent } from './components/feedback-message/feedback-message.component';
 import { RouterModule } from '@angular/router';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations'
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
@@ -60,13 +60,13 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    NoopAnimationsModule,
+    DragDropModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    NoopAnimationsModule,
-    DragDropModule
   ],
   providers: [CustomformcontrolModule],
   bootstrap: [AppComponent]

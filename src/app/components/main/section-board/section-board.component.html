@@ -157,7 +157,7 @@
                 [cdkDropListData]="doneTasks"
                 [cdkDropListConnectedTo]="[todos, awaitingFeedback, inProgress]"
                 (cdkDropListDropped)="drop($event)">
-                <div class="task" *ngFor="let item of doneTasks" cdkDrag>
+                <div class="task" *ngFor="let item of doneTasks" cdkDrag (cdkDragMoved)="testme = true" [class.testme]="testme">
                     <div class="category">
                         <span class="category-inner" [style.backgroundColor]="item.category.color">
                             {{item.category.name}}
