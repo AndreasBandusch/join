@@ -93,6 +93,12 @@ form {
     justify-content: space-evenly;
 }
 
+.remember-me {
+    display: flex;
+}
+
+
+
 input[type="checkbox"],
 input[type="checkbox"]:active {
     margin-right: 16px;
@@ -125,6 +131,12 @@ input[type="checkbox"]:active {
     .sign-up-container {
         top: 32px;
         right: 32px;
+    }
+}
+
+@media (max-width: 920px) {
+    input {
+        height: unset;
     }
 }
 
