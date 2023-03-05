@@ -75,7 +75,7 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  loadAssignedCategoryInAllTasks() {
+  loadAssignedCategoryInAllTasks(): void {
     for (let task of this.allTasks) {
       let category = this.allCategorys.find(cat => cat.id === task.category);
       if (category) {
@@ -85,7 +85,7 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  seperateStatus() {
+  seperateStatus(): void {
     this.todoTasks = [];
     this.inProgressTasks = [];
     this.awaitingFeedbackTasks = [];
@@ -113,7 +113,7 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  drop(event: CdkDragDrop<any[]>) {
+  drop(event: CdkDragDrop<any[]>): void {
   
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -131,22 +131,22 @@ export class SectionBoardComponent implements OnInit {
 
 
 
-  setTaskStatus(itemData: any, dropListId: string): void {
+  setTaskStatus(currentTask: any, dropListId: string): void {
        switch (dropListId) {
          case 'todo':
-           itemData.status = 'todo';
+          currentTask.status = 'todo';
           break;
         case 'in-progress':
-           itemData.status = 'inProgress';
+          currentTask.status = 'inProgress';
            break;
         case 'awaiting-feedback':
-          itemData.status = 'awaitingFeedback';
+          currentTask.status = 'awaitingFeedback';
            break;
          case 'done':
-          itemData.status = 'done';
+          currentTask.status = 'done';
             break;
         }
-       this.updateTaskStatus(itemData);
+       this.updateTaskStatus(currentTask);
     }
   
 
@@ -193,20 +193,6 @@ export class SectionBoardComponent implements OnInit {
 
       default:
         return '';
-    }
-  }
-
-  onDragMoved(event: CdkDragMove) {
-    const element = event.source.element.nativeElement;
-    element.style.transform = `rotate(${7}deg)`;
-    this.isDragging = true;
-  }
-
-  onDragEnded(event: CdkDragEnd) {
-    if (this.isDragging) {
-      const element = event.source.element.nativeElement;
-      element.style.transform = '';
-      this.isDragging = false;
     }
   }
 }

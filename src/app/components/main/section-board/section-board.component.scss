@@ -1,11 +1,49 @@
+
 .content-inner {
     height: calc(100% - 92px);
     padding-bottom: 48px;
+    margin-left: 48px;
+    // margin-right: 48px;
 }
 
 .content-body {
-    gap: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     height: 100%;
+}
+
+.status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+}
+
+
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 21px;
+    font-weight: 700;
+    
+
+    img {
+        height: 30px;
+        width: 30px;
+        margin-left: 8px;
+    }
+}
+
+.status-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+    // gap: 32px;
 }
 
 .control-cont {
@@ -46,37 +84,6 @@
     width: 40px;
 }
 
-.status {
-    display: flex;
-    flex-direction: column;
-    width: 25%;
-}
-
-.status-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    font-size: 21px;
-    font-weight: 700;
-    padding: 0 16px;
-
-    img {
-        height: 30px;
-        width: 30px;
-    }
-}
-
-.status-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    // gap: 32px;
-}
-
-
-
 
 .task {
     display: flex;
@@ -88,8 +95,6 @@
     padding: 16px 24px;
     gap: 16px;
     cursor: pointer;
-
-    
 }
 
 
@@ -104,7 +109,7 @@
     padding: 4px 16px;
 }
 
-.title {
+.task-title {
     font-weight: 700;
     color: #2A3647;
 }
@@ -162,13 +167,9 @@
     }
 }
 
-
 .cdk-drag-preview {
     min-height: 200px;
 }
-
-
-
 
 .cdk-drop-list {
     margin-top: 32px;
@@ -183,31 +184,56 @@
     border: 1px dotted #2A3647;
     background-color: unset;
     box-shadow: unset;
-    
-   
 
-    .category, .title, .progress, .desciption, .bottom-cont {
+    .category,
+    .title,
+    .progress,
+    .desciption,
+    .bottom-cont {
         display: none;
-    }  
+    }
 }
 
- .cdk-drop-list-receiving {
-     border-radius: 30px;
-     opacity: 0.3;
- }
+.cdk-drop-list-receiving {
+    border-radius: 30px;
+    opacity: 0.3;
+}
 
 .cdk-drop-list-dragging {
-   
-     border-radius: 30px;
-    
-    
-     opacity: 0.35;
- }
+
+    border-radius: 30px;
+
+
+    opacity: 0.35;
+}
 
 
 
 
+@media (max-width: 1520px) {
 
+    // .status-header {
+    //     font-size: 18px;
+    // }
+    .content-body {
+        justify-content: space-between;
+        row-gap: 48px;
+
+    }
+
+    .status {
+        width: 30%;
+        // max-height: 100%;
+        // overflow: auto;
+    }
+
+}
+
+@media (max-width: 1150px) {
+    .status {
+        width: 45%;
+    }
+}
 
 @media (max-width: 1000px) {
     .input-search {

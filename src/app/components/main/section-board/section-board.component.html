@@ -24,7 +24,7 @@
         <div class="content-body">
             <div class="status">
                 <div class="status-header">
-                    <span>To do</span>
+                    <span class="header">To do</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
                 <div class="status-content" cdkDropList 
@@ -32,13 +32,13 @@
                 [cdkDropListData]="todoTasks" 
                 [cdkDropListConnectedTo]="[inProgress, awaitingFeedback, done]"
                 (cdkDropListDropped)="drop($event)">
-                    <div [cdkDragData]="item" class="task" *ngFor="let item of todoTasks" cdkDrag>
+                    <div class="task" *ngFor="let item of todoTasks" cdkDrag [cdkDragData]="item">
                         <div class="category">
                             <span class="category-inner" [style.backgroundColor]="item.category.color">
                                 {{item.category.name}}
                             </span>
                         </div>
-                        <span class="title">{{item.title}}</span>
+                        <span class="task-title">{{item.title}}</span>
                         <div class="desciption">
                             {{item.description}}
                         </div>
@@ -65,7 +65,7 @@
             </div>
             <div class="status">
                 <div class="status-header">
-                    <span>In progress</span>
+                    <span class="header">In progress</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
                 <div class="status-content" cdkDropList
@@ -79,7 +79,7 @@
                             {{item.category.name}}
                         </span>
                     </div>
-                    <span class="title">{{item.title}}</span>
+                    <span class="task-title">{{item.title}}</span>
                     <div class="desciption">
                         {{item.description}}
                     </div>
@@ -107,7 +107,7 @@
 
             <div class="status">
                 <div class="status-header">
-                    <span>Awaiting Feedback</span>
+                    <span class="header">Awaiting Feedback</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
                 <div class="status-content" cdkDropList
@@ -121,7 +121,7 @@
                             {{item.category.name}}
                         </span>
                     </div>
-                    <span class="title">{{item.title}}</span>
+                    <span class="task-title">{{item.title}}</span>
                     <div class="desciption">
                         {{item.description}}
                     </div>
@@ -149,7 +149,7 @@
 
             <div class="status">
                 <div class="status-header">
-                    <span>Done</span>
+                    <span class="header">Done</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
                 <div class="status-content" cdkDropList 
@@ -163,7 +163,7 @@
                             {{item.category.name}}
                         </span>
                     </div>
-                    <span class="title">{{item.title}}</span>
+                    <span class="task-title">{{item.title}}</span>
                     <div class="desciption">
                         {{item.description}}
                     </div>
