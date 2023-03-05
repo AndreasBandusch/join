@@ -32,7 +32,7 @@
                 [cdkDropListData]="todoTasks" 
                 [cdkDropListConnectedTo]="[inProgress, awaitingFeedback, done]"
                 (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of todoTasks" cdkDrag>
+                    <div [cdkDragData]="item" class="task" *ngFor="let item of todoTasks" cdkDrag>
                         <div class="category">
                             <span class="category-inner" [style.backgroundColor]="item.category.color">
                                 {{item.category.name}}
@@ -73,7 +73,7 @@
                 [cdkDropListData]="inProgressTasks"
                 [cdkDropListConnectedTo]="[todos, awaitingFeedback, done]"
                 (cdkDropListDropped)="drop($event)">
-                <div class="task" *ngFor="let item of inProgressTasks" cdkDrag>
+                <div class="task" *ngFor="let item of inProgressTasks" cdkDrag [cdkDragData]="item">
                     <div class="category">
                         <span class="category-inner" [style.backgroundColor]="item.category.color">
                             {{item.category.name}}
@@ -115,7 +115,7 @@
                 [cdkDropListData]="awaitingFeedbackTasks"
                 [cdkDropListConnectedTo]="[todos, inProgress, done]"
                 (cdkDropListDropped)="drop($event)">
-                <div class="task" *ngFor="let item of awaitingFeedbackTasks" cdkDrag>
+                <div class="task" *ngFor="let item of awaitingFeedbackTasks" cdkDrag [cdkDragData]="item">
                     <div class="category">
                         <span class="category-inner" [style.backgroundColor]="item.category.color">
                             {{item.category.name}}
@@ -157,7 +157,7 @@
                 [cdkDropListData]="doneTasks"
                 [cdkDropListConnectedTo]="[todos, awaitingFeedback, inProgress]"
                 (cdkDropListDropped)="drop($event)">
-                <div class="task" *ngFor="let item of doneTasks" cdkDrag (cdkDragMoved)="testme = true" [class.testme]="testme">
+                <div class="task" *ngFor="let item of doneTasks" cdkDrag [cdkDragData]="item">
                     <div class="category">
                         <span class="category-inner" [style.backgroundColor]="item.category.color">
                             {{item.category.name}}

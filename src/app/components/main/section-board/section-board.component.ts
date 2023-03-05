@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragMove} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragMove, CdkDragEnd} from '@angular/cdk/drag-drop';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
@@ -17,8 +17,7 @@ export class SectionBoardComponent implements OnInit {
   awaitingFeedbackTasks: any[] = [];
   doneTasks: any[] = [];
   test: number = 0;
-  isMovend: boolean = false;
-  testme: boolean = false;
+  isDragging: boolean = false;
 
   constructor(private afs: AngularFirestore) { }
 
@@ -127,52 +126,37 @@ export class SectionBoardComponent implements OnInit {
       );
     }
     console.log('Drop', this.allTasks);
-    this.setTaskStatus(event.container.data, event.container.id);
+    this.setTaskStatus(event.item.data, event.container.id);
   }
 
 
 
-  setTaskStatus(droppedData: any[], dropListId: string): void {
-    let currentTask = droppedData;
-    console.log('Currrent Task', currentTask);
-    for (let i = 0; i < droppedData.length; i++) {
-      let status;
-      switch (dropListId) {
-        case 'todo':
-          status = 'todo';
-          currentTask[i].status = status;
+  setTaskStatus(itemData: any, dropListId: string): void {
+       switch (dropListId) {
+         case 'todo':
+           itemData.status = 'todo';
           break;
         case 'in-progress':
-          status = 'inProgress';
-          currentTask[i].status = status;
-          break;
+           itemData.status = 'inProgress';
+           break;
         case 'awaiting-feedback':
-          status = 'awaitingFeedback';
-          currentTask[i].status = status;
-          break;
-        case 'done':
-          status = 'done';
-          currentTask[i].status = status;
-          break;
-      }
-      currentTask[i].status = status;
-      this.updateTaskStatus(currentTask[i]);
+          itemData.status = 'awaitingFeedback';
+           break;
+         case 'done':
+          itemData.status = 'done';
+            break;
+        }
+       this.updateTaskStatus(itemData);
     }
-  }
+  
 
 
   updateTaskStatus(task: any): void {
-
     let docId = task.docId;
-
-    console.log(task.status);
     this.afs
       .collection("tasks")
       .doc(docId)
-      .update({ status: task.status }).then(() => {
-
-      })
-
+      .update({ status: task.status });
   }
 
 
@@ -212,5 +196,17 @@ export class SectionBoardComponent implements OnInit {
     }
   }
 
-  
+  onDragMoved(event: CdkDragMove) {
+    const element = event.source.element.nativeElement;
+    element.style.transform = `rotate(${7}deg)`;
+    this.isDragging = true;
+  }
+
+  onDragEnded(event: CdkDragEnd) {
+    if (this.isDragging) {
+      const element = event.source.element.nativeElement;
+      element.style.transform = '';
+      this.isDragging = false;
+    }
+  }
 }

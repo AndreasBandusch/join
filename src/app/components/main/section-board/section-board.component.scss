@@ -88,6 +88,8 @@
     padding: 16px 24px;
     gap: 16px;
     cursor: pointer;
+
+    
 }
 
 
@@ -165,6 +167,9 @@
     min-height: 200px;
 }
 
+
+
+
 .cdk-drop-list {
     margin-top: 32px;
     gap: 32px;
@@ -174,10 +179,11 @@
 }
 
 .cdk-drag-placeholder {
-    height: 200px;
+    min-height: 200px;
     border: 1px dotted #2A3647;
     background-color: unset;
     box-shadow: unset;
+    
    
 
     .category, .title, .progress, .desciption, .bottom-cont {
@@ -185,20 +191,17 @@
     }  
 }
 
-.cdk-drop-list-receiving {
-  
-    background-color: rgba(42, 54, 71, 0.03);
-    border-radius: 30px;
-   
-  
+ .cdk-drop-list-receiving {
+     border-radius: 30px;
+     opacity: 0.3;
  }
 
 .cdk-drop-list-dragging {
-    // background-color: rgba(42, 54, 71, 0.01);
+   
      border-radius: 30px;
     
     
-     opacity: 0.3;
+     opacity: 0.35;
  }
 
 
