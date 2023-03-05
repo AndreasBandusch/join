@@ -293,6 +293,10 @@
         margin-right: 16px;
         margin-left: 16px;
     }
+
+    .input-search {
+        width: 100%;
+    }
 }
 
 @media (max-width: 350px) {
@@ -302,5 +306,13 @@
 
     .content-header-mobile {
         font-size: 14px;
+    }
+
+    .desciption {
+        font-size: 14px;
+    }
+
+    .task {
+        padding: 16px 12px;
     }
 }

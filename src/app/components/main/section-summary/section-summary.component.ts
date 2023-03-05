@@ -24,7 +24,10 @@ export class SectionSummaryComponent implements OnInit {
     this.afs.collection('tasks').valueChanges().subscribe(changes => {
       this.tasks = changes;
       this.getSummaryContent();
+      console.log(this.tasks);
     });
+
+   
   }
 
   
