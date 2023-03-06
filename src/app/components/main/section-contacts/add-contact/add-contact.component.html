@@ -1,5 +1,5 @@
 <div class="add-contact" [class.slide-out]="animationStatus" [class.fade-out]="animationStatus" [class.fade-in]="!animationStatus" (click)="closeDialog()">
-    <div class="add-contact-cont" (click)="dontCloseByClick($event)" [class.slide-out]="animationStatus" [class.slide-in]="!animationStatus"
+    <div class="add-contact-cont" (click)="control.dontCloseByClick($event)" [class.slide-out]="animationStatus" [class.slide-in]="!animationStatus"
         [class.slide-out-mobile]="animationStatus" [class.slide-in-mobile]="!animationStatus">
         <div class="add-contact-inner">
             <div class="title-cont">

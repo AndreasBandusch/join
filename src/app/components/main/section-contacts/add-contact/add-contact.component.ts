@@ -84,9 +84,7 @@ export class AddContactComponent {
   }
 
 
-  dontCloseByClick(event: Event) {
-    event.stopPropagation();
-  }
+  
 
 
   showFeedbackMessage() {

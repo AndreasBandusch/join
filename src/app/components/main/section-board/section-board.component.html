@@ -15,8 +15,8 @@
                     </div>
                 </div>
                 <div class="right">
-                    <button class="primary-btn add-btn">Add task +</button>
-                    <img class="add-btn-mobile" src="assets/img/icons/add-icon.png">
+                    <button class="primary-btn add-btn" (click)="control.isOpenedInOverlay = true">Add task +</button>
+                    <img class="add-btn-mobile" src="assets/img/icons/add-icon.png" (click)="control.isOpenedInOverlay = true">
                 </div>
             </div>
         </div>

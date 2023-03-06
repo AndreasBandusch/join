@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragMove, CdkDragEnd} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ControlService } from 'src/app/services/control.service';
 
 @Component({
   selector: 'app-section-board',
@@ -19,7 +20,9 @@ export class SectionBoardComponent implements OnInit {
   test: number = 0;
   isDragging: boolean = false;
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(
+    private afs: AngularFirestore,
+    public control: ControlService) { }
 
 
   ngOnInit() {

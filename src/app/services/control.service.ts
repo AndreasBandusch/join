@@ -17,7 +17,8 @@ export class ControlService {
   contactsAvailable: boolean = false;
   currentContact: number = 0;
   notRouteToContactList = false;
-  isOpenedInOverlay = true;
+  isOpenedInOverlay = false;
+  setHeaderZIndex = false;
 
 
   getMessage(message: string, image?: string) {
@@ -27,5 +28,10 @@ export class ControlService {
     setTimeout(() => {
       this.showMessage = false;
     }, 1500);
+  }
+
+
+  dontCloseByClick(event: Event) {
+    event.stopPropagation();
   }
 }

@@ -13,8 +13,11 @@
     font-weight: 400;
 }
 
+
 .content-inner {
     height: calc(100% - 138px);
+
+
 }
 
 .content-body {
@@ -287,12 +290,12 @@
 }
 
 .is-overlay {
-       align-items: unset;
-       justify-content: unset;
-       height: unset;
-       width: unset;
-       margin: unset;
-       padding: unset;   
+    align-items: unset;
+    justify-content: unset;
+    height: unset;
+    width: unset;
+    margin: unset;
+    padding: unset;
 }
 
 @media (max-width: 1440px) {
@@ -323,6 +326,24 @@
     .content-body {
         flex-direction: column;
         gap: 32px;
+
+    }
+
+    .is-overlay {
+        .content-body {
+            flex-direction: row;
+        }
+
+        .content-left {
+            border-right: 1px solid #D1D1D1;
+            padding-right: 16px;
+        }
+
+        .content-left,
+        .content-right {
+            width: 50%;
+
+        }
     }
 
     .content-left,
@@ -346,7 +367,48 @@
     .content-body {
 
         padding-bottom: 0;
+
+
     }
+
+
+
+
+
+
+    .is-overlay {
+        background-color: #f5f5f5;
+
+        .content-left,
+        .content-right {
+            width: 100%;
+            padding: 0;
+            border: unset;
+        }
+
+
+        .content {
+            width: 100%;
+
+        }
+
+        .content-body {
+            flex-direction: column;
+
+        }
+
+        .content-inner {
+            width: 100%;
+           
+
+        }
+
+        .content-header-mobile {
+            display: none;
+        }
+
+    }
+
 }
 
 
@@ -354,6 +416,13 @@
     .content-inner {
         margin-right: 32px;
         margin-left: 32px;
+    }
+
+    .is-overlay {
+        .content-inner {
+            margin-left: 0;
+            margin-right: 0;
+        }
     }
 }
 
@@ -413,33 +482,39 @@
         padding-right: 12px !important;
     }
 
-}
-
-    @media (max-width: 350px) {
-        .content-header-mobile {
-            font-size: 14px;
-        }
-
-        .prio {
-            img {
-                margin-left: 4px;
-            }
-        }
-
-        input[type="date"],
-        .content-body,
-        .select-catagory,
-        .select-menu,
-        .add,
-        ::placeholder,
-        .input-field,
-        input {
-            font-size: 14px;
-        }
-
-        label, .item {
-            font-size: 12px;
+    .is-overlay {
+        .content-inner {
+            margin-left: 0;
+            margin-right: 0;
         }
     }
 
+}
 
+@media (max-width: 350px) {
+    .content-header-mobile {
+        font-size: 14px;
+    }
+
+    .prio {
+        img {
+            margin-left: 4px;
+        }
+    }
+
+    input[type="date"],
+    .content-body,
+    .select-catagory,
+    .select-menu,
+    .add,
+    ::placeholder,
+    .input-field,
+    input {
+        font-size: 14px;
+    }
+
+    label,
+    .item {
+        font-size: 12px;
+    }
+}
