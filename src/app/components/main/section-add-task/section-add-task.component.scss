@@ -113,7 +113,7 @@
     padding: unset;
 
     .dropdown-content {
-        max-height: 250px;
+        max-height: 150px;
         overflow-y: auto;
         width: 100%;
     }
@@ -286,7 +286,14 @@
     margin-top: 4px;
 }
 
-
+.is-overlay {
+       align-items: unset;
+       justify-content: unset;
+       height: unset;
+       width: unset;
+       margin: unset;
+       padding: unset;   
+}
 
 @media (max-width: 1440px) {
     .prio {

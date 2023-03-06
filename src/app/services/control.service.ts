@@ -17,6 +17,7 @@ export class ControlService {
   contactsAvailable: boolean = false;
   currentContact: number = 0;
   notRouteToContactList = false;
+  isOpenedInOverlay = true;
 
 
   getMessage(message: string, image?: string) {

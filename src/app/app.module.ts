@@ -31,6 +31,7 @@ import { FeedbackMessageComponent } from './components/feedback-message/feedback
 import { RouterModule } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { OverlayComponent } from './components/main-site/overlay/overlay.component';
 
 
 
@@ -54,6 +55,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AddContactComponent,
     EditContactComponent,
     FeedbackMessageComponent,
+    OverlayComponent,
   ],
   imports: [
     RouterModule,
