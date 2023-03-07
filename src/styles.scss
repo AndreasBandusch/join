@@ -259,6 +259,18 @@ a:hover {
     animation-fill-mode: forwards;
 }
 
+.urgent-color {
+    background-color: #FF3D00 !important;
+}
+
+.medium-color {
+    background-color: #FFA800 !important;
+}
+
+.low-color {
+    background-color: #7AE229 !important;
+}
+
 
 @keyframes fade-in {
     from {

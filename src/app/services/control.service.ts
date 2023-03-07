@@ -40,13 +40,13 @@ export class ControlService {
   getPrioImage(prio: string): string {
     switch (prio) {
       case 'low':
-        return 'add-task-low.png';
+        return 'add-task-low';
 
       case 'medium':
-        return 'add-task-medium.png';
+        return 'add-task-medium';
 
       case 'urgent':
-        return 'add-task-urgent.png';
+        return 'add-task-urgent';
 
       default:
         return '';

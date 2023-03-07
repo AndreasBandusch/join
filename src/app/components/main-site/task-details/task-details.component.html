@@ -14,9 +14,9 @@
             </p>
             <div class="priority">
                 <span class="text">Priority:</span>
-                <div class="prio">
-                    <div></div>
-                    <div><img src="assets/img/icons/{{control.getPrioImage(control.currentTask.prio)}}"></div>
+                <div class="prio {{control.currentTask.prio}}-color">
+                    <span>{{control.currentTask.prio | titlecase}}</span>
+                    <img src="assets/img/icons/{{control.getPrioImage(control.currentTask.prio)}}-white.png">
                 </div>
             </div>
         </div>

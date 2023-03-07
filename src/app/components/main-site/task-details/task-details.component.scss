@@ -66,3 +66,22 @@
     font-size: 21px;
 }
 
+
+.priority {
+    display: flex;
+    align-items: center;
+}
+
+.prio {
+    display: flex;
+    padding: 4px 18px;
+    border-radius: 10px;
+    align-items: center;
+    color: #fff;
+    font-size: 21px;
+
+    img {
+        margin-left: 16px;
+    }
+}
+
