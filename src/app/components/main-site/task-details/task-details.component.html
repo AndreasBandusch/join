@@ -19,6 +19,15 @@
                     <img src="assets/img/icons/{{control.getPrioImage(control.currentTask.prio)}}-white.png">
                 </div>
             </div>
+            <p class="text">Assigned To:</p>
+            <div class="assigned-area">
+                <div *ngFor="let contact of control.currentTask.assignedTo" class="contact">
+                    <div class="initials" [style.backgroundColor]="contact.color">{{contact.initials}}</div>
+                   <span class="output">{{contact.firstName}} {{contact.lastName}}</span>
+                </div>
+            </div>
+            <img src="assets/img/icons/close-icon.png" (click)="control.taskDetailsDialogOpen = false" class="close">
+            <img src="assets/img/icons/edit-contact-icon-mobile.png" class="edit">
         </div>
     </div>
 

@@ -25,7 +25,9 @@
     display: flex;
     justify-self: center;
     align-items: center;
-    padding: 32px;
+    padding: 48px;
+    max-height: 100%;
+    overflow-y: auto;
 }
 
 .task-inner {
@@ -83,5 +85,42 @@
     img {
         margin-left: 16px;
     }
+}
+
+.assigned-area {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+}
+
+.initials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 32px;
+    height: 45px;
+    width: 45px;
+    font-size: 16px;
+    border-radius: 100%;
+    color: #fff;
+}
+
+.close {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+    cursor: pointer;
+}
+
+.edit {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    cursor: pointer;
 }
 
