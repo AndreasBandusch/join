@@ -57,6 +57,7 @@ app-section-add-task {
         animation: unset;
         padding: 0;
         width: 100%;
+        z-index: 2;
     }
 
     .overlay-inner {
