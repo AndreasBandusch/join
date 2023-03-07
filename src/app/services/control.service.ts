@@ -10,6 +10,7 @@ export class ControlService {
   showAddTaskBotton = false;
   addContactDialogOpen = false;
   editContactDialogOpen = false;
+  taskDetailsDialogOpen = false;
   showMessage = false;
   messageText: string = '';
   messageImage?: string = '';
@@ -18,9 +19,9 @@ export class ControlService {
   currentContact: number = 0;
   notRouteToContactList = false;
   isOpenedInOverlay = false;
-  
+  currentTask: any = {};
 
-
+ 
   getMessage(message: string, image?: string) {
     this.messageText = message;
     this.messageImage = image;
@@ -34,4 +35,22 @@ export class ControlService {
   dontCloseByClick(event: Event) {
     event.stopPropagation();
   }
+
+  
+  getPrioImage(prio: string): string {
+    switch (prio) {
+      case 'low':
+        return 'add-task-low.png';
+
+      case 'medium':
+        return 'add-task-medium.png';
+
+      case 'urgent':
+        return 'add-task-urgent.png';
+
+      default:
+        return '';
+    }
+  }
+
 }

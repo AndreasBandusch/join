@@ -183,19 +183,10 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  getPrioImage(prio: string): string {
-    switch (prio) {
-      case 'low':
-        return 'add-task-low.png';
+  
 
-      case 'medium':
-        return 'add-task-medium.png';
-
-      case 'urgent':
-        return 'add-task-urgent.png';
-
-      default:
-        return '';
-    }
+  openTaskDetails(currentTask: any) {
+    this.control.currentTask = currentTask;
+    this.control.taskDetailsDialogOpen = true;
   }
 }

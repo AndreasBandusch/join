@@ -32,7 +32,7 @@
                 [cdkDropListData]="todoTasks" 
                 [cdkDropListConnectedTo]="[inProgress, awaitingFeedback, done]"
                 (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of todoTasks" cdkDrag [cdkDragData]="item">
+                    <div class="task" *ngFor="let item of todoTasks" cdkDrag [cdkDragData]="item" (click)="openTaskDetails(item)">
                         <div class="category">
                             <span class="category-inner" [style.backgroundColor]="item.category.color">
                                 {{item.category.name}}
@@ -57,7 +57,7 @@
                                 </div>
                             </div>                  
                             <div class="prio">
-                                <img src="assets/img/icons/{{getPrioImage(item.prio)}}">
+                                <img src="assets/img/icons/{{control.getPrioImage(item.prio)}}">
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                 [cdkDropListData]="inProgressTasks"
                 [cdkDropListConnectedTo]="[todos, awaitingFeedback, done]"
                 (cdkDropListDropped)="drop($event)">
-                <div class="task" *ngFor="let item of inProgressTasks" cdkDrag [cdkDragData]="item">
+                <div class="task" *ngFor="let item of inProgressTasks" cdkDrag [cdkDragData]="item" (click)="openTaskDetails(item)">
                     <div class="category">
                         <span class="category-inner" [style.backgroundColor]="item.category.color">
                             {{item.category.name}}
@@ -98,7 +98,7 @@
                             </div>
                         </div>                  
                         <div class="prio">
-                            <img src="assets/img/icons/{{getPrioImage(item.prio)}}">
+                            <img src="assets/img/icons/{{control.getPrioImage(item.prio)}}">
                         </div>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
                 [cdkDropListData]="awaitingFeedbackTasks"
                 [cdkDropListConnectedTo]="[todos, inProgress, done]"
                 (cdkDropListDropped)="drop($event)">
-                <div class="task" *ngFor="let item of awaitingFeedbackTasks" cdkDrag [cdkDragData]="item">
+                <div class="task" *ngFor="let item of awaitingFeedbackTasks" cdkDrag [cdkDragData]="item" (click)="openTaskDetails(item)">
                     <div class="category">
                         <span class="category-inner" [style.backgroundColor]="item.category.color">
                             {{item.category.name}}
@@ -140,7 +140,7 @@
                             </div>
                         </div>                  
                         <div class="prio">
-                            <img src="assets/img/icons/{{getPrioImage(item.prio)}}">
+                            <img src="assets/img/icons/{{control.getPrioImage(item.prio)}}">
                         </div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                 [cdkDropListData]="doneTasks"
                 [cdkDropListConnectedTo]="[todos, awaitingFeedback, inProgress]"
                 (cdkDropListDropped)="drop($event)">
-                <div class="task" *ngFor="let item of doneTasks" cdkDrag [cdkDragData]="item">
+                <div class="task" *ngFor="let item of doneTasks" cdkDrag [cdkDragData]="item" (click)="openTaskDetails(item)">
                     <div class="category">
                         <span class="category-inner" [style.backgroundColor]="item.category.color">
                             {{item.category.name}}
@@ -182,7 +182,7 @@
                             </div>
                         </div>                  
                         <div class="prio">
-                            <img src="assets/img/icons/{{getPrioImage(item.prio)}}">
+                            <img src="assets/img/icons/{{control.getPrioImage(item.prio)}}">
                         </div>
                     </div>
                 </div>

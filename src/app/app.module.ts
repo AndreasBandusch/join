@@ -32,6 +32,7 @@ import { RouterModule } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { OverlayComponent } from './components/main-site/overlay/overlay.component';
+import { TaskDetailsComponent } from './components/main-site/task-details/task-details.component';
 
 
 
@@ -56,6 +57,7 @@ import { OverlayComponent } from './components/main-site/overlay/overlay.compone
     EditContactComponent,
     FeedbackMessageComponent,
     OverlayComponent,
+    TaskDetailsComponent,
   ],
   imports: [
     RouterModule,
