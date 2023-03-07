@@ -175,7 +175,7 @@
                     </div>
 
                 </div>
-                <div *ngIf="!control.showAddTaskBotton" class="btn-cont">
+                <div *ngIf="!control.showAddTaskBotton || control.isOpenedInOverlay" class="btn-cont">
                     <button class="secondary-btn" (click)="task.showCategorys = false; showNewCategory = false"
                         (click)="task.resetForm()">
                         Clear <span>x</span>

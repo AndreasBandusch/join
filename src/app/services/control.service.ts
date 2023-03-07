@@ -18,7 +18,7 @@ export class ControlService {
   currentContact: number = 0;
   notRouteToContactList = false;
   isOpenedInOverlay = false;
-  setHeaderZIndex = false;
+  
 
 
   getMessage(message: string, image?: string) {
