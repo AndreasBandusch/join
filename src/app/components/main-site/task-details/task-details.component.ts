@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlService } from 'src/app/services/control.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-task-details',
@@ -9,16 +10,26 @@ import { ControlService } from 'src/app/services/control.service';
 export class TaskDetailsComponent implements OnInit {
   dueDate: number;
   dueDateOutput: string = '';
+  subTasks: any[] = [];
+  currentSubtask: any = {};
 
-  constructor(public control: ControlService) {
+  constructor(public control: ControlService, private afs: AngularFirestore) {
     this.dueDate = control.currentTask.dueDate;
   }
 
 
 
   ngOnInit(): void {
-    console.log(this.control.currentTask);
+    // console.log(this.control.currentTask);
     this.setDueDateOutput();
+   
+
+    for (let i = 0; i < this.control.currentTask.subTasks.length; i++) {
+      this.subTasks.push(this.control.currentTask.subTasks[i]);
+    }   
+
+    console.log(this.subTasks);
+   
   }
 
 
@@ -29,4 +40,37 @@ export class TaskDetailsComponent implements OnInit {
       + '-' + date.getFullYear();
   }
 
+  // updateSubTaskDoneStatus(status: boolean, index: number) {
+  //   console.log(status);
+  //   status = !status;
+  //   this.subTasks[index].done = status;
+  // }
+
+  testMe(index: number) {
+    let status = this.subTasks[index].done;
+    if (status === false) {
+      this.subTasks[index].done = true;
+    } else {
+      this.subTasks[index].done = false;
+    }
+
+    let changes = this.subTasks[index];
+    console.log(changes);
+
+  // this.updateSubTaskStatus();
+  }
+
+
+  updateSubTaskStatus() {
+    let docId = this.control.currentTask.docId;
+    console.log(this.currentSubtask.name);
+     this.afs.collection('tasks')
+     .doc(docId)
+    .update({});
+  }
+
+  
+
+  
+  
 }
