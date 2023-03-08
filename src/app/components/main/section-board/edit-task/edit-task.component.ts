@@ -18,9 +18,7 @@ export class EditTaskComponent implements OnInit {
 
   constructor(private afs: AngularFirestore, public control: ControlService, public task: TaskService) { 
     this.title = control.currentTask.title;
-    this.description = control.currentTask.description;
-    
-      
+    this.description = control.currentTask.description; 
   }
 
   ngOnInit(): void {
@@ -28,6 +26,12 @@ export class EditTaskComponent implements OnInit {
     this.loadContacts();
     this.dueDate = new Date(this.control.currentTask.dueDate).toISOString().slice(0,10);
     console.log(this.dueDate);
+    this.setPrio();
+  }
+
+  setPrio() {
+    this.task.activePrio = this.control.currentTask.prio;
+   
   }
 
 

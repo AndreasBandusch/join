@@ -41,6 +41,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.checkMaxWidth(1100);
     this.loadCategorys();
     this.loadContacts();
+    this.task.activePrio = '';
   }
 
 
