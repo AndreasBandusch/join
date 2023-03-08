@@ -1,7 +1,81 @@
-<div class="overlay" (click)="control.taskDetailsDialogOpen = false">
+<div class="overlay" (click)="control.editTasksDialogOpen = false">
     <div class="edit-task-details" (click)="control.dontCloseByClick($event)">
         <div class="edit-task-inner">
-            <div>Test</div>
+            <div class="field-group">
+                <span>Title</span>
+                <div class="input-field">
+                    <div class="field">
+                        <input name="title" type="text" placeholder="Enter a title">
+                    </div>
+                </div>
+            </div>
+            <div class="field-group">
+                <span>Description</span>
+                <textarea name="description" placeholder="Enter a Description"></textarea>
+            </div>
+            <div class="field-group">
+                <span>Due Date</span>
+                <div class="input-field">
+                    <div class="field">
+                        <input name="date" type="date">
+                    </div>
+                </div>
+            </div>
+            <div class="field-group">
+                <span>Prio</span>
+                <div class="prio-cont">
+                    <div class="prio urgent" [class.urgent-color]="task.activePrio === 'urgent'"
+                        (click)="task.activePrio = 'urgent'">
+                        Urgent
+                        <img *ngIf="task.activePrio !== 'urgent'" src="assets/img/icons/add-task-urgent.png">
+                        <img *ngIf="task.activePrio === 'urgent'" src="assets/img/icons/add-task-urgent-white.png">
+                    </div>
+                    <div class="prio medium" [class.medium-color]="task.activePrio === 'medium'"
+                        (click)="task.activePrio = 'medium'">
+                        Medium
+                        <img *ngIf="task.activePrio !== 'medium'" src="assets/img/icons/add-task-medium.png">
+                        <img *ngIf="task.activePrio === 'medium'" src="assets/img/icons/add-task-medium-white.png">
+                    </div>
+                    <div class="prio low" [class.low-color]="task.activePrio === 'low'" (click)="task.activePrio = 'low'">
+                        Low
+                        <img *ngIf="task.activePrio !== 'low'" src="assets/img/icons/add-task-low.png">
+                        <img *ngIf="task.activePrio === 'low'" src="assets/img/icons/add-task-low-white.png">
+                    </div>
+                </div>
+            </div>
+            <div class="field-group">
+                <span>Assigned to</span>
+                <div class="dropdown">
+                    <div class="select-menu">
+                        <div class="cat-header">
+                            <span>{{assignedTotext}}</span>
+                        </div>
+                        <div class="icon" (click)="task.showAssignedTo = !task.showAssignedTo"><img class="arrow"
+                                src="assets/img/icons/menu-arrow-down.png"></div>
+                    </div>
+                    <div *ngIf="task.showAssignedTo" class="dropdown-content">
+                        <div *ngFor="let contact of allContacts" class="select-contacts">
+                            <div class="contact">
+                                <label class="contact" for="{{contact.id}}">{{contact.firstName}}
+                                    {{contact.lastName}}
+                                    <input type="checkbox" id="{{contact.id}}" name="{{contact.id}}"
+                                        value="{{contact.firstName}} {{contact.lastName}}"
+                                        [(ngModel)]="task.selectedContacts[contact.id]"
+                                        (ngModelChange)="updateSelectedContacts()">
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                             <div class="item new-contact" (click)="addContact()">
+                                <span class="add">Add new Contact</span>
+                                <img src="assets/img/icons/add-new-contact-icon.png">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
             <img src="assets/img/icons/close-icon.png" (click)="control.editTasksDialogOpen = false" class="close">
         </div>
     </div>
