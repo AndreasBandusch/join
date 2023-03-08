@@ -236,6 +236,7 @@
     }
 
     input[type="date"],
+    textarea,
     .content-body,
     .select-menu,
     .add,
@@ -244,7 +245,7 @@
     .input-field,
     input,
     .prio {
-        font-size: 18px;
+        font-size: 18px !important;
     }
 
 
@@ -263,6 +264,7 @@
     }
 
     input[type="date"],
+    textarea,
     .content-body,
     .select-menu,
     .add,
@@ -270,11 +272,11 @@
     label,
     .input-field,
     input {
-        font-size: 16px;
+        font-size: 16px !important;
     }
 
     .prio {
-        font-size: 12px;
+        font-size: 12px !important;
 
         img {
 
@@ -336,13 +338,14 @@
     }
 
     input[type="date"],
+    textarea,
     .content-body,
     .select-menu,
     .add,
     ::placeholder,
     .input-field,
     input {
-        font-size: 14px;
+        font-size: 14px !important;
     }
 
     label {

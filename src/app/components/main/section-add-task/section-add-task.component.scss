@@ -417,6 +417,7 @@
 @media (max-width: 600px) {
 
     input[type="date"],
+    textarea,
     .content-body,
     .select-catagory,
     .select-menu,
@@ -426,7 +427,7 @@
     .input-field,
     input,
     .prio {
-        font-size: 18px;
+        font-size: 18px !important;
     }
 }
 
@@ -437,6 +438,7 @@
     }
 
     input[type="date"],
+    textarea,
     .content-body,
     .select-catagory,
     .select-menu,
@@ -445,7 +447,7 @@
     label,
     .input-field,
     input {
-        font-size: 16px;
+        font-size: 16px !important;
     }
 
     .prio {
@@ -491,14 +493,15 @@
     }
 
     input[type="date"],
+    textarea,
     .content-body,
     .select-catagory,
     .select-menu,
     .add,
     ::placeholder,
-    .input-field,
-    input {
-        font-size: 14px;
+    .input-field
+    {
+        font-size: 14px !important;
     }
 
     label,
