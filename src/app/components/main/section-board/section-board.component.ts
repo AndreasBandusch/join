@@ -185,8 +185,14 @@ export class SectionBoardComponent implements OnInit {
 
   
 
-  openTaskDetails(currentTask: any) {
+  openTaskDetails(currentTask: any): void{
     this.control.currentTask = currentTask;
     this.control.taskDetailsDialogOpen = true;
+  }
+
+
+  getWidth(doneSubTasks: number, subTaskslength: number): string  {
+    let percent = (doneSubTasks / subTaskslength) * 100;
+    return `${percent}%`; 
   }
 }

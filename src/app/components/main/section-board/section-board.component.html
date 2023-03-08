@@ -44,6 +44,7 @@
                         </div>
                         <div *ngIf="item.subTasks.length" class="progress-cont">
                             <div class="bar">
+                                <div class="bar-inner" [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)"></div>
                             </div>
 
                             <div class="progress">
@@ -85,6 +86,7 @@
                     </div>
                     <div *ngIf="item.subTasks.length" class="progress-cont">
                         <div class="bar">
+                            <div class="bar-inner" [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)"></div>
                         </div>
 
                         <div class="progress">
@@ -127,6 +129,7 @@
                     </div>
                     <div *ngIf="item.subTasks.length" class="progress-cont">
                         <div class="bar">
+                            <div class="bar-inner" [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)"></div>
                         </div>
 
                         <div class="progress">
@@ -169,6 +172,7 @@
                     </div>
                     <div *ngIf="item.subTasks.length" class="progress-cont">
                         <div class="bar">
+                            <div class="bar-inner" [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)"></div>
                         </div>
 
                         <div class="progress">
@@ -191,23 +195,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-<!-- <div class="content-header">
-    <div class="content-header-mobile">Kanban Project Management Tool</div>
-    <div class="board-menu">
-        <h1 class="title">Board</h1>
-        <div>
-            <input class="input-search">
-            <button class="primary-btn">Add task +</button>
-            <button class="primary-btn primary-btn-mobile">+</button>
-        </div>
-    </div>
-</div>
-<div class="content">
-   <input class="input-search-mobile input-search">
-</div> -->

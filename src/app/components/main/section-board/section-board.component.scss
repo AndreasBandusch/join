@@ -130,10 +130,17 @@
     flex: 1;
 }
 
+.bar-inner {
+    background-color: #29ABE2;
+    height: 8px;
+}
+
 .progress {
     margin-left: 16px;
     font-size: 12px;
 }
+
+
 
 .bottom-cont {
     display: flex;
