@@ -185,7 +185,7 @@ export class SectionBoardComponent implements OnInit {
 
   
 
-  openTaskDetails(currentTask: any): void{
+  openTaskDetails(currentTask: any): void {
     this.control.currentTask = currentTask;
     this.control.taskDetailsDialogOpen = true;
   }
