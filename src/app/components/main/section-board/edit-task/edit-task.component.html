@@ -5,19 +5,19 @@
                 <span>Title</span>
                 <div class="input-field">
                     <div class="field">
-                        <input name="title" type="text" placeholder="Enter a title">
+                        <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="title">
                     </div>
                 </div>
             </div>
             <div class="field-group">
                 <span>Description</span>
-                <textarea name="description" placeholder="Enter a Description"></textarea>
+                <textarea name="description" placeholder="Enter a Description" [(ngModel)]="description"></textarea>
             </div>
             <div class="field-group">
                 <span>Due Date</span>
                 <div class="input-field">
                     <div class="field">
-                        <input name="date" type="date">
+                        <input name="date" type="date" [(ngModel)]="dueDate">
                     </div>
                 </div>
             </div>

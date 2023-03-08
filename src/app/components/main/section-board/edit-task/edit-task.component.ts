@@ -11,11 +11,23 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 export class EditTaskComponent implements OnInit {
   allContacts: any[] = [];
   assignedTotext = 'Select Contacts to assign';
+  title: string;
+  description: string;
+  dueDate: string = '';
+ 
 
-  constructor(private afs: AngularFirestore, public control: ControlService, public task: TaskService) { }
+  constructor(private afs: AngularFirestore, public control: ControlService, public task: TaskService) { 
+    this.title = control.currentTask.title;
+    this.description = control.currentTask.description;
+    
+      
+  }
 
   ngOnInit(): void {
+    console.log('Current Task:', this.control.currentTask);
     this.loadContacts();
+    this.dueDate = new Date(this.control.currentTask.dueDate).toISOString().slice(0,10);
+    console.log(this.dueDate);
   }
 
 
@@ -38,4 +50,8 @@ export class EditTaskComponent implements OnInit {
     this.control.notRouteToContactList = true;
     this.control.addContactDialogOpen = true
   }
+
+  
+
+  
 }
