@@ -1,0 +1,9 @@
+<div class="overlay" (click)="control.taskDetailsDialogOpen = false">
+    <div class="edit-task-details" (click)="control.dontCloseByClick($event)">
+        <div class="edit-task-inner">
+            <div>Test</div>
+            <img src="assets/img/icons/close-icon.png" (click)="control.editTasksDialogOpen = false" class="close">
+        </div>
+    </div>
+
+</div>

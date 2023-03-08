@@ -32,7 +32,8 @@ import { RouterModule } from '@angular/router';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { OverlayComponent } from './components/main-site/overlay/overlay.component';
-import { TaskDetailsComponent } from './components/main-site/task-details/task-details.component';
+import { TaskDetailsComponent } from './components/main/section-board/task-details/task-details.component';
+import { EditTaskComponent } from './components/main/section-board/edit-task/edit-task.component';
 
 
 
@@ -58,6 +59,7 @@ import { TaskDetailsComponent } from './components/main-site/task-details/task-d
     FeedbackMessageComponent,
     OverlayComponent,
     TaskDetailsComponent,
+    EditTaskComponent,
   ],
   imports: [
     RouterModule,
