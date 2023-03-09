@@ -353,10 +353,7 @@
 
 @media (max-width: 920px) {
     .content-body {
-
         padding-bottom: 0;
-
-
     }
 
 
@@ -392,6 +389,10 @@
         }
 
         .content-header-mobile {
+            display: none;
+        }
+
+        .btn-cont {
             display: none;
         }
 

@@ -42,13 +42,12 @@
     padding: 25px 0px 25px 0px;
     transition: all 75ms ease-in-out;
     cursor: pointer;
-    transform: scale(1);
+    
 
     &:hover, &:hover>span {
         background-color: #2A3647;
         color: #fff;
         transition: all 75ms ease-in-out;
-        transform: scale(1.1);
     }
 }
 
