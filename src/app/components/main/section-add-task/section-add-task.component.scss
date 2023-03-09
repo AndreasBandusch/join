@@ -284,6 +284,10 @@
     width: unset;
     margin: unset;
     padding: unset;
+
+    .secondary-btn {
+        background-color: #fff;
+    }
 }
 
 @media (max-width: 1440px) {
