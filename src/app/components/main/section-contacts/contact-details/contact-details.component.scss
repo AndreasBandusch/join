@@ -4,6 +4,8 @@
     display: flex;
     flex-direction: column;
     gap: 48px;
+    overflow-y: auto;
+    margin-bottom: 122px;
 }
 
 .details-name-cont {
