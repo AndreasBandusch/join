@@ -23,10 +23,12 @@ export class EditTaskComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Current Task:', this.control.currentTask);
+    
     this.loadContacts();
     this.dueDate = new Date(this.control.currentTask.dueDate).toISOString().slice(0,10);
-    console.log(this.dueDate);
+  
     this.setPrio();
+    
   }
 
   setPrio() {
@@ -48,6 +50,8 @@ export class EditTaskComponent implements OnInit {
         this.task.assignedContactIdsForTask.push(key);
       }
     }
+
+    console.log(this.task.assignedContactIdsForTask);
   }
 
   addContact() {

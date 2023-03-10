@@ -12,6 +12,7 @@ export class TaskDetailsComponent implements OnInit {
   dueDateOutput: string = '';
   subTasks: any[] = [];
   currentSubtask: any = {};
+  tester: string = '';
 
   constructor(public control: ControlService, private afs: AngularFirestore) {
     this.dueDate = control.currentTask.dueDate;
@@ -22,14 +23,14 @@ export class TaskDetailsComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.control.currentTask);
     this.setDueDateOutput();
-   
+
 
     for (let i = 0; i < this.control.currentTask.subTasks.length; i++) {
       this.subTasks.push(this.control.currentTask.subTasks[i]);
-    }   
+    }
 
     console.log(this.subTasks);
-   
+
   }
 
 
@@ -46,34 +47,31 @@ export class TaskDetailsComponent implements OnInit {
   //   this.subTasks[index].done = status;
   // }
 
-  testMe(index: number) {
+  updateSubTaskStatus(index: number) {
     let status = this.subTasks[index].done;
     if (status === false) {
       this.subTasks[index].done = true;
     } else {
       this.subTasks[index].done = false;
     }
-
-    let changes = this.subTasks[index];
-    console.log(changes);
-
-  // this.updateSubTaskStatus();
+    this.saveStatus();
   }
 
 
-  updateSubTaskStatus() {
+  saveStatus(): void {
+    let changes = { 'subTasks': this.subTasks }
     let docId = this.control.currentTask.docId;
     console.log(this.currentSubtask.name);
-     this.afs.collection('tasks')
-     .doc(docId)
-    .update({});
+    this.afs.collection('tasks')
+      .doc(docId)
+      .update(changes);
   }
 
-  
+
 
   openEditDialog() {
     this.control.taskDetailsDialogOpen = false;
     this.control.editTasksDialogOpen = true;
   }
-  
+
 }

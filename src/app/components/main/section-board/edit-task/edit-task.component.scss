@@ -53,6 +53,21 @@
     cursor: pointer;
 }
 
+.btn-cont {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    
+}
+
+.primary-btn {
+    position: relative;
+    right: -32px;
+    top: 8px;
+    width: unset;
+}
+
 .prio-cont {
     display: flex;
     justify-content: space-between;
