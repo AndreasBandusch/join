@@ -15,7 +15,9 @@ export class TaskService {
   activePrio: string = '';
   assignedSubtasks: any[] = [];
   selectedCategory: string = '';
-  selectedContacts: any[] = [];
+  selectedContacts: { [key: number]: boolean } = {};
+
+
   dueDate: string = '';
   showCategorys: boolean = false;
   showSubtask: boolean = false;
@@ -28,7 +30,21 @@ export class TaskService {
 
   constructor(
     private db: AngularFirestore,
-    public control: ControlService) { }
+    public control: ControlService) { 
+    //  this.selectedContacts[1676744758290] = true;
+      
+    
+    
+    
+      
+    }
+
+    abc() {
+      for (let i = 0; i < this.control.currentTask.assignedTo.length; i++) {
+        let contact = this.control.currentTask.assignedTo[i];
+        this.selectedContacts[contact.id] = true;
+      }
+    }
 
 
   createTask() {
@@ -56,6 +72,19 @@ export class TaskService {
     this.dueDateTimestamp = new Date(this.dueDate).getTime();
   }
 
+  updateSelectedContacts() {
+    this.assignedContactIdsForTask = [];
+    for (let key in this.selectedContacts) {
+      if (this.selectedContacts[key] && !this.assignedContactIdsForTask.includes(key)) {
+        this.assignedContactIdsForTask.push(key);
+      }
+    }
+
+    console.log(this.assignedContactIdsForTask);
+    console.log('Selected: ', this.selectedContacts);
+  }
+
+
 
   resetForm() {
     this.description = '';
@@ -75,4 +104,14 @@ export class TaskService {
     this.assignedContactIdsForTask = [];
     this.categoryId = 0;
   }
+
+  test() {
+    for (let key in this.selectedContacts) {
+    
+      if (this.selectedContacts[key] && !this.assignedContactIdsForTask.includes(key)) {
+        this.assignedContactIdsForTask.push(key);
+      }
+  }
+  console.log(this.selectedContacts);
+}
 }

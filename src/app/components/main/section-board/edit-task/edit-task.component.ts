@@ -21,17 +21,20 @@ export class EditTaskComponent implements OnInit {
     this.title = control.currentTask.title;
     this.description = control.currentTask.description; 
     this.dueDate = control.currentTask.dueDate;
+    // this.task.assignedContactIdsForTask = this.control.currentTask.showAssignedTo;
     
   }
 
   ngOnInit(): void {
     console.log('Current Task:', this.control.currentTask);
-    
+    console.log('Assigend to: ', this.control.currentTask.assignedTo);
     this.loadContacts();
     this.task.dueDate = new Date(this.control.currentTask.dueDate).toISOString().slice(0,10);
   
     this.setPrio();
+    this.task.test();
     
+    this.task.abc();
   }
 
   setPrio() {
@@ -46,36 +49,29 @@ export class EditTaskComponent implements OnInit {
     });
   }
 
-  updateSelectedContacts() {
-    this.task.assignedContactIdsForTask = [];
-    for (let key in this.task.selectedContacts) {
-      if (this.task.selectedContacts[key]) {
-        this.task.assignedContactIdsForTask.push(key);
-      }
-    }
-
-    console.log(this.task.assignedContactIdsForTask);
-  }
-
+ 
   addContact() {
     this.control.notRouteToContactList = true;
     this.control.addContactDialogOpen = true
   }
 
   saveTask() {
+    const docId = this.control.currentTask.docId;
+
     this.control.currentTask.title = this.title;
     this.control.currentTask.description = this.description;
     this.control.currentTask.dueDate = this.dueDate;
     this.control.currentTask.prio = this.task.activePrio;
-    console.log(this.control.currentTask.dueDate);
+    
 
-    const docId = this.control.currentTask.docId;
+   
     
     const task = {
       'title': this.control.currentTask.title,
       'description':  this.control.currentTask.description,
       'dueDate': this.task.dueDateTimestamp,
       'prio': this.task.activePrio,
+      'assignedTo': this.task.assignedContactIdsForTask
     }
 
     this.afs.collection('tasks').doc(docId)
@@ -84,4 +80,7 @@ export class EditTaskComponent implements OnInit {
     });
     
   }  
+
+
+  
 }

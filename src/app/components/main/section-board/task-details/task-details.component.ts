@@ -12,7 +12,7 @@ export class TaskDetailsComponent implements OnInit {
   dueDateOutput: string = '';
   subTasks: any[] = [];
   currentSubtask: any = {};
-  tester: string = '';
+ 
 
   constructor(public control: ControlService, private afs: AngularFirestore) {
     this.dueDate = control.currentTask.dueDate;

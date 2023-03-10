@@ -54,14 +54,14 @@
                                 src="assets/img/icons/menu-arrow-down.png"></div>
                     </div>
                     <div *ngIf="task.showAssignedTo" class="dropdown-content">
-                        <div *ngFor="let contact of allContacts" class="select-contacts">
+                        <div *ngFor="let contact of allContacts;" class="select-contacts">
                             <div class="contact">
                                 <label class="contact" for="{{contact.id}}">{{contact.firstName}}
                                     {{contact.lastName}}
                                     <input type="checkbox" id="{{contact.id}}" name="{{contact.id}}"
                                         value="{{contact.firstName}} {{contact.lastName}}"
                                         [(ngModel)]="task.selectedContacts[contact.id]"
-                                        (ngModelChange)="updateSelectedContacts()">
+                                        (ngModelChange)="task.updateSelectedContacts()">
                                 </label>
                             </div>
                         </div>
