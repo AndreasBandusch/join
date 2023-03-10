@@ -21,21 +21,24 @@
             </div>
             <div *ngIf="subTasks.length" class="subtasks-area">
                 <span class="text">Subtasks:</span>
-                <div *ngFor="let subTask of subTasks; index as i" class="subtask">
-                    <input type="checkbox" [checked]="subTask.done == true" (change)="updateSubTaskStatus(i)">
-                    <span>{{subTask.name}}</span>
+                <div class="subtasks-cont">
+                    <div *ngFor="let subTask of subTasks; index as i" class="subtask">
+                        <input type="checkbox" [checked]="subTask.done == true" (change)="updateSubTaskStatus(i)">
+                        <span>{{subTask.name}}</span>
+                    </div>
                 </div>
             </div>
             <p class="text">Assigned To:</p>
             <div class="assigned-area">
                 <div *ngFor="let contact of control.currentTask.assignedTo" class="contact">
                     <div class="initials" [style.backgroundColor]="contact.color">{{contact.initials}}</div>
-                   <span class="output">{{contact.firstName}} {{contact.lastName}}</span>
+                    <span class="output">{{contact.firstName}} {{contact.lastName}}</span>
                 </div>
             </div>
             <img src="assets/img/icons/close-icon.png" (click)="control.taskDetailsDialogOpen = false" class="close">
             <img src="assets/img/icons/edit-contact-icon-mobile.png" class="edit" (click)="openEditDialog()">
-        </div>
-    </div>
 
+        </div>
+
+    </div>
 </div>

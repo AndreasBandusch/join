@@ -89,16 +89,29 @@
 .subtasks-area {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    align-items: flex-start;
+    width: 100%;
+   
 }
+
+
+.subtasks-cont {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+   
+    max-height: 100px;
+    overflow-y: auto;
+}
+
 
 .subtask {
     display: flex;
     align-items: center;
     margin-right: 16px;
-
+    
     input {
-        margin-right: 4px;
+        margin-right: 8px;
     }
 }
 
