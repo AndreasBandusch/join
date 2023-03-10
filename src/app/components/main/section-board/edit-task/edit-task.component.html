@@ -17,7 +17,7 @@
                 <span>Due Date</span>
                 <div class="input-field">
                     <div class="field">
-                        <input name="date" type="date" [(ngModel)]="dueDate">
+                        <input name="date" type="date" [(ngModel)]="task.dueDate" (ngModelChange)="task.getTimestamp()">
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
             </div>
             <img src="assets/img/icons/close-icon.png" (click)="control.editTasksDialogOpen = false" class="close">
             <div class="btn-cont">
-                <button class="primary-btn">
+                <button class="primary-btn" (click)="saveTask()">
                     Ok
                     <img src="assets/img/icons/checked-icon.png">
                 </button>

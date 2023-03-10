@@ -13,19 +13,22 @@ export class EditTaskComponent implements OnInit {
   assignedTotext = 'Select Contacts to assign';
   title: string;
   description: string;
-  dueDate: string = '';
+  dueDate: number;
+ 
  
 
   constructor(private afs: AngularFirestore, public control: ControlService, public task: TaskService) { 
     this.title = control.currentTask.title;
     this.description = control.currentTask.description; 
+    this.dueDate = control.currentTask.dueDate;
+    
   }
 
   ngOnInit(): void {
     console.log('Current Task:', this.control.currentTask);
     
     this.loadContacts();
-    this.dueDate = new Date(this.control.currentTask.dueDate).toISOString().slice(0,10);
+    this.task.dueDate = new Date(this.control.currentTask.dueDate).toISOString().slice(0,10);
   
     this.setPrio();
     
@@ -59,7 +62,26 @@ export class EditTaskComponent implements OnInit {
     this.control.addContactDialogOpen = true
   }
 
-  
+  saveTask() {
+    this.control.currentTask.title = this.title;
+    this.control.currentTask.description = this.description;
+    this.control.currentTask.dueDate = this.dueDate;
+    this.control.currentTask.prio = this.task.activePrio;
+    console.log(this.control.currentTask.dueDate);
 
-  
+    const docId = this.control.currentTask.docId;
+    
+    const task = {
+      'title': this.control.currentTask.title,
+      'description':  this.control.currentTask.description,
+      'dueDate': this.task.dueDateTimestamp,
+      'prio': this.task.activePrio,
+    }
+
+    this.afs.collection('tasks').doc(docId)
+    .update(task).then(() => {
+     this.control.editTasksDialogOpen = false;
+    });
+    
+  }  
 }

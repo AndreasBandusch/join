@@ -52,6 +52,10 @@ export class TaskService {
       });
   }
 
+  getTimestamp() {
+    this.dueDateTimestamp = new Date(this.dueDate).getTime();
+  }
+
 
   resetForm() {
     this.description = '';
