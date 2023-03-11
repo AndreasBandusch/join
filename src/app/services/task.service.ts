@@ -58,6 +58,7 @@ export class TaskService {
     this.db
       .collection('tasks')
       .add(newTask.toJSON()).then(() => {
+        this.control.isOpenedInOverlay = false;
         this.control.getMessage('Task added to board', 'assets/img/icons/add-task-board-icon.png');
       });
   }
