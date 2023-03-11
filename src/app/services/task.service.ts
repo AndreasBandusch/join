@@ -30,16 +30,9 @@ export class TaskService {
 
   constructor(
     private db: AngularFirestore,
-    public control: ControlService) { 
-    //  this.selectedContacts[1676744758290] = true;
-      
-    
-    
-    
-      
-    }
+    public control: ControlService) {}
 
-    abc() {
+    loadAssignedContactsInSelectedContacts() {
       for (let i = 0; i < this.control.currentTask.assignedTo.length; i++) {
         let contact = this.control.currentTask.assignedTo[i];
         this.selectedContacts[contact.id] = true;
@@ -105,13 +98,13 @@ export class TaskService {
     this.categoryId = 0;
   }
 
-  test() {
-    for (let key in this.selectedContacts) {
+//   test() {
+//     for (let key in this.selectedContacts) {
     
-      if (this.selectedContacts[key] && !this.assignedContactIdsForTask.includes(key)) {
-        this.assignedContactIdsForTask.push(key);
-      }
-  }
-  console.log(this.selectedContacts);
-}
+//       if (this.selectedContacts[key] && !this.assignedContactIdsForTask.includes(key)) {
+//         this.assignedContactIdsForTask.push(key);
+//       }
+//   }
+//   console.log(this.selectedContacts);
+// }
 }

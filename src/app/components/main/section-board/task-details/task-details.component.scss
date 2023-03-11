@@ -33,6 +33,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
+    width: 100%;
     gap: 32px;
 }
 
@@ -219,6 +220,15 @@
 
     .text {
         margin-right: 16px;
+    }
+
+    .subtasks-area {
+        flex-direction: column;
+        margin-top: 32px;
+    }
+
+    .subtasks-cont {
+        width: 100%;
     }
 }
 

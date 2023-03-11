@@ -13,16 +13,13 @@ export class EditTaskComponent implements OnInit {
   assignedTotext = 'Select Contacts to assign';
   title: string;
   description: string;
-  dueDate: number;
- 
- 
+  
 
   constructor(private afs: AngularFirestore, public control: ControlService, public task: TaskService) { 
     this.title = control.currentTask.title;
     this.description = control.currentTask.description; 
-    this.dueDate = control.currentTask.dueDate;
-    // this.task.assignedContactIdsForTask = this.control.currentTask.showAssignedTo;
-    
+    this.task.dueDate = control.currentTask.dueDate;
+    this.task.getTimestamp();
   }
 
   ngOnInit(): void {
@@ -32,9 +29,9 @@ export class EditTaskComponent implements OnInit {
     this.task.dueDate = new Date(this.control.currentTask.dueDate).toISOString().slice(0,10);
   
     this.setPrio();
-    this.task.test();
+    // this.task.test();
     
-    this.task.abc();
+    this.task.loadAssignedContactsInSelectedContacts();
   }
 
   setPrio() {
@@ -55,32 +52,33 @@ export class EditTaskComponent implements OnInit {
     this.control.addContactDialogOpen = true
   }
 
-  saveTask() {
+
+  createUpdateTask() {
     const docId = this.control.currentTask.docId;
+    const task = this.toJson();
 
     this.control.currentTask.title = this.title;
     this.control.currentTask.description = this.description;
-    this.control.currentTask.dueDate = this.dueDate;
     this.control.currentTask.prio = this.task.activePrio;
-    
+    this.saveTask(docId, task);
+  }  
 
-   
-    
-    const task = {
+
+  toJson(): object {
+    return {
       'title': this.control.currentTask.title,
       'description':  this.control.currentTask.description,
       'dueDate': this.task.dueDateTimestamp,
       'prio': this.task.activePrio,
       'assignedTo': this.task.assignedContactIdsForTask
-    }
+    }  
+  }
 
-    this.afs.collection('tasks').doc(docId)
+
+  saveTask(id: string, task: object): void {
+    this.afs.collection('tasks').doc(id)
     .update(task).then(() => {
      this.control.editTasksDialogOpen = false;
     });
-    
-  }  
-
-
-  
+  } 
 }
