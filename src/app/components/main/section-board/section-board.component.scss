@@ -302,6 +302,14 @@
     .status {
         width: 100%;
     }
+
+    .content-body {
+        gap: 128px;
+    }
+    
+    .cdk-drop-list {
+        gap: 64px;
+    }
 }
 
 @media (max-width: 500px) {
