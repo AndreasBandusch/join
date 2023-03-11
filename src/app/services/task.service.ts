@@ -96,7 +96,13 @@ export class TaskService {
   }
 
 
-  
+  getContactIntialsStyles(color: string, index: number): object {
+    let styles = {
+      'background-color': color,
+      'transform': `translateX(${index * 75}%)`
+    }
+    return styles;
+  }
 
 
 

@@ -53,7 +53,7 @@
                         </div>
                         <div class="bottom-cont">
                             <div class="assigned">
-                                <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="getContactIntialsStyles(contact.color, i)">
+                                <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="task.getContactIntialsStyles(contact.color, i)">
                                     {{contact.initials}}
                                 </div>
                             </div>                  
@@ -96,7 +96,7 @@
                     </div>
                     <div class="bottom-cont">
                         <div class="assigned">
-                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="getContactIntialsStyles(contact.color, i)">
+                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="task.getContactIntialsStyles(contact.color, i)">
                                 {{contact.initials}}
                             </div>
                         </div>                  
@@ -140,7 +140,7 @@
                     </div>
                     <div class="bottom-cont">
                         <div class="assigned">
-                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="getContactIntialsStyles(contact.color, i)">
+                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="task.getContactIntialsStyles(contact.color, i)">
                                 {{contact.initials}}
                             </div>
                         </div>                  
@@ -184,7 +184,7 @@
                     </div>
                     <div class="bottom-cont">
                         <div class="assigned">
-                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="getContactIntialsStyles(contact.color, i)">
+                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="task.getContactIntialsStyles(contact.color, i)">
                                 {{contact.initials}}
                             </div>
                         </div>                  

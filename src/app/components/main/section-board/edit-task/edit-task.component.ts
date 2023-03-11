@@ -75,6 +75,10 @@ export class EditTaskComponent implements OnInit {
     this.afs.collection('tasks').doc(id)
     .update(task).then(() => {
      this.control.editTasksDialogOpen = false;
+     this.control.taskDetailsDialogOpen = true;
     });
   } 
+
+
+ 
 }
