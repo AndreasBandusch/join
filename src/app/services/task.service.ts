@@ -31,24 +31,24 @@ export class TaskService {
 
   constructor(
     private db: AngularFirestore,
-    public control: ControlService) {}
+    public control: ControlService) { }
 
-    loadAssignedContactsInSelectedContacts() {
-      for (let i = 0; i < this.currentTask.assignedTo.length; i++) {
-        let contact = this.currentTask.assignedTo[i];
-        this.selectedContacts[contact.id] = true;
-      }
+  loadAssignedContactsInSelectedContacts() {
+    for (let i = 0; i < this.currentTask.assignedTo.length; i++) {
+      let contact = this.currentTask.assignedTo[i];
+      this.selectedContacts[contact.id] = true;
     }
+  }
 
 
   createTask() {
     let newTask = new Task(this.title,
-    this.description,
-    this.categoryId,
-    this.assignedContactIdsForTask,
-    this.dueDateTimestamp,
-    this.activePrio,
-    this.assignedSubtasks);
+      this.description,
+      this.categoryId,
+      this.assignedContactIdsForTask,
+      this.dueDateTimestamp,
+      this.activePrio,
+      this.assignedSubtasks);
     this.saveTask(newTask);
     this.resetForm();
   }
@@ -58,8 +58,10 @@ export class TaskService {
     this.db
       .collection('tasks')
       .add(newTask.toJSON()).then(() => {
+        if (!this.control.isOpenedInOverlay) {
+          this.control.getMessage('Task added to board', 'assets/img/icons/add-task-board-icon.png');
+        }
         this.control.isOpenedInOverlay = false;
-        this.control.getMessage('Task added to board', 'assets/img/icons/add-task-board-icon.png');
       });
   }
 
@@ -132,7 +134,8 @@ export class TaskService {
     this.control.taskDetailsDialogOpen = false;
     this.db.collection('tasks').doc(docId).delete().then(() => {
       this.control.showDeleteTaskDialog = false;
+      this.control.getMessage('Task deleted !');
     });
-    
+
   }
 }

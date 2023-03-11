@@ -6,8 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 325px;
-    height: 75px;
+    
     font-size: 21px;
     background-color: #2A3647;
     color: #fff;
@@ -16,17 +15,30 @@
     animation: message-slide-in 1s ease-in-out;
     animation-delay: 225ms;
     z-index: 5;
+    padding: 8px 16px;
+    
+    
+}
+
+.message-cont{
+    display: flex;
+    justify-content: center;
+    min-width: 100px;
+    height: 75px;
+   
 }
 
 .message, .image {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    img {
+        margin-left: 8px;
+    }
 }
 
-img {
-    margin-left: 32px;
-}
+
 
 
 
