@@ -127,4 +127,12 @@ export class TaskService {
   }
 
 
+  deleteTask() {
+    const docId = this.currentTask.docId
+    this.control.taskDetailsDialogOpen = false;
+    this.db.collection('tasks').doc(docId).delete().then(() => {
+      this.control.showDeleteTaskDialog = false;
+    });
+    
+  }
 }

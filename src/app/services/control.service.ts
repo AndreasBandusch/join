@@ -12,6 +12,7 @@ export class ControlService {
   editContactDialogOpen = false;
   taskDetailsDialogOpen = false;
   editTasksDialogOpen = false;
+  showDeleteTaskDialog = false;
   showMessage = false;
   messageText: string = '';
   messageImage?: string = '';

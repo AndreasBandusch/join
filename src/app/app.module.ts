@@ -34,6 +34,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { OverlayComponent } from './components/main-site/overlay/overlay.component';
 import { TaskDetailsComponent } from './components/main/section-board/task-details/task-details.component';
 import { EditTaskComponent } from './components/main/section-board/edit-task/edit-task.component';
+import { DeleteTaskComponent } from './components/main/section-board/delete-task/delete-task.component';
 
 
 
@@ -60,6 +61,7 @@ import { EditTaskComponent } from './components/main/section-board/edit-task/edi
     OverlayComponent,
     TaskDetailsComponent,
     EditTaskComponent,
+    DeleteTaskComponent,
   ],
   imports: [
     RouterModule,

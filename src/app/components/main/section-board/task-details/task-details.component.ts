@@ -67,13 +67,7 @@ export class TaskDetailsComponent implements OnInit {
       .update(changes);
   }
 
-  deleteTask() {
-    this.control.taskDetailsDialogOpen = false;
-    this.afs.collection('tasks').doc(this.docId).delete();
-  }
-
-
-
+  
   openEditDialog() {
     this.control.taskDetailsDialogOpen = false;
     this.control.editTasksDialogOpen = true;

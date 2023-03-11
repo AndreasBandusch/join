@@ -37,7 +37,7 @@
             </div>
             <img src="assets/img/icons/close-icon.png" (click)="control.taskDetailsDialogOpen = false" class="close">
             <div class="btn-cont">
-                <button class="primary-btn delete" (click)="deleteTask()">
+                <button class="primary-btn delete" (click)="control.showDeleteTaskDialog = true">
                     <img src="assets/img/icons/trash-icon.png">
                 </button>
                 <button class="primary-btn edit" (click)="openEditDialog()">
