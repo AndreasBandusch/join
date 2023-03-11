@@ -48,6 +48,26 @@
     padding: 4px 37px;
 }
 
+.btn-cont {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    width: 100%;
+}
+
+
+.delete, .edit {
+    width: unset;
+
+    img {
+        margin: 0;
+        height: 32px;
+        width: auto;
+    }
+}
+
+
+
 .task-title {
     font-size: 61px;
     font-weight: 700;
@@ -146,12 +166,8 @@
     cursor: pointer;
 }
 
-.edit {
-    position: absolute;
-    bottom: 32px;
-    right: 32px;
-    cursor: pointer;
-}
+
+
 
 
 @media (max-width: 750px) {

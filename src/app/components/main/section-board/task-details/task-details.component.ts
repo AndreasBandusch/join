@@ -13,10 +13,11 @@ export class TaskDetailsComponent implements OnInit {
   dueDateOutput: string = '';
   subTasks: any[] = [];
   currentSubtask: any = {};
- 
+  docId: string;
 
   constructor(public control: ControlService, private afs: AngularFirestore, public task: TaskService) {
     this.dueDate = task.currentTask.dueDate;
+    this.docId = task.currentTask.docId;
   }
 
 
@@ -24,7 +25,7 @@ export class TaskDetailsComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.control.currentTask);
     this.setDueDateOutput();
-
+   
 
     for (let i = 0; i < this.task.currentTask.subTasks.length; i++) {
       this.subTasks.push(this.task.currentTask.subTasks[i]);
@@ -61,11 +62,14 @@ export class TaskDetailsComponent implements OnInit {
 
   saveStatus(): void {
     let changes = { 'subTasks': this.subTasks }
-    let docId = this.task.currentTask.docId;
-    console.log(this.currentSubtask.name);
     this.afs.collection('tasks')
-      .doc(docId)
+      .doc(this.docId)
       .update(changes);
+  }
+
+  deleteTask() {
+    this.control.taskDetailsDialogOpen = false;
+    this.afs.collection('tasks').doc(this.docId).delete();
   }
 
 

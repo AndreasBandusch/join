@@ -36,8 +36,15 @@
                 </div>
             </div>
             <img src="assets/img/icons/close-icon.png" (click)="control.taskDetailsDialogOpen = false" class="close">
-            <img src="assets/img/icons/edit-contact-icon-mobile.png" class="edit" (click)="openEditDialog()">
-
+            <div class="btn-cont">
+                <button class="primary-btn delete" (click)="deleteTask()">
+                    <img src="assets/img/icons/trash-icon.png">
+                </button>
+                <button class="primary-btn edit" (click)="openEditDialog()">
+                    <img src="assets/img/icons/edit-task-icon.png">
+                </button>
+                
+            </div>
         </div>
 
     </div>

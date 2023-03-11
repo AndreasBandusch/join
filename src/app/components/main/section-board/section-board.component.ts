@@ -18,7 +18,7 @@ export class SectionBoardComponent implements OnInit {
   inProgressTasks: any[] = [];
   awaitingFeedbackTasks: any[] = [];
   doneTasks: any[] = [];
-  test: number = 0;
+  // test: number = 0;
   isDragging: boolean = false;
 
   constructor(
@@ -28,7 +28,6 @@ export class SectionBoardComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log('Loaded');
     this.loadContacts();
     this.loadCategorys();
     this.loadTasks();
@@ -51,9 +50,7 @@ export class SectionBoardComponent implements OnInit {
       this.allTasks = changes;
       this.loadContacts();
       this.loadCategorys();
-      this.seperateStatus();
-      console.log('Tasks:', 
-      this.allTasks); 
+      this.seperateStatus(); 
     })
   }
 
@@ -119,7 +116,6 @@ export class SectionBoardComponent implements OnInit {
 
 
   drop(event: CdkDragDrop<any[]>): void {
-  
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
@@ -130,7 +126,6 @@ export class SectionBoardComponent implements OnInit {
         event.currentIndex,
       );
     }
-    console.log('Drop', this.allTasks);
     this.setTaskStatus(event.item.data, event.container.id);
   }
 
