@@ -37,6 +37,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
+    this.task.dueDate = '';
     this.task.catText = this.task.catStartText;
     this.checkMaxWidth(1100);
     this.loadCategorys();

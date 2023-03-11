@@ -16,26 +16,21 @@ export class EditTaskComponent implements OnInit {
   
 
   constructor(private afs: AngularFirestore, public control: ControlService, public task: TaskService) { 
-    this.title = control.currentTask.title;
-    this.description = control.currentTask.description; 
-    this.task.dueDate = control.currentTask.dueDate;
+    this.title = task.currentTask.title;
+    this.description = task.currentTask.description; 
+    this.task.dueDate = task.currentTask.dueDate;
     this.task.getTimestamp();
   }
 
   ngOnInit(): void {
-    console.log('Current Task:', this.control.currentTask);
-    console.log('Assigend to: ', this.control.currentTask.assignedTo);
     this.loadContacts();
-    this.task.dueDate = new Date(this.control.currentTask.dueDate).toISOString().slice(0,10);
-  
+    this.task.dueDate = new Date(this.task.currentTask.dueDate).toISOString().slice(0,10);
     this.setPrio();
-    // this.task.test();
-    
     this.task.loadAssignedContactsInSelectedContacts();
   }
 
   setPrio() {
-    this.task.activePrio = this.control.currentTask.prio;
+    this.task.activePrio = this.task.currentTask.prio;
    
   }
 
@@ -54,20 +49,20 @@ export class EditTaskComponent implements OnInit {
 
 
   createUpdateTask() {
-    const docId = this.control.currentTask.docId;
-    const task = this.toJson();
+    const docId = this.task.currentTask.docId;
+    this.task.currentTask.title = this.title;
+    this.task.currentTask.description = this.description;
+    this.task.currentTask.prio = this.task.activePrio;
 
-    this.control.currentTask.title = this.title;
-    this.control.currentTask.description = this.description;
-    this.control.currentTask.prio = this.task.activePrio;
+    const task = this.toJson();
     this.saveTask(docId, task);
   }  
 
 
   toJson(): object {
     return {
-      'title': this.control.currentTask.title,
-      'description':  this.control.currentTask.description,
+      'title': this.task.currentTask.title,
+      'description':  this.task.currentTask.description,
       'dueDate': this.task.dueDateTimestamp,
       'prio': this.task.activePrio,
       'assignedTo': this.task.assignedContactIdsForTask

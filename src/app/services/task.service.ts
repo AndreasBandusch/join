@@ -7,6 +7,7 @@ import { ControlService } from './control.service';
   providedIn: 'root'
 })
 export class TaskService {
+  currentTask: any = {};
   title: string = '';
   description: string = '';
   categoryId: number = 0;
@@ -33,8 +34,8 @@ export class TaskService {
     public control: ControlService) {}
 
     loadAssignedContactsInSelectedContacts() {
-      for (let i = 0; i < this.control.currentTask.assignedTo.length; i++) {
-        let contact = this.control.currentTask.assignedTo[i];
+      for (let i = 0; i < this.currentTask.assignedTo.length; i++) {
+        let contact = this.currentTask.assignedTo[i];
         this.selectedContacts[contact.id] = true;
       }
     }
@@ -78,6 +79,23 @@ export class TaskService {
   }
 
 
+  getPrioImage(prio: string): string {
+    switch (prio) {
+      case 'low':
+        return 'add-task-low';
+
+      case 'medium':
+        return 'add-task-medium';
+
+      case 'urgent':
+        return 'add-task-urgent';
+
+      default:
+        return '';
+    }
+  }
+
+
 
   resetForm() {
     this.description = '';
@@ -98,13 +116,5 @@ export class TaskService {
     this.categoryId = 0;
   }
 
-//   test() {
-//     for (let key in this.selectedContacts) {
-    
-//       if (this.selectedContacts[key] && !this.assignedContactIdsForTask.includes(key)) {
-//         this.assignedContactIdsForTask.push(key);
-//       }
-//   }
-//   console.log(this.selectedContacts);
-// }
+
 }

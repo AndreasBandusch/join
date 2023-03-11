@@ -2,21 +2,21 @@
     <div class="task-details" (click)="control.dontCloseByClick($event)">
         <div class="task-inner">
             <div class="category">
-                <span class="category-inner" [style.backgroundColor]="control.currentTask.category.color">
-                    {{control.currentTask.category.name}}
+                <span class="category-inner" [style.backgroundColor]="task.currentTask.category.color">
+                    {{task.currentTask.category.name}}
                 </span>
             </div>
-            <span class="task-title">{{control.currentTask.title}}</span>
-            <p class="description">{{control.currentTask.description}}</p>
+            <span class="task-title">{{task.currentTask.title}}</span>
+            <p class="description">{{task.currentTask.description}}</p>
             <p class="duedate">
                 <span class="text">Due date:</span>
                 <span class="output">{{dueDateOutput}}</span>
             </p>
             <div class="priority">
                 <span class="text">Priority:</span>
-                <div class="prio {{control.currentTask.prio}}-color">
-                    <span>{{control.currentTask.prio | titlecase}}</span>
-                    <img src="assets/img/icons/{{control.getPrioImage(control.currentTask.prio)}}-white.png">
+                <div class="prio {{task.currentTask.prio}}-color">
+                    <span>{{task.currentTask.prio | titlecase}}</span>
+                    <img src="assets/img/icons/{{task.getPrioImage(task.currentTask.prio)}}-white.png">
                 </div>
             </div>
             <div *ngIf="subTasks.length" class="subtasks-area">
@@ -30,7 +30,7 @@
             </div>
             <p class="text">Assigned To:</p>
             <div class="assigned-area">
-                <div *ngFor="let contact of control.currentTask.assignedTo" class="contact">
+                <div *ngFor="let contact of task.currentTask.assignedTo" class="contact">
                     <div class="initials" [style.backgroundColor]="contact.color">{{contact.initials}}</div>
                     <span class="output">{{contact.firstName}} {{contact.lastName}}</span>
                 </div>

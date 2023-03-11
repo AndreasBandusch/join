@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ControlService } from 'src/app/services/control.service';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-section-board',
@@ -22,7 +23,8 @@ export class SectionBoardComponent implements OnInit {
 
   constructor(
     private afs: AngularFirestore,
-    public control: ControlService) { }
+    public control: ControlService,
+    public task: TaskService) { }
 
 
   ngOnInit() {
@@ -186,7 +188,7 @@ export class SectionBoardComponent implements OnInit {
   
 
   openTaskDetails(currentTask: any): void {
-    this.control.currentTask = currentTask;
+    this.task.currentTask = currentTask;
     this.control.taskDetailsDialogOpen = true;
   }
 

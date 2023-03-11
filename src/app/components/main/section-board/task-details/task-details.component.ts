@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ControlService } from 'src/app/services/control.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { TaskService } from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-task-details',
@@ -14,8 +15,8 @@ export class TaskDetailsComponent implements OnInit {
   currentSubtask: any = {};
  
 
-  constructor(public control: ControlService, private afs: AngularFirestore) {
-    this.dueDate = control.currentTask.dueDate;
+  constructor(public control: ControlService, private afs: AngularFirestore, public task: TaskService) {
+    this.dueDate = task.currentTask.dueDate;
   }
 
 
@@ -25,8 +26,8 @@ export class TaskDetailsComponent implements OnInit {
     this.setDueDateOutput();
 
 
-    for (let i = 0; i < this.control.currentTask.subTasks.length; i++) {
-      this.subTasks.push(this.control.currentTask.subTasks[i]);
+    for (let i = 0; i < this.task.currentTask.subTasks.length; i++) {
+      this.subTasks.push(this.task.currentTask.subTasks[i]);
     }
 
     console.log(this.subTasks);
@@ -60,7 +61,7 @@ export class TaskDetailsComponent implements OnInit {
 
   saveStatus(): void {
     let changes = { 'subTasks': this.subTasks }
-    let docId = this.control.currentTask.docId;
+    let docId = this.task.currentTask.docId;
     console.log(this.currentSubtask.name);
     this.afs.collection('tasks')
       .doc(docId)
