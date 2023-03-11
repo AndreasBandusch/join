@@ -53,10 +53,16 @@ export class EditTaskComponent implements OnInit {
     this.task.currentTask.title = this.title;
     this.task.currentTask.description = this.description;
     this.task.currentTask.prio = this.task.activePrio;
-
+    this.task.updateSelectedContacts();
     const task = this.toJson();
     this.saveTask(docId, task);
+    
   }  
+
+  testMe() {
+    console.log(this.task.assignedContactIdsForTask);
+    
+  }
 
 
   toJson(): object {
