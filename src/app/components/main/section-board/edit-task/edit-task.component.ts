@@ -59,11 +59,6 @@ export class EditTaskComponent implements OnInit {
     
   }  
 
-  testMe() {
-    console.log(this.task.assignedContactIdsForTask);
-    
-  }
-
 
   toJson(): object {
     return {

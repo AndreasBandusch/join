@@ -176,6 +176,16 @@
     }
 }
 
+
+.drop-here {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 27px;
+}
+
 .cdk-drag-preview {
     min-height: 200px;
 }
@@ -195,11 +205,16 @@
     box-shadow: unset;
 
     .category,
-    .title,
-    .progress,
+    .task-title,
+    .progress-cont,
     .desciption,
     .bottom-cont {
         display: none;
+    }
+
+    .drop-here {
+        display: flex;
+
     }
 }
 
