@@ -37,15 +37,17 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.task.dueDate = '';
-    this.task.catText = this.task.catStartText;
+    this.task.resetForm();
+    // this.task.dueDate = '';
+    // this.task.catText = this.task.catStartText;
     this.checkMaxWidth(1100);
     this.loadCategorys();
     this.loadContacts();
-    this.task.activePrio = '';
-    this.task.showAssignedTo = false;
-    this.task.showCategorys = false;
-    this.task.selectedContacts = {};
+    // this.task.activePrio = '';
+    // this.task.showAssignedTo = false;
+    // this.task.showCategorys = false;
+    // this.task.selectedContacts = {};
+    // this.task.selectedCategory = '';
   }
 
 
