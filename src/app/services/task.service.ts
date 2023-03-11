@@ -23,7 +23,7 @@ export class TaskService {
   showCategorys: boolean = false;
   showSubtask: boolean = false;
   catText: string = '';
-  catStartText: string = 'Select task catagory';
+  catStartText: string = 'Select task category';
   catColor: any = '';
   allSubtasks: any[] = [];
   showAssignedTo: boolean = false;

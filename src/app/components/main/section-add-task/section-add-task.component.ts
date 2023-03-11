@@ -43,6 +43,9 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.loadCategorys();
     this.loadContacts();
     this.task.activePrio = '';
+    this.task.showAssignedTo = false;
+    this.task.showCategorys = false;
+    this.task.selectedContacts = {};
   }
 
 

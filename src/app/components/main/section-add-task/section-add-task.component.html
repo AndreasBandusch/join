@@ -25,13 +25,13 @@
                         <div class="dropdown">
                             <div class="select-menu">
                                 <div class="cat-header">
-                                    <span>{{task.catText}}</span>
+                                    <span class="cat-name">{{task.catText}}</span>
                                     <div class="cat-color" [style.backgroundColor]="task.catColor"></div>
                                 </div>
                                 <div class="icon" (click)="task.showCategorys = !task.showCategorys"><img class="arrow"
                                         src="assets/img/icons/menu-arrow-down.png"></div>
                             </div>
-                            <div class="select-catagory">
+                            <div class="select-category">
                                 <div *ngIf="task.showCategorys" class="dropdown-content">
                                     <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
                                         category</span>

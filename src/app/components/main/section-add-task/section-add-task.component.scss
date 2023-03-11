@@ -136,7 +136,7 @@
         }
     }
 
-    .select-catagory {
+    .select-category {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -201,7 +201,8 @@
 
     .cat-header {
         display: flex;
-        align-items: center
+        align-items: center;
+
     }
 
 
@@ -424,7 +425,7 @@
     input[type="date"],
     textarea,
     .content-body,
-    .select-catagory,
+    .select-category,
     .select-menu,
     .add,
     ::placeholder,
@@ -445,7 +446,7 @@
     input[type="date"],
     textarea,
     .content-body,
-    .select-catagory,
+    .select-category,
     .select-menu,
     .add,
     ::placeholder,
