@@ -1,51 +1,55 @@
 <div class="overlay" (click)="control.taskDetailsDialogOpen = false">
     <div class="task-details" (click)="control.dontCloseByClick($event)">
-        <div class="task-inner">
-            <div class="category">
-                <span class="category-inner" [style.backgroundColor]="task.currentTask.category.color">
-                    {{task.currentTask.category.name}}
-                </span>
-            </div>
-            <span class="task-title">{{task.currentTask.title}}</span>
-            <p class="description">{{task.currentTask.description}}</p>
-            <p class="duedate">
-                <span class="text">Due date:</span>
-                <span class="output">{{dueDateOutput}}</span>
-            </p>
-            <div class="priority">
-                <span class="text">Priority:</span>
-                <div class="prio {{task.currentTask.prio}}-color">
-                    <span>{{task.currentTask.prio | titlecase}}</span>
-                    <img src="assets/img/icons/{{task.getPrioImage(task.currentTask.prio)}}-white.png">
+        <div class="task-outer">
+            <div class="task-inner">
+                <div class="category">
+                    <span class="category-inner" [style.backgroundColor]="task.currentTask.category.color">
+                        {{task.currentTask.category.name}}
+                    </span>
                 </div>
-            </div>
-            <div *ngIf="subTasks.length" class="subtasks-area">
-                <span class="text">Subtasks:</span>
-                <div class="subtasks-cont">
-                    <div *ngFor="let subTask of subTasks; index as i" class="subtask">
-                        <input type="checkbox" [checked]="subTask.done == true" (change)="updateSubTaskStatus(i)">
-                        <span>{{subTask.name}}</span>
+                <span class="task-title">{{task.currentTask.title}}</span>
+                <p class="description">{{task.currentTask.description}}</p>
+                <p class="duedate">
+                    <span class="text">Due date:</span>
+                    <span class="output">{{dueDateOutput}}</span>
+                </p>
+                <div class="priority">
+                    <span class="text">Priority:</span>
+                    <div class="prio {{task.currentTask.prio}}-color">
+                        <span>{{task.currentTask.prio | titlecase}}</span>
+                        <img src="assets/img/icons/{{task.getPrioImage(task.currentTask.prio)}}-white.png">
                     </div>
                 </div>
-            </div>
-            <p class="text">Assigned To:</p>
-            <div class="assigned-area">
-                <div *ngFor="let contact of task.currentTask.assignedTo" class="contact">
-                    <div class="initials" [style.backgroundColor]="contact.color">{{contact.initials}}</div>
-                    <span class="output">{{contact.firstName}} {{contact.lastName}}</span>
+                <div *ngIf="subTasks.length" class="subtasks-area">
+                    <span class="text">Subtasks:</span>
+                    <div class="subtasks-cont">
+                        <div *ngFor="let subTask of subTasks; index as i" class="subtask">
+                            <input type="checkbox" [checked]="subTask.done == true" (change)="updateSubTaskStatus(i)">
+                            <span>{{subTask.name}}</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <img src="assets/img/icons/close-icon.png" (click)="control.taskDetailsDialogOpen = false" class="close">
-            <div class="btn-cont">
-                <button class="primary-btn delete" (click)="control.showDeleteTaskDialog = true">
-                    <img src="assets/img/icons/trash-icon.png">
-                </button>
-                <button class="primary-btn edit" (click)="openEditDialog()">
-                    <img src="assets/img/icons/edit-task-icon.png">
-                </button>
+                <p class="text">Assigned To:</p>
+                <div class="assigned-area">
+                    <div *ngFor="let contact of task.currentTask.assignedTo" class="contact">
+                        <div class="initials" [style.backgroundColor]="contact.color">{{contact.initials}}</div>
+                        <span class="output">{{contact.firstName}} {{contact.lastName}}</span>
+                    </div>
+                </div>
+                <img src="assets/img/icons/close-icon.png" (click)="control.taskDetailsDialogOpen = false"
+                    class="close">
                 
             </div>
-        </div>
 
+        </div>
+        <div class="btn-cont">
+            <button class="primary-btn delete" (click)="control.showDeleteTaskDialog = true">
+                <img src="assets/img/icons/trash-icon.png">
+            </button>
+            <button class="primary-btn edit" (click)="openEditDialog()">
+                <img src="assets/img/icons/edit-task-icon.png">
+            </button>
+
+        </div>
     </div>
 </div>
