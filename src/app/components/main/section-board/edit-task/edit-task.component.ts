@@ -24,14 +24,15 @@ export class EditTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadContacts();
+    console.log(this.task.currentTask);
     this.task.dueDate = new Date(this.task.currentTask.dueDate).toISOString().slice(0,10);
     this.setPrio();
-    this.task.loadAssignedContactsInSelectedContacts();
   }
+
+ 
 
   setPrio() {
     this.task.activePrio = this.task.currentTask.prio;
-   
   }
 
 
@@ -53,10 +54,14 @@ export class EditTaskComponent implements OnInit {
     this.task.currentTask.title = this.title;
     this.task.currentTask.description = this.description;
     this.task.currentTask.prio = this.task.activePrio;
+    this.task.currentTask.dueDate = this.task.dueDate;
+  
     this.task.updateSelectedContacts();
+   
     const task = this.toJson();
     this.saveTask(docId, task);
     
+    console.log('ASSIGNED: ',this.task.currentTask.assignedTo);
   }  
 
 
@@ -80,5 +85,6 @@ export class EditTaskComponent implements OnInit {
   } 
 
 
- 
+  
+
 }

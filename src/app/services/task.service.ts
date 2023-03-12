@@ -20,6 +20,7 @@ export class TaskService {
 
 
   dueDate: string = '';
+  dueDateOutput: string = '';
   showCategorys: boolean = false;
   showSubtask: boolean = false;
   catText: string = '';
@@ -76,8 +77,7 @@ export class TaskService {
         this.assignedContactIdsForTask.push(key);
       }
     }
-
-    console.log(this.assignedContactIdsForTask);
+    console.log(this.currentTask.assignedTo);
     console.log('Selected: ', this.selectedContacts);
   }
 
@@ -126,6 +126,13 @@ export class TaskService {
     this.assignedSubtasks = [];
     this.assignedContactIdsForTask = [];
     this.categoryId = 0;
+  }
+
+  setDueDateOutput() {
+    let date = new Date(this.dueDate);
+    this.dueDateOutput = date.toLocaleString('en-US', { day: '2-digit' })
+      + '-' + date.toLocaleString('en-EN', { month: '2-digit' })
+      + '-' + date.getFullYear();
   }
 
 

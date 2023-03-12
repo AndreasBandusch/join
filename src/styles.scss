@@ -271,6 +271,10 @@ a:hover {
     background-color: #7AE229 !important;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 
 @keyframes fade-in {
     from {

@@ -9,39 +9,33 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./task-details.component.scss']
 })
 export class TaskDetailsComponent implements OnInit {
-  dueDate: number;
-  dueDateOutput: string = '';
   subTasks: any[] = [];
   currentSubtask: any = {};
   docId: string;
 
   constructor(public control: ControlService, private afs: AngularFirestore, public task: TaskService) {
-    this.dueDate = task.currentTask.dueDate;
+    this.task.dueDate = task.currentTask.dueDate;
     this.docId = task.currentTask.docId;
+    
   }
 
 
 
   ngOnInit(): void {
     // console.log(this.control.currentTask);
-    this.setDueDateOutput();
-   
+    this.task.setDueDateOutput();
+    this.task.updateSelectedContacts();
 
     for (let i = 0; i < this.task.currentTask.subTasks.length; i++) {
       this.subTasks.push(this.task.currentTask.subTasks[i]);
     }
 
     console.log(this.subTasks);
-
+   
   }
 
 
-  setDueDateOutput() {
-    let date = new Date(this.dueDate);
-    this.dueDateOutput = date.toLocaleString('en-US', { day: '2-digit' })
-      + '-' + date.toLocaleString('en-EN', { month: '2-digit' })
-      + '-' + date.getFullYear();
-  }
+  
 
   // updateSubTaskDoneStatus(status: boolean, index: number) {
   //   console.log(status);
