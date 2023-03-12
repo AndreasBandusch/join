@@ -35,7 +35,6 @@
     overflow-y: auto;
 }
 
-
 .task-inner {
     display: flex;
     flex-direction: column;
@@ -43,12 +42,10 @@
     justify-content: flex-start;
     width: 100%;
     gap: 32px;
-    height: auto;
     margin-top: 8px;
-    margin-right: 20px;
+    margin-right: 32px;
     margin-left: 32px;
 }
-
 
 .category-inner {
     justify-content: center;
@@ -71,7 +68,6 @@
     padding-left: 32px;
 }
 
-
 .delete,
 .edit {
     width: 57px;
@@ -86,7 +82,6 @@
         width: auto;
     }
 }
-
 
 .task-title {
     font-size: 40px;
@@ -107,7 +102,6 @@
 .output {
     font-size: 21px;
 }
-
 
 .priority {
     display: flex;
@@ -133,7 +127,6 @@
     align-items: flex-start;
     width: 100%;
 }
-
 
 .subtasks-cont {
     display: flex;
@@ -183,10 +176,6 @@
     cursor: pointer;
 }
 
-
-
-
-
 @media (max-width: 750px) {
     .overlay {
         padding-left: 32px;
@@ -196,7 +185,6 @@
     .task-details {
         width: 100%;
     }
-
 }
 
 @media (max-width: 550px) {
@@ -205,17 +193,9 @@
         padding-right: 16px;
     }
 
-    // .task-details {
-    //     padding: 32px;
-    // }
-
     .category-inner {
         font-size: 21px;
     }
-
-    // .task-title {
-    //     font-size: 40px;
-    // }
 
     .delete,
     .edit {
@@ -252,22 +232,8 @@
         padding-right: 0px;
     }
 
-    //  .task-details {
-    //      padding: 32px 16px;
-    //  }
-
-    // .close {
-    //     right: 16px;
-    //     top: 16px;
-    // }
-
-    // .edit {
-    //     right: 16px;
-    //     bottom: 16px;
-    // }
-
     .task-inner {
-        margin-right: 4px;
+        margin-right: 16px;
         margin-left: 16px;
     }
 
@@ -290,21 +256,10 @@
     }
 }
 
-
-
-
-
 @media (max-width: 350px) {
-    // .overlay {
-    //     padding-left: 0;
-    //     padding-right: 0;
-
-    // }
-
     .task-details {
         border-radius: 0;
         height: 100%;
-        max-height: unset;
         background-color: #f5f5f5;
     }
 
@@ -327,14 +282,12 @@
         margin-right: 8px;
     }
 
-    // .close {
-    //     right: 8px;
-    //     top: 16px;
-    // }
+    .close {
+        top: 16px;
+        right: 8px;
+    }
 
-    // .edit {
-    //     right: 8px;
-    //     bottom: 24px;
-    // }
-
+    .btn-cont {
+        padding-right: 16px;
+    }
 }
