@@ -99,6 +99,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.task.catColor = color;
     this.task.showCategorys = false;
     this.task.categoryId = id;
+    this.fControl.noCategoryErrorMessage = '';
   }
 
 
@@ -187,7 +188,11 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   checkSelectedCategory() {
     if (this.task.selectedCategory === '') {
       this.fControl.noCategoryErrorMessage = 'Select a category';
-   } 
+   } else {
+    this.fControl.noCategoryErrorMessage = '';
+   }
+   console.log('Category', this.task.selectedCategory);
+   
   }
 
 

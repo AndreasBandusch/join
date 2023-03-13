@@ -19,7 +19,7 @@
                     <textarea name="description" [(ngModel)]="task.description" (keyup)="inputView()"
                         placeholder="Enter a Description"></textarea>
                 </div>
-                <div class="field-group" (mouseleave)="checkSelectedCategory()">
+                <div class="field-group">
                     <span>Category</span>
                     <ng-container *ngIf="!showNewCategory; else elseBlock">
                         <div class="dropdown">
@@ -36,7 +36,7 @@
                                     <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
                                         category</span>
                                     <ng-container *ngFor="let cat of allCategorys">
-                                        <div class="item" (click)="selectCategory(cat.name, cat.color, cat.id)">
+                                        <div class="item" (click)="selectCategory(cat.name, cat.color, cat.id)" (change)="checkSelectedCategory()">
                                             <span>{{cat.name}}</span>
                                             <div class="cat-color" [style.backgroundColor]="cat.color"></div>
                                         </div>
