@@ -7,7 +7,7 @@
                     <h1 class="title">Board</h1>
                     <div class="input-field input-search">
                         <div class="field">
-                            <input name="email" type="text" placeholder="Find Task">
+                            <input name="search" type="text" placeholder="Find Task" [(ngModel)]="currentSearch">
                         </div>
                         <div class="icon">
                             <img src="/assets/img/icons/input-search.png">
@@ -15,8 +15,10 @@
                     </div>
                 </div>
                 <div class="right">
-                    <button class="primary-btn add-btn" (click)="control.isOpenedInOverlay = true" (click)="setOrRemoveBodyScroll()">Add task +</button>
-                    <img class="add-btn-mobile" src="assets/img/icons/add-icon.png" (click)="control.isOpenedInOverlay = true">
+                    <button class="primary-btn add-btn" (click)="control.isOpenedInOverlay = true"
+                        (click)="setOrRemoveBodyScroll()">Add task +</button>
+                    <img class="add-btn-mobile" src="assets/img/icons/add-icon.png"
+                        (click)="control.isOpenedInOverlay = true">
                 </div>
             </div>
         </div>
@@ -27,42 +29,46 @@
                     <span class="header">To do</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" cdkDropList 
-                #todos="cdkDropList" id="todo"
-                [cdkDropListData]="todoTasks" 
-                [cdkDropListConnectedTo]="[inProgress, awaitingFeedback, done]"
-                (cdkDropListDropped)="drop($event)">
-                    <div class="task" *ngFor="let item of todoTasks" cdkDrag [cdkDragData]="item" (click)="openTaskDetails(item)">
-                        <div class="category">
-                            <span class="category-inner" [style.backgroundColor]="item.category.color">
-                                {{item.category.name}}
-                            </span>
-                        </div>
-                        <span class="task-title">{{item.title}}</span>
-                        <div class="desciption">
-                            {{item.description}}
-                        </div>
-                        <div *ngIf="item.subTasks.length" class="progress-cont">
-                            <div class="bar">
-                                <div class="bar-inner" [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)"></div>
+                <div class="status-content" cdkDropList #todos="cdkDropList" id="todo" [cdkDropListData]="todoTasks"
+                    [cdkDropListConnectedTo]="[inProgress, awaitingFeedback, done]" (cdkDropListDropped)="drop($event)">
+                    <ng-container *ngFor="let item of todoTasks">
+                        <div *ngIf="checkSearch(item)" class="task" cdkDrag [cdkDragData]="item"
+                            (click)="openTaskDetails(item)">
+                            <div class="category">
+                                <span class="category-inner" [style.backgroundColor]="item.category.color">
+                                    {{item.category.name}}
+                                </span>
                             </div>
-
-                            <div class="progress">
-                                <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
+                            <span class="task-title">{{item.title}}</span>
+                            <div class="desciption">
+                                {{item.description}}
                             </div>
-                        </div>
-                        <div class="bottom-cont">
-                            <div class="assigned">
-                                <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="task.getContactIntialsStyles(contact.color, i)">
-                                    {{contact.initials}}
+                            <div *ngIf="item.subTasks.length" class="progress-cont">
+                                <div class="bar">
+                                    <div class="bar-inner"
+                                        [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
+                                    </div>
                                 </div>
-                            </div>                  
-                            <div class="prio">
-                                <img src="assets/img/icons/{{task.getPrioImage(item.prio)}}.png">
+
+                                <div class="progress">
+                                    <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
+                                </div>
                             </div>
+                            <div class="bottom-cont">
+                                <div class="assigned">
+                                    <div *ngFor="let contact of item.assignedTo let i = index" class="contact"
+                                        [style]="task.getContactIntialsStyles(contact.color, i)">
+                                        {{contact.initials}}
+                                    </div>
+                                </div>
+                                <div class="prio">
+                                    <img src="assets/img/icons/{{task.getPrioImage(item.prio)}}.png">
+                                </div>
+                            </div>
+                            <span class="drop-here">Drop here</span>
                         </div>
-                        <span class="drop-here">Drop here</span>
-                    </div>
+                    </ng-container>
+
                 </div>
             </div>
             <div class="status">
@@ -70,42 +76,48 @@
                     <span class="header">In progress</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" cdkDropList
-                #inProgress="cdkDropList" id="in-progress"
-                [cdkDropListData]="inProgressTasks"
-                [cdkDropListConnectedTo]="[todos, awaitingFeedback, done]"
-                (cdkDropListDropped)="drop($event)">
-                <div class="task" *ngFor="let item of inProgressTasks" cdkDrag [cdkDragData]="item" (click)="openTaskDetails(item)">
-                    <div class="category">
-                        <span class="category-inner" [style.backgroundColor]="item.category.color">
-                            {{item.category.name}}
-                        </span>
-                    </div>
-                    <span class="task-title">{{item.title}}</span>
-                    <div class="desciption">
-                        {{item.description}}
-                    </div>
-                    <div *ngIf="item.subTasks.length" class="progress-cont">
-                        <div class="bar">
-                            <div class="bar-inner" [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)"></div>
-                        </div>
-
-                        <div class="progress">
-                            <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
-                        </div>
-                    </div>
-                    <div class="bottom-cont">
-                        <div class="assigned">
-                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="task.getContactIntialsStyles(contact.color, i)">
-                                {{contact.initials}}
+                <div class="status-content" cdkDropList #inProgress="cdkDropList" id="in-progress"
+                    [cdkDropListData]="inProgressTasks" [cdkDropListConnectedTo]="[todos, awaitingFeedback, done]"
+                    (cdkDropListDropped)="drop($event)">
+                    <ng-container *ngFor="let item of inProgressTasks">
+                        <div *ngIf="checkSearch(item)" class="task" cdkDrag [cdkDragData]="item"
+                            (click)="openTaskDetails(item)">
+                            <div class="category">
+                                <span class="category-inner" [style.backgroundColor]="item.category.color">
+                                    {{item.category.name}}
+                                </span>
                             </div>
-                        </div>                  
-                        <div class="prio">
-                            <img src="assets/img/icons/{{task.getPrioImage(item.prio)}}.png">
+                            <span class="task-title">{{item.title}}</span>
+                            <div class="desciption">
+                                {{item.description}}
+                            </div>
+                            <div *ngIf="item.subTasks.length" class="progress-cont">
+                                <div class="bar">
+                                    <div class="bar-inner"
+                                        [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
+                                    </div>
+                                </div>
+
+                                <div class="progress">
+                                    <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
+                                </div>
+                            </div>
+                            <div class="bottom-cont">
+                                <div class="assigned">
+                                    <div *ngFor="let contact of item.assignedTo let i = index" class="contact"
+                                        [style]="task.getContactIntialsStyles(contact.color, i)">
+                                        {{contact.initials}}
+                                    </div>
+                                </div>
+                                <div class="prio">
+                                    <img src="assets/img/icons/{{task.getPrioImage(item.prio)}}.png">
+                                </div>
+                            </div>
+                            <span class="drop-here">Drop here</span>
                         </div>
-                    </div>
-                    <span class="drop-here">Drop here</span>
-                </div>
+                    </ng-container>
+
+
                 </div>
             </div>
 
@@ -114,42 +126,48 @@
                     <span class="header">Awaiting Feedback</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" cdkDropList
-                #awaitingFeedback="cdkDropList" id="awaiting-feedback"  
-                [cdkDropListData]="awaitingFeedbackTasks"
-                [cdkDropListConnectedTo]="[todos, inProgress, done]"
-                (cdkDropListDropped)="drop($event)">
-                <div class="task" *ngFor="let item of awaitingFeedbackTasks" cdkDrag [cdkDragData]="item" (click)="openTaskDetails(item)">
-                    <div class="category">
-                        <span class="category-inner" [style.backgroundColor]="item.category.color">
-                            {{item.category.name}}
-                        </span>
-                    </div>
-                    <span class="task-title">{{item.title}}</span>
-                    <div class="desciption">
-                        {{item.description}}
-                    </div>
-                    <div *ngIf="item.subTasks.length" class="progress-cont">
-                        <div class="bar">
-                            <div class="bar-inner" [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)"></div>
-                        </div>
-
-                        <div class="progress">
-                            <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
-                        </div>
-                    </div>
-                    <div class="bottom-cont">
-                        <div class="assigned">
-                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="task.getContactIntialsStyles(contact.color, i)">
-                                {{contact.initials}}
+                <div class="status-content" cdkDropList #awaitingFeedback="cdkDropList" id="awaiting-feedback"
+                    [cdkDropListData]="awaitingFeedbackTasks" [cdkDropListConnectedTo]="[todos, inProgress, done]"
+                    (cdkDropListDropped)="drop($event)">
+                    <ng-container *ngFor="let item of awaitingFeedbackTasks">
+                        <div *ngIf="checkSearch(item)" class="task" cdkDrag [cdkDragData]="item"
+                            (click)="openTaskDetails(item)">
+                            <div class="category">
+                                <span class="category-inner" [style.backgroundColor]="item.category.color">
+                                    {{item.category.name}}
+                                </span>
                             </div>
-                        </div>                  
-                        <div class="prio">
-                            <img src="assets/img/icons/{{task.getPrioImage(item.prio)}}.png">
+                            <span class="task-title">{{item.title}}</span>
+                            <div class="desciption">
+                                {{item.description}}
+                            </div>
+                            <div *ngIf="item.subTasks.length" class="progress-cont">
+                                <div class="bar">
+                                    <div class="bar-inner"
+                                        [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
+                                    </div>
+                                </div>
+
+                                <div class="progress">
+                                    <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
+                                </div>
+                            </div>
+                            <div class="bottom-cont">
+                                <div class="assigned">
+                                    <div *ngFor="let contact of item.assignedTo let i = index" class="contact"
+                                        [style]="task.getContactIntialsStyles(contact.color, i)">
+                                        {{contact.initials}}
+                                    </div>
+                                </div>
+                                <div class="prio">
+                                    <img src="assets/img/icons/{{task.getPrioImage(item.prio)}}.png">
+                                </div>
+                            </div>
+                            <span class="drop-here">Drop here</span>
                         </div>
-                    </div>
-                    <span class="drop-here">Drop here</span>
-                </div>
+                    </ng-container>
+
+
                 </div>
             </div>
 
@@ -158,42 +176,47 @@
                     <span class="header">Done</span>
                     <img src="assets/img/icons/board-add-task-icon.png">
                 </div>
-                <div class="status-content" cdkDropList 
-                #done="cdkDropList" id="done"  
-                [cdkDropListData]="doneTasks"
-                [cdkDropListConnectedTo]="[todos, awaitingFeedback, inProgress]"
-                (cdkDropListDropped)="drop($event)">
-                <div class="task" *ngFor="let item of doneTasks" cdkDrag [cdkDragData]="item" (click)="openTaskDetails(item)">
-                    <div class="category">
-                        <span class="category-inner" [style.backgroundColor]="item.category.color">
-                            {{item.category.name}}
-                        </span>
-                    </div>
-                    <span class="task-title">{{item.title}}</span>
-                    <div class="desciption">
-                        {{item.description}}
-                    </div>
-                    <div *ngIf="item.subTasks.length" class="progress-cont">
-                        <div class="bar">
-                            <div class="bar-inner" [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)"></div>
-                        </div>
-
-                        <div class="progress">
-                            <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
-                        </div>
-                    </div>
-                    <div class="bottom-cont">
-                        <div class="assigned">
-                            <div *ngFor="let contact of item.assignedTo let i = index" class="contact" [style]="task.getContactIntialsStyles(contact.color, i)">
-                                {{contact.initials}}
+                <div class="status-content" cdkDropList #done="cdkDropList" id="done" [cdkDropListData]="doneTasks"
+                    [cdkDropListConnectedTo]="[todos, awaitingFeedback, inProgress]"
+                    (cdkDropListDropped)="drop($event)">
+                    <ng-container *ngFor="let item of doneTasks">
+                        <div *ngIf="checkSearch(item)" class="task" cdkDrag [cdkDragData]="item"
+                            (click)="openTaskDetails(item)">
+                            <div class="category">
+                                <span class="category-inner" [style.backgroundColor]="item.category.color">
+                                    {{item.category.name}}
+                                </span>
                             </div>
-                        </div>                  
-                        <div class="prio">
-                            <img src="assets/img/icons/{{task.getPrioImage(item.prio)}}.png">
+                            <span class="task-title">{{item.title}}</span>
+                            <div class="desciption">
+                                {{item.description}}
+                            </div>
+                            <div *ngIf="item.subTasks.length" class="progress-cont">
+                                <div class="bar">
+                                    <div class="bar-inner"
+                                        [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
+                                    </div>
+                                </div>
+
+                                <div class="progress">
+                                    <span>{{getDoneSubtasksNumber(item.subTasks)}} / {{item.subTasks.length}}</span>
+                                </div>
+                            </div>
+                            <div class="bottom-cont">
+                                <div class="assigned">
+                                    <div *ngFor="let contact of item.assignedTo let i = index" class="contact"
+                                        [style]="task.getContactIntialsStyles(contact.color, i)">
+                                        {{contact.initials}}
+                                    </div>
+                                </div>
+                                <div class="prio">
+                                    <img src="assets/img/icons/{{task.getPrioImage(item.prio)}}.png">
+                                </div>
+                            </div>
+                            <span class="drop-here">Drop here</span>
                         </div>
-                    </div>
-                    <span class="drop-here">Drop here</span>
-                </div>
+                    </ng-container>
+
                 </div>
             </div>
         </div>

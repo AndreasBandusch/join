@@ -27,6 +27,7 @@ export class EditTaskComponent implements OnInit {
     console.log(this.task.currentTask);
     this.task.dueDate = new Date(this.task.currentTask.dueDate).toISOString().slice(0,10);
     this.setPrio();
+    this.task.loadAssignedContactsInSelectedContacts();
   }
 
  
@@ -80,7 +81,7 @@ export class EditTaskComponent implements OnInit {
     this.afs.collection('tasks').doc(id)
     .update(task).then(() => {
      this.control.editTasksDialogOpen = false;
-     this.control.taskDetailsDialogOpen = true;
+     
     });
   } 
 

@@ -71,12 +71,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="assigned">
+                <!-- <div class="assigned">
                     <div *ngFor="let contact of task.currentTask.assignedTo let i = index" class="contact-icon"
                         [style]="task.getContactIntialsStyles(contact.color, i)">
                         {{contact.initials}}
                     </div>
-                </div>
+                </div> -->
                 <img src="assets/img/icons/close-icon.png" (click)="control.editTasksDialogOpen = false" class="close">
             </div>
 

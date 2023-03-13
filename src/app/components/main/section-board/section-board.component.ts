@@ -18,8 +18,8 @@ export class SectionBoardComponent implements OnInit {
   inProgressTasks: any[] = [];
   awaitingFeedbackTasks: any[] = [];
   doneTasks: any[] = [];
-  // test: number = 0;
   isDragging: boolean = false;
+  currentSearch: string = '';
 
   constructor(
     private afs: AngularFirestore,
@@ -33,7 +33,7 @@ export class SectionBoardComponent implements OnInit {
     this.loadTasks();
   }
 
-  
+
 
 
   loadContacts() {
@@ -50,7 +50,7 @@ export class SectionBoardComponent implements OnInit {
       this.allTasks = changes;
       this.loadContacts();
       this.loadCategorys();
-      this.seperateStatus(); 
+      this.seperateStatus();
     })
   }
 
@@ -92,7 +92,7 @@ export class SectionBoardComponent implements OnInit {
     this.inProgressTasks = [];
     this.awaitingFeedbackTasks = [];
     this.doneTasks = [];
-    
+
     this.allTasks.forEach(task => {
       switch (task.status) {
         case 'todo':
@@ -132,23 +132,23 @@ export class SectionBoardComponent implements OnInit {
 
 
   setTaskStatus(currentTask: any, dropListId: string): void {
-       switch (dropListId) {
-         case 'todo':
-          currentTask.status = 'todo';
-          break;
-        case 'in-progress':
-          currentTask.status = 'inProgress';
-           break;
-        case 'awaiting-feedback':
-          currentTask.status = 'awaitingFeedback';
-           break;
-         case 'done':
-          currentTask.status = 'done';
-            break;
-        }
-       this.updateTaskStatus(currentTask);
+    switch (dropListId) {
+      case 'todo':
+        currentTask.status = 'todo';
+        break;
+      case 'in-progress':
+        currentTask.status = 'inProgress';
+        break;
+      case 'awaiting-feedback':
+        currentTask.status = 'awaitingFeedback';
+        break;
+      case 'done':
+        currentTask.status = 'done';
+        break;
     }
-  
+    this.updateTaskStatus(currentTask);
+  }
+
 
 
   updateTaskStatus(task: any): void {
@@ -180,7 +180,7 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  
+
 
   openTaskDetails(currentTask: any): void {
     this.task.currentTask = currentTask;
@@ -188,9 +188,9 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  getWidth(doneSubTasks: number, subTaskslength: number): string  {
+  getWidth(doneSubTasks: number, subTaskslength: number): string {
     let percent = (doneSubTasks / subTaskslength) * 100;
-    return `${percent}%`; 
+    return `${percent}%`;
   }
 
   setOrRemoveBodyScroll() {
@@ -199,6 +199,18 @@ export class SectionBoardComponent implements OnInit {
       bodyTag.classList.add('no-scroll');
     } else {
       bodyTag.classList.remove('no-scroll');
+    }
+  }
+
+  checkSearch(currentTask: any): boolean {
+    let search = this.currentSearch.toLowerCase();
+    let title = currentTask.title.toLowerCase();
+    let description = currentTask.description.toLowerCase();
+
+    if (title.includes(search) || description.includes(search)) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
