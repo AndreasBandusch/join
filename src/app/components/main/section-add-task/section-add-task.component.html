@@ -4,13 +4,13 @@
             <div class="content-header-mobile">Kanban Project Management Tool</div>
             <h1 class="title">Add Task</h1>
         </div>
-        <form class="content-body">
+        <form class="content-body" (submit)="checkForm()">
             <div class="content-left">
                 <div class="field-group">
                     <span>Title</span>
                     <div class="input-field">
                         <div class="field">
-                            <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="task.title">
+                            <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="task.title"  formControlName="title">
                         </div>
                     </div>
                 </div>
@@ -89,7 +89,7 @@
                                         <input type="checkbox" id="{{contact.id}}" name="{{contact.id}}"
                                             value="{{contact.firstName}} {{contact.lastName}}"
                                             [(ngModel)]="task.selectedContacts[contact.id]"
-                                            (ngModelChange)="updateSelectedContacts()">
+                                            (ngModelChange)="updateSelectedContacts()" (blur)="checkIfaContactIsAssigned()">
                                     </label>
                                 </div>
                             </div>
@@ -102,7 +102,7 @@
                         </div>
 
                     </div>
-
+                    <span *ngIf="fControl.noAssignedConactErrorMessage" class="error">{{fControl.noAssignedConactErrorMessage}}</span>
                 </div>
 
             </div>
@@ -122,23 +122,24 @@
                     <span>Prio</span>
                     <div class="prio-cont">
                         <div class="prio urgent" [class.urgent-color]="task.activePrio === 'urgent'"
-                            (click)="task.activePrio = 'urgent'">
+                            (click)="task.setPrio('urgent')">
                             Urgent
                             <img *ngIf="task.activePrio !== 'urgent'" src="assets/img/icons/add-task-urgent.png">
                             <img *ngIf="task.activePrio === 'urgent'" src="assets/img/icons/add-task-urgent-white.png">
                         </div>
                         <div class="prio medium" [class.medium-color]="task.activePrio === 'medium'"
-                            (click)="task.activePrio = 'medium'">
+                            (click)="task.setPrio('medium')">
                             Medium
                             <img *ngIf="task.activePrio !== 'medium'" src="assets/img/icons/add-task-medium.png">
                             <img *ngIf="task.activePrio === 'medium'" src="assets/img/icons/add-task-medium-white.png">
                         </div>
-                        <div class="prio low" [class.low-color]="task.activePrio === 'low'" (click)="task.activePrio = 'low'">
+                        <div class="prio low" [class.low-color]="task.activePrio === 'low'" (click)="task.setPrio('low')">
                             Low
                             <img *ngIf="task.activePrio !== 'low'" src="assets/img/icons/add-task-low.png">
                             <img *ngIf="task.activePrio === 'low'" src="assets/img/icons/add-task-low-white.png">
                         </div>
                     </div>
+                    <span *ngIf="fControl.prioErrorMessage" class="error">{{fControl.prioErrorMessage}}</span>
                 </div>
                 <div class="field-group">
                     <span>Subtasks</span>
@@ -180,7 +181,7 @@
                         (click)="task.resetForm()">
                         Clear <span>x</span>
                     </button>
-                    <button type="submit" class="primary-btn" (click)="task.createTask()">
+                    <button type="submit" class="primary-btn">
                         Create Task
                         <img src="assets/img/icons/checked-icon.png">
                     </button>

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Task } from '../models/task.model';
 import { ControlService } from './control.service';
+import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
+
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +34,8 @@ export class TaskService {
 
   constructor(
     private db: AngularFirestore,
-    public control: ControlService) { }
+    public control: ControlService,
+    private fControl: CustomformcontrolModule) { }
 
   loadAssignedContactsInSelectedContacts() {
     for (let i = 0; i < this.currentTask.assignedTo.length; i++) {
@@ -144,5 +147,10 @@ export class TaskService {
       this.control.getMessage('Task deleted !');
     });
 
+  }
+
+  setPrio(prio: string) {
+    this.activePrio = prio;
+    this.fControl.prioErrorMessage = '';
   }
 }

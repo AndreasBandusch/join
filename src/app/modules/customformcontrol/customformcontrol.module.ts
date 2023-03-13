@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AbstractControl } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
@@ -11,6 +9,8 @@ import { AbstractControl } from '@angular/forms';
   ]
 })
 export class CustomformcontrolModule { 
+  prioErrorMessage: string = '';
+  noAssignedConactErrorMessage = '';
 
   phoneNumber(c: AbstractControl) {
     const telephonePattern = /^[0-9\+\-\ ]{8,}$/;

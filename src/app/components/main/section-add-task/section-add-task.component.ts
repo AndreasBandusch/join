@@ -3,6 +3,8 @@ import { ControlService } from 'src/app/services/control.service';
 import { TaskService } from 'src/app/services/task.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Category } from 'src/app/models/category.model';
+import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-section-add-task',
@@ -23,7 +25,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
 
-  
+
+
   @HostListener('window:resize')
   onResize() {
     this.checkMaxWidth(1100);
@@ -32,8 +35,14 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   constructor(
     public control: ControlService,
     public task: TaskService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public fControl: CustomformcontrolModule
   ) { }
+
+
+  public createTask: FormGroup = new FormGroup({
+
+  });
 
 
   ngOnInit(): void {
@@ -53,6 +62,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.control.showAddTaskBotton = false;
+    this.fControl.prioErrorMessage = '';
+    this.fControl.noAssignedConactErrorMessage = '';
   }
 
   loadCategorys() {
@@ -149,7 +160,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.task.showSubtask = true;
   }
 
-  
+
   createSubtask() {
     this.task.allSubtasks.push({ name: this.currentSubtask });
     console.log('All subtasks: ', this.task.allSubtasks);
@@ -157,7 +168,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.task.showSubtask = false;
   }
 
-  
+
   getTimestamp() {
     this.task.dueDateTimestamp = new Date(this.task.dueDate).getTime();
   }
@@ -166,4 +177,34 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.control.notRouteToContactList = true;
     this.control.addContactDialogOpen = true
   }
+
+  checkForm() {
+   this.checkIfaContactIsAssigned();
+    this.test();
+   
+  }
+
+    // Check if a priority has been selected
+    test() {
+     if (this.task.activePrio === '') {
+      this.fControl.prioErrorMessage = 'Select a priority';
+    } 
+  }
+
+  // Check if a contact has been selected
+  checkIfaContactIsAssigned() {
+    let amount = 0;
+    for (let item in this.task.selectedContacts) {
+      if (this.task.selectedContacts[item]) {
+        amount++;
+      }
+    }
+    if (amount < 1) {
+      this.fControl.noAssignedConactErrorMessage = 'No contact assigned'
+    } else {
+      this.fControl.noAssignedConactErrorMessage = '';
+    }
+    this.task.showAssignedTo = false;
+  }
+
 }
