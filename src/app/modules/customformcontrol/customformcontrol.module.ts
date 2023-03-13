@@ -11,6 +11,7 @@ import { AbstractControl } from '@angular/forms';
 export class CustomformcontrolModule { 
   prioErrorMessage: string = '';
   noAssignedConactErrorMessage = '';
+  noCategoryErrorMessage = '';
 
   phoneNumber(c: AbstractControl) {
     const telephonePattern = /^[0-9\+\-\ ]{8,}$/;

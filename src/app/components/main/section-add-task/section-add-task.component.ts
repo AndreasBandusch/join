@@ -179,16 +179,23 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
   checkForm() {
-   this.checkIfaContactIsAssigned();
-    this.test();
-   
+    this.checkIfaContactIsAssigned();
+    this.checkSelectedPrio();
+    this.checkSelectedCategory()
+  }
+  
+  checkSelectedCategory() {
+    if (this.task.selectedCategory === '') {
+      this.fControl.noCategoryErrorMessage = 'Select a category';
+   } 
   }
 
-    // Check if a priority has been selected
-    test() {
-     if (this.task.activePrio === '') {
+
+  // Check if a priority has been selected
+ checkSelectedPrio() {
+    if (this.task.activePrio === '') {
       this.fControl.prioErrorMessage = 'Select a priority';
-    } 
+    }
   }
 
   // Check if a contact has been selected

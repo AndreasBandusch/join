@@ -19,7 +19,7 @@
                     <textarea name="description" [(ngModel)]="task.description" (keyup)="inputView()"
                         placeholder="Enter a Description"></textarea>
                 </div>
-                <div class="field-group">
+                <div class="field-group" (mouseleave)="checkSelectedCategory()">
                     <span>Category</span>
                     <ng-container *ngIf="!showNewCategory; else elseBlock">
                         <div class="dropdown">
@@ -69,6 +69,7 @@
                             </div>
                         </div>
                     </ng-template>
+                    <span *ngIf="fControl.noCategoryErrorMessage" class="error">{{fControl.noCategoryErrorMessage}}</span>
 
                 </div>
                 <div class="field-group">
@@ -81,7 +82,7 @@
                             <div class="icon" (click)="task.showAssignedTo = !task.showAssignedTo"><img class="arrow"
                                     src="assets/img/icons/menu-arrow-down.png"></div>
                         </div>
-                        <div *ngIf="task.showAssignedTo" class="dropdown-content">
+                        <div *ngIf="task.showAssignedTo" class="dropdown-content" (mouseleave)="checkIfaContactIsAssigned()">
                             <div *ngFor="let contact of allContacts" class="select-contacts">
                                 <div class="contact">
                                     <label class="contact" for="{{contact.id}}">{{contact.firstName}}
@@ -89,7 +90,7 @@
                                         <input type="checkbox" id="{{contact.id}}" name="{{contact.id}}"
                                             value="{{contact.firstName}} {{contact.lastName}}"
                                             [(ngModel)]="task.selectedContacts[contact.id]"
-                                            (ngModelChange)="updateSelectedContacts()" (blur)="checkIfaContactIsAssigned()">
+                                            (ngModelChange)="updateSelectedContacts()">
                                     </label>
                                 </div>
                             </div>
