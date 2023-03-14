@@ -19,8 +19,6 @@ export class TaskService {
   assignedSubtasks: any[] = [];
   selectedCategory: string = '';
   selectedContacts: { [key: number]: boolean } = {};
-
-
   dueDate: string = '';
   dueDateOutput: string = '';
   showCategorys: boolean = false;
@@ -151,6 +149,7 @@ export class TaskService {
 
   setPrio(prio: string) {
     this.activePrio = prio;
-    this.fControl.prioErrorMessage = '';
+    this.fControl.noPrioErrorMsg = '';
+    this.fControl.prioReady = true;
   }
 }

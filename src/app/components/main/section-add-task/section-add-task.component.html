@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </ng-template>
-                    <span *ngIf="fControl.noCategoryErrorMessage" class="error">{{fControl.noCategoryErrorMessage}}</span>
+                    <span *ngIf="fControl.noCategoryErrorMsg" class="error">{{fControl.noCategoryErrorMsg}}</span>
 
                 </div>
                 <div class="field-group">
@@ -103,7 +103,7 @@
                         </div>
 
                     </div>
-                    <span *ngIf="fControl.noAssignedConactErrorMessage" class="error">{{fControl.noAssignedConactErrorMessage}}</span>
+                    <span *ngIf="fControl.noAssignedContactsErrorMsg" class="error">{{fControl.noAssignedContactsErrorMsg}}</span>
                 </div>
 
             </div>
@@ -112,7 +112,7 @@
 
                 <div class="field-group">
                     <span>Due Date</span>
-                    <div class="input-field">
+                    <div class="input-field due-date" >
                         <div class="field">
                             <input name="date" type="date" [(ngModel)]="task.dueDate" (ngModelChange)="task.getTimestamp()">
                         </div>
@@ -140,7 +140,7 @@
                             <img *ngIf="task.activePrio === 'low'" src="assets/img/icons/add-task-low-white.png">
                         </div>
                     </div>
-                    <span *ngIf="fControl.prioErrorMessage" class="error">{{fControl.prioErrorMessage}}</span>
+                    <span *ngIf="fControl.noPrioErrorMsg" class="error">{{fControl.noPrioErrorMsg}}</span>
                 </div>
                 <div class="field-group">
                     <span>Subtasks</span>

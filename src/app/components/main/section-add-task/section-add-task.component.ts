@@ -26,7 +26,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   newCategory: Category = new Category(this.categoryName);
 
 
-
   @HostListener('window:resize')
   onResize() {
     this.checkMaxWidth(1100);
@@ -62,8 +61,9 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.control.showAddTaskBotton = false;
-    this.fControl.prioErrorMessage = '';
-    this.fControl.noAssignedConactErrorMessage = '';
+    this.fControl.noPrioErrorMsg = '';
+    this.fControl.noAssignedContactsErrorMsg = '';
+    this.fControl.noCategoryErrorMsg = '';
   }
 
   loadCategorys() {
@@ -99,7 +99,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.task.catColor = color;
     this.task.showCategorys = false;
     this.task.categoryId = id;
-    this.fControl.noCategoryErrorMessage = '';
+    this.fControl.noCategoryErrorMsg = '';
+
   }
 
 
@@ -123,6 +124,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
         this.task.showCategorys = !this.task.showCategorys;
         this.showNewCategory = false;
         this.task.selectedCategory = this.categoryName;
+        this.fControl.noCategoryErrorMsg = '';
       });
 
   }
@@ -180,26 +182,49 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
   checkForm() {
-    this.checkIfaContactIsAssigned();
-    this.checkSelectedPrio();
-    this.checkSelectedCategory()
+    // this.checkIfaContactIsAssigned();
+    // this.checkSelectedPrio();
+    // this.checkSelectedCategory();^
+    this.checkSubtasks();
+    // if (this.fControl.assignedToReady &&
+    //   this.fControl.categoryReady &&
+    //   this.fControl.prioReady) {
+    //   this.sendForm();
+    // }
   }
-  
+
+  sendForm() {
+    console.log('Form has been send!');
+  }
+
+  checkSubtasks() {
+    if (this.task.allSubtasks.length) {
+      if (this.task.assignedSubtasks.length > 0) {
+        console.log('Subtask/s ausgewählt');
+      } else {
+        console.log('Bitte mindestens einen Subtask auswählen! ',this.task.assignedSubtasks);
+      }
+    }
+  }
+
   checkSelectedCategory() {
     if (this.task.selectedCategory === '') {
-      this.fControl.noCategoryErrorMessage = 'Select a category';
-   } else {
-    this.fControl.noCategoryErrorMessage = '';
-   }
-   console.log('Category', this.task.selectedCategory);
-   
+      this.fControl.noCategoryErrorMsg = this.fControl.noCategoryErrorStartMsg;
+      this.fControl.categoryReady = false;
+    } else {
+      this.fControl.noCategoryErrorMsg = '';
+      this.fControl.categoryReady = true;
+    }
+    console.log('Category', this.task.selectedCategory);
+
   }
 
 
   // Check if a priority has been selected
- checkSelectedPrio() {
+  checkSelectedPrio() {
     if (this.task.activePrio === '') {
-      this.fControl.prioErrorMessage = 'Select a priority';
+      this.fControl.noPrioErrorMsg = this.fControl.noPrioErrorStartMsg;
+      this.fControl.prioReady = false;
     }
   }
 
@@ -212,9 +237,11 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
       }
     }
     if (amount < 1) {
-      this.fControl.noAssignedConactErrorMessage = 'No contact assigned'
+      this.fControl.noAssignedContactsErrorMsg = this.fControl.noAssignedContactsErrorStartMsg;
+      this.fControl.assignedToReady = false;
     } else {
-      this.fControl.noAssignedConactErrorMessage = '';
+      this.fControl.noAssignedContactsErrorMsg = '';
+      this.fControl.assignedToReady = true;
     }
     this.task.showAssignedTo = false;
   }

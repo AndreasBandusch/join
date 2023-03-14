@@ -9,9 +9,19 @@ import { AbstractControl } from '@angular/forms';
   ]
 })
 export class CustomformcontrolModule { 
-  prioErrorMessage: string = '';
-  noAssignedConactErrorMessage = '';
-  noCategoryErrorMessage = '';
+  noPrioErrorStartMsg = 'Select a priority';
+  noCategoryErrorStartMsg = 'Select a category';
+  noAssignedContactsErrorStartMsg ='No contact assigned';
+  noSubtaskErrorStartMsg = 'Please select at least one created subtask';
+  noPrioErrorMsg: string = '';
+  noAssignedContactsErrorMsg = '';
+  noCategoryErrorMsg = '';
+  noSubtaskErrorMsg = '';
+  formReadyToSend: boolean = false;
+  assignedToReady = false;
+  prioReady = false
+  categoryReady = false;
+ 
 
   phoneNumber(c: AbstractControl) {
     const telephonePattern = /^[0-9\+\-\ ]{8,}$/;
