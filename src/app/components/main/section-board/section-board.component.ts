@@ -206,8 +206,9 @@ export class SectionBoardComponent implements OnInit {
     let search = this.currentSearch.toLowerCase();
     let title = currentTask.title.toLowerCase();
     let description = currentTask.description.toLowerCase();
+    let category = currentTask.category.name.toLowerCase();
 
-    if (title.includes(search) || description.includes(search)) {
+    if (title.includes(search) || description.includes(search) || category.includes(search)) {
       return true;
     } else {
       return false;

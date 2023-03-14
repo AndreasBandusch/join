@@ -14,7 +14,7 @@
                                 formControlName="title">
                         </div>
                     </div>
-                    <ng-container *ngIf="( createTask.controls['title'].touched || 
+                    <ng-container *ngIf="(createTask.controls['title'].touched || 
                     createTask.controls['title'].dirty) || (hasSend && createTask.controls['title'].invalid)">
                         <span class="error" *ngIf="createTask.controls['title'].errors?.['required']">Title is required</span>
                     </ng-container>

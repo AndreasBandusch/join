@@ -29,6 +29,7 @@ export class TaskService {
   allSubtasks: any[] = [];
   showAssignedTo: boolean = false;
   selectedSubtasks: any[] = [];
+ 
 
   constructor(
     private db: AngularFirestore,

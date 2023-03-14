@@ -27,6 +27,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   showSubtasksNotice: boolean = false;
   hasSend: boolean = false;
  
+ 
 
 
   @HostListener('window:resize')
@@ -210,6 +211,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
       this.createTask.valid) {
       this.task.createTask();
       this.hasSend = false;
+  
     }
   }
 

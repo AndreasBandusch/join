@@ -22,7 +22,6 @@ export class TaskDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // console.log(this.control.currentTask);
     this.task.setDueDateOutput();
     this.task.updateSelectedContacts();
 
@@ -30,7 +29,7 @@ export class TaskDetailsComponent implements OnInit {
       this.subTasks.push(this.task.currentTask.subTasks[i]);
     }
 
-    console.log(this.subTasks);
+    
    
   }
 
