@@ -25,7 +25,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
   showSubtasksNotice: boolean = false;
-  hasSend: boolean = false
+  hasSend: boolean = false;
+ 
 
 
   @HostListener('window:resize')
@@ -195,6 +196,9 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   checkForm() {
     this.hasSend = true;
+    if (!this.task.allSubtasks.length) {
+      this.fControl.subtasksReady = true;
+    }
     this.checkIfaContactIsAssigned();
     this.checkSelectedPrio();
     this.checkSelectedCategory();
@@ -202,14 +206,14 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     if (this.fControl.assignedToReady &&
       this.fControl.categoryReady &&
       this.fControl.prioReady &&
-      this.fControl.subtasksReady) {
-      this.sendForm();
+      this.fControl.subtasksReady &&
+      this.createTask.valid) {
+      this.task.createTask();
+      this.hasSend = false;
     }
   }
 
-  sendForm() {
-    console.log('Form has been send!');
-  }
+  
 
   checkSubtasks() {
     if (this.task.allSubtasks.length) {

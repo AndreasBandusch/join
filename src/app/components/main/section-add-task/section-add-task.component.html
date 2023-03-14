@@ -133,7 +133,7 @@
                                 (ngModelChange)="task.getTimestamp()">
                         </div>
                     </div>
-                    <ng-container *ngIf="hasSend && createTask.controls['dueDate'].invalid">
+                    <ng-container *ngIf="(createTask.controls['dueDate'].touched && (createTask.controls['dueDate'].invalid)) || (hasSend)">
                         <span class="error" *ngIf="createTask.controls['dueDate'].errors?.['required']">Set a due date</span>
                     </ng-container>
                 </div>
