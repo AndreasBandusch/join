@@ -9,18 +9,20 @@ import { AbstractControl } from '@angular/forms';
   ]
 })
 export class CustomformcontrolModule { 
-  noPrioErrorStartMsg = 'Select a priority';
-  noCategoryErrorStartMsg = 'Select a category';
-  noAssignedContactsErrorStartMsg ='No contact assigned';
-  noSubtaskErrorStartMsg = 'Please select at least one created subtask';
+  noPrioErrorStartMsg: string = 'Select a priority';
+  noCategoryErrorStartMsg: string = 'Select a category';
+  noAssignedContactsErrorStartMsg: string ='No contact assigned';
+  noSubtaskErrorStartMsg: string = 'Please select at least one created subtask';
+  noticeSubtasks: string = 'Would you like to create subtasks?';
   noPrioErrorMsg: string = '';
-  noAssignedContactsErrorMsg = '';
-  noCategoryErrorMsg = '';
-  noSubtaskErrorMsg = '';
+  noAssignedContactsErrorMsg: string = '';
+  noCategoryErrorMsg: string = '';
+  noSubtaskErrorMsg: string = '';
   formReadyToSend: boolean = false;
-  assignedToReady = false;
-  prioReady = false
-  categoryReady = false;
+  assignedToReady: boolean = false;
+  prioReady: boolean = false
+  categoryReady: boolean = false;
+  subtasksReady: boolean = false;
  
 
   phoneNumber(c: AbstractControl) {

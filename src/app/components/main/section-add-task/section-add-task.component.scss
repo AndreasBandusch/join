@@ -291,12 +291,22 @@
     }
 }
 
-.error {
-    color: red;
+.error, .notice {
     font-size: 16px;
     margin-top: 8px;
     font-weight: 700;
 }
+
+.error {
+    color: red;
+}
+
+.notice {
+    color: green;
+}
+
+
+
 
 @media (max-width: 1440px) {
     .prio {

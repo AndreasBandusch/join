@@ -127,7 +127,17 @@ export class TaskService {
     this.assignedSubtasks = [];
     this.assignedContactIdsForTask = [];
     this.categoryId = 0;
+    this.unsetFormControlErrorMsgs();
   }
+
+  unsetFormControlErrorMsgs() {
+    this.fControl.noPrioErrorMsg = '';
+    this.fControl.noAssignedContactsErrorMsg = '';
+    this.fControl.noCategoryErrorMsg ='';
+    this.fControl.noSubtaskErrorMsg = '';
+  }
+
+
 
   setDueDateOutput() {
     let date = new Date(this.dueDate);

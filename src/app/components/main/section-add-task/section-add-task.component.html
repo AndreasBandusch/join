@@ -10,7 +10,8 @@
                     <span>Title</span>
                     <div class="input-field">
                         <div class="field">
-                            <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="task.title"  formControlName="title">
+                            <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="task.title"
+                                formControlName="title">
                         </div>
                     </div>
                 </div>
@@ -32,11 +33,12 @@
                                         src="assets/img/icons/menu-arrow-down.png"></div>
                             </div>
                             <div class="select-category">
-                                <div *ngIf="task.showCategorys" class="dropdown-content">
+                                <div *ngIf="task.showCategorys" class="dropdown-content" (mouseleave)="checkSelectedCategory()">
                                     <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
                                         category</span>
                                     <ng-container *ngFor="let cat of allCategorys">
-                                        <div class="item" (click)="selectCategory(cat.name, cat.color, cat.id)" (change)="checkSelectedCategory()">
+                                        <div class="item" (click)="selectCategory(cat.name, cat.color, cat.id)"
+                                            (change)="checkSelectedCategory()">
                                             <span>{{cat.name}}</span>
                                             <div class="cat-color" [style.backgroundColor]="cat.color"></div>
                                         </div>
@@ -70,7 +72,6 @@
                         </div>
                     </ng-template>
                     <span *ngIf="fControl.noCategoryErrorMsg" class="error">{{fControl.noCategoryErrorMsg}}</span>
-
                 </div>
                 <div class="field-group">
                     <span>Assigned to</span>
@@ -82,7 +83,8 @@
                             <div class="icon" (click)="task.showAssignedTo = !task.showAssignedTo"><img class="arrow"
                                     src="assets/img/icons/menu-arrow-down.png"></div>
                         </div>
-                        <div *ngIf="task.showAssignedTo" class="dropdown-content" (mouseleave)="checkIfaContactIsAssigned()">
+                        <div *ngIf="task.showAssignedTo" class="dropdown-content"
+                            (mouseleave)="checkIfaContactIsAssigned()">
                             <div *ngFor="let contact of allContacts" class="select-contacts">
                                 <div class="contact">
                                     <label class="contact" for="{{contact.id}}">{{contact.firstName}}
@@ -95,7 +97,7 @@
                                 </div>
                             </div>
                             <div>
-                                 <div class="item new-contact" (click)="addContact()">
+                                <div class="item new-contact" (click)="addContact()">
                                     <span class="add">Add new Contact</span>
                                     <img src="assets/img/icons/add-new-contact-icon.png">
                                 </div>
@@ -103,7 +105,8 @@
                         </div>
 
                     </div>
-                    <span *ngIf="fControl.noAssignedContactsErrorMsg" class="error">{{fControl.noAssignedContactsErrorMsg}}</span>
+                    <span *ngIf="fControl.noAssignedContactsErrorMsg"
+                        class="error">{{fControl.noAssignedContactsErrorMsg}}</span>
                 </div>
 
             </div>
@@ -112,9 +115,10 @@
 
                 <div class="field-group">
                     <span>Due Date</span>
-                    <div class="input-field due-date" >
+                    <div class="input-field due-date">
                         <div class="field">
-                            <input name="date" type="date" [(ngModel)]="task.dueDate" (ngModelChange)="task.getTimestamp()">
+                            <input name="date" type="date" [(ngModel)]="task.dueDate"
+                                (ngModelChange)="task.getTimestamp()">
                         </div>
                     </div>
                 </div>
@@ -134,7 +138,8 @@
                             <img *ngIf="task.activePrio !== 'medium'" src="assets/img/icons/add-task-medium.png">
                             <img *ngIf="task.activePrio === 'medium'" src="assets/img/icons/add-task-medium-white.png">
                         </div>
-                        <div class="prio low" [class.low-color]="task.activePrio === 'low'" (click)="task.setPrio('low')">
+                        <div class="prio low" [class.low-color]="task.activePrio === 'low'"
+                            (click)="task.setPrio('low')">
                             Low
                             <img *ngIf="task.activePrio !== 'low'" src="assets/img/icons/add-task-low.png">
                             <img *ngIf="task.activePrio === 'low'" src="assets/img/icons/add-task-low-white.png">
@@ -150,8 +155,8 @@
                                 [(ngModel)]="currentSubtask">
                         </div>
                         <div class="icon">
-                            <img *ngIf="!currentSubtask && !task.showSubtask" src="assets/img/icons/add-subtask-icon.png"
-                                class="add-subtask" (click)="setFocus()">
+                            <img *ngIf="!currentSubtask && !task.showSubtask"
+                                src="assets/img/icons/add-subtask-icon.png" class="add-subtask" (click)="setFocus()">
                             <ng-container *ngIf="currentSubtask || task.showSubtask">
                                 <div class="left-icon">
                                     <img src="assets/img/icons/cancel-icon-black.png"
@@ -175,7 +180,8 @@
                             </label>
                         </div>
                     </div>
-
+                    <span *ngIf="fControl.noSubtaskErrorMsg" class="error">{{fControl.noSubtaskErrorMsg}}</span>
+                    <span *ngIf="!task.assignedSubtasks.length && showSubtasksNotice" class="notice">{{fControl.noticeSubtasks}}</span>
                 </div>
                 <div *ngIf="!control.showAddTaskBotton || control.isOpenedInOverlay" class="btn-cont">
                     <button class="secondary-btn" (click)="task.showCategorys = false; showNewCategory = false"

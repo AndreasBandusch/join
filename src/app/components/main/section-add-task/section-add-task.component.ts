@@ -24,6 +24,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
+  showSubtasksNotice: boolean = false;
 
 
   @HostListener('window:resize')
@@ -154,6 +155,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
         this.task.assignedSubtasks.push({ name: key, done: false });
       }
     }
+    this.checkSubtasks();
   }
 
 
@@ -169,6 +171,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     console.log('All subtasks: ', this.task.allSubtasks);
     this.currentSubtask = '';
     this.task.showSubtask = false;
+    this.showSubtasksNotice = false;
   }
 
 
@@ -182,15 +185,16 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
   checkForm() {
-    // this.checkIfaContactIsAssigned();
-    // this.checkSelectedPrio();
-    // this.checkSelectedCategory();^
+    this.checkIfaContactIsAssigned();
+    this.checkSelectedPrio();
+    this.checkSelectedCategory();
     this.checkSubtasks();
-    // if (this.fControl.assignedToReady &&
-    //   this.fControl.categoryReady &&
-    //   this.fControl.prioReady) {
-    //   this.sendForm();
-    // }
+    if (this.fControl.assignedToReady &&
+      this.fControl.categoryReady &&
+      this.fControl.prioReady &&
+      this.fControl.subtasksReady) {
+      this.sendForm();
+    }
   }
 
   sendForm() {
@@ -199,11 +203,16 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
   checkSubtasks() {
     if (this.task.allSubtasks.length) {
-      if (this.task.assignedSubtasks.length > 0) {
-        console.log('Subtask/s ausgewählt');
+      this.showSubtasksNotice = false;
+      if (this.task.assignedSubtasks.length) {
+        this.fControl.noSubtaskErrorMsg = '';
+        this.fControl.subtasksReady = true
       } else {
-        console.log('Bitte mindestens einen Subtask auswählen! ',this.task.assignedSubtasks);
+        this.fControl.noSubtaskErrorMsg = this.fControl.noSubtaskErrorStartMsg;
+        this.fControl.subtasksReady = false;
       }
+    } else {
+      this.showSubtasksNotice = true;
     }
   }
 
@@ -215,7 +224,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
       this.fControl.noCategoryErrorMsg = '';
       this.fControl.categoryReady = true;
     }
-    console.log('Category', this.task.selectedCategory);
+    this.task.showCategorys = false;
 
   }
 
