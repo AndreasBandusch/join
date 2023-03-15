@@ -12,8 +12,8 @@
                     <ng-container *ngIf="(fControl.taskForm.controls['title'].touched || 
                     fControl.taskForm.controls['title'].dirty) || (fControl.hasSend && fControl.taskForm.controls['title'].invalid)">
                         <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['required']">Title is required</span>
-                        <span class="warning" *ngIf="fControl.taskForm.controls['title'].errors?.['minlength']">Min. 5 and max. 25 chars</span>
-                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['maxlength']">Max. 25 chars</span>
+                        <span class="warning" *ngIf="fControl.taskForm.controls['title'].errors?.['minlength']">Min. 5 and max. 50 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['maxlength']">Max. 50 chars</span>
                     </ng-container>
                 </div>
                 <div class="field-group">
@@ -22,8 +22,8 @@
                     <ng-container *ngIf="(fControl.taskForm.controls['description'].touched || 
                     fControl.taskForm.controls['description'].dirty) || (fControl.hasSend && fControl.taskForm.controls['description'].invalid)">
                         <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['required']">Description is required</span>
-                        <span class="warning" *ngIf="fControl.taskForm.controls['description'].errors?.['minlength']">Min. 10 and max. 150 chars</span>
-                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['maxlength']">Max. 150 chars</span>
+                        <span class="warning" *ngIf="fControl.taskForm.controls['description'].errors?.['minlength']">Min. 10 and max. 250 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['maxlength']">Max. 250 chars</span>
                     </ng-container>
                 </div>
                 <div class="field-group">

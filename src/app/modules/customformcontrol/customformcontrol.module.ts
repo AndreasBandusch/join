@@ -41,13 +41,13 @@ export class CustomformcontrolModule {
     title: new FormControl('', [
       Validators.required,
       Validators.minLength(5),
-      Validators.maxLength(25),
+      Validators.maxLength(50),
 
     ], []),
     description: new FormControl('', [
       Validators.required,
       Validators.minLength(10),
-      Validators.maxLength(150),
+      Validators.maxLength(250),
     ], []),
     dueDate: new FormControl('', [
       Validators.required

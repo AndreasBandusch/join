@@ -181,7 +181,6 @@ export class TaskService {
       this.fControl.taskForm.valid) {
       this.createTask();
       this.fControl.hasSend = false;
-  
     }
   }
 
@@ -209,11 +208,13 @@ export class TaskService {
     if (amount < 1) {
       this.fControl.noAssignedContactsErrorMsg = this.fControl.noAssignedContactsErrorStartMsg;
       this.fControl.assignedToReady = false;
+      this.showAssignedTo = true;
     } else {
       this.fControl.noAssignedContactsErrorMsg = '';
       this.fControl.assignedToReady = true;
+      
     }
-    this.showAssignedTo = false;
+    // this.showAssignedTo = false;
   }
 
 
