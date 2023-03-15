@@ -26,7 +26,7 @@
             <div class="status">
                 <div class="status-header">
                     <span class="header">To do</span>
-                    <img src="assets/img/icons/board-add-task-icon.png">
+                    <img src="assets/img/icons/board-add-task-icon.png" (click)="control.isOpenedInOverlay = true">
                 </div>
                 <div class="status-content" cdkDropList #todos="cdkDropList" id="todo" [cdkDropListData]="todoTasks"
                     [cdkDropListConnectedTo]="[inProgress, awaitingFeedback, done]" (cdkDropListDropped)="drop($event)">
@@ -73,7 +73,7 @@
             <div class="status">
                 <div class="status-header">
                     <span class="header">In progress</span>
-                    <img src="assets/img/icons/board-add-task-icon.png">
+                    <img src="assets/img/icons/board-add-task-icon.png" (click)="control.isOpenedInOverlay = true">
                 </div>
                 <div class="status-content" cdkDropList #inProgress="cdkDropList" id="in-progress"
                     [cdkDropListData]="inProgressTasks" [cdkDropListConnectedTo]="[todos, awaitingFeedback, done]"
@@ -123,7 +123,7 @@
             <div class="status">
                 <div class="status-header">
                     <span class="header">Awaiting Feedback</span>
-                    <img src="assets/img/icons/board-add-task-icon.png">
+                    <img src="assets/img/icons/board-add-task-icon.png" (click)="control.isOpenedInOverlay = true">
                 </div>
                 <div class="status-content" cdkDropList #awaitingFeedback="cdkDropList" id="awaiting-feedback"
                     [cdkDropListData]="awaitingFeedbackTasks" [cdkDropListConnectedTo]="[todos, inProgress, done]"
@@ -173,7 +173,7 @@
             <div class="status">
                 <div class="status-header">
                     <span class="header">Done</span>
-                    <img src="assets/img/icons/board-add-task-icon.png">
+                    <img src="assets/img/icons/board-add-task-icon.png" (click)="control.isOpenedInOverlay = true">
                 </div>
                 <div class="status-content" cdkDropList #done="cdkDropList" id="done" [cdkDropListData]="doneTasks"
                     [cdkDropListConnectedTo]="[todos, awaitingFeedback, inProgress]"

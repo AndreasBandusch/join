@@ -6,7 +6,7 @@
         
         <div class="details-name">
             <span>{{ currentContact.firstName }} {{ currentContact.lastName }}</span>
-            <div class="add-task">+ Add Task</div>
+            <div class="add-task" (click)="control.isOpenedInOverlay = true">+ Add Task</div>
         </div>
     </div>
     <div class="details-info">

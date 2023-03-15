@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Task } from '../models/task.model';
 import { ControlService } from './control.service';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Injectable({
@@ -29,6 +30,8 @@ export class TaskService {
   allSubtasks: any[] = [];
   showAssignedTo: boolean = false;
   selectedSubtasks: any[] = [];
+  hasSend: boolean = false;
+  showSubtasksNotice: boolean = false;
  
 
   constructor(
@@ -163,4 +166,96 @@ export class TaskService {
     this.fControl.noPrioErrorMsg = '';
     this.fControl.prioReady = true;
   }
+
+
+  checkForm() {
+    this.hasSend = true;
+    if (!this.allSubtasks.length) {
+      this.fControl.subtasksReady = true;
+    }
+    this.checkIfaContactIsAssigned();
+    this.checkSelectedPrio();
+    this.checkSelectedCategory();
+    this.checkSubtasks();
+    if (this.fControl.assignedToReady &&
+      this.fControl.categoryReady &&
+      this.fControl.prioReady &&
+      this.fControl.subtasksReady &&
+      this.taskForm.valid) {
+      this.createTask();
+      this.hasSend = false;
+  
+    }
+  }
+
+
+   // Check if a priority has been selected
+   checkSelectedPrio() {
+    if (this.activePrio === '') {
+      this.fControl.noPrioErrorMsg = this.fControl.noPrioErrorStartMsg;
+      this.fControl.prioReady = false;
+    }
+  }
+
+  // Check if a contact has been selected
+  checkIfaContactIsAssigned() {
+    let amount = 0;
+    for (let item in this.selectedContacts) {
+      if (this.selectedContacts[item]) {
+        amount++;
+      }
+    }
+    if (amount < 1) {
+      this.fControl.noAssignedContactsErrorMsg = this.fControl.noAssignedContactsErrorStartMsg;
+      this.fControl.assignedToReady = false;
+    } else {
+      this.fControl.noAssignedContactsErrorMsg = '';
+      this.fControl.assignedToReady = true;
+    }
+    this.showAssignedTo = false;
+  }
+
+
+  checkSelectedCategory() {
+    if (this.selectedCategory === '') {
+      this.fControl.noCategoryErrorMsg = this.fControl.noCategoryErrorStartMsg;
+      this.fControl.categoryReady = false;
+    } else {
+      this.fControl.noCategoryErrorMsg = '';
+      this.fControl.categoryReady = true;
+    }
+    this.showCategorys = false;
+
+  }
+
+
+  checkSubtasks() {
+    if (this.allSubtasks.length) {
+      this.showSubtasksNotice = false;
+      if (this.assignedSubtasks.length) {
+        this.fControl.noSubtaskErrorMsg = '';
+        this.fControl.subtasksReady = true
+      } else {
+        this.fControl.noSubtaskErrorMsg = this.fControl.noSubtaskErrorStartMsg;
+        this.fControl.subtasksReady = false;
+      }
+    } else {
+      this.showSubtasksNotice = true;
+    }
+  }
+
+
+
+  public taskForm: FormGroup = new FormGroup({
+    title: new FormControl('', [
+      Validators.required
+    ], []),
+    description: new FormControl('', [
+      Validators.required
+    ], []),
+    dueDate: new FormControl('', [
+      Validators.required
+    ], [])
+  });
+
 }

@@ -24,8 +24,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
-  showSubtasksNotice: boolean = false;
-  hasSend: boolean = false;
+
  
  
 
@@ -43,17 +42,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   ) { }
 
 
-  public createTask: FormGroup = new FormGroup({
-    title: new FormControl('', [
-      Validators.required
-    ], []),
-    description: new FormControl('', [
-      Validators.required
-    ], []),
-    dueDate: new FormControl('', [
-      Validators.required
-    ], [])
-  });
+
 
 
   ngOnInit(): void {
@@ -166,7 +155,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
         this.task.assignedSubtasks.push({ name: key, done: false });
       }
     }
-    this.checkSubtasks();
+    this.task.checkSubtasks();
   }
 
 
@@ -182,7 +171,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     console.log('All subtasks: ', this.task.allSubtasks);
     this.currentSubtask = '';
     this.task.showSubtask = false;
-    this.showSubtasksNotice = false;
+    this.task.showSubtasksNotice = false;
   }
 
 
@@ -195,80 +184,14 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.control.addContactDialogOpen = true
   }
 
-  checkForm() {
-    this.hasSend = true;
-    if (!this.task.allSubtasks.length) {
-      this.fControl.subtasksReady = true;
-    }
-    this.checkIfaContactIsAssigned();
-    this.checkSelectedPrio();
-    this.checkSelectedCategory();
-    this.checkSubtasks();
-    if (this.fControl.assignedToReady &&
-      this.fControl.categoryReady &&
-      this.fControl.prioReady &&
-      this.fControl.subtasksReady &&
-      this.createTask.valid) {
-      this.task.createTask();
-      this.hasSend = false;
   
-    }
-  }
 
   
 
-  checkSubtasks() {
-    if (this.task.allSubtasks.length) {
-      this.showSubtasksNotice = false;
-      if (this.task.assignedSubtasks.length) {
-        this.fControl.noSubtaskErrorMsg = '';
-        this.fControl.subtasksReady = true
-      } else {
-        this.fControl.noSubtaskErrorMsg = this.fControl.noSubtaskErrorStartMsg;
-        this.fControl.subtasksReady = false;
-      }
-    } else {
-      this.showSubtasksNotice = true;
-    }
-  }
+ 
 
-  checkSelectedCategory() {
-    if (this.task.selectedCategory === '') {
-      this.fControl.noCategoryErrorMsg = this.fControl.noCategoryErrorStartMsg;
-      this.fControl.categoryReady = false;
-    } else {
-      this.fControl.noCategoryErrorMsg = '';
-      this.fControl.categoryReady = true;
-    }
-    this.task.showCategorys = false;
-
-  }
+ 
 
 
-  // Check if a priority has been selected
-  checkSelectedPrio() {
-    if (this.task.activePrio === '') {
-      this.fControl.noPrioErrorMsg = this.fControl.noPrioErrorStartMsg;
-      this.fControl.prioReady = false;
-    }
-  }
-
-  // Check if a contact has been selected
-  checkIfaContactIsAssigned() {
-    let amount = 0;
-    for (let item in this.task.selectedContacts) {
-      if (this.task.selectedContacts[item]) {
-        amount++;
-      }
-    }
-    if (amount < 1) {
-      this.fControl.noAssignedContactsErrorMsg = this.fControl.noAssignedContactsErrorStartMsg;
-      this.fControl.assignedToReady = false;
-    } else {
-      this.fControl.noAssignedContactsErrorMsg = '';
-      this.fControl.assignedToReady = true;
-    }
-    this.task.showAssignedTo = false;
-  }
-
+ 
 }

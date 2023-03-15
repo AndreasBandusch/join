@@ -4,7 +4,7 @@
             <div class="content-header-mobile">Kanban Project Management Tool</div>
             <h1 class="title">Add Task</h1>
         </div>
-        <form class="content-body" [formGroup]="createTask" (submit)="checkForm()">
+        <form class="content-body" [formGroup]="task.taskForm" (submit)="task.checkForm()">
             <div class="content-left">
                 <div class="field-group">
                     <span>Title</span>
@@ -14,9 +14,9 @@
                                 formControlName="title">
                         </div>
                     </div>
-                    <ng-container *ngIf="(createTask.controls['title'].touched || 
-                    createTask.controls['title'].dirty) || (hasSend && createTask.controls['title'].invalid)">
-                        <span class="error" *ngIf="createTask.controls['title'].errors?.['required']">Title is required</span>
+                    <ng-container *ngIf="(task.taskForm.controls['title'].touched || 
+                    task.taskForm.controls['title'].dirty) || (task.hasSend && task.taskForm.controls['title'].invalid)">
+                        <span class="error" *ngIf="task.taskForm.controls['title'].errors?.['required']">Title is required</span>
                     </ng-container>
                 </div>
                 <div class="field-group">
@@ -24,9 +24,9 @@
                     <textarea name="description" [(ngModel)]="task.description" (keyup)="inputView()"
                         formControlName="description" placeholder="Enter a Description">
                     </textarea>
-                    <ng-container *ngIf="( createTask.controls['description'].touched || 
-                    createTask.controls['description'].dirty) || (hasSend && createTask.controls['description'].invalid)">
-                        <span class="error" *ngIf="createTask.controls['description'].errors?.['required']">Description is required</span>
+                    <ng-container *ngIf="(task.taskForm.controls['description'].touched || 
+                    task.taskForm.controls['description'].dirty) || (task.hasSend && task.taskForm.controls['description'].invalid)">
+                        <span class="error" *ngIf="task.taskForm.controls['description'].errors?.['required']">Description is required</span>
                     </ng-container>
                 </div>
                 <div class="field-group">
@@ -43,12 +43,12 @@
                             </div>
                             <div class="select-category">
                                 <div *ngIf="task.showCategorys" class="dropdown-content"
-                                    (mouseleave)="checkSelectedCategory()">
+                                    (mouseleave)="task.checkSelectedCategory()">
                                     <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
                                         category</span>
                                     <ng-container *ngFor="let cat of allCategorys">
                                         <div class="item" (click)="selectCategory(cat.name, cat.color, cat.id)"
-                                            (change)="checkSelectedCategory()">
+                                            (change)="task.checkSelectedCategory()">
                                             <span>{{cat.name}}</span>
                                             <div class="cat-color" [style.backgroundColor]="cat.color"></div>
                                         </div>
@@ -95,7 +95,7 @@
                                     src="assets/img/icons/menu-arrow-down.png"></div>
                         </div>
                         <div *ngIf="task.showAssignedTo" class="dropdown-content"
-                            (mouseleave)="checkIfaContactIsAssigned()">
+                            (mouseleave)="task.checkIfaContactIsAssigned()">
                             <div *ngFor="let contact of allContacts" class="select-contacts">
                                 <div class="contact">
                                     <label class="contact" for="{{contact.id}}">{{contact.firstName}}
@@ -104,7 +104,7 @@
                                             value="{{contact.firstName}} {{contact.lastName}}"
                                             [(ngModel)]="task.selectedContacts[contact.id]"
                                             [ngModelOptions]="{standalone: true}"
-                                            (ngModelChange)="updateSelectedContacts()">
+                                            (ngModelChange)="task.updateSelectedContacts()">
                                     </label>
                                 </div>
                             </div>
@@ -133,8 +133,8 @@
                                 (ngModelChange)="task.getTimestamp()">
                         </div>
                     </div>
-                    <ng-container *ngIf="(createTask.controls['dueDate'].touched && (createTask.controls['dueDate'].invalid)) || (hasSend)">
-                        <span class="error" *ngIf="createTask.controls['dueDate'].errors?.['required']">Set a due date</span>
+                    <ng-container *ngIf="(task.taskForm.controls['dueDate'].touched && (task.taskForm.controls['dueDate'].invalid)) || (task.hasSend)">
+                        <span class="error" *ngIf="task.taskForm.controls['dueDate'].errors?.['required']">Set a due date</span>
                     </ng-container>
                 </div>
 
@@ -196,7 +196,7 @@
                         </div>
                     </div>
                     <span *ngIf="fControl.noSubtaskErrorMsg" class="error">{{fControl.noSubtaskErrorMsg}}</span>
-                    <span *ngIf="!task.assignedSubtasks.length && showSubtasksNotice"
+                    <span *ngIf="!task.assignedSubtasks.length && task.showSubtasksNotice"
                         class="notice">{{fControl.noticeSubtasks}}</span>
                 </div>
                 <div *ngIf="!control.showAddTaskBotton || control.isOpenedInOverlay" class="btn-cont">
