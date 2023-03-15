@@ -258,7 +258,9 @@ export class TaskService {
 
     ], []),
     description: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(150),
     ], []),
     dueDate: new FormControl('', [
       Validators.required
