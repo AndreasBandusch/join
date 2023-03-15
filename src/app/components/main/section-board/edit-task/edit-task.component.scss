@@ -11,6 +11,7 @@
     overflow: hidden;
 }
 
+
 .edit-task-details {
     position: relative;
     z-index: 150;
@@ -45,6 +46,7 @@
     margin-top: 8px;
     margin-right: 32px;
     margin-left: 32px;
+    min-height: 100%;
 }
 
 .due-date {
@@ -86,14 +88,14 @@
 }
 
 .btn-cont {
-    position: fixed;
-    bottom: 32px;
-    right: 0px;
+    // position: fixed;
+    // bottom: 32px;
+    // right: 0px;
     display: flex;
     justify-content: flex-end;
-    gap: 16px;
-    padding-right: 32px;
-    padding-left: 32px;
+    align-items: center;
+    width: 100%;
+    
 }
 
 .primary-btn {
@@ -159,6 +161,7 @@
     min-height: 50px;
     height: auto;
     padding: unset;
+  
 
     .dropdown-content {
         max-height: 150px;
@@ -172,7 +175,7 @@
         justify-content: space-between;
         width: 100%;
         padding: 13px 21px;
-
+      
         .icon {
             width: 16px;
             height: 100%;

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
 import { ControlService } from 'src/app/services/control.service';
 import { TaskService } from 'src/app/services/task.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+
+
 
 @Component({
   selector: 'app-edit-task',
@@ -15,7 +18,7 @@ export class EditTaskComponent implements OnInit {
   description: string;
   
 
-  constructor(private afs: AngularFirestore, public control: ControlService, public task: TaskService) { 
+  constructor(private afs: AngularFirestore, public fControl: CustomformcontrolModule, public task: TaskService, public control: ControlService) { 
     this.title = task.currentTask.title;
     this.description = task.currentTask.description; 
     this.task.dueDate = task.currentTask.dueDate;
@@ -61,8 +64,6 @@ export class EditTaskComponent implements OnInit {
    
     const task = this.toJson();
     this.saveTask(docId, task);
-    
-    console.log('ASSIGNED: ',this.task.currentTask.assignedTo);
   }  
 
 
@@ -84,8 +85,5 @@ export class EditTaskComponent implements OnInit {
      
     });
   } 
-
-
-  
 
 }

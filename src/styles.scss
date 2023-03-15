@@ -63,10 +63,11 @@ textarea,
     border: unset;
     background-color: unset;
     font-family: 'Inter', sans-serif;
-   
+
 }
 
-textarea, .dropdown {
+textarea,
+.dropdown {
     height: 120px;
     resize: none;
     font-size: 21px;
@@ -276,6 +277,22 @@ a:hover {
 }
 
 
+.error,
+.notice {
+    font-size: 16px;
+    margin-top: 8px;
+    font-weight: 700;
+}
+
+.error {
+    color: red;
+}
+
+.notice {
+    color: green;
+}
+
+
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -449,5 +466,12 @@ a:hover {
         font-size: 15px;
     }
 }
-html, body { height: 100%; }
-body { margin: 0;}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}

@@ -26,8 +26,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   newCategory: Category = new Category(this.categoryName);
 
  
- 
-
 
   @HostListener('window:resize')
   onResize() {

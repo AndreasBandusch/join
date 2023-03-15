@@ -68,7 +68,7 @@ export class TaskService {
           this.control.getMessage('Task added to board', 'assets/img/icons/add-task-board-icon.png');
         }
         this.control.isOpenedInOverlay = false;
-      });
+      })
   }
 
   getTimestamp() {
@@ -188,6 +188,10 @@ export class TaskService {
     }
   }
 
+  checkUpdatedTask() {
+    this.checkIfaContactIsAssigned();
+  }
+
 
    // Check if a priority has been selected
    checkSelectedPrio() {
@@ -248,7 +252,10 @@ export class TaskService {
 
   public taskForm: FormGroup = new FormGroup({
     title: new FormControl('', [
-      Validators.required
+      Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(25),
+
     ], []),
     description: new FormControl('', [
       Validators.required

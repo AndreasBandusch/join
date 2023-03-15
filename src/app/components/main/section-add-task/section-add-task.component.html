@@ -17,6 +17,8 @@
                     <ng-container *ngIf="(task.taskForm.controls['title'].touched || 
                     task.taskForm.controls['title'].dirty) || (task.hasSend && task.taskForm.controls['title'].invalid)">
                         <span class="error" *ngIf="task.taskForm.controls['title'].errors?.['required']">Title is required</span>
+                        <span class="error" *ngIf="task.taskForm.controls['title'].errors?.['minlength']">Min. 5 chars</span>
+                        <span class="error" *ngIf="task.taskForm.controls['title'].errors?.['maxlength']">Max. 25 chars</span>
                     </ng-container>
                 </div>
                 <div class="field-group">
@@ -41,9 +43,9 @@
                                 <div class="icon" (click)="task.showCategorys = !task.showCategorys"><img class="arrow"
                                         src="assets/img/icons/menu-arrow-down.png"></div>
                             </div>
-                            <div class="select-category">
+                            <div class="select-category" (mouseleave)="task.checkSelectedCategory()">
                                 <div *ngIf="task.showCategorys" class="dropdown-content"
-                                    (mouseleave)="task.checkSelectedCategory()">
+                                    >
                                     <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
                                         category</span>
                                     <ng-container *ngFor="let cat of allCategorys">
