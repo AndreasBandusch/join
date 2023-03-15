@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @NgModule({
   declarations: [],
@@ -23,6 +23,7 @@ export class CustomformcontrolModule {
   prioReady: boolean = false
   categoryReady: boolean = false;
   subtasksReady: boolean = false;
+  hasSend: boolean = false;
  
 
   phoneNumber(c: AbstractControl) {
@@ -34,4 +35,22 @@ export class CustomformcontrolModule {
     const namePattern =  /^(\p{L}{2,}\s+){1,}\p{L}{2,}$/u;
     return c.value === '' || namePattern.test(c.value) ? null : { invalidName: true };
   }
+
+
+  public taskForm: FormGroup = new FormGroup({
+    title: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+      Validators.maxLength(25),
+
+    ], []),
+    description: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(150),
+    ], []),
+    dueDate: new FormControl('', [
+      Validators.required
+    ], [])
+  });
 }

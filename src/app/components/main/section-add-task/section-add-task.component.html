@@ -4,7 +4,7 @@
             <div class="content-header-mobile">Kanban Project Management Tool</div>
             <h1 class="title">Add Task</h1>
         </div>
-        <form class="content-body" [formGroup]="task.taskForm" (submit)="task.checkForm()">
+        <form class="content-body" [formGroup]="fControl.taskForm" (submit)="task.checkForm()">
             <div class="content-left">
                 <div class="field-group">
                     <span>Title</span>
@@ -14,11 +14,11 @@
                                 formControlName="title">
                         </div>
                     </div>
-                    <ng-container *ngIf="(task.taskForm.controls['title'].touched || 
-                    task.taskForm.controls['title'].dirty) || (task.hasSend && task.taskForm.controls['title'].invalid)">
-                        <span class="error" *ngIf="task.taskForm.controls['title'].errors?.['required']">Title is required</span>
-                        <span class="warning" *ngIf="task.taskForm.controls['title'].errors?.['minlength']">Min. 5 and max. 25 chars</span>
-                        <span class="error" *ngIf="task.taskForm.controls['title'].errors?.['maxlength']">Max. 25 chars</span>
+                    <ng-container *ngIf="(fControl.taskForm.controls['title'].touched || 
+                    fControl.taskForm.controls['title'].dirty) || (fControl.hasSend && fControl.taskForm.controls['title'].invalid)">
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['required']">Title is required</span>
+                        <span class="warning" *ngIf="fControl.taskForm.controls['title'].errors?.['minlength']">Min. 5 and max. 25 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['maxlength']">Max. 25 chars</span>
                     </ng-container>
                 </div>
                 <div class="field-group">
@@ -26,11 +26,11 @@
                     <textarea name="description" [(ngModel)]="task.description" (keyup)="inputView()"
                         formControlName="description" placeholder="Enter a Description">
                     </textarea>
-                    <ng-container *ngIf="(task.taskForm.controls['description'].touched || 
-                    task.taskForm.controls['description'].dirty) || (task.hasSend && task.taskForm.controls['description'].invalid)">
-                        <span class="error" *ngIf="task.taskForm.controls['description'].errors?.['required']">Description is required</span>
-                        <span class="warning" *ngIf="task.taskForm.controls['description'].errors?.['minlength']">Min. 10 and max. 150 chars</span>
-                        <span class="error" *ngIf="task.taskForm.controls['description'].errors?.['maxlength']">Max. 150 chars</span>
+                    <ng-container *ngIf="(fControl.taskForm.controls['description'].touched || 
+                    fControl.taskForm.controls['description'].dirty) || (fControl.hasSend && fControl.taskForm.controls['description'].invalid)">
+                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['required']">Description is required</span>
+                        <span class="warning" *ngIf="fControl.taskForm.controls['description'].errors?.['minlength']">Min. 10 and max. 150 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['maxlength']">Max. 150 chars</span>
                     </ng-container>
                 </div>
                 <div class="field-group">
@@ -137,8 +137,8 @@
                                 (ngModelChange)="task.getTimestamp()">
                         </div>
                     </div>
-                    <ng-container *ngIf="(task.taskForm.controls['dueDate'].touched && (task.taskForm.controls['dueDate'].invalid)) || (task.hasSend)">
-                        <span class="error" *ngIf="task.taskForm.controls['dueDate'].errors?.['required']">Set a due date</span>
+                    <ng-container *ngIf="(fControl.taskForm.controls['dueDate'].touched && (fControl.taskForm.controls['dueDate'].invalid)) || (fControl.hasSend)">
+                        <span class="error" *ngIf="fControl.taskForm.controls['dueDate'].errors?.['required']">Set a due date</span>
                     </ng-container>
                 </div>
 

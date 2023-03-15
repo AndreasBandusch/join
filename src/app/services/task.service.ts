@@ -3,8 +3,6 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Task } from '../models/task.model';
 import { ControlService } from './control.service';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +28,6 @@ export class TaskService {
   allSubtasks: any[] = [];
   showAssignedTo: boolean = false;
   selectedSubtasks: any[] = [];
-  hasSend: boolean = false;
   showSubtasksNotice: boolean = false;
  
 
@@ -169,7 +166,7 @@ export class TaskService {
 
 
   checkForm() {
-    this.hasSend = true;
+    this.fControl.hasSend = true;
     if (!this.allSubtasks.length) {
       this.fControl.subtasksReady = true;
     }
@@ -181,9 +178,9 @@ export class TaskService {
       this.fControl.categoryReady &&
       this.fControl.prioReady &&
       this.fControl.subtasksReady &&
-      this.taskForm.valid) {
+      this.fControl.taskForm.valid) {
       this.createTask();
-      this.hasSend = false;
+      this.fControl.hasSend = false;
   
     }
   }
@@ -250,21 +247,6 @@ export class TaskService {
 
 
 
-  public taskForm: FormGroup = new FormGroup({
-    title: new FormControl('', [
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(25),
-
-    ], []),
-    description: new FormControl('', [
-      Validators.required,
-      Validators.minLength(10),
-      Validators.maxLength(150),
-    ], []),
-    dueDate: new FormControl('', [
-      Validators.required
-    ], [])
-  });
+  
 
 }
