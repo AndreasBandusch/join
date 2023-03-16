@@ -10,6 +10,7 @@ import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/custo
   templateUrl: './section-add-task.component.html',
   styleUrls: ['./section-add-task.component.scss']
 })
+
 export class SectionAddTaskComponent implements OnInit, OnDestroy {
   @ViewChild('addSubtask') inputField: ElementRef = new ElementRef(null);
   id: number = 0;
@@ -100,15 +101,20 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
       .add(
         this.newCategory.toJson()
       ).then(() => {
-        this.task.catColor = this.newCategory.color;
-        this.task.catText = this.categoryName;
-        this.task.showCategorys = !this.task.showCategorys;
-        this.showNewCategory = false;
-        this.task.selectedCategory = this.categoryName;
-        this.fControl.noCategoryErrorMsg = '';
+        this.setNewCategory();
       });
-
   }
+
+
+  setNewCategory() {
+    this.task.catColor = this.newCategory.color;
+    this.task.catText = this.categoryName;
+    this.task.showCategorys = !this.task.showCategorys;
+    this.showNewCategory = false;
+    this.task.selectedCategory = this.categoryName;
+    this.fControl.noCategoryErrorMsg = '';
+  }
+
 
   cancel() {
     this.task.showCategorys = !this.task.showCategorys;
@@ -119,6 +125,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.categoryName = '';
   }
 
+
   updateSelectedContacts() {
     this.task.assignedContactIdsForTask = [];
     for (let key in this.task.selectedContacts) {
@@ -127,6 +134,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
       }
     }
   }
+
 
   updateAssignedSubtasks() {
     this.task.assignedSubtasks = [];
@@ -137,7 +145,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     }
     this.task.checkSubtasks();
   }
-
 
 
   setFocus() {
@@ -159,20 +166,9 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.task.dueDateTimestamp = new Date(this.task.dueDate).getTime();
   }
 
-  
+
   addContact() {
     this.control.notRouteToContactList = true;
     this.control.addContactDialogOpen = true
   }
-
-  
-
-  
-
- 
-
- 
-
-
- 
 }
