@@ -77,13 +77,23 @@ export class TaskService {
       }
     }
     if (amount < 1) {
-      this.fControl.noAssignedContactsErrorMsg = this.fControl.noAssignedContactsErrorStartMsg;
-      this.fControl.assignedToReady = false;
-      this.showAssignedTo = true;
+      this.noContactsAssigned();
     } else {
-      this.fControl.noAssignedContactsErrorMsg = '';
-      this.fControl.assignedToReady = true;
+      this.contactsAssigned();
     }
+  }
+
+
+  noContactsAssigned() {
+    this.fControl.noAssignedContactsErrorMsg = this.fControl.noAssignedContactsErrorStartMsg;
+    this.fControl.assignedToReady = false;
+    this.showAssignedTo = true;
+  }
+
+
+  contactsAssigned() {
+    this.fControl.noAssignedContactsErrorMsg = '';
+    this.fControl.assignedToReady = true;
   }
 
 
