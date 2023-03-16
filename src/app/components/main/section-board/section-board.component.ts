@@ -187,27 +187,17 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-
-
   openTaskDetails(currentTask: any): void {
     this.task.currentTask = currentTask;
     this.control.taskDetailsDialogOpen = true;
   }
 
 
-  getWidth(doneSubTasks: number, subTaskslength: number): string {
+  getWidthForStatusBar(doneSubTasks: number, subTaskslength: number): string {
     let percent = (doneSubTasks / subTaskslength) * 100;
     return `${percent}%`;
   }
-
-  setOrRemoveBodyScroll() {
-    const bodyTag = document.body;
-    if (this.control.isOpenedInOverlay) {
-      bodyTag.classList.add('no-scroll');
-    } else {
-      bodyTag.classList.remove('no-scroll');
-    }
-  }
+  
 
   checkSearch(currentTask: any): boolean {
     if (this.currentSearch) {

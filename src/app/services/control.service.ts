@@ -37,4 +37,14 @@ export class ControlService {
     event.stopPropagation();
   }
 
+
+  // setOrRemoveBodyScroll() {
+  //   const bodyTag = document.body;
+  //   if (this.control.isOpenedInOverlay) {
+  //     bodyTag.classList.add('no-scroll');
+  //   } else {
+  //     bodyTag.classList.remove('no-scroll');
+  //   }
+  // }
+
 }

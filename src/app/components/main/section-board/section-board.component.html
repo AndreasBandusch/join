@@ -45,7 +45,7 @@
                             <div *ngIf="item.subTasks.length" class="progress-cont">
                                 <div class="bar">
                                     <div class="bar-inner"
-                                        [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
+                                        [style.width]="getWidthForStatusBar(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
                                     </div>
                                 </div>
                                 <div class="progress">
@@ -91,7 +91,7 @@
                             <div *ngIf="item.subTasks.length" class="progress-cont">
                                 <div class="bar">
                                     <div class="bar-inner"
-                                        [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
+                                        [style.width]="getWidthForStatusBar(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
                                     </div>
                                 </div>
                                 <div class="progress">
@@ -137,7 +137,7 @@
                             <div *ngIf="item.subTasks.length" class="progress-cont">
                                 <div class="bar">
                                     <div class="bar-inner"
-                                        [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
+                                        [style.width]="getWidthForStatusBar(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
                                     </div>
                                 </div>
 
@@ -184,7 +184,7 @@
                             <div *ngIf="item.subTasks.length" class="progress-cont">
                                 <div class="bar">
                                     <div class="bar-inner"
-                                        [style.width]="getWidth(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
+                                        [style.width]="getWidthForStatusBar(getDoneSubtasksNumber(item.subTasks), item.subTasks.length)">
                                     </div>
                                 </div>
 
