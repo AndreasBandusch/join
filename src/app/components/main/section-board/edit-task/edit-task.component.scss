@@ -94,8 +94,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 100%;
-    
+    width: 100%;    
 }
 
 .primary-btn {
@@ -153,7 +152,6 @@
     color: white;
 }
 
-
 .dropdown {
     display: flex;
     flex-direction: column;
@@ -162,7 +160,6 @@
     height: auto;
     padding: unset;
   
-
     .dropdown-content {
         max-height: 150px;
         overflow-y: auto;
@@ -197,7 +194,6 @@
         justify-content: space-between;
         width: 100%;
         transition: all 75ms ease-in-out;
-
 
         &:hover {
             background-color: #D1D1D1;

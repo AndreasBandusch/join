@@ -1,29 +1,41 @@
 <div class="overlay" (click)="control.editTasksDialogOpen = false">
     <div class="edit-task-details" (click)="control.dontCloseByClick($event)">
-        <form class="edit-task-outer" [formGroup]="fControl.taskForm" (submit)="checkUpdatedTask()">
+        <form class="edit-task-outer" [formGroup]="fControl.taskForm" (submit)="checkFormForUpdateTask()">
             <div class="edit-task-inner">
                 <div class="field-group">
                     <span>Title</span>
                     <div class="input-field">
                         <div class="field">
-                            <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="title" formControlName="title">
+                            <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="title"
+                                formControlName="title">
                         </div>
                     </div>
-                    <ng-container *ngIf="(fControl.taskForm.controls['title'].touched || 
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['title'].touched || 
                     fControl.taskForm.controls['title'].dirty) || (fControl.hasSend && fControl.taskForm.controls['title'].invalid)">
-                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['required']">Title is required</span>
-                        <span class="warning" *ngIf="fControl.taskForm.controls['title'].errors?.['minlength']">Min. 5 and max. 50 chars</span>
-                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['maxlength']">Max. 50 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['required']">Title is
+                            required</span>
+                        <span class="warning" *ngIf="fControl.taskForm.controls['title'].errors?.['minlength']">Min. 5
+                            and max. 50 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['maxlength']">Max. 50
+                            chars</span>
                     </ng-container>
                 </div>
                 <div class="field-group">
                     <span>Description</span>
-                    <textarea name="description" placeholder="Enter a Description" [(ngModel)]="description" formControlName="description"></textarea>
-                    <ng-container *ngIf="(fControl.taskForm.controls['description'].touched || 
+                    <textarea name="description" placeholder="Enter a Description" [(ngModel)]="description"
+                        formControlName="description"></textarea>
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['description'].touched || 
                     fControl.taskForm.controls['description'].dirty) || (fControl.hasSend && fControl.taskForm.controls['description'].invalid)">
-                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['required']">Description is required</span>
-                        <span class="warning" *ngIf="fControl.taskForm.controls['description'].errors?.['minlength']">Min. 10 and max. 250 chars</span>
-                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['maxlength']">Max. 250 chars</span>
+                        <span class="error"
+                            *ngIf="fControl.taskForm.controls['description'].errors?.['required']">Description is
+                            required</span>
+                        <span class="warning"
+                            *ngIf="fControl.taskForm.controls['description'].errors?.['minlength']">Min. 10 and max. 250
+                            chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['maxlength']">Max.
+                            250 chars</span>
                     </ng-container>
                 </div>
                 <div class="field-group">
@@ -34,8 +46,10 @@
                                 (ngModelChange)="task.getTimestamp()">
                         </div>
                     </div>
-                    <ng-container *ngIf="(fControl.taskForm.controls['dueDate'].touched && (fControl.taskForm.controls['dueDate'].invalid)) || (fControl.hasSend)">
-                        <span class="error" *ngIf="fControl.taskForm.controls['dueDate'].errors?.['required']">Set a due date</span>
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['dueDate'].touched && (fControl.taskForm.controls['dueDate'].invalid)) || (fControl.hasSend)">
+                        <span class="error" *ngIf="fControl.taskForm.controls['dueDate'].errors?.['required']">Set a due
+                            date</span>
                     </ng-container>
                 </div>
                 <div class="field-group">
@@ -72,7 +86,7 @@
                                     src="assets/img/icons/menu-arrow-down.png"></div>
                         </div>
                         <div *ngIf="task.showAssignedTo" class="dropdown-content"
-                        (mouseleave)="task.checkIfaContactIsAssigned()">
+                            (mouseleave)="task.checkIfaContactIsAssigned()">
                             <div *ngFor="let contact of allContacts;" class="select-contacts">
                                 <div class="contact">
                                     <label class="contact" for="{{contact.id}}">{{contact.firstName}}
@@ -80,7 +94,8 @@
                                         <input type="checkbox" id="{{contact.id}}" name="{{contact.id}}"
                                             value="{{contact.firstName}} {{contact.lastName}}"
                                             [(ngModel)]="task.selectedContacts[contact.id]"
-                                            (ngModelChange)="task.updateSelectedContacts()"  [ngModelOptions]="{standalone: true}">
+                                            (ngModelChange)="task.updateSelectedContacts()"
+                                            [ngModelOptions]="{standalone: true}">
                                     </label>
                                 </div>
                             </div>
@@ -103,8 +118,6 @@
                     </button>
                 </div>
             </div>
-
-            
         </form>
     </div>
 </div>

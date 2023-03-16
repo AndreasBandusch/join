@@ -5,14 +5,12 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Category } from 'src/app/models/category.model';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
 
-
 @Component({
   selector: 'app-section-add-task',
   templateUrl: './section-add-task.component.html',
   styleUrls: ['./section-add-task.component.scss']
 })
 export class SectionAddTaskComponent implements OnInit, OnDestroy {
-
   @ViewChild('addSubtask') inputField: ElementRef = new ElementRef(null);
   id: number = 0;
   assignedTo: number[] = [];
@@ -24,8 +22,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
-
- 
 
   @HostListener('window:resize')
   onResize() {
@@ -40,25 +36,11 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   ) { }
 
 
-
-
-
   ngOnInit(): void {
-    
-    // this.fControl.hasSend = false;
-    // this.task.showSubtasksNotice = false;
-    // this.task.showAssignedTo = false;
-    // this.task.dueDate = '';
-    // this.task.catText = this.task.catStartText;
     this.task.resetForm();
     this.checkMaxWidth(1100);
     this.loadCategorys();
     this.loadContacts();
-    // this.task.activePrio = '';
-    // this.task.showAssignedTo = false;
-    // this.task.showCategorys = false;
-    // this.task.selectedContacts = {};
-    // this.task.selectedCategory = '';
   }
 
 
@@ -69,11 +51,13 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.fControl.noCategoryErrorMsg = '';
   }
 
+
   loadCategorys() {
     this.afs.collection('categorys').valueChanges().subscribe((changes) => {
       this.allCategorys = changes;
     });
   }
+
 
   loadContacts() {
     this.afs.collection('contacts').valueChanges().subscribe((changes) => {
@@ -91,11 +75,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
 
-  inputView() {
-    console.log(this.categoryName);
-  }
-
-
   selectCategory(category: string, color: string, id: number) {
     this.task.selectedCategory = category;
     this.task.catText = category;
@@ -103,7 +82,6 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.task.showCategorys = false;
     this.task.categoryId = id;
     this.fControl.noCategoryErrorMsg = '';
-
   }
 
 
@@ -181,6 +159,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.task.dueDateTimestamp = new Date(this.task.dueDate).getTime();
   }
 
+  
   addContact() {
     this.control.notRouteToContactList = true;
     this.control.addContactDialogOpen = true

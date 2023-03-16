@@ -23,7 +23,7 @@
                 </div>
                 <div class="field-group">
                     <span>Description</span>
-                    <textarea name="description" [(ngModel)]="task.description" (keyup)="inputView()"
+                    <textarea name="description" [(ngModel)]="task.description"
                         formControlName="description" placeholder="Enter a Description">
                     </textarea>
                     <ng-container *ngIf="(fControl.taskForm.controls['description'].touched || 
@@ -66,7 +66,7 @@
                             <div class="input-field">
                                 <div class="field">
                                     <input name="categoryname" type="text" [(ngModel)]="categoryName"
-                                        [ngModelOptions]="{standalone: true}" (keyup)="inputView()"
+                                        [ngModelOptions]="{standalone: true}"
                                         placeholder="New category name">
                                 </div>
                                 <div class="icon">
