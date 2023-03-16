@@ -4,7 +4,7 @@ import { TaskService } from 'src/app/services/task.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Category } from 'src/app/models/category.model';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-section-add-task',
@@ -44,7 +44,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    this.task.resetForm();
+    this.fControl.hasSend = false;
+    this.task.showAssignedTo = false;
     // this.task.dueDate = '';
     // this.task.catText = this.task.catStartText;
     this.checkMaxWidth(1100);

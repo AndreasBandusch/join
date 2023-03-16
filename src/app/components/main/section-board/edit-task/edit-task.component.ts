@@ -53,6 +53,20 @@ export class EditTaskComponent implements OnInit {
   }
 
 
+  checkUpdatedTask() {
+    this.fControl.hasSend = true;
+    this.task.checkIfaContactIsAssigned();
+
+    if (this.fControl.assignedToReady &&
+      this.fControl.taskForm.valid) {
+        console.log('SEND');
+      
+      this.createUpdateTask();
+     
+    }
+  }
+
+
   createUpdateTask() {
     const docId = this.task.currentTask.docId;
     this.task.currentTask.title = this.title;

@@ -24,6 +24,7 @@ export class CustomformcontrolModule {
   categoryReady: boolean = false;
   subtasksReady: boolean = false;
   hasSend: boolean = false;
+  hasSaved: boolean = false;
  
 
   phoneNumber(c: AbstractControl) {

@@ -44,6 +44,30 @@ export class TaskService {
   }
 
 
+  checkForm() {
+   
+    if (!this.allSubtasks.length) {
+      this.fControl.subtasksReady = true;
+    }
+    this.checkIfaContactIsAssigned();
+    this.checkSelectedPrio();
+    this.checkSelectedCategory();
+    this.checkSubtasks();
+    if (this.fControl.assignedToReady &&
+      this.fControl.categoryReady &&
+      this.fControl.prioReady &&
+      this.fControl.subtasksReady &&
+      this.fControl.taskForm.valid) {
+        this.fControl.hasSend = false;
+        // this.fControl.hasSaved = true;
+        this.fControl.taskForm.reset();
+      this.createTask();
+    } else {
+      this.fControl.hasSend = true;
+    }
+  }
+
+
   createTask() {
     let newTask = new Task(this.title,
       this.description,
@@ -54,6 +78,7 @@ export class TaskService {
       this.assignedSubtasks);
     this.saveTask(newTask);
     this.resetForm();
+   
   }
 
 
@@ -65,7 +90,12 @@ export class TaskService {
           this.control.getMessage('Task added to board', 'assets/img/icons/add-task-board-icon.png');
         }
         this.control.isOpenedInOverlay = false;
-      })
+        
+       
+       
+      });
+      
+      
   }
 
   getTimestamp() {
@@ -165,28 +195,11 @@ export class TaskService {
   }
 
 
-  checkForm() {
-    this.fControl.hasSend = true;
-    if (!this.allSubtasks.length) {
-      this.fControl.subtasksReady = true;
-    }
-    this.checkIfaContactIsAssigned();
-    this.checkSelectedPrio();
-    this.checkSelectedCategory();
-    this.checkSubtasks();
-    if (this.fControl.assignedToReady &&
-      this.fControl.categoryReady &&
-      this.fControl.prioReady &&
-      this.fControl.subtasksReady &&
-      this.fControl.taskForm.valid) {
-      this.createTask();
-      this.fControl.hasSend = false;
-    }
-  }
+  
 
-  checkUpdatedTask() {
-    this.checkIfaContactIsAssigned();
-  }
+  // checkUpdatedTask() {
+  //   this.checkIfaContactIsAssigned();
+  // }
 
 
    // Check if a priority has been selected
