@@ -70,17 +70,23 @@ export class TaskService {
 
   // Check if a contact has been selected
   checkIfaContactIsAssigned(): void {
+    let amount = this.numberOfSelectedContacts();
+    if (amount < 1) {
+      this.noContactsAssigned();
+    } else {
+      this.contactsAssigned();
+    }
+  }
+
+  
+  numberOfSelectedContacts(): number {
     let amount = 0;
     for (let item in this.selectedContacts) {
       if (this.selectedContacts[item]) {
         amount++;
       }
     }
-    if (amount < 1) {
-      this.noContactsAssigned();
-    } else {
-      this.contactsAssigned();
-    }
+    return amount;
   }
 
 
