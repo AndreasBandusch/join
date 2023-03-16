@@ -22,7 +22,6 @@ export class ControlService {
   notRouteToContactList = false;
   isOpenedInOverlay = false;
   
- 
 
   getMessage(message: string, image?: string) {
     this.messageText = message;

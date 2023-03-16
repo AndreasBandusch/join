@@ -34,8 +34,6 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-
-
   loadContacts() {
     this.afs.collection('contacts').valueChanges().subscribe(changes => {
       this.allContacts = changes;
@@ -50,7 +48,7 @@ export class SectionBoardComponent implements OnInit {
       this.allTasks = changes;
       this.loadContacts();
       this.loadCategorys();
-      this.seperateStatus();
+      this.seperateTasksByStatus();
     })
   }
 
@@ -87,12 +85,21 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  seperateStatus(): void {
+  seperateTasksByStatus(): void {
+   this.resetTasksArrays()
+   this.sortAndFillTasksArrays();
+  }
+
+
+  resetTasksArrays() {
     this.todoTasks = [];
     this.inProgressTasks = [];
     this.awaitingFeedbackTasks = [];
     this.doneTasks = [];
+  }
 
+
+  sortAndFillTasksArrays() {
     this.allTasks.forEach(task => {
       switch (task.status) {
         case 'todo':

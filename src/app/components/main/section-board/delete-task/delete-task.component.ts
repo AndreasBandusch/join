@@ -8,9 +8,5 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./delete-task.component.scss']
 })
 export class DeleteTaskComponent {
-
-  constructor(public control: ControlService, public task: TaskService) {}
-
-
-  
+  constructor(public control: ControlService, public task: TaskService) {} 
 }

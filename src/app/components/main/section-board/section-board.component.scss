@@ -19,9 +19,7 @@
     width: 23%;
     min-height: 150px;
     max-height: 100%;
-
 }
-
 
 .status-header {
     display: flex;
@@ -30,7 +28,6 @@
     width: 100%;
     font-size: 21px;
     font-weight: 700;
-
 
     img {
         height: 30px;
@@ -87,7 +84,6 @@
     width: 40px;
 }
 
-
 .task {
     display: flex;
     flex-direction: column;
@@ -99,7 +95,6 @@
     gap: 16px;
     cursor: pointer;
 }
-
 
 .category-inner {
     justify-content: center;
@@ -141,8 +136,6 @@
     font-size: 12px;
 }
 
-
-
 .bottom-cont {
     display: flex;
     justify-content: space-between;
@@ -169,14 +162,12 @@
     border-radius: 100%;
 }
 
-
 .prio {
     img {
         width: 17px;
         height: auto;
     }
 }
-
 
 .drop-here {
     display: none;
@@ -215,7 +206,6 @@
 
     .drop-here {
         display: flex;
-
     }
 }
 
@@ -225,18 +215,11 @@
 }
 
 .cdk-drop-list-dragging {
-
     border-radius: 30px;
-
-
     opacity: 0.35;
 }
 
-
-
-
 @media (max-width: 1520px) {
-
     // .status-header {
     //     font-size: 18px;
     // }
