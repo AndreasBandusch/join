@@ -29,14 +29,14 @@ export class TaskService {
   showAssignedTo: boolean = false;
   selectedSubtasks: any[] = [];
   showSubtasksNotice: boolean = false;
- 
 
   constructor(
     private db: AngularFirestore,
     public control: ControlService,
     private fControl: CustomformcontrolModule) { }
 
-  loadAssignedContactsInSelectedContacts() {
+
+  loadAssignedContactsInSelectedContacts(): void {
     for (let i = 0; i < this.currentTask.assignedTo.length; i++) {
       let contact = this.currentTask.assignedTo[i];
       this.selectedContacts[contact.id] = true;
@@ -44,31 +44,96 @@ export class TaskService {
   }
 
 
-  checkForm() {
-   
-    if (!this.allSubtasks.length) {
-      this.fControl.subtasksReady = true;
-    }
+  checkForm(): void {
+    this.checkIfNoSubtasksArePresent();
     this.checkIfaContactIsAssigned();
     this.checkSelectedPrio();
     this.checkSelectedCategory();
     this.checkSubtasks();
-    if (this.fControl.assignedToReady &&
-      this.fControl.categoryReady &&
-      this.fControl.prioReady &&
-      this.fControl.subtasksReady &&
-      this.fControl.taskForm.valid) {
-        this.fControl.hasSend = false;
-        // this.fControl.hasSaved = true;
+    if (this.fControl.assignedToReady) {
+      this.showAssignedTo = false;
+    }
+    if (this.allFormElementsAreCorrect()) {
       this.createTask();
-      this.fControl.taskForm.reset();
     } else {
       this.fControl.hasSend = true;
     }
   }
 
 
-  createTask() {
+  checkIfNoSubtasksArePresent(): void {
+    if (!this.allSubtasks.length) {
+      this.fControl.subtasksReady = true;
+    }
+  }
+
+
+  // Check if a contact has been selected
+  checkIfaContactIsAssigned(): void {
+    let amount = 0;
+    for (let item in this.selectedContacts) {
+      if (this.selectedContacts[item]) {
+        amount++;
+      }
+    }
+    if (amount < 1) {
+      this.fControl.noAssignedContactsErrorMsg = this.fControl.noAssignedContactsErrorStartMsg;
+      this.fControl.assignedToReady = false;
+      this.showAssignedTo = true;
+    } else {
+      this.fControl.noAssignedContactsErrorMsg = '';
+      this.fControl.assignedToReady = true;
+    }
+  }
+
+
+  // Check if a priority has been selected
+  checkSelectedPrio(): void {
+    if (this.activePrio === '') {
+      this.fControl.noPrioErrorMsg = this.fControl.noPrioErrorStartMsg;
+      this.fControl.prioReady = false;
+    }
+  }
+
+
+  checkSelectedCategory(): void {
+    if (this.selectedCategory === '') {
+      this.fControl.noCategoryErrorMsg = this.fControl.noCategoryErrorStartMsg;
+      this.fControl.categoryReady = false;
+    } else {
+      this.fControl.noCategoryErrorMsg = '';
+      this.fControl.categoryReady = true;
+    }
+    this.showCategorys = false;
+  }
+
+
+  checkSubtasks(): void {
+    if (this.allSubtasks.length) {
+      this.showSubtasksNotice = false;
+      if (this.assignedSubtasks.length) {
+        this.fControl.noSubtaskErrorMsg = '';
+        this.fControl.subtasksReady = true
+      } else {
+        this.fControl.noSubtaskErrorMsg = this.fControl.noSubtaskErrorStartMsg;
+        this.fControl.subtasksReady = false;
+      }
+    } else {
+      this.showSubtasksNotice = true;
+    }
+  }
+
+
+  allFormElementsAreCorrect(): boolean {
+    return (this.fControl.assignedToReady &&
+      this.fControl.categoryReady &&
+      this.fControl.prioReady &&
+      this.fControl.subtasksReady &&
+      this.fControl.taskForm.valid);
+  }
+
+
+  createTask(): void {
     let newTask = new Task(this.title,
       this.description,
       this.categoryId,
@@ -77,12 +142,10 @@ export class TaskService {
       this.activePrio,
       this.assignedSubtasks);
     this.saveTask(newTask);
-    this.resetForm();
-    this.showSubtasksNotice = false;
   }
 
 
-  saveTask(newTask: any) {
+  saveTask(newTask: any): void {
     this.db
       .collection('tasks')
       .add(newTask.toJSON()).then(() => {
@@ -90,13 +153,36 @@ export class TaskService {
           this.control.getMessage('Task added to board', 'assets/img/icons/add-task-board-icon.png');
         }
         this.control.isOpenedInOverlay = false;
-        
-       
-       
+        this.resetForm();
       });
-      
-      
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   getTimestamp() {
     this.dueDateTimestamp = new Date(this.dueDate).getTime();
@@ -142,6 +228,7 @@ export class TaskService {
 
 
   resetForm() {
+    this.unsetFormControlErrorMsgs();
     this.description = '';
     this.selectedCategory = '';
     this.selectedContacts = [];
@@ -158,14 +245,17 @@ export class TaskService {
     this.assignedSubtasks = [];
     this.assignedContactIdsForTask = [];
     this.categoryId = 0;
-    this.unsetFormControlErrorMsgs();
+    this.fControl.taskForm.reset();
+    this.fControl.hasSend = false;
   }
 
   unsetFormControlErrorMsgs() {
     this.fControl.noPrioErrorMsg = '';
     this.fControl.noAssignedContactsErrorMsg = '';
-    this.fControl.noCategoryErrorMsg ='';
+    this.fControl.noCategoryErrorMsg = '';
     this.fControl.noSubtaskErrorMsg = '';
+    this.fControl.noPrioErrorMsg = '';
+    this.showSubtasksNotice = false
   }
 
 
@@ -188,6 +278,7 @@ export class TaskService {
 
   }
 
+
   setPrio(prio: string) {
     this.activePrio = prio;
     this.fControl.noPrioErrorMsg = '';
@@ -195,72 +286,17 @@ export class TaskService {
   }
 
 
-  
-
-  // checkUpdatedTask() {
-  //   this.checkIfaContactIsAssigned();
-  // }
-
-
-   // Check if a priority has been selected
-   checkSelectedPrio() {
-    if (this.activePrio === '') {
-      this.fControl.noPrioErrorMsg = this.fControl.noPrioErrorStartMsg;
-      this.fControl.prioReady = false;
-    }
-  }
-
-  // Check if a contact has been selected
-  checkIfaContactIsAssigned() {
-    let amount = 0;
-    for (let item in this.selectedContacts) {
-      if (this.selectedContacts[item]) {
-        amount++;
-      }
-    }
-    if (amount < 1) {
-      this.fControl.noAssignedContactsErrorMsg = this.fControl.noAssignedContactsErrorStartMsg;
-      this.fControl.assignedToReady = false;
-      this.showAssignedTo = true;
-    } else {
-      this.fControl.noAssignedContactsErrorMsg = '';
-      this.fControl.assignedToReady = true;
-      
-    }
-    // this.showAssignedTo = false;
-  }
-
-
-  checkSelectedCategory() {
-    if (this.selectedCategory === '') {
-      this.fControl.noCategoryErrorMsg = this.fControl.noCategoryErrorStartMsg;
-      this.fControl.categoryReady = false;
-    } else {
-      this.fControl.noCategoryErrorMsg = '';
-      this.fControl.categoryReady = true;
-    }
-    this.showCategorys = false;
-
-  }
-
-
-  checkSubtasks() {
-    if (this.allSubtasks.length) {
-      this.showSubtasksNotice = false;
-      if (this.assignedSubtasks.length) {
-        this.fControl.noSubtaskErrorMsg = '';
-        this.fControl.subtasksReady = true
-      } else {
-        this.fControl.noSubtaskErrorMsg = this.fControl.noSubtaskErrorStartMsg;
-        this.fControl.subtasksReady = false;
-      }
-    } else {
-      this.showSubtasksNotice = true;
-    }
-  }
 
 
 
-  
+
+
+
+
+
+
+
+
+
 
 }

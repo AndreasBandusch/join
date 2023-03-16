@@ -28,7 +28,7 @@
                     </textarea>
                     <ng-container *ngIf="(fControl.taskForm.controls['description'].touched || 
                     fControl.taskForm.controls['description'].dirty) || (fControl.hasSend && fControl.taskForm.controls['description'].invalid)">
-                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['required'] && !fControl.hasSaved">Description is required</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['required']">Description is required</span>
                         <span class="warning" *ngIf="fControl.taskForm.controls['description'].errors?.['minlength']">Min. 10 and max. 250 chars</span>
                         <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['maxlength']">Max. 250 chars</span>
                     </ng-container>
@@ -138,7 +138,7 @@
                         </div>
                     </div>
                     <ng-container *ngIf="(fControl.taskForm.controls['dueDate'].touched && (fControl.taskForm.controls['dueDate'].invalid)) || (fControl.hasSend)">
-                        <span class="error" *ngIf="fControl.taskForm.controls['dueDate'].errors?.['required'] && !fControl.hasSaved">Set a due date</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['dueDate'].errors?.['required']">Set a due date</span>
                     </ng-container>
                 </div>
 
