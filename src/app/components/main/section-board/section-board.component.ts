@@ -10,7 +10,6 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./section-board.component.scss']
 })
 export class SectionBoardComponent implements OnInit {
-
   allContacts: any[] = [];
   allTasks: any[] = [];
   allCategorys: any[] = [];
@@ -105,15 +104,12 @@ export class SectionBoardComponent implements OnInit {
         case 'todo':
           this.todoTasks.push(task);
           break;
-
         case 'inProgress':
           this.inProgressTasks.push(task);
           break;
-
         case 'awaitingFeedback':
           this.awaitingFeedbackTasks.push(task);
           break;
-
         case 'done':
           this.doneTasks.push(task);
           break;
@@ -136,8 +132,7 @@ export class SectionBoardComponent implements OnInit {
     this.setTaskStatus(event.item.data, event.container.id);
   }
 
-
-
+  
   setTaskStatus(currentTask: any, dropListId: string): void {
     switch (dropListId) {
       case 'todo':
@@ -155,7 +150,6 @@ export class SectionBoardComponent implements OnInit {
     }
     this.updateTaskStatus(currentTask);
   }
-
 
 
   updateTaskStatus(task: any): void {
@@ -199,7 +193,7 @@ export class SectionBoardComponent implements OnInit {
   }
   
 
-  checkSearch(currentTask: any): boolean {
+  searchResult(currentTask: any): boolean {
     if (this.currentSearch) {
       let search = this.currentSearch.toLowerCase();
       let title = currentTask.title.toLowerCase();

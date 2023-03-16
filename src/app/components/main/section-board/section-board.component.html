@@ -31,7 +31,7 @@
                 <div class="status-content" cdkDropList #todos="cdkDropList" id="todo" [cdkDropListData]="todoTasks"
                     [cdkDropListConnectedTo]="[inProgress, awaitingFeedback, done]" (cdkDropListDropped)="drop($event)">
                     <ng-container *ngFor="let item of todoTasks">
-                        <div *ngIf="checkSearch(item)" class="task" cdkDrag [cdkDragData]="item"
+                        <div *ngIf="searchResult(item)" class="task" cdkDrag [cdkDragData]="item"
                             (click)="openTaskDetails(item)">
                             <div class="category">
                                 <span class="category-inner" [style.backgroundColor]="item.category.color">
@@ -77,7 +77,7 @@
                     [cdkDropListData]="inProgressTasks" [cdkDropListConnectedTo]="[todos, awaitingFeedback, done]"
                     (cdkDropListDropped)="drop($event)">
                     <ng-container *ngFor="let item of inProgressTasks">
-                        <div *ngIf="checkSearch(item)" class="task" cdkDrag [cdkDragData]="item"
+                        <div *ngIf="searchResult(item)" class="task" cdkDrag [cdkDragData]="item"
                             (click)="openTaskDetails(item)">
                             <div class="category">
                                 <span class="category-inner" [style.backgroundColor]="item.category.color">
@@ -123,7 +123,7 @@
                     [cdkDropListData]="awaitingFeedbackTasks" [cdkDropListConnectedTo]="[todos, inProgress, done]"
                     (cdkDropListDropped)="drop($event)">
                     <ng-container *ngFor="let item of awaitingFeedbackTasks">
-                        <div *ngIf="checkSearch(item)" class="task" cdkDrag [cdkDragData]="item"
+                        <div *ngIf="searchResult(item)" class="task" cdkDrag [cdkDragData]="item"
                             (click)="openTaskDetails(item)">
                             <div class="category">
                                 <span class="category-inner" [style.backgroundColor]="item.category.color">
@@ -170,7 +170,7 @@
                     [cdkDropListConnectedTo]="[todos, awaitingFeedback, inProgress]"
                     (cdkDropListDropped)="drop($event)">
                     <ng-container *ngFor="let item of doneTasks">
-                        <div *ngIf="checkSearch(item)" class="task" cdkDrag [cdkDragData]="item"
+                        <div *ngIf="searchResult(item)" class="task" cdkDrag [cdkDragData]="item"
                             (click)="openTaskDetails(item)">
                             <div class="category">
                                 <span class="category-inner" [style.backgroundColor]="item.category.color">
