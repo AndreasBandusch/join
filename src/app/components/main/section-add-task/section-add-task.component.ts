@@ -51,6 +51,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     // this.task.dueDate = '';
     // this.task.catText = this.task.catStartText;
     this.task.resetForm();
+    this.fControl.taskForm.reset();
     this.checkMaxWidth(1100);
     this.loadCategorys();
     this.loadContacts();

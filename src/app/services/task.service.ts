@@ -60,8 +60,8 @@ export class TaskService {
       this.fControl.taskForm.valid) {
         this.fControl.hasSend = false;
         // this.fControl.hasSaved = true;
-        this.fControl.taskForm.reset();
       this.createTask();
+      this.fControl.taskForm.reset();
     } else {
       this.fControl.hasSend = true;
     }
@@ -78,7 +78,7 @@ export class TaskService {
       this.assignedSubtasks);
     this.saveTask(newTask);
     this.resetForm();
-   
+    this.showSubtasksNotice = false;
   }
 
 
