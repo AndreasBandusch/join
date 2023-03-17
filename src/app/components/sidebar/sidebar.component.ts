@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { ControlService } from 'src/app/services/control.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,22 +10,16 @@ import { Location } from '@angular/common';
 })
 
 export class SidebarComponent implements OnInit {
-  isSummaryActive: boolean = true;
-  isBoardActive: boolean = false;
-  isAddTaskActive: boolean = false;
-  isContactsActive: boolean = false;
-  isImpressActive: boolean = false;
-  isPrivacyActive: boolean = false;
-  activeStart: string = '';
 
   constructor(
     private router: Router,
-    private location: Location) {
+    private location: Location,
+    public control: ControlService) {
   }
 
 
   ngOnInit(): void {
-    this.activeStart = this.location.path();
+    this.control.activeStart = this.location.path();
     this.setActiveStart();
   }
 
@@ -32,23 +27,23 @@ export class SidebarComponent implements OnInit {
   // Sets the active start link
   setActiveStart(): void {
     switch (true) {
-      case this.activeStart.includes('summary'):
-        this.setActive('summary');
+      case this.control.activeStart.includes('summary'):
+        this.control.setActive('summary');
         break;
-      case this.activeStart.includes('board'):
-        this.setActive('board');
+      case this.control.activeStart.includes('board'):
+        this.control.setActive('board');
         break;
-      case this.activeStart.includes('add-task'):
-        this.setActive('addTask');
+      case this.control.activeStart.includes('add-task'):
+        this.control.setActive('addTask');
         break;
-      case this.activeStart.includes('contact-list'):
-        this.setActive('contacts');
+      case this.control.activeStart.includes('contact-list'):
+        this.control.setActive('contacts');
         break;
-      case this.activeStart.includes('impress'):
-        this.setActive('impress');
+      case this.control.activeStart.includes('impress'):
+        this.control.setActive('impress');
         break;
       default:
-        this.setActive('privacy');
+        this.control.setActive('privacy');
         break;
     }
   }
@@ -58,12 +53,5 @@ export class SidebarComponent implements OnInit {
   // }
 
   // Sets the active link
-  setActive(clickedLink: string): void {
-    this.isSummaryActive = clickedLink === 'summary';
-    this.isBoardActive = clickedLink === 'board';
-    this.isAddTaskActive = clickedLink === 'addTask';
-    this.isContactsActive = clickedLink === 'contacts';
-    this.isImpressActive = clickedLink === 'impress';
-    this.isPrivacyActive = clickedLink === 'privacy';
-  }
+ 
 }

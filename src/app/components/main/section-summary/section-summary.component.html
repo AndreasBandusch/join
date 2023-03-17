@@ -11,21 +11,21 @@
         <div class="content-body">
             <div class="overview">
                 <div class="row">
-                    <div class="cont sum-cont" routerLink="../board">
+                    <div class="cont sum-cont" routerLink="../board" (click)="control.setActive('board')">
                         <span class="sum-number">{{taskInBoard}}</span>
                         <span class="sum-name">Tasks in <br> Board</span>
                     </div>
-                    <div class="cont sum-cont" routerLink="../board">
+                    <div class="cont sum-cont" routerLink="../board" (click)="control.setActive('board')">
                         <span class="sum-number">{{taskInProgress}}</span>
                         <span class="sum-name">Tasks in <br> Progress</span>
                     </div>
-                    <div class="cont sum-cont" routerLink="../board">
+                    <div class="cont sum-cont" routerLink="../board" (click)="control.setActive('board')">
                         <span class="sum-number">{{awaitingFeedback}}</span>
                         <span class="sum-name">Awaiting <br> Feedback</span>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="cont urgent-cont" routerLink="../board">
+                    <div class="cont urgent-cont" routerLink="../board" (click)="control.setActive('board')">
                         <div class="urgent">
                             <img src="assets/img/icons/urgent-high-icon.png">
                             <div class="urgent-inner">
@@ -40,14 +40,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="cont todo-cont" routerLink="../board">
+                    <div class="cont todo-cont" routerLink="../board" (click)="control.setActive('board')">
                         <img src="assets/img/icons/edit-icon.png">
                         <div class="todo-inner">
                             <span class="todo-number">{{todo}}</span>
                             <span class="todo-text">To-do</span>
                         </div>
                     </div>
-                    <div class="cont todo-cont" routerLink="../board">
+                    <div class="cont todo-cont" routerLink="../board" (click)="control.setActive('board')">
                         <img src="assets/img/icons/done-icon.png">
                         <div class="todo-inner">
                             <span class="todo-number">{{done}}</span>

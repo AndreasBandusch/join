@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ControlService } from 'src/app/services/control.service';
 
 @Component({
   selector: 'app-section-summary',
@@ -17,7 +18,9 @@ export class SectionSummaryComponent implements OnInit {
   dueDate: number = 0;
   dueDateOutput: string = 'No tasks available';
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(
+    private afs: AngularFirestore,
+    public control: ControlService) { }
 
 
   ngOnInit() {

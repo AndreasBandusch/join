@@ -21,6 +21,13 @@ export class ControlService {
   currentContact: number = 0;
   notRouteToContactList = false;
   isOpenedInOverlay = false;
+  isSummaryActive: boolean = true;
+  isBoardActive: boolean = false;
+  isAddTaskActive: boolean = false;
+  isContactsActive: boolean = false;
+  isImpressActive: boolean = false;
+  isPrivacyActive: boolean = false;
+  activeStart: string = '';
   
 
   getMessage(message: string, image?: string) {
@@ -30,6 +37,16 @@ export class ControlService {
     setTimeout(() => {
       this.showMessage = false;
     }, 1500);
+  }
+
+
+  setActive(clickedLink: string): void {
+    this.isSummaryActive = clickedLink === 'summary';
+    this.isBoardActive = clickedLink === 'board';
+    this.isAddTaskActive = clickedLink === 'addTask';
+    this.isContactsActive = clickedLink === 'contacts';
+    this.isImpressActive = clickedLink === 'impress';
+    this.isPrivacyActive = clickedLink === 'privacy';
   }
 
 

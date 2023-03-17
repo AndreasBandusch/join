@@ -5,17 +5,17 @@
 <div class="nav-container">
     <div class="main-nav">
         <ul>
-            <a routerLink="summary" (click)="setActive('summary')" [class.active]="isSummaryActive"><li><img src="assets/img/icons/summary-icon.png">Summary</li></a>
-            <a routerLink="board" (click)="setActive('board')" [class.active]="isBoardActive"><li><img src="assets/img/icons/board-icon.png">Board</li></a>
-            <a routerLink="add-task" (click)="setActive('addTask')" [class.active]="isAddTaskActive"><li><img src="assets/img/icons/add-task-icon.png">Add Task</li></a>
-            <a routerLink="contact-list" (click)="setActive('contacts')" [class.active]="isContactsActive"><li><img src="assets/img/icons/contacts-icon.png">Contacts</li></a>
+            <a routerLink="summary" (click)="control.setActive('summary')" [class.active]="control.isSummaryActive"><li><img src="assets/img/icons/summary-icon.png">Summary</li></a>
+            <a routerLink="board" (click)="control.setActive('board')" [class.active]="control.isBoardActive"><li><img src="assets/img/icons/board-icon.png">Board</li></a>
+            <a routerLink="add-task" (click)="control.setActive('addTask')" [class.active]="control.isAddTaskActive"><li><img src="assets/img/icons/add-task-icon.png">Add Task</li></a>
+            <a routerLink="contact-list" (click)="control.setActive('contacts')" [class.active]="control.isContactsActive"><li><img src="assets/img/icons/contacts-icon.png">Contacts</li></a>
         </ul>
     </div>
 
     <div class="sub-nav">
         <ul>
-            <a routerLink="impressum" (click)="setActive('impress')" [class.active]="isImpressActive"><li><img src="assets/img/icons/legal-notice-icon.png">Impresssum</li></a>
-            <a routerLink="datenschutz" (click)="setActive('privacy')" [class.active]="isPrivacyActive"><li><img src="assets/img/icons/legal-notice-icon.png">Datenschutz</li></a>
+            <a routerLink="impressum" (click)="control.setActive('impress')" [class.active]="control.isImpressActive"><li><img src="assets/img/icons/legal-notice-icon.png">Impresssum</li></a>
+            <a routerLink="datenschutz" (click)="control.setActive('privacy')" [class.active]="control.isPrivacyActive"><li><img src="assets/img/icons/legal-notice-icon.png">Datenschutz</li></a>
         </ul>
     </div>
 </div>
