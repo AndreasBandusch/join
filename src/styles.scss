@@ -278,8 +278,7 @@ a:hover {
 
 
 .error,
-.notice,
-.warning {
+.notice {
     font-size: 16px;
     margin-top: 8px;
     font-weight: 700;
@@ -289,7 +288,7 @@ a:hover {
     color: #FF3D00;
 }
 
- 
+
 .notice {
     color: #2d3646;
 }
@@ -469,11 +468,11 @@ a:hover {
     }
 }
 
-html,
-body {
-    height: 100%;
-}
+    html,
+    body {
+        height: 100%;
+    }
 
-body {
-    margin: 0;
-}
+    body {
+        margin: 0;
+    }

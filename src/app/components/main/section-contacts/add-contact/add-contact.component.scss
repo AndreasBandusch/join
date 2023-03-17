@@ -339,6 +339,11 @@ input {
         top: 16px;
         right: 16px;
     }
+
+    .error,
+    .notice {
+        font-size: 13px;
+    }
 }
 
 @media (max-width: 350px) {
@@ -372,5 +377,10 @@ input {
 
     .form-cont {
         gap: 24px;
+    }
+
+    .error,
+    .notice {
+        font-size: 12px;
     }
 }
