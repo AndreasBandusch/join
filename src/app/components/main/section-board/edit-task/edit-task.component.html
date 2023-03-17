@@ -15,7 +15,7 @@
                     fControl.taskForm.controls['title'].dirty) || (fControl.hasSend && fControl.taskForm.controls['title'].invalid)">
                         <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['required']">Title is
                             required</span>
-                        <span class="warning" *ngIf="fControl.taskForm.controls['title'].errors?.['minlength']">Min. 5
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['minlength']">Min. 5
                             and max. 50 chars</span>
                         <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['maxlength']">Max. 50
                             chars</span>
@@ -31,7 +31,7 @@
                         <span class="error"
                             *ngIf="fControl.taskForm.controls['description'].errors?.['required']">Description is
                             required</span>
-                        <span class="warning"
+                        <span class="error"
                             *ngIf="fControl.taskForm.controls['description'].errors?.['minlength']">Min. 10 and max. 250
                             chars</span>
                         <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['maxlength']">Max.

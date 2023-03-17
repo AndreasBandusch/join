@@ -24,7 +24,7 @@ export class CustomformcontrolModule {
   categoryReady: boolean = false;
   subtasksReady: boolean = false;
   hasSend: boolean = false;
-
+  
 
   phoneNumber(c: AbstractControl) {
     const telephonePattern = /^[0-9\+\-\ ]{8,}$/;
@@ -53,5 +53,21 @@ export class CustomformcontrolModule {
     dueDate: new FormControl('', [
       Validators.required
     ], [])
+  });
+
+
+  public createContactForm: FormGroup = new FormGroup({
+    name: new FormControl('', [
+      Validators.required,
+      this.name
+    ], []),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.minLength(10)
+    ], []),
+    phone: new FormControl('', [
+      this.phoneNumber,
+    ])
   });
 }

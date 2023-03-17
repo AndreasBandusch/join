@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Contact } from 'src/app/models/contact.model';
 import { ControlService } from 'src/app/services/control.service';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-contact.component.scss']
 })
 
-export class AddContactComponent {
+export class AddContactComponent implements OnInit {
   inputName: string = '';
   inputEmail: string = '';
   inputPhone: string = '';
@@ -24,25 +23,14 @@ export class AddContactComponent {
   constructor(
     public control: ControlService,
     private firestore: AngularFirestore,
-    private fControl: CustomformcontrolModule,
+    public fControl: CustomformcontrolModule,
     private route: Router) {
   }
 
 
-  public createContactForm: FormGroup = new FormGroup({
-    name: new FormControl('', [
-      Validators.required,
-      this.fControl.name
-    ], []),
-    email: new FormControl('', [
-      Validators.required,
-      Validators.email,
-      Validators.minLength(10)
-    ], []),
-    phone: new FormControl('', [
-      this.fControl.phoneNumber,
-    ])
-  });
+  ngOnInit(): void {
+    this.fControl.createContactForm.reset();
+  }
 
 
   createContact() {
@@ -84,13 +72,11 @@ export class AddContactComponent {
   }
 
 
-  
-
-
   showFeedbackMessage() {
     this.closeDialog();
     this.control.getMessage('Contact succesfully created');
   }
+  
 
   closeDialog() {
     this.animationStatus = true;
