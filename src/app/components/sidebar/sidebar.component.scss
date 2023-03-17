@@ -12,8 +12,14 @@ a:hover {
 .active {
     li {
         background-color: #091931;
+
+        &:hover {
+            cursor: default;
+        }
     }
 }
+
+
 
 .logo {
     display: flex;

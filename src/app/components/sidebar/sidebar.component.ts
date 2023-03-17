@@ -30,7 +30,7 @@ export class SidebarComponent implements OnInit {
 
 
   // Sets the active start link
-  setActiveStart() {
+  setActiveStart(): void {
     switch (true) {
       case this.activeStart.includes('summary'):
         this.setActive('summary');
