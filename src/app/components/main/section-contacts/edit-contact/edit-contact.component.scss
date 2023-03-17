@@ -4,15 +4,7 @@ h1 {
 }
 
 input {
-    width: 100%;
-
-    &.ng-touched,
-    &.ng-dirty {
-
-        &.ng-invalid {
-            border: 2px solid #2A3647;
-        }
-    }
+    width: 100%; 
 }
 
 .primary-btn {
@@ -127,7 +119,7 @@ input {
     display: flex;
     flex-direction: column;
     width: 422px;
-    gap: 48px;
+    gap: 32px;
 }
 
 .close-dialog,
@@ -150,14 +142,6 @@ input {
     margin-top: 16px;
     width: 100%;
     gap: 32px;
-}
-
-.error {
-    color: red;
-
-    position: absolute;
-    top: 64px;
-    right: 500px;
 }
 
 @media (max-width: 1300px) {

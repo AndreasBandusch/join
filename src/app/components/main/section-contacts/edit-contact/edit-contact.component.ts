@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ControlService } from 'src/app/services/control.service';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
 import { Contact } from 'src/app/models/contact.model';
@@ -25,29 +24,14 @@ export class EditContactComponent implements OnInit {
   constructor(
     private control: ControlService,
     private firestore: AngularFirestore,
-    private fControl: CustomformcontrolModule) {
+    public fControl: CustomformcontrolModule) {
   }
-
-
-  public createContactForm: FormGroup = new FormGroup({
-    name: new FormControl('', [
-      Validators.required,
-      this.fControl.name
-    ], []),
-    email: new FormControl('', [
-      Validators.required,
-      Validators.email,
-      Validators.minLength(10)
-    ], []),
-    phone: new FormControl('', [
-      this.fControl.phoneNumber,
-    ])
-  });
 
 
   ngOnInit(): void {
     this.currentContactId = this.control.currentContact;
     this.loadAllContacts();
+    this.fControl.createContactForm.reset();
   }
 
 

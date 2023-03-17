@@ -17,7 +17,6 @@
                 </div>
                 <img src="assets/img/profile-picture-add-contact.png" class="add-contact-picture">
             </div>
-
             <div class="content-cont">
                 <form class="form-cont" [formGroup]="fControl.createContactForm" (submit)="createContact()">
                     <div class="field-group">
@@ -57,7 +56,6 @@
                                 Please enter
                                 a correct email</p>
                         </ng-container>
-
                     </div>
                     <div class="field-group">
                         <div class="input-field">
@@ -71,7 +69,8 @@
                         </div>
                         <ng-container
                             *ngIf="fControl.createContactForm.controls['phone'].dirty || fControl.createContactForm.controls['phone'].touched">
-                            <p class="error" *ngIf="fControl.createContactForm.controls['phone'].errors?.['invalidTelephone']">
+                            <p class="error"
+                                *ngIf="fControl.createContactForm.controls['phone'].errors?.['invalidTelephone']">
                                 Please enter a correct phone number</p>
                         </ng-container>
                     </div>

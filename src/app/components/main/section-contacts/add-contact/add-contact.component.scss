@@ -8,15 +8,7 @@ h1 {
 }
 
 input {
-    width: 100%;
-
-    // &.ng-touched,
-    // &.ng-dirty {
-
-    //     &.ng-invalid {
-    //         border: 2px solid #2A3647;
-    //     }
-    // }
+    width: 100%; 
 }
 
 .primary-btn {
@@ -115,7 +107,7 @@ input {
     display: flex;
     flex-direction: column;
     width: 422px;
-    gap: 48px;
+    gap: 32px;
 }
 
 .close-dialog,
@@ -139,8 +131,6 @@ input {
     width: 100%;
     gap: 32px;
 }
-
-
 
 @media (max-width: 1300px) {
     .add-contact {
@@ -200,7 +190,6 @@ input {
     .add-contact-cont {
         height: 550px;
     }
-
 }
 
 @media (max-width: 1000px) {
