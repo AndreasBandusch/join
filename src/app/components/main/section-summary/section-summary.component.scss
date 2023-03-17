@@ -172,7 +172,7 @@ app-hello {
 }
 
 @media (max-width: 1300px) {
-    .test {
+    .show-hello {
         app-hello {
             position: fixed;
             background-color: #f5f5f5;
@@ -192,7 +192,7 @@ app-hello {
         }
     }
 
-    .test2 {
+    .no-hello {
         app-hello {
             display: none !important;
         }

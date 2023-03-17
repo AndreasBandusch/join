@@ -286,6 +286,21 @@ a:active>div {
     .email {
         max-width: 660px;
     }
+
+    .active {
+        background: unset;
+        border-radius: unset;
+        cursor: pointer;
+    
+        .name {
+            color: #000;
+        }
+    }
+
+    a:active>div {
+        background: unset;
+        border-radius: unset;
+    }
 }
 
 @media (max-width: 1100px) {

@@ -5,8 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class ControlService {
 
-  constructor() { }
-
   showAddTaskBotton = false;
   addContactDialogOpen = false;
   editContactDialogOpen = false;
@@ -31,6 +29,7 @@ export class ControlService {
   firstSummaryCall = true;
   start: boolean = true;
 
+
   getMessage(message: string, image?: string) {
     this.messageText = message;
     this.messageImage = image;
@@ -40,7 +39,7 @@ export class ControlService {
     }, 1500);
   }
 
-
+  
   setActive(clickedLink: string): void {
     this.isSummaryActive = clickedLink === 'summary';
     this.isBoardActive = clickedLink === 'board';

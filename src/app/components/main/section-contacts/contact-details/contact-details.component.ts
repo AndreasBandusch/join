@@ -25,7 +25,6 @@ slideIn: boolean = true;
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.contactId = params['id']; 
-      console.log('Contact-Id: ', this.contactId);
       this.getCurrentContact();
       this.control.currentId = this.contactId;
       this.toggleAnimationClass();
@@ -48,7 +47,6 @@ slideIn: boolean = true;
       .valueChanges()
       .subscribe((contact: any) => {
         this.currentContact = contact;
-        console.log('Current contact: ', this.currentContact);
       });   
     }
   }
