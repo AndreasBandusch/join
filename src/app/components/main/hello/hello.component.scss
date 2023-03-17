@@ -40,8 +40,10 @@
 
     .welcome {
         padding: 0;
+        align-items: center;
     }
 }
+
 
 @media (max-width: 1200px) {
     .greetings {
@@ -53,4 +55,10 @@
     }
 }
 
-
+@media (max-width: 920px) {
+    @media (orientation: landscape) {
+        .welcome {
+            justify-content: flex-start;
+        }
+    }
+}
