@@ -211,8 +211,6 @@ export class TaskService {
         this.assignedContactIdsForTask.push(key);
       }
     }
-    console.log(this.currentTask.assignedTo);
-    console.log('Selected: ', this.selectedContacts);
   }
 
 

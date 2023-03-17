@@ -17,6 +17,7 @@ export class SectionSummaryComponent implements OnInit {
   done: number = 0;
   dueDate: number = 0;
   dueDateOutput: string = 'No tasks available';
+ 
 
   constructor(
     private afs: AngularFirestore,
@@ -27,10 +28,14 @@ export class SectionSummaryComponent implements OnInit {
     this.afs.collection('tasks').valueChanges().subscribe(changes => {
       this.tasks = changes;
       this.getSummaryContent();
-      console.log(this.tasks);
     });
+    if (this.control.firstSummaryCall) {
+     setTimeout(() => {
+       this.control.start = false;
+       this.control.firstSummaryCall = false;
+     }, 3000);
+    }
 
-   
   }
 
   

@@ -37,6 +37,10 @@
     .greetings-name {
         font-size: 40px;
     }
+
+    .welcome {
+        padding: 0;
+    }
 }
 
 @media (max-width: 1200px) {
@@ -48,4 +52,5 @@
         font-size: 32px;
     }
 }
+
 

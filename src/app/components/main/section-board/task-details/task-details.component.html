@@ -24,8 +24,8 @@
                     <span class="text">Subtasks:</span>
                     <div class="subtasks-cont">
                         <div *ngFor="let subTask of subTasks; index as i" class="subtask">
-                            <input type="checkbox" [checked]="subTask.done == true" (change)="updateSubTaskStatus(i)">
-                            <span>{{subTask.name}}</span>
+                            <input type="checkbox" [checked]="subTask.done == true" (change)="updateSubTaskStatus(i)" id="{{subTask.name}}">
+                            <label for="{{subTask.name}}">{{subTask.name}}</label>
                         </div>
                     </div>
                 </div>

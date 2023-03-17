@@ -28,7 +28,8 @@ export class ControlService {
   isImpressActive: boolean = false;
   isPrivacyActive: boolean = false;
   activeStart: string = '';
-  
+  firstSummaryCall = true;
+  start: boolean = true;
 
   getMessage(message: string, image?: string) {
     this.messageText = message;
