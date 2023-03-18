@@ -6,33 +6,62 @@
             <span>Sign up</span>
             <span class="underline"></span>
         </h1>
-        <form (submit)="signUp()">
-            <div class="input-field">
-                <div class="field">
-                    <input name="username" type="text" placeholder="Name" [(ngModel)]="userName">
+        <form (submit)="signUp()" [formGroup]="fControl.createUserForm">
+            <div class="field-group">
+                <div class="input-field">
+                    <div class="field">
+                        <input name="username" type="text" placeholder="Name" [(ngModel)]="userName"
+                            formControlName="name">
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons/input-name.png">
+                    </div>
                 </div>
-                <div class="icon">
-                    <img src="/assets/img/icons/input-name.png">
-                </div>
+                <ng-container
+                    *ngIf="fControl.createUserForm.controls['name'].dirty || fControl.createUserForm.controls['name'].touched">
+                    <p class="error" *ngIf="fControl.createUserForm.controls['name'].errors?.['required']">
+                        Name is required</p>
+                    <p class="error" *ngIf="fControl.createUserForm.controls['name'].errors?.['invalidName']">Please
+                        enter a correct first and last name</p>
+                </ng-container>
             </div>
-            <div class="input-field">
-                <div class="field">
-                    <input name="email" type="text" placeholder="Email" [(ngModel)]="email">
+            <div class="field-group">
+                <div class="input-field">
+                    <div class="field">
+                        <input name="email" type="text" placeholder="Email" [(ngModel)]="email" formControlName="email">
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons/input-email.png">
+                    </div>
                 </div>
-                <div class="icon">
-                    <img src="/assets/img/icons/input-email.png">
-                </div>
+                <ng-container
+                    *ngIf="fControl.createUserForm.controls['email'].dirty || fControl.createUserForm.controls['email'].touched">
+                    <p class="error" *ngIf="fControl.createUserForm.controls['email'].errors?.['required']">
+                        Email is required</p>
+                    <p class="error" *ngIf="fControl.createUserForm.controls['email'].errors?.['email']">Please enter
+                        a correct email</p>
+                </ng-container>
             </div>
-            <div class="input-field">
-                <div class="field">
-                    <input name="password" type="password" placeholder="Password" [(ngModel)]="password">
+            <div class="field-group">
+                <div class="input-field">
+                    <div class="field">
+                        <input name="password" type="password" placeholder="Password" [(ngModel)]="password"
+                            formControlName="password">
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons/input-password.png">
+                    </div>
                 </div>
-                <div class="icon">
-                    <img src="/assets/img/icons/input-password.png">
-                </div>
+                <ng-container
+                    *ngIf="fControl.createUserForm.controls['password'].dirty || fControl.createUserForm.controls['password'].touched">
+                    <p class="error" *ngIf="fControl.createUserForm.controls['password'].errors?.['required']">
+                        Password is required</p>
+                    <p class="error" *ngIf="fControl.createUserForm.controls['password'].errors?.['minlength']">Password
+                        must be at least 8 characters</p>
+                </ng-container>
             </div>
             <div class="btn-container">
-                <button class="primary-btn" type="submit">Sign up</button>
+                <button class="primary-btn" type="submit" [disabled]="fControl.createUserForm.invalid">Sign up</button>
             </div>
         </form>
     </div>

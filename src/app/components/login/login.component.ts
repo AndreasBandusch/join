@@ -24,7 +24,6 @@ userLogin() {
       .signInWithEmailAndPassword(this.email, this.password)
       .then(res => {
           this.router.navigate(['/kanban']);
-          console.log(res.user?.displayName + ' erfolgreich eingeloggt ', res);
       })
       .catch(error => {
          if (error.message.includes('no user record corresponding')) {
