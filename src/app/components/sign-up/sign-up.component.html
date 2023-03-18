@@ -28,7 +28,7 @@
             <div class="field-group">
                 <div class="input-field">
                     <div class="field">
-                        <input name="email" type="text" placeholder="Email" [(ngModel)]="email" formControlName="email">
+                        <input name="email" type="text" placeholder="Email" [(ngModel)]="email" formControlName="email" (ngModelChange)="userAlreadyExists = false">
                     </div>
                     <div class="icon">
                         <img src="/assets/img/icons/input-email.png">
@@ -40,6 +40,7 @@
                         Email is required</p>
                     <p class="error" *ngIf="fControl.createUserForm.controls['email'].errors?.['email']">Please enter
                         a correct email</p>
+                    <p class="error" *ngIf="userAlreadyExists">User already exists!</p>
                 </ng-container>
             </div>
             <div class="field-group">
@@ -61,7 +62,7 @@
                 </ng-container>
             </div>
             <div class="btn-container">
-                <button class="primary-btn" type="submit" [disabled]="fControl.createUserForm.invalid">Sign up</button>
+                <button class="primary-btn" type="submit" [disabled]="fControl.createUserForm.invalid || userAlreadyExists">Sign up</button>
             </div>
         </form>
     </div>

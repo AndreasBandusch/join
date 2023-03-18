@@ -13,6 +13,7 @@ export class SignUpComponent implements OnInit {
   userName: string = '';
   email: string = '';
   password: string = '';
+  userAlreadyExists: boolean = false;
 
 
   constructor(private auth: AngularFireAuth, private router: Router, public fControl: CustomformcontrolModule) { }
@@ -27,12 +28,15 @@ export class SignUpComponent implements OnInit {
       .then(res => {
         if (res.user) {
           res.user.updateProfile({ displayName: this.userName });
-          this.router.navigate(['/kanban/summary']);
+          this.router.navigate(['/login']);
         }
         console.log('User registriert');
       })
       .catch(error => {
-        console.log('Something is wrong:', error.message);
+        console.log('my error', error.message);
+        if(error.message.includes('email address is already in use')) {
+          this.userAlreadyExists = true;
+        }
       });
   }
 }
