@@ -9,28 +9,43 @@
             <span>Log in</span>
             <span class="underline"></span>
         </h1>
-        <form (submit)="userLogin()">
+        <form (submit)="userLogin()" [formGroup]="fControl.userLogin">
             <div class="field-group">
                 <div class="input-field">
                     <div class="field">
-                        <input name="email" type="text" placeholder="Email" [(ngModel)]="email">
+                        <input name="email" type="text" placeholder="Email" [(ngModel)]="email" formControlName="email" (ngModelChange)="noUserFound = false">
                     </div>
                     <div class="icon">
                         <img src="/assets/img/icons/input-email.png">
                     </div>
                 </div>
-                <p *ngIf="noUserFound" class="error">User does not exist.</p>
+                <ng-container
+                *ngIf="fControl.userLogin.controls['email'].dirty || fControl.userLogin.controls['email'].touched">
+                <p class="error" *ngIf="fControl.userLogin.controls['email'].errors?.['required']">
+                    Email is required</p>
+                <p class="error" *ngIf="fControl.userLogin.controls['email'].errors?.['email']">Please enter
+                    a correct email</p>
+            </ng-container>
+                <p *ngIf="noUserFound" class="error">User does not exist!</p>
             </div>
             <div class="field-group">
                 <div class="input-field">
                     <div class="field">
-                        <input name="password" type="password" placeholder="Password" [(ngModel)]="password">
+                        <input name="password" type="password" placeholder="Password" [(ngModel)]="password" (ngModelChange)="wrongPassword = false;"
+                            formControlName="password">
                     </div>
                     <div class="icon">
                         <img src="/assets/img/icons/input-password.png">
                     </div>
                 </div>
                 <p *ngIf="wrongPassword" class="error">Password is wrong!</p>
+                <ng-container
+                    *ngIf="fControl.userLogin.controls['password'].dirty || fControl.userLogin.controls['password'].touched">
+                    <p class="error" *ngIf="fControl.userLogin.controls['password'].errors?.['required']">
+                        Password is required</p>
+                    <p class="error" *ngIf="fControl.userLogin.controls['password'].errors?.['minlength']">Password
+                        must be at least 8 characters</p>
+                </ng-container>
             </div>
             <div class="rem-container">
                 <div class="remember-me">
@@ -40,8 +55,9 @@
                 <span class="forgot-pw"><a href="#">Forgot my password</a></span>
             </div>
             <div class="btn-container">
-                <button class="primary-btn" type="submit">Log in</button>
-                <button type="button" class="secondary-btn" (click)="guestLogin()">Guest log in</button>
+                <button class="primary-btn" type="submit" [disabled]="fControl.userLogin.invalid || wrongPassword">Log in</button>
+                <button type="button" class="secondary-btn" (click)="guestLogin()" [disabled]="email || password">Guest
+                    log in</button>
             </div>
         </form>
     </div>

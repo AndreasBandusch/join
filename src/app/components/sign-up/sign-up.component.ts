@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
   constructor(private auth: AngularFireAuth, private router: Router, public fControl: CustomformcontrolModule) { }
 
   ngOnInit(): void {
-    this.fControl.createUserForm.reset();
+    this.fControl.userSignUp.reset();
   }
 
   signUp() {
@@ -30,7 +30,6 @@ export class SignUpComponent implements OnInit {
           res.user.updateProfile({ displayName: this.userName });
           this.router.navigate(['/login']);
         }
-        console.log('User registriert');
       })
       .catch(error => {
         console.log('my error', error.message);

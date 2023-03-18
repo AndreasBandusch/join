@@ -72,7 +72,22 @@ export class CustomformcontrolModule {
   });
 
 
-  public createUserForm: FormGroup = new FormGroup({
+
+  public userLogin: FormGroup = new FormGroup({
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email,
+      Validators.minLength(10)
+    ], []),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(8)
+    ])
+  });
+
+  
+
+  public userSignUp: FormGroup = new FormGroup({
     name: new FormControl('', [
       Validators.required,
       this.name

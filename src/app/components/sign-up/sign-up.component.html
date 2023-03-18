@@ -6,7 +6,7 @@
             <span>Sign up</span>
             <span class="underline"></span>
         </h1>
-        <form (submit)="signUp()" [formGroup]="fControl.createUserForm">
+        <form (submit)="signUp()" [formGroup]="fControl.userSignUp">
             <div class="field-group">
                 <div class="input-field">
                     <div class="field">
@@ -18,10 +18,10 @@
                     </div>
                 </div>
                 <ng-container
-                    *ngIf="fControl.createUserForm.controls['name'].dirty || fControl.createUserForm.controls['name'].touched">
-                    <p class="error" *ngIf="fControl.createUserForm.controls['name'].errors?.['required']">
+                    *ngIf="fControl.userSignUp.controls['name'].dirty || fControl.userSignUp.controls['name'].touched">
+                    <p class="error" *ngIf="fControl.userSignUp.controls['name'].errors?.['required']">
                         Name is required</p>
-                    <p class="error" *ngIf="fControl.createUserForm.controls['name'].errors?.['invalidName']">Please
+                    <p class="error" *ngIf="fControl.userSignUp.controls['name'].errors?.['invalidName']">Please
                         enter a correct first and last name</p>
                 </ng-container>
             </div>
@@ -35,10 +35,10 @@
                     </div>
                 </div>
                 <ng-container
-                    *ngIf="fControl.createUserForm.controls['email'].dirty || fControl.createUserForm.controls['email'].touched">
-                    <p class="error" *ngIf="fControl.createUserForm.controls['email'].errors?.['required']">
+                    *ngIf="fControl.userSignUp.controls['email'].dirty || fControl.userSignUp.controls['email'].touched">
+                    <p class="error" *ngIf="fControl.userSignUp.controls['email'].errors?.['required']">
                         Email is required</p>
-                    <p class="error" *ngIf="fControl.createUserForm.controls['email'].errors?.['email']">Please enter
+                    <p class="error" *ngIf="fControl.userSignUp.controls['email'].errors?.['email']">Please enter
                         a correct email</p>
                     <p class="error" *ngIf="userAlreadyExists">User already exists!</p>
                 </ng-container>
@@ -54,15 +54,15 @@
                     </div>
                 </div>
                 <ng-container
-                    *ngIf="fControl.createUserForm.controls['password'].dirty || fControl.createUserForm.controls['password'].touched">
-                    <p class="error" *ngIf="fControl.createUserForm.controls['password'].errors?.['required']">
+                    *ngIf="fControl.userSignUp.controls['password'].dirty || fControl.userSignUp.controls['password'].touched">
+                    <p class="error" *ngIf="fControl.userSignUp.controls['password'].errors?.['required']">
                         Password is required</p>
-                    <p class="error" *ngIf="fControl.createUserForm.controls['password'].errors?.['minlength']">Password
+                    <p class="error" *ngIf="fControl.userSignUp.controls['password'].errors?.['minlength']">Password
                         must be at least 8 characters</p>
                 </ng-container>
             </div>
             <div class="btn-container">
-                <button class="primary-btn" type="submit" [disabled]="fControl.createUserForm.invalid || userAlreadyExists">Sign up</button>
+                <button class="primary-btn" type="submit" [disabled]="fControl.userSignUp.invalid || userAlreadyExists">Sign up</button>
             </div>
         </form>
     </div>

@@ -1,20 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   noUserFound = false;
   wrongPassword = false;
-                       ;
-  constructor(private auth: AngularFireAuth, private router: Router) {}
+                       
+  constructor(private auth: AngularFireAuth, private router: Router, public fControl: CustomformcontrolModule) {}
 
+  ngOnInit(): void {
+    this.fControl.userLogin.reset();
+  }
 
 userLogin() {
   this.noUserFound = false;
@@ -40,11 +44,9 @@ userLogin() {
 guestLogin() {
   this.auth.signInAnonymously()
   .then(() => {
-    console.log('Hello Guest!')
     this.router.navigate(['/kanban']);
   }).catch(err => {
     console.log(err.message);
-    
   })
 }
  
