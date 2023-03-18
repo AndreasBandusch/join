@@ -9,22 +9,28 @@
             <span>Log in</span>
             <span class="underline"></span>
         </h1>
-        <form>
-            <div class="input-field">
-                <div class="field">
-                    <input name="email" type="text" placeholder="Email">
+        <form (submit)="userLogin()">
+            <div class="field-group">
+                <div class="input-field">
+                    <div class="field">
+                        <input name="email" type="text" placeholder="Email" [(ngModel)]="email">
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons/input-email.png">
+                    </div>
                 </div>
-                <div class="icon">
-                    <img src="/assets/img/icons/input-email.png">
-                </div>
+                <p *ngIf="noUserFound" class="error">User does not exist.</p>
             </div>
-            <div class="input-field">
-                <div class="field">
-                    <input name="password" type="text" placeholder="Password">
+            <div class="field-group">
+                <div class="input-field">
+                    <div class="field">
+                        <input name="password" type="password" placeholder="Password" [(ngModel)]="password">
+                    </div>
+                    <div class="icon">
+                        <img src="/assets/img/icons/input-password.png">
+                    </div>
                 </div>
-                <div class="icon">
-                    <img src="/assets/img/icons/input-password.png">
-                </div>
+                <p *ngIf="wrongPassword" class="error">Password is wrong!</p>
             </div>
             <div class="rem-container">
                 <div class="remember-me">
@@ -34,8 +40,8 @@
                 <span class="forgot-pw"><a href="#">Forgot my password</a></span>
             </div>
             <div class="btn-container">
-                <button class="primary-btn">Log in</button>
-                <button type="button" class="secondary-btn" routerLink="/kanban/summary">Guest log in</button>
+                <button class="primary-btn" type="submit">Log in</button>
+                <button type="button" class="secondary-btn" (click)="guestLogin()">Guest log in</button>
             </div>
         </form>
     </div>

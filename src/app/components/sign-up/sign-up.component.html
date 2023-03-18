@@ -6,10 +6,10 @@
             <span>Sign up</span>
             <span class="underline"></span>
         </h1>
-        <form>
+        <form (submit)="signUp()">
             <div class="input-field">
                 <div class="field">
-                    <input name="email" type="text" placeholder="Name">
+                    <input name="username" type="text" placeholder="Name" [(ngModel)]="userName">
                 </div>
                 <div class="icon">
                     <img src="/assets/img/icons/input-name.png">
@@ -17,7 +17,7 @@
             </div>
             <div class="input-field">
                 <div class="field">
-                    <input name="email" type="text" placeholder="Email">
+                    <input name="email" type="text" placeholder="Email" [(ngModel)]="email">
                 </div>
                 <div class="icon">
                     <img src="/assets/img/icons/input-email.png">
@@ -25,14 +25,14 @@
             </div>
             <div class="input-field">
                 <div class="field">
-                    <input name="email" type="text" placeholder="Password">
+                    <input name="password" type="password" placeholder="Password" [(ngModel)]="password">
                 </div>
                 <div class="icon">
                     <img src="/assets/img/icons/input-password.png">
                 </div>
             </div>
             <div class="btn-container">
-                <button class="primary-btn">Sign up</button>
+                <button class="primary-btn" type="submit">Sign up</button>
             </div>
         </form>
     </div>
