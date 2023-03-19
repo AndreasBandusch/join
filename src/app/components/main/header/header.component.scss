@@ -21,9 +21,19 @@
 }
 
 .profile-picture {
-    height: 49px;
-    width: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    border: 3px solid #cdcdcd;
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;
+    background-color: #2d3646;
     cursor: pointer;
+    
 }
 
 @media (max-width: 1300px) {

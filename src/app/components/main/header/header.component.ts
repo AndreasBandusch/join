@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  displayName: string = '';
+ 
   
   constructor (
     public control: ControlService, 
@@ -19,18 +19,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setDisplayName();
+    
   }
 
-  setDisplayName() {
-    if (this.authServ.guestLogin) {
-      this.displayName = 'Guest User';
-    } else {
-      this.displayName = this.authServ.loggedInUser.user._delegate.displayName;
-    }
-  }
-
-  toggleSubMenu() {
+ 
+  toggleSubMenu(): void {
     this.control.showSubMenu = !this.control.showSubMenu;
   }
 }

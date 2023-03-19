@@ -15,8 +15,9 @@ export class SubMenuComponent {
 
   }
 
-  async signOut() {
-    return this.auth.signOut().then(() => {
+  signOut() {
+    this.control.firstSummaryCall = true;
+    this.auth.signOut().then(() => {
       this.router.navigate(['login']);
     });
   }

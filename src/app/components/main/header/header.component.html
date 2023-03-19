@@ -6,7 +6,7 @@
 </div>
 <div *ngIf="!control.showAddTaskBotton" class="right">
     <img class="question-mark" src="/assets/img/icons/question-mark-icon.png">
-    <img class="profile-picture" src="/assets/img/profile-picture.png" (click)="toggleSubMenu()">
+    <div class="profile-picture" (click)="toggleSubMenu()">AB</div>
 </div>
 <div *ngIf="control.showAddTaskBotton" class="right">
     <button type="submit" type="submit" class="primary-btn" (click)="task.checkForm()">

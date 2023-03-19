@@ -29,10 +29,11 @@ userLogin() {
   this.auth
       .signInWithEmailAndPassword(this.email, this.password)
       .then(res => {
-          this.router.navigate(['kanban']);
           this.authServ.loggedInUser = res;
           this.authServ.isLoggedIn = true;
           this.authServ.guestLogin = false;
+          this.setDisplayName();
+          this.router.navigate(['kanban']);
       })
       .catch(error => {
          if (error.message.includes('no user record corresponding')) {
@@ -43,6 +44,7 @@ userLogin() {
             this.wrongPassword = true;
          }
       });
+     
 }
 
 
@@ -52,9 +54,22 @@ guestLogin() {
      this.authServ.isLoggedIn = true;
      this.authServ.guestLogin = true;
     this.router.navigate(['/kanban']);
+    this.setDisplayName();
   }).catch(err => {
     console.log(err.message);
   })
+ 
 }
+
+setDisplayName(): void {
+  if (this.authServ.guestLogin === true) {
+    this.authServ.displayName = 'Guest User';
+  } else {
+    this.authServ.displayName = this.authServ.loggedInUser.user._delegate.displayName;
+  }
+
+  console.log(this.authServ.displayName);
+}
+
  
 }
