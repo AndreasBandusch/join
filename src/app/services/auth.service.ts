@@ -10,6 +10,7 @@ export class AuthService {
   isLoggedIn = false;
   guestLogin = false;
   displayName: string = '';
+  initials: string = '';
 
   
 

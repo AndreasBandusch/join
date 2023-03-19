@@ -55,6 +55,17 @@ export class ControlService {
     event.stopPropagation();
   }
 
+  testMe(event: string) {
+   if (event === 'over') {
+    this.showSubMenu = true;
+   } else {
+    setTimeout(() => {
+      this.showSubMenu = false;
+    } ,1000)
+    
+   }
+  }
+
 
   // setOrRemoveBodyScroll() {
   //   const bodyTag = document.body;

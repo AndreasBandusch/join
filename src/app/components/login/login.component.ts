@@ -14,62 +14,68 @@ export class LoginComponent implements OnInit {
   password: string = '';
   noUserFound = false;
   wrongPassword = false;
- 
-                       
-  constructor(private auth: AngularFireAuth, private router: Router, public fControl: CustomformcontrolModule, private authServ: AuthService) {}
+
+
+  constructor(private auth: AngularFireAuth, private router: Router, public fControl: CustomformcontrolModule, private authServ: AuthService) { }
 
   ngOnInit(): void {
     this.fControl.userLogin.reset();
   }
 
-userLogin() {
-  this.noUserFound = false;
-  this.wrongPassword = false;
+  userLogin() {
+    this.noUserFound = false;
+    this.wrongPassword = false;
 
-  this.auth
+    this.auth
       .signInWithEmailAndPassword(this.email, this.password)
       .then(res => {
-          this.authServ.loggedInUser = res;
-          this.authServ.isLoggedIn = true;
-          this.authServ.guestLogin = false;
-          this.setDisplayName();
-          this.router.navigate(['kanban']);
+        this.authServ.loggedInUser = res;
+        this.authServ.isLoggedIn = true;
+        this.authServ.guestLogin = false;
+        this.setDisplayName();
+        this.getInitials();
+        this.router.navigate(['kanban']);
       })
       .catch(error => {
-         if (error.message.includes('no user record corresponding')) {
-          this.noUserFound = true; 
-         } 
+        if (error.message.includes('no user record corresponding')) {
+          this.noUserFound = true;
+        }
 
-         else if (error.message.includes('password is invalid')) {
-            this.wrongPassword = true;
-         }
+        else if (error.message.includes('password is invalid')) {
+          this.wrongPassword = true;
+        }
       });
-     
-}
 
-
-guestLogin() {
-  this.auth.signInAnonymously()
-  .then(() => {
-     this.authServ.isLoggedIn = true;
-     this.authServ.guestLogin = true;
-    this.router.navigate(['/kanban']);
-    this.setDisplayName();
-  }).catch(err => {
-    console.log(err.message);
-  })
- 
-}
-
-setDisplayName(): void {
-  if (this.authServ.guestLogin === true) {
-    this.authServ.displayName = 'Guest User';
-  } else {
-    this.authServ.displayName = this.authServ.loggedInUser.user._delegate.displayName;
   }
 
-  console.log(this.authServ.displayName);
-}
 
- 
+  guestLogin() {
+    this.auth.signInAnonymously()
+      .then(() => {
+        this.authServ.isLoggedIn = true;
+        this.authServ.guestLogin = true;
+        this.router.navigate(['/kanban']);
+        this.setDisplayName();
+        this.getInitials();
+      }).catch(err => {
+        console.log(err.message);
+      })
+
+  }
+
+  setDisplayName(): void {
+    if (this.authServ.guestLogin === true) {
+      this.authServ.displayName = 'Guest User';
+    } else {
+      this.authServ.displayName = this.authServ.loggedInUser.user._delegate.displayName;
+    }
+
+    console.log(this.authServ.displayName);
+  }
+
+  getInitials(): void {
+    let displayName = this.authServ.displayName.split(' ');
+    this.authServ.initials = displayName[0].charAt(0).toLocaleUpperCase() + 
+    displayName[1].charAt(0).toLocaleUpperCase();
+  }
 }

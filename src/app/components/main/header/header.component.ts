@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   constructor (
     public control: ControlService, 
     public task: TaskService, 
-    private authServ: AuthService){
+    public authServ: AuthService){
   }
 
   ngOnInit(): void {
@@ -25,5 +25,8 @@ export class HeaderComponent implements OnInit {
  
   toggleSubMenu(): void {
     this.control.showSubMenu = !this.control.showSubMenu;
+    
   }
+
+  
 }

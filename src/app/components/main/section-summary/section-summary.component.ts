@@ -28,9 +28,7 @@ export class SectionSummaryComponent implements OnInit {
       this.tasks = changes;
       this.getSummaryContent();
     });
-    this.showWelcomeForMobile();
-    console.log('Erster Aufruf: ', this.control.firstSummaryCall);
-    
+    this.showWelcomeForMobile(); 
   }
 
 
