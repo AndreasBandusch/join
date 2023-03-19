@@ -35,6 +35,7 @@ import { OverlayComponent } from './components/main-site/overlay/overlay.compone
 import { TaskDetailsComponent } from './components/main/section-board/task-details/task-details.component';
 import { EditTaskComponent } from './components/main/section-board/edit-task/edit-task.component';
 import { DeleteTaskComponent } from './components/main/section-board/delete-task/delete-task.component';
+import { SubMenuComponent } from './components/main/sub-menu/sub-menu.component';
 
 
 
@@ -62,6 +63,7 @@ import { DeleteTaskComponent } from './components/main/section-board/delete-task
     TaskDetailsComponent,
     EditTaskComponent,
     DeleteTaskComponent,
+    SubMenuComponent,
   ],
   imports: [
     RouterModule,

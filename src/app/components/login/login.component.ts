@@ -32,6 +32,7 @@ userLogin() {
           this.router.navigate(['kanban']);
           this.authServ.loggedInUser = res;
           this.authServ.isLoggedIn = true;
+          this.authServ.guestLogin = false;
       })
       .catch(error => {
          if (error.message.includes('no user record corresponding')) {
@@ -49,6 +50,7 @@ guestLogin() {
   this.auth.signInAnonymously()
   .then(() => {
      this.authServ.isLoggedIn = true;
+     this.authServ.guestLogin = true;
     this.router.navigate(['/kanban']);
   }).catch(err => {
     console.log(err.message);

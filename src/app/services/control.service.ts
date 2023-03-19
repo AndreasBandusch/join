@@ -28,6 +28,7 @@ export class ControlService {
   activeStart: string = '';
   firstSummaryCall = true;
   start: boolean = true;
+  showSubMenu: boolean = false;
 
 
   getMessage(message: string, image?: string) {

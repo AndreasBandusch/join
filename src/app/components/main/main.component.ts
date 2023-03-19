@@ -5,7 +5,7 @@ import { ControlService } from 'src/app/services/control.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent  {
+export class MainComponent {
 constructor(public control: ControlService) {}
 
 }

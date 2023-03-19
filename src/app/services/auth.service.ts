@@ -6,8 +6,9 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  loggedInUser = {};
+  loggedInUser: any = {};
   isLoggedIn = false;
+  guestLogin = false;
 
   
 
