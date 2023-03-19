@@ -30,8 +30,10 @@ const routes: Routes = [
           { path: 'contact/:id', component: ContactDetailsComponent }
         ]
       }, 
+      { path: '**', redirectTo: 'kanban' }
     ], canActivate: [AuthGuard]
-  }
+  },
+  { path: '**', redirectTo: 'login' }
 ]
 
 @NgModule({
