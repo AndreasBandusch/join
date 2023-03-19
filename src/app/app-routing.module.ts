@@ -10,7 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MainSiteComponent } from './components/main-site/main-site.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ContactDetailsComponent } from './components/main/section-contacts/contact-details/contact-details.component';
-
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -29,8 +29,8 @@ const routes: Routes = [
         path: 'contact-list', component: SectionContactsComponent, children: [
           { path: 'contact/:id', component: ContactDetailsComponent }
         ]
-      },
-    ]
+      }, 
+    ], canActivate: [AuthGuard]
   }
 ]
 

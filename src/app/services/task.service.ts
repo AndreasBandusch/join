@@ -174,32 +174,6 @@ export class TaskService {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   getTimestamp() {
     this.dueDateTimestamp = new Date(this.dueDate).getTime();
   }
@@ -298,19 +272,4 @@ export class TaskService {
     this.fControl.noPrioErrorMsg = '';
     this.fControl.prioReady = true;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
