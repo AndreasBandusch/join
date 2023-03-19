@@ -48,7 +48,7 @@ userLogin() {
 guestLogin() {
   this.auth.signInAnonymously()
   .then(() => {
-    this.authServ.isLoggedIn = true;
+     this.authServ.isLoggedIn = true;
     this.router.navigate(['/kanban']);
   }).catch(err => {
     console.log(err.message);

@@ -9,5 +9,11 @@ export class AuthService {
   loggedInUser = {};
   isLoggedIn = false;
 
-  constructor(private auth: AngularFireAuth, private router: Router) { }
+  
+
+  constructor(private auth: AngularFireAuth, private router: Router) { 
+    
+  }
+
+  
 }
