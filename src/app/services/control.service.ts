@@ -23,7 +23,7 @@ export class ControlService {
   isBoardActive: boolean = false;
   isAddTaskActive: boolean = false;
   isContactsActive: boolean = false;
-  isImpressActive: boolean = false;
+  isImprintActive: boolean = false;
   isPrivacyActive: boolean = false;
   activeStart: string = '';
   firstSummaryCall = true;
@@ -47,7 +47,7 @@ export class ControlService {
     this.isBoardActive = clickedLink === 'board';
     this.isAddTaskActive = clickedLink === 'addTask';
     this.isContactsActive = clickedLink === 'contacts';
-    this.isImpressActive = clickedLink === 'impress';
+    this.isImprintActive = clickedLink === 'imprint';
     this.isPrivacyActive = clickedLink === 'privacy';
   }
 

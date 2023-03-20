@@ -39,11 +39,14 @@ export class SidebarComponent implements OnInit {
       case this.control.activeStart.includes('contact-list'):
         this.control.setActive('contacts');
         break;
-      case this.control.activeStart.includes('impress'):
-        this.control.setActive('impress');
+      case this.control.activeStart.includes('imprint'):
+        this.control.setActive('imprint');
+        break;
+      case this.control.activeStart.includes('privacy'):
+        this.control.setActive('privacy');
         break;
       default:
-        this.control.setActive('privacy');
+        this.control.setActive('not');
         break;
     }
   }
@@ -53,5 +56,5 @@ export class SidebarComponent implements OnInit {
   // }
 
   // Sets the active link
- 
+
 }

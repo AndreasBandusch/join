@@ -5,7 +5,8 @@
     <span class="title">Kanban Project Management Tool</span>
 </div>
 <div *ngIf="!control.showAddTaskBotton" class="right">
-    <img class="question-mark" src="/assets/img/icons/question-mark-icon.png" routerLink="help" *ngIf="!control.inHelpSection">
+    <img class="question-mark" src="/assets/img/icons/question-mark-icon.png" routerLink="help" *ngIf="!control.inHelpSection" 
+    (click)="control.setActive('not')">
     <div class="profile-picture" (click)="toggleSubMenu()">{{authServ.initials}}</div>
 </div>
 <div *ngIf="control.showAddTaskBotton" class="right">
