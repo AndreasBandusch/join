@@ -29,6 +29,7 @@ export class ControlService {
   firstSummaryCall = true;
   start: boolean = true;
   showSubMenu: boolean = false;
+  inHelpSection: boolean = false
 
 
   getMessage(message: string, image?: string) {
