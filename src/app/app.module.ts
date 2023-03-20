@@ -36,6 +36,7 @@ import { TaskDetailsComponent } from './components/main/section-board/task-detai
 import { EditTaskComponent } from './components/main/section-board/edit-task/edit-task.component';
 import { DeleteTaskComponent } from './components/main/section-board/delete-task/delete-task.component';
 import { SubMenuComponent } from './components/main/sub-menu/sub-menu.component';
+import { HelpComponent } from './components/main/help/help.component';
 
 
 
@@ -64,6 +65,7 @@ import { SubMenuComponent } from './components/main/sub-menu/sub-menu.component'
     EditTaskComponent,
     DeleteTaskComponent,
     SubMenuComponent,
+    HelpComponent,
   ],
   imports: [
     RouterModule,
