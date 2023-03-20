@@ -29,7 +29,8 @@ export class ControlService {
   firstSummaryCall: boolean = true;
   start: boolean = true;
   showSubMenu: boolean = false;
-  inHelpSection: boolean = false
+  inHelpSection: boolean = false;
+  lastActiveLink: string = '';
 
 
   getMessage(message: string, image?: string) {
@@ -41,8 +42,11 @@ export class ControlService {
     }, 1500);
   }
 
-  
+
   setActive(clickedLink: string): void {
+    if (clickedLink !== 'not') {
+      this.lastActiveLink = clickedLink;
+    }
     this.showSubMenu = false;
     this.isSummaryActive = clickedLink === 'summary';
     this.isBoardActive = clickedLink === 'board';
@@ -58,14 +62,14 @@ export class ControlService {
   }
 
   testMe(event: string) {
-   if (event === 'over') {
-    this.showSubMenu = true;
-   } else {
-    setTimeout(() => {
-      this.showSubMenu = false;
-    } ,1000)
-    
-   }
+    if (event === 'over') {
+      this.showSubMenu = true;
+    } else {
+      setTimeout(() => {
+        this.showSubMenu = false;
+      }, 1000)
+
+    }
   }
 
 
