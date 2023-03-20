@@ -26,7 +26,7 @@ export class ControlService {
   isImprintActive: boolean = false;
   isPrivacyActive: boolean = false;
   activeStart: string = '';
-  firstSummaryCall = true;
+  firstSummaryCall: boolean = true;
   start: boolean = true;
   showSubMenu: boolean = false;
   inHelpSection: boolean = false
@@ -43,6 +43,7 @@ export class ControlService {
 
   
   setActive(clickedLink: string): void {
+    this.showSubMenu = false;
     this.isSummaryActive = clickedLink === 'summary';
     this.isBoardActive = clickedLink === 'board';
     this.isAddTaskActive = clickedLink === 'addTask';

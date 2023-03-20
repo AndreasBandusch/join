@@ -29,17 +29,18 @@ export class SectionSummaryComponent implements OnInit {
       this.getSummaryContent();
     });
     this.showWelcomeForMobile(); 
+    console.log(this.control.firstSummaryCall)
   }
 
 
   showWelcomeForMobile() {
-    this.control.start = true;
     if (this.control.firstSummaryCall) {
       setTimeout(() => {
         this.control.start = false;
         this.control.firstSummaryCall = false;
       }, 3000);
-    }
+
+    } 
   }
 
 
