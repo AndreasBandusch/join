@@ -29,11 +29,19 @@ export class TaskService {
   showAssignedTo: boolean = false;
   selectedSubtasks: any[] = [];
   showSubtasksNotice: boolean = false;
+  minDate: string = '';
 
   constructor(
     private db: AngularFirestore,
     public control: ControlService,
-    private fControl: CustomformcontrolModule) { }
+    private fControl: CustomformcontrolModule) { 
+      this.getMinDate();
+    }
+
+  getMinDate() {
+    const today = new Date();
+    this.minDate = today.toISOString().split('T')[0];
+  }
 
 
   loadAssignedContactsInSelectedContacts(): void {

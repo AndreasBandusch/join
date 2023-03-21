@@ -134,7 +134,7 @@
                     <div class="input-field due-date">
                         <div class="field">
                             <input name="date" type="date" [(ngModel)]="task.dueDate" formControlName="dueDate"
-                                (ngModelChange)="task.getTimestamp()">
+                                (ngModelChange)="task.getTimestamp()" [min]="task.minDate">
                         </div>
                     </div>
                     <ng-container *ngIf="(fControl.taskForm.controls['dueDate'].touched && (fControl.taskForm.controls['dueDate'].invalid)) || (fControl.hasSend)">

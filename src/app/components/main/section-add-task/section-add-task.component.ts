@@ -23,6 +23,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   categoryName: string = '';
   catColors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
   newCategory: Category = new Category(this.categoryName);
+  minDate: string = '';
 
   @HostListener('window:resize')
   onResize() {
@@ -34,7 +35,8 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     public task: TaskService,
     private afs: AngularFirestore,
     public fControl: CustomformcontrolModule
-  ) { }
+  ) { 
+  }
 
 
   ngOnInit(): void {
