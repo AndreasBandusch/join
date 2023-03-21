@@ -22,7 +22,6 @@ export class SubMenuComponent {
     this.authServ.setDataToLocalStorage(false, '');
     this.auth.signOut().then(() => {
       this.router.navigate(['login']);
-      console.log('Logged in user: ', this.authServ.loggedInUser);
     });
   }
 }

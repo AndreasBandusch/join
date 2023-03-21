@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
+import { ControlService } from 'src/app/services/control.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class SignUpComponent implements OnInit {
   userAlreadyExists: boolean = false;
 
 
-  constructor(private auth: AngularFireAuth, private router: Router, public fControl: CustomformcontrolModule) { }
+  constructor(private auth: AngularFireAuth, private router: Router, public fControl: CustomformcontrolModule, private control: ControlService) { }
 
   ngOnInit(): void {
     this.fControl.userSignUp.reset();
@@ -28,7 +29,11 @@ export class SignUpComponent implements OnInit {
       .then(res => {
         if (res.user) {
           res.user.updateProfile({ displayName: this.userName });
-          this.router.navigate(['/login']);
+          this.control.getMessage('Sign up successful!');
+
+          setTimeout(() => {
+            this.router.navigate(['/login']);
+          }, 1500);
         }
       })
       .catch(error => {

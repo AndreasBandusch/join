@@ -10,14 +10,12 @@ import { Router } from '@angular/router';
 export class AuthService {
   loggedInUser: any = {};
   isLoggedIn = false;
-  // displayName: string = '';
   initials: string = '';
-
-
 
 
   constructor(private auth: AngularFireAuth, private router: Router) {
   }
+
 
   setDataToLocalStorage(loggendIn: boolean, displayName: string) {
     const user = { login: loggendIn, displayName: displayName };
@@ -26,10 +24,12 @@ export class AuthService {
     this.isLoggedIn = true;
   }
 
+
   getLogin() {
     const myObj = this.loadDataFormLocaleStorage();
     return myObj.login;
   }
+
 
   loadDataFormLocaleStorage() {
     const data = localStorage.getItem('user');
@@ -38,24 +38,21 @@ export class AuthService {
   }
 
 
-
   getInitals() {
-    const displayName = this.getDisplayName();
+    let displayName = this.getDisplayName();
     let initials;
-    displayName.split(' ');
-    initials = displayName[0].charAt(0).toLocaleUpperCase() +
-      displayName[1].charAt(0).toLocaleUpperCase();
-      console.log(displayName[0])
-      console.log(displayName[1])
+    let splitedDisplayName = displayName.split(' ');;
+    initials = splitedDisplayName[0].charAt(0).toLocaleUpperCase() +
+    splitedDisplayName[1].charAt(0).toLocaleUpperCase();
       return initials;
   }
+
 
   getDisplayName() {
     const data = this.loadDataFormLocaleStorage();
     const displayName = data.displayName;
     return displayName;
   }
-
 
 }
 
