@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,12 +15,15 @@ export class LoginComponent implements OnInit {
   password: string = '';
   noUserFound = false;
   wrongPassword = false;
+  test: any;
 
 
   constructor(private auth: AngularFireAuth, private router: Router, public fControl: CustomformcontrolModule, private authServ: AuthService) { }
 
   ngOnInit(): void {
     this.fControl.userLogin.reset();
+    console.log('Login: ', this.authServ.isLoggedIn);
+
   }
 
   userLogin() {
@@ -30,11 +34,10 @@ export class LoginComponent implements OnInit {
       .signInWithEmailAndPassword(this.email, this.password)
       .then(res => {
         this.authServ.loggedInUser = res;
-        this.authServ.isLoggedIn = true;
-        this.authServ.guestLogin = false;
-        this.setDisplayName();
-        this.getInitials();
+        const displayName = this.authServ.loggedInUser.user._delegate.displayName;
+        this.authServ.setDataToLocalStorage(true, displayName);
         this.router.navigate(['kanban']);
+        this.authServ.getInitals();  
       })
       .catch(error => {
         if (error.message.includes('no user record corresponding')) {
@@ -45,37 +48,23 @@ export class LoginComponent implements OnInit {
           this.wrongPassword = true;
         }
       });
-
   }
 
 
   guestLogin() {
     this.auth.signInAnonymously()
-      .then(() => {
-        this.authServ.isLoggedIn = true;
-        this.authServ.guestLogin = true;
+      .then(res => {
+        this.authServ.loggedInUser = res;
+        this.authServ.setDataToLocalStorage(true, 'Guest User');
         this.router.navigate(['/kanban']);
-        this.setDisplayName();
-        this.getInitials();
+        this.authServ.getInitals();
       }).catch(err => {
         console.log(err.message);
       })
 
-  }
-
-  setDisplayName(): void {
-    if (this.authServ.guestLogin === true) {
-      this.authServ.displayName = 'Guest User';
-    } else {
-      this.authServ.displayName = this.authServ.loggedInUser.user._delegate.displayName;
-    }
-
-    console.log(this.authServ.displayName);
-  }
-
-  getInitials(): void {
-    let displayName = this.authServ.displayName.split(' ');
-    this.authServ.initials = displayName[0].charAt(0).toLocaleUpperCase() + 
-    displayName[1].charAt(0).toLocaleUpperCase();
-  }
+  }    
 }
+
+
+
+

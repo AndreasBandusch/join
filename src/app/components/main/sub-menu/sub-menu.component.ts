@@ -18,8 +18,11 @@ export class SubMenuComponent {
   signOut() {
     this.control.firstSummaryCall = true;
     this.control.start = true;
+    this.authServ.isLoggedIn = false;
+    this.authServ.setDataToLocalStorage(false, '');
     this.auth.signOut().then(() => {
       this.router.navigate(['login']);
+      console.log('Logged in user: ', this.authServ.loggedInUser);
     });
   }
 }

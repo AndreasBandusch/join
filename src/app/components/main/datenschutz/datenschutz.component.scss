@@ -1,0 +1,11 @@
+.content-body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+}
+
+li {
+    list-style-position: inside;
+    margin-bottom: 8px;
+}

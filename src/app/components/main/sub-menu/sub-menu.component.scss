@@ -24,6 +24,16 @@
     display: none;
 }
 
+.link {
+    transition: all 125ms ease-in-out;
+
+    &:hover {
+        transform: scale(1.125);
+        transition: all 125ms ease-in-out;
+    }
+}
+
+
 
 @media (max-width: 1300px) {
     .sub-menu {

@@ -18,11 +18,11 @@ const routes: Routes = [
   { path: '', component: LoginComponent, pathMatch: 'full', },
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
-  { path: 'kanban', redirectTo: 'kanban/summary' },
+  { path: 'kanban', redirectTo: 'kanban/summary' }, 
   {
     path: 'kanban', component: MainSiteComponent, children: [
       { path: 'summary', component: SectionSummaryComponent },
-      { path: 'add-task', component: SectionAddTaskComponent },
+      { path: 'add-task', component: SectionAddTaskComponent  },
       { path: 'board', component: SectionBoardComponent },
       { path: 'imprint', component: ImpressumComponent },
       { path: 'privacy', component: DatenschutzComponent },
@@ -34,15 +34,20 @@ const routes: Routes = [
           { path: 'contact/:id', component: ContactDetailsComponent }
         ]
       },
-      { path: '**', redirectTo: 'kanban' }
-    ], 
-    // canActivate: [AuthGuard]
+       { path: '**', redirectTo: 'kanban' }
+    ],
+    canActivate: [AuthGuard]
   },
-  { path: '**', redirectTo: 'login' }
+    { path: '**', redirectTo: 'login' }
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,
+    {
+      //useHash: true,
+      anchorScrolling: 'enabled',
+      scrollPositionRestoration: 'enabled',
+    })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

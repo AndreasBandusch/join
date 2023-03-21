@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ControlService } from 'src/app/services/control.service';
 import { TaskService } from 'src/app/services/task.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { Auth } from '@angular/fire/auth';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class HeaderComponent implements OnInit {
   constructor (
     public control: ControlService, 
     public task: TaskService, 
-    public authServ: AuthService){
+    public authServ: AuthService,
+    public auth: AuthService){
   }
 
   ngOnInit(): void {

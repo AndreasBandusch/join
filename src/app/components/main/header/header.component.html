@@ -6,7 +6,7 @@
 </div>
 <div *ngIf="!control.showAddTaskBotton" class="right">
     <img class="question-mark" src="/assets/img/icons/question-mark-icon.png" routerLink="help" *ngIf="!control.inHelpSection" (click)="control.setActive('not')">
-    <div class="profile-picture" (click)="toggleSubMenu()">{{authServ.initials}}</div>
+    <div class="profile-picture" (click)="toggleSubMenu()">{{auth.getInitals()}}</div>
 </div>
 <div *ngIf="control.showAddTaskBotton" class="right">
     <button type="submit" type="submit" class="primary-btn" (click)="task.checkForm()">

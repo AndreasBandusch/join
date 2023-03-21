@@ -19,6 +19,12 @@
     width: 31px;
     margin-right: 32px;
     cursor: pointer;
+    transition: all 125ms ease-in-out;
+
+    &:hover {
+        transform: scale(1.125);
+        transition: all 125ms ease-in-out;
+    }
 }
 
 .profile-picture {
