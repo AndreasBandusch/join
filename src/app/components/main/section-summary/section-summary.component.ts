@@ -17,7 +17,7 @@ export class SectionSummaryComponent implements OnInit {
   done: number = 0;
   dueDate: number = 0;
   dueDateOutput: string = 'No tasks available';
-
+ 
   constructor(
     private afs: AngularFirestore,
     public control: ControlService) { }
@@ -28,8 +28,7 @@ export class SectionSummaryComponent implements OnInit {
       this.tasks = changes;
       this.getSummaryContent();
     });
-    this.showWelcomeForMobile(); 
-    console.log(this.control.firstSummaryCall)
+    this.showWelcomeForMobile();
   }
 
 
@@ -40,7 +39,7 @@ export class SectionSummaryComponent implements OnInit {
         this.control.firstSummaryCall = false;
       }, 3000);
 
-    } 
+    }
   }
 
 
@@ -104,6 +103,8 @@ export class SectionSummaryComponent implements OnInit {
       + ' ' + date.toLocaleString('en-US', { day: '2-digit' }) + ', '
       + date.getFullYear();
   }
+
+  
 }
 
 
