@@ -14,7 +14,7 @@
 }
 
 .due-date {
-    width: 50%;
+    width: 60%;
 }
 
 
@@ -73,7 +73,7 @@
     transition: all 75ms ease-in-out;
 
     img {
-        margin-left: 16px;
+        margin-left: 8px;
         width: 20px;
     }
 
@@ -349,10 +349,6 @@
     .content-right {
         padding-left: unset;
     }
-
-    .due-date {
-        width: 50%;
-    }
 }
 
 
@@ -428,7 +424,7 @@
     .input-field,
     input,
     .prio {
-        font-size: 18px !important;
+        font-size: 18px;
     }
 }
 
@@ -465,8 +461,7 @@
 
     .item,
     .select-menu {
-        padding-left: 12px !important;
-        padding-right: 12px !important;
+        padding: 13px 8px !important;
     }
 
     .is-overlay {

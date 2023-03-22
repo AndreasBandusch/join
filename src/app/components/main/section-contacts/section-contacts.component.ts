@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Output } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ControlService } from 'src/app/services/control.service';
 
@@ -14,11 +14,11 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
   categoryInitials: string[] = [];
   initialsLastNames: string[] = [];
   initals: any[] = [];
- 
+
 
   constructor(
-    private firestore: AngularFirestore, 
-    public control: ControlService) {}
+    private firestore: AngularFirestore,
+    public control: ControlService) { }
 
 
   ngOnInit(): void {
@@ -73,7 +73,7 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
 
   addContact() {
     this.control.notRouteToContactList = false;
-    this.control.addContactDialogOpen = true;
+    this.control.openOverlay('addContact', true);
   }
 }
 

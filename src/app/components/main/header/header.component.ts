@@ -24,11 +24,8 @@ export class HeaderComponent implements OnInit {
     
   }
 
- 
   toggleSubMenu(): void {
     this.control.showSubMenu = !this.control.showSubMenu;
     
-  }
-
-  
+  } 
 }

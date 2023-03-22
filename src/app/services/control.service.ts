@@ -4,7 +4,6 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ControlService {
-
   showAddTaskBotton = false;
   addContactDialogOpen = false;
   editContactDialogOpen = false;
@@ -61,7 +60,7 @@ export class ControlService {
     event.stopPropagation();
   }
 
-  testMe(event: string) {
+  closeSubMenu(event: string) {
     if (event === 'over') {
       this.showSubMenu = true;
     } else {
@@ -73,13 +72,37 @@ export class ControlService {
   }
 
 
-  // setOrRemoveBodyScroll() {
-  //   const bodyTag = document.body;
-  //   if (this.control.isOpenedInOverlay) {
-  //     bodyTag.classList.add('no-scroll');
-  //   } else {
-  //     bodyTag.classList.remove('no-scroll');
-  //   }
-  // }
+  setOrRemoveBodyScroll(open: boolean) {
+    const bodyTag = document.body;
+    if (open) {
+      bodyTag.classList.add('no-scroll');
+    } else {
+      bodyTag.classList.remove('no-scroll');
+    }
+  }
+
+
+
+  openOverlay(overlayName: string, open: boolean) {
+    this.setOrRemoveBodyScroll(open);
+
+    switch (overlayName) {
+      case 'addContact':
+        this.addContactDialogOpen = open;
+        break;
+      case 'editContact':
+        this.editContactDialogOpen = open;
+        break;
+      case 'taskDetails':
+        this.taskDetailsDialogOpen = open;
+        break;
+      case 'editTask':
+        this.editTasksDialogOpen = open;
+        break;
+      case 'addTask':
+        this.isOpenedInOverlay = open;
+        break;
+    }
+  }
 
 }

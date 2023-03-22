@@ -81,7 +81,7 @@ export class AddContactComponent implements OnInit {
   closeDialog() {
     this.animationStatus = true;
     setTimeout(() => {
-      this.control.addContactDialogOpen = false;
+      this.control.openOverlay('addContact', false)
     }, 225);
   }
 }
