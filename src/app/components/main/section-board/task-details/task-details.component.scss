@@ -167,11 +167,16 @@
     flex-direction: column;
     gap: 16px;
     padding-bottom: 64px;
+    max-height: 150px;
+    min-height: 150px;
+    overflow-y: auto;
 }
+
 
 .contact {
     display: flex;
     align-items: center;
+    margin-right: 32px;
 }
 
 .initials {
@@ -285,6 +290,7 @@
 
     .subtasks-cont {
         width: 100%;
+        margin-top: 32px;
     }
 }
 
