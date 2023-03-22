@@ -54,10 +54,12 @@ input {
     background-color: #fff;
     border-radius: 30px;
     height: 600px;
+    max-height: 90%;
     width: 1200px;
     display: flex;
     justify-self: center;
     align-items: center;
+    overflow-y: auto;
 }
 
 .add-contact-inner {
@@ -323,6 +325,15 @@ input {
 
     }
 
+    .add-contact {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .add-contact-cont {
+        width: 100%;
+    }
+
     .add-contact-picture {
         height: 100px;
         width: 100px;
@@ -351,13 +362,10 @@ input {
         font-size: 38px;
     }
 
-    .add-contact {
-        padding-left: 0;
-        padding-right: 0;
-    }
-
+   
     .add-contact-cont {
         height: 100%;
+        max-height: unset;
         border-radius: 0;
     }
 
