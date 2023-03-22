@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,9 @@ export class ControlService {
   inHelpSection: boolean = false;
   lastActiveLink: string = '';
 
+  constructor(private location: Location) {
+
+  }
 
   getMessage(message: string, image?: string) {
     this.messageText = message;
@@ -60,6 +64,7 @@ export class ControlService {
     event.stopPropagation();
   }
 
+
   closeSubMenu(event: string) {
     if (event === 'over') {
       this.showSubMenu = true;
@@ -74,7 +79,6 @@ export class ControlService {
 
   openOverlay(overlayName: string, open: boolean) {
     this.setOrRemoveBodyScroll(open);
-
     switch (overlayName) {
       case 'addContact':
         this.addContactDialogOpen = open;
@@ -102,6 +106,11 @@ export class ControlService {
     } else {
       bodyTag.classList.remove('no-scroll');
     }
+  }
+
+  goBack(): void {
+    this.location.back();
+    this.setActive(this.lastActiveLink);
   }
 
 }

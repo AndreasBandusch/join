@@ -14,19 +14,21 @@ ol {
         counter-increment: my-awesome-counter;
         display: flex;
 
-        .text { margin-left: 32px}
+        .text {
+            margin-left: 32px
+        }
 
-        
 
-        &::before  {
+
+        &::before {
             content: counter(my-awesome-counter) ". ";
             font-size: 27px;
             font-weight: 700;
-          }
-  }
+        }
+    }
 
 }
-  
+
 .content-header {
     position: relative;
 }
@@ -38,7 +40,8 @@ ol {
     gap: 48px;
 }
 
-.description-cont, .howto-cont {
+.description-cont,
+.howto-cont {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -53,11 +56,34 @@ ol {
 
 .arrow {
     position: absolute;
-    top: 0px;
+    top: 64px;
     right: 0;
     cursor: pointer;
-        height: 25px;
-        width: auto; 
+    height: 25px;
+    width: auto;
 }
 
+@media (max-width: 750px) {
+    h2 {
+        font-size: 21px;
+    }
 
+
+    li {
+        &::before {
+            content: counter(my-awesome-counter) ". ";
+            font-size: 21px;
+        }
+
+        .text {
+            margin-left: 16px !important;
+        }
+    }
+
+    
+
+    .content-body {
+        font-size: 16px;
+    }
+
+}

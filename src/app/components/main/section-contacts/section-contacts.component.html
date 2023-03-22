@@ -7,7 +7,7 @@
             [class.edit-contact-mobile]="switchView" (click)="control.openOverlay('editContact', true)">
     </div>
     <div class="content-inner">
-        <img src="assets/img/icons/back2-icon.png" class="back-to-contacts" [class.show-btn]="switchView"
+        <img src="assets/img/icons/arrow-big-icon.png" class="back-to-contacts" [class.show-btn]="switchView"
             (click)="toggleDetails(false)">
         <div class="contacts" [class.d-none]="switchView">
             <div *ngIf="control.contactsAvailable" class="contacts-inner">

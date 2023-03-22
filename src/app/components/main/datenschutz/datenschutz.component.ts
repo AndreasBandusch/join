@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ControlService } from 'src/app/services/control.service';
 
 @Component({
   selector: 'app-datenschutz',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./datenschutz.component.scss']
 })
 export class DatenschutzComponent {
-
+constructor(public control: ControlService){}
 }
