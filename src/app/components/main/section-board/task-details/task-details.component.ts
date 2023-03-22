@@ -12,11 +12,12 @@ export class TaskDetailsComponent implements OnInit {
   subTasks: any[] = [];
   currentSubtask: any = {};
   docId: string;
+  currentTaskStatus: string;
 
   constructor(public control: ControlService, private afs: AngularFirestore, public task: TaskService) {
     this.task.dueDate = task.currentTask.dueDate;
     this.docId = task.currentTask.docId;
-    
+    this.currentTaskStatus = task.currentTask.status;
   }
 
 
@@ -24,17 +25,18 @@ export class TaskDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.task.setDueDateOutput();
     this.task.updateSelectedContacts();
+    console.log(this.currentTaskStatus);
 
     for (let i = 0; i < this.task.currentTask.subTasks.length; i++) {
       this.subTasks.push(this.task.currentTask.subTasks[i]);
     }
 
-    
-   
+
+
   }
 
 
-  
+
 
   // updateSubTaskDoneStatus(status: boolean, index: number) {
   //   console.log(status);
@@ -51,16 +53,24 @@ export class TaskDetailsComponent implements OnInit {
     }
     this.saveStatus();
   }
+  
 
-
-  saveStatus(): void {
-    let changes = { 'subTasks': this.subTasks }
+  setNewTaskStatus() {
+    let changes = { 'status': this.currentTaskStatus };
     this.afs.collection('tasks')
       .doc(this.docId)
       .update(changes);
   }
 
-  
+
+  saveStatus(): void {
+    let changes = { 'subTasks': this.subTasks };
+    this.afs.collection('tasks')
+      .doc(this.docId)
+      .update(changes);
+  }
+
+
   openEditDialog() {
     this.control.taskDetailsDialogOpen = false;
     this.control.editTasksDialogOpen = true;

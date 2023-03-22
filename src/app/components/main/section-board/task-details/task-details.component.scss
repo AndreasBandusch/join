@@ -146,6 +146,22 @@
     }
 }
 
+.task-status {
+    display: flex;
+}
+
+.status-area {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+}
+
+.item {
+    display: flex;
+    gap: 4px;
+    margin-right: 12px;
+}
+
 .assigned-area {
     display: flex;
     flex-direction: column;
@@ -177,6 +193,12 @@
     cursor: pointer;
 }
 
+@media (max-width: 920px) {
+    input {
+        height: unset;
+    }
+}
+
 @media (max-width: 750px) {
     .overlay {
         padding-left: 32px;
@@ -185,6 +207,15 @@
 
     .task-details {
         width: 100%;
+    }
+
+    .status-area {
+       flex-direction: column;
+       align-items: flex-start;
+    }
+    
+    .item {
+        gap: 8px;
     }
 }
 
@@ -249,7 +280,7 @@
 
     .subtasks-area {
         flex-direction: column;
-        margin-top: 32px;
+        // margin-top: 32px;
     }
 
     .subtasks-cont {
