@@ -312,6 +312,9 @@ input {
 }
 
 @media (max-width: 450px) {
+    input, ::placeholder {
+        font-size: 16px !important;
+    }
     h1 {
         font-size: 40px;
     }
@@ -320,8 +323,8 @@ input {
         font-size: 18px;
     }
 
-    .title-cont {
-        padding: 32px;
+    .title-cont, .content-cont {
+        padding: 16px;
 
     }
 
@@ -370,7 +373,6 @@ input {
     }
 
     .title-cont {
-        padding: 16px;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
     }
