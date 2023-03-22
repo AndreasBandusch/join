@@ -37,6 +37,7 @@ import { EditTaskComponent } from './components/main/section-board/edit-task/edi
 import { DeleteTaskComponent } from './components/main/section-board/delete-task/delete-task.component';
 import { SubMenuComponent } from './components/main/sub-menu/sub-menu.component';
 import { HelpComponent } from './components/main/help/help.component';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { HelpComponent } from './components/main/help/help.component';
     DeleteTaskComponent,
     SubMenuComponent,
     HelpComponent,
+    EllipsisPipe,
   ],
   imports: [
     RouterModule,

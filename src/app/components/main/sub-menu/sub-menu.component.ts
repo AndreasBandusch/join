@@ -19,9 +19,9 @@ export class SubMenuComponent {
     this.control.firstSummaryCall = true;
     this.control.start = true;
     this.authServ.isLoggedIn = false;
-    this.authServ.setDataToLocalStorage(false, '');
     this.auth.signOut().then(() => {
-      this.router.navigate(['login']);
+      this.authServ.setDataToLocalStorage(false, '');
+      this.router.navigate(['login']); 
     });
   }
 }

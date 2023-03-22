@@ -456,6 +456,10 @@ a:hover {
     .sub-title {
         font-size: 18px;
     }
+
+    .input-field, textarea {
+        padding: 13px 8px;
+    }
 }
 
 @media (max-width: 350px) {

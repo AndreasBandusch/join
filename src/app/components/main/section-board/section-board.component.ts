@@ -19,6 +19,7 @@ export class SectionBoardComponent implements OnInit {
   doneTasks: any[] = [];
   isDragging: boolean = false;
   currentSearch: string = '';
+  maxDescriptionLength = 50;
 
   constructor(
     private afs: AngularFirestore,

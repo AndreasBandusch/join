@@ -40,7 +40,7 @@
                             </div>
                             <span class="task-title">{{item.title}}</span>
                             <div class="desciption">
-                                {{item.description}}
+                                {{item.description | ellipsis:maxDescriptionLength}}
                             </div>
                             <div *ngIf="item.subTasks.length" class="progress-cont">
                                 <div class="bar">
@@ -86,7 +86,7 @@
                             </div>
                             <span class="task-title">{{item.title}}</span>
                             <div class="desciption">
-                                {{item.description}}
+                                {{item.description | ellipsis:maxDescriptionLength}}
                             </div>
                             <div *ngIf="item.subTasks.length" class="progress-cont">
                                 <div class="bar">
@@ -132,7 +132,7 @@
                             </div>
                             <span class="task-title">{{item.title}}</span>
                             <div class="desciption">
-                                {{item.description}}
+                                {{item.description | ellipsis:maxDescriptionLength}}
                             </div>
                             <div *ngIf="item.subTasks.length" class="progress-cont">
                                 <div class="bar">
@@ -179,7 +179,7 @@
                             </div>
                             <span class="task-title">{{item.title}}</span>
                             <div class="desciption">
-                                {{item.description}}
+                                {{item.description | ellipsis:maxDescriptionLength}}
                             </div>
                             <div *ngIf="item.subTasks.length" class="progress-cont">
                                 <div class="bar">
