@@ -17,7 +17,9 @@ export class SectionSummaryComponent implements OnInit {
   done: number = 0;
   dueDate: number = 0;
   dueDateOutput: string = 'No tasks available';
- 
+  todoImageSrc: string = 'assets/img/icons/edit-icon.png';
+  doneImageSrc: string = 'assets/img/icons/done-icon.png';
+
   constructor(
     private afs: AngularFirestore,
     public control: ControlService) { }
@@ -105,6 +107,23 @@ export class SectionSummaryComponent implements OnInit {
   }
 
   
+  changeImage(area: string, isMouseOver: boolean) {
+    if (isMouseOver) {
+      if (area === 'done') {
+        this.doneImageSrc = 'assets/img/icons/done-white-icon.png';
+      } else {
+        this.todoImageSrc = 'assets/img/icons/edit-white-icon.png'
+      }
+    } else {
+      if (area === 'todo') {
+        this.todoImageSrc = 'assets/img/icons/edit-icon.png';
+      } else {
+        this.doneImageSrc = 'assets/img/icons/done-icon.png';
+      }
+    }
+  }
+
 }
+
 
 
