@@ -14,7 +14,7 @@ constructor(public control: ControlService) {}
   closeDialog() {
      this.animationStatus = true;
      setTimeout(() => {
-       this.control.isOpenedInOverlay = false;
+      this.control.openOverlay('addTask', false)
      }, 225);
   }
 }

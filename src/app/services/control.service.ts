@@ -72,17 +72,6 @@ export class ControlService {
   }
 
 
-  setOrRemoveBodyScroll(open: boolean) {
-    const bodyTag = document.body;
-    if (open) {
-      bodyTag.classList.add('no-scroll');
-    } else {
-      bodyTag.classList.remove('no-scroll');
-    }
-  }
-
-
-
   openOverlay(overlayName: string, open: boolean) {
     this.setOrRemoveBodyScroll(open);
 
@@ -102,6 +91,16 @@ export class ControlService {
       case 'addTask':
         this.isOpenedInOverlay = open;
         break;
+    }
+  }
+
+
+  setOrRemoveBodyScroll(open: boolean) {
+    const bodyTag = document.body;
+    if (open) {
+      bodyTag.classList.add('no-scroll');
+    } else {
+      bodyTag.classList.remove('no-scroll');
     }
   }
 

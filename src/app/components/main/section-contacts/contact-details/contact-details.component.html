@@ -6,13 +6,13 @@
         
         <div class="details-name">
             <span>{{ currentContact.firstName }} {{ currentContact.lastName }}</span>
-            <div class="add-task" (click)="control.isOpenedInOverlay = true">+ Add Task</div>
+            <div class="add-task" (click)="control.openOverlay('addTask', true)">+ Add Task</div>
         </div>
     </div>
     <div class="details-info">
         <div class="info-header">
             <span class="info-header-text">Contact Information</span>
-            <div class="edit-contact" (click)="control.editContactDialogOpen = true">
+            <div class="edit-contact" (click)="control.openOverlay('editContact', true)">
                 <img src="assets/img/icons/edit-contact-icon.png">
                 <span>Edit Contact</span>
             </div>

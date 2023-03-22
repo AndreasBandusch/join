@@ -73,7 +73,7 @@ export class TaskDetailsComponent implements OnInit {
 
   openEditDialog() {
     this.control.taskDetailsDialogOpen = false;
-    this.control.editTasksDialogOpen = true;
+    this.control.openOverlay('editTask', true);
   }
 
 }

@@ -1,4 +1,4 @@
-<div class="overlay" (click)="control.editTasksDialogOpen = false">
+<div class="overlay" (click)="control.openOverlay('editTask', false)">
     <div class="edit-task-details" (click)="control.dontCloseByClick($event)">
         <form class="edit-task-outer" [formGroup]="fControl.taskForm" (submit)="checkFormForUpdateTask()">
             <div class="edit-task-inner">
@@ -110,7 +110,7 @@
                         {{contact.initials}}
                     </div>
                 </div> -->
-                <img src="assets/img/icons/close-icon.png" (click)="control.editTasksDialogOpen = false" class="close">
+                <img src="assets/img/icons/close-icon.png" (click)="control.openOverlay('editTask', false)" class="close">
                 <div class="btn-cont">
                     <button class="primary-btn" type="submit">
                         Ok
