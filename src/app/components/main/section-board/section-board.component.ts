@@ -86,8 +86,8 @@ export class SectionBoardComponent implements OnInit {
 
 
   seperateTasksByStatus(): void {
-   this.resetTasksArrays()
-   this.sortAndFillTasksArrays();
+    this.resetTasksArrays()
+    this.sortAndFillTasksArrays();
   }
 
 
@@ -133,7 +133,7 @@ export class SectionBoardComponent implements OnInit {
     this.setTaskStatus(event.item.data, event.container.id);
   }
 
-  
+
   setTaskStatus(currentTask: any, dropListId: string): void {
     switch (dropListId) {
       case 'todo':
@@ -192,7 +192,7 @@ export class SectionBoardComponent implements OnInit {
     let percent = (doneSubTasks / subTaskslength) * 100;
     return `${percent}%`;
   }
-  
+
 
   searchResult(currentTask: any): boolean {
     if (this.currentSearch) {
@@ -200,7 +200,6 @@ export class SectionBoardComponent implements OnInit {
       let title = currentTask.title.toLowerCase();
       let description = currentTask.description.toLowerCase();
       let category = currentTask.category.name.toLowerCase();
-
       if (title.includes(search) || description.includes(search) || category.includes(search)) {
         return true;
       } else {

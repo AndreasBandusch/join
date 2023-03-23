@@ -14,10 +14,6 @@ a:active>div {
     border-radius: 10px;
 }
 
-// a:focus>div {
-//     cursor: auto;
-// }
-
 .title {
     border-right: 3px solid #29ABE2;
 }
@@ -30,8 +26,7 @@ a:active>div {
     background-color: #F5F5F5;
     margin-bottom: 112px;
 }
-
-    
+  
 .btn-cont {
     position: absolute;
     display: flex;
@@ -39,7 +34,6 @@ a:active>div {
     justify-content: flex-end;
     padding-top: 16px;
     padding-bottom: 16px;
-    // padding-right: 48px;
     bottom: 32px;
     right: 0;
     width: 100%;
@@ -304,7 +298,6 @@ a:active>div {
 }
 
 @media (max-width: 1100px) {
-
     .name,
     .email {
         max-width: 480px;
@@ -445,8 +438,6 @@ a:active>div {
 
     .back-to-contacts {
         right: 16px;
-        // height: 16px;
-        // width: 16px;
     }
 }
 

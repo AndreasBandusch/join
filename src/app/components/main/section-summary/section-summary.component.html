@@ -40,14 +40,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="cont todo-cont" routerLink="../board" (click)="control.setActive('board')" (mouseover)="changeImage('todo', true)" (mouseout)="changeImage('todo', false)">
+                    <div class="cont todo-cont" routerLink="../board" (click)="control.setActive('board')"
+                        (mouseover)="changeImage('todo', true)" (mouseout)="changeImage('todo', false)">
                         <img src="{{todoImageSrc}}">
                         <div class="todo-inner">
                             <span class="todo-number">{{todo}}</span>
                             <span class="todo-text">To-do</span>
                         </div>
                     </div>
-                    <div class="cont todo-cont" routerLink="../board" (click)="control.setActive('board')" (mouseover)="changeImage('done' ,true)" (mouseout)="changeImage('done', false)">
+                    <div class="cont todo-cont" routerLink="../board" (click)="control.setActive('board')"
+                        (mouseover)="changeImage('done' ,true)" (mouseout)="changeImage('done', false)">
                         <img src="{{doneImageSrc}}">
                         <div class="todo-inner">
                             <span class="todo-number">{{done}}</span>

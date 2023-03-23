@@ -4,16 +4,19 @@ import { AuthService } from 'src/app/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-sub-menu',
   templateUrl: './sub-menu.component.html',
   styleUrls: ['./sub-menu.component.scss']
 })
-export class SubMenuComponent {
-  constructor(public control: ControlService, public authServ: AuthService, private auth: AngularFireAuth, private router: Router) {
 
-  }
+export class SubMenuComponent {
+  constructor(
+    public control: ControlService,
+    public authServ: AuthService,
+    private auth: AngularFireAuth,
+    private router: Router) { }
+
 
   signOut() {
     this.control.firstSummaryCall = true;
@@ -21,7 +24,7 @@ export class SubMenuComponent {
     this.authServ.isLoggedIn = false;
     this.auth.signOut().then(() => {
       this.authServ.setDataToLocalStorage(false, '');
-      this.router.navigate(['login']); 
+      this.router.navigate(['login']);
     });
   }
 }

@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -12,9 +10,9 @@ export class AuthService {
   isLoggedIn = false;
   initials: string = '';
 
-
-  constructor(private auth: AngularFireAuth, private router: Router) {
-  }
+  constructor(
+    private auth: AngularFireAuth,
+    private router: Router) { }
 
 
   setDataToLocalStorage(loggendIn: boolean, displayName: string) {
@@ -43,8 +41,8 @@ export class AuthService {
     let initials;
     let splitedDisplayName = displayName.split(' ');;
     initials = splitedDisplayName[0].charAt(0).toLocaleUpperCase() +
-    splitedDisplayName[1].charAt(0).toLocaleUpperCase();
-      return initials;
+      splitedDisplayName[1].charAt(0).toLocaleUpperCase();
+    return initials;
   }
 
 

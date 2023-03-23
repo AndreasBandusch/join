@@ -28,7 +28,8 @@
             <div class="field-group">
                 <div class="input-field">
                     <div class="field">
-                        <input name="email" type="text" placeholder="Email" [(ngModel)]="email" formControlName="email" (ngModelChange)="userAlreadyExists = false">
+                        <input name="email" type="text" placeholder="Email" [(ngModel)]="email" formControlName="email"
+                            (ngModelChange)="userAlreadyExists = false">
                     </div>
                     <div class="icon">
                         <img src="/assets/img/icons/input-email.png">
@@ -62,9 +63,9 @@
                 </ng-container>
             </div>
             <div class="btn-container">
-                <button class="primary-btn" type="submit" [disabled]="fControl.userSignUp.invalid || userAlreadyExists">Sign up</button>
+                <button class="primary-btn" type="submit"
+                    [disabled]="fControl.userSignUp.invalid || userAlreadyExists">Sign up</button>
             </div>
         </form>
     </div>
-
 </div>

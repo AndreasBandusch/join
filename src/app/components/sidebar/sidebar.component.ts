@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ControlService } from 'src/app/services/control.service';
 
@@ -12,7 +11,6 @@ import { ControlService } from 'src/app/services/control.service';
 export class SidebarComponent implements OnInit {
 
   constructor(
-    private router: Router,
     private location: Location,
     public control: ControlService) {
   }
@@ -50,11 +48,4 @@ export class SidebarComponent implements OnInit {
         break;
     }
   }
-
-  // navigate() {
-  //   this.router.navigate(['/login']);
-  // }
-
-  // Sets the active link
-
 }

@@ -6,6 +6,5 @@ import { ControlService } from 'src/app/services/control.service';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-constructor(public control: ControlService) {}
-
+  constructor(public control: ControlService) { }
 }

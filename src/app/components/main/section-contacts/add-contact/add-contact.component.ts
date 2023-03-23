@@ -24,8 +24,7 @@ export class AddContactComponent implements OnInit {
     public control: ControlService,
     private firestore: AngularFirestore,
     public fControl: CustomformcontrolModule,
-    private route: Router) {
-  }
+    private route: Router) { }
 
 
   ngOnInit(): void {
@@ -42,7 +41,7 @@ export class AddContactComponent implements OnInit {
     this.control.currentContact = newContact.id;
   }
 
-  
+
   saveContact(newContact: any) {
     this.firestore
       .collection('contacts')
@@ -64,8 +63,7 @@ export class AddContactComponent implements OnInit {
     this.allContacts.forEach(contact => {
       if (contact.id == this.currentContactId) {
         this.newContactId = contact.docId;
-
-        (this.control.notRouteToContactList !== true ? 
+        (this.control.notRouteToContactList !== true ?
           this.route.navigate(['kanban/contact-list/contact/' + this.newContactId]) : false);
       }
     })
@@ -76,7 +74,7 @@ export class AddContactComponent implements OnInit {
     this.closeDialog();
     this.control.getMessage('Contact succesfully created');
   }
-  
+
 
   closeDialog() {
     this.animationStatus = true;

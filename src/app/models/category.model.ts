@@ -2,12 +2,11 @@ export class Category {
     public id: number = 0;
     public name: string = '';
     public color?: string = '';
-    
 
     constructor(
-        name: string, 
+        name: string,
         color?: string
-    ){
+    ) {
         this.getRandomId();
         this.name = name;
         this.color = color;
@@ -23,9 +22,10 @@ export class Category {
         }
     }
 
+    
     private getRandomColor(): void {
-       let  colors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
-       this.color = colors[Math.floor(Math.random() * colors.length)];
+        let colors: string[] = ['#8fa6fc', '#e83400', '#6bce33', '#ee8f11', '#cd37b9', '#0e45fa'];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
     }
 
 
@@ -40,5 +40,5 @@ export class Category {
             name: this.name,
             color: this.color
         }
-    } 
+    }
 }

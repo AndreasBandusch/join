@@ -1,9 +1,9 @@
 <div *ngIf="control.contactsAvailable" class="details-content" [class.slide-in]="slideIn">
     <div class="details-name-cont">
         <div>
-            <span class="initials" [ngStyle]="{'background-color': currentContact.color}">{{ currentContact.initials}}</span>
+            <span class="initials" [ngStyle]="{'background-color': currentContact.color}">{{
+                currentContact.initials}}</span>
         </div>
-        
         <div class="details-name">
             <span>{{ currentContact.firstName }} {{ currentContact.lastName }}</span>
             <div class="add-task" (click)="control.openOverlay('addTask', true)">+ Add Task</div>
@@ -17,7 +17,6 @@
                 <span>Edit Contact</span>
             </div>
         </div>
-
         <div class="info-body">
             <div class="info-email-cont">
                 <span class="info-email-header">Email</span>

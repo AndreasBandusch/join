@@ -17,8 +17,8 @@
                     </div>
                     <div *ngFor="let contact of allContacts; index as i">
                         <div *ngIf="getFirstLetter(contact.firstName) === initial" class="category-body">
-                            <a [routerLink]="['contact', contact.docId]"
-                                (click)="control.currentContact = contact.id" (click)="toggleDetails(true)">
+                            <a [routerLink]="['contact', contact.docId]" (click)="control.currentContact = contact.id"
+                                (click)="toggleDetails(true)">
                                 <div class="category-body-cont"
                                     [class.active]="control.currentContact === contact.id && control.currentContact != 0">
                                     <div class="contact-initials" [ngStyle]="{'background-color': contact.color}">

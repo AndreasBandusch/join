@@ -72,7 +72,6 @@ export class CustomformcontrolModule {
   });
 
 
-
   public userLogin: FormGroup = new FormGroup({
     email: new FormControl('', [
       Validators.required,

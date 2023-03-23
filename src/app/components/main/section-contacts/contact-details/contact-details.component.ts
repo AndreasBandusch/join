@@ -8,18 +8,16 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   templateUrl: './contact-details.component.html',
   styleUrls: ['./contact-details.component.scss']
 })
+
 export class ContactDetailsComponent implements OnInit {
 currentContact: any = {};
 contactId: string = '';
 slideIn: boolean = true;
 
-
   constructor( 
     public route: ActivatedRoute, 
     public control: ControlService, 
-    private afs: AngularFirestore) {
-
-  }
+    private afs: AngularFirestore) { }
 
 
   ngOnInit(): void {

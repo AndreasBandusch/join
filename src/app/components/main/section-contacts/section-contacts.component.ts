@@ -15,7 +15,6 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
   initialsLastNames: string[] = [];
   initals: any[] = [];
 
-
   constructor(
     private firestore: AngularFirestore,
     public control: ControlService) { }

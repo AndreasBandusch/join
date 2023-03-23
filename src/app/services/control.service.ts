@@ -32,9 +32,7 @@ export class ControlService {
   inHelpSection: boolean = false;
   lastActiveLink: string = '';
 
-  constructor(private location: Location) {
-
-  }
+  constructor(private location: Location) { }
 
   getMessage(message: string, image?: string) {
     this.messageText = message;
@@ -108,6 +106,7 @@ export class ControlService {
     }
   }
 
+  
   goBack(): void {
     this.location.back();
     this.setActive(this.lastActiveLink);

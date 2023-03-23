@@ -1,6 +1,8 @@
-<div class="overlay" [class.slide-out]="animationStatus" [class.fade-out]="animationStatus" [class.fade-in]="!animationStatus" (click)="closeDialog()">
+<div class="overlay" [class.slide-out]="animationStatus" [class.fade-out]="animationStatus"
+    [class.fade-in]="!animationStatus" (click)="closeDialog()">
     <div class="overlay-inner" [class.slide-out]="animationStatus" [class.slide-in]="!animationStatus"
-    [class.slide-out-mobile]="animationStatus" [class.slide-in-mobile]="!animationStatus" (click)="control.dontCloseByClick($event)">
+        [class.slide-out-mobile]="animationStatus" [class.slide-in-mobile]="!animationStatus"
+        (click)="control.dontCloseByClick($event)">
         <app-section-add-task></app-section-add-task>
         <img src="assets/img/icons/close-icon.png" class="close-dialog" (click)="closeDialog()">
     </div>

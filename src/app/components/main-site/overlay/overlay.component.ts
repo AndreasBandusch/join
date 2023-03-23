@@ -7,14 +7,14 @@ import { ControlService } from 'src/app/services/control.service';
   styleUrls: ['./overlay.component.scss']
 })
 export class OverlayComponent {
-animationStatus: boolean = false;
+  animationStatus: boolean = false;
 
-constructor(public control: ControlService) {}
+  constructor(public control: ControlService) { }
 
   closeDialog() {
-     this.animationStatus = true;
-     setTimeout(() => {
+    this.animationStatus = true;
+    setTimeout(() => {
       this.control.openOverlay('addTask', false)
-     }, 225);
+    }, 225);
   }
 }

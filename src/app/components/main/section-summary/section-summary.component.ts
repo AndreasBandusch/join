@@ -30,7 +30,7 @@ export class SectionSummaryComponent implements OnInit {
       this.tasks = changes;
       this.getSummaryContent();
     });
-    // this.showWelcomeForMobile();
+    this.showWelcomeForMobile();
   }
 
 
@@ -106,7 +106,7 @@ export class SectionSummaryComponent implements OnInit {
       + date.getFullYear();
   }
 
-  
+
   changeImage(area: string, isMouseOver: boolean) {
     if (isMouseOver) {
       if (area === 'done') {
@@ -122,7 +122,6 @@ export class SectionSummaryComponent implements OnInit {
       }
     }
   }
-
 }
 
 

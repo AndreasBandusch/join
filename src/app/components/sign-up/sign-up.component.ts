@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { CustomformcontrolModule } from 'src/app/modules/customformcontrol/customformcontrol.module';
 import { ControlService } from 'src/app/services/control.service';
 
-
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -17,7 +16,12 @@ export class SignUpComponent implements OnInit {
   userAlreadyExists: boolean = false;
 
 
-  constructor(private auth: AngularFireAuth, private router: Router, public fControl: CustomformcontrolModule, private control: ControlService) { }
+  constructor(
+    private auth: AngularFireAuth,
+    private router: Router,
+    public fControl: CustomformcontrolModule,
+    private control: ControlService) { }
+
 
   ngOnInit(): void {
     this.fControl.userSignUp.reset();
@@ -27,20 +31,34 @@ export class SignUpComponent implements OnInit {
     this.auth
       .createUserWithEmailAndPassword(this.email, this.password)
       .then(res => {
-        if (res.user) {
-          res.user.updateProfile({ displayName: this.userName });
-          this.control.getMessage('Sign up successful!');
-
-          setTimeout(() => {
-            this.router.navigate(['/login']);
-          }, 1500);
-        }
+        this.signUpIsSuccessful(res);
       })
       .catch(error => {
-        console.log('my error', error.message);
-        if(error.message.includes('email address is already in use')) {
-          this.userAlreadyExists = true;
-        }
+        this.showErrorMessage(error);
       });
+  }
+
+
+  signUpIsSuccessful(res: any) {
+    if (res.user) {
+      res.user.updateProfile({ displayName: this.userName });
+      this.control.getMessage('Sign up successful!');
+      this.goToLogin();
+    }
+  }
+
+
+  goToLogin() {
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 1500);
+  }
+
+
+  showErrorMessage(error: any) {
+    console.log('my error', error.message);
+    if (error.message.includes('email address is already in use')) {
+      this.userAlreadyExists = true;
+    }
   }
 }

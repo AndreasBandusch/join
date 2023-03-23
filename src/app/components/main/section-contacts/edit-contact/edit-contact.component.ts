@@ -24,8 +24,7 @@ export class EditContactComponent implements OnInit {
   constructor(
     private control: ControlService,
     private firestore: AngularFirestore,
-    public fControl: CustomformcontrolModule) {
-  }
+    public fControl: CustomformcontrolModule) { }
 
 
   ngOnInit(): void {

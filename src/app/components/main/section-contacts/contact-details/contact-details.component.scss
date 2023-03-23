@@ -1,10 +1,7 @@
-
-
 .details-content {
     display: flex;
     flex-direction: column;
     gap: 48px;
-    
 }
 
 .details-name-cont {
@@ -43,8 +40,6 @@
     cursor: pointer;
 }
 
-
-
 .info-header {
     display: flex;
     align-items: flex-end;
@@ -54,7 +49,6 @@
 .info-header-text {
     font-size: 21px;
     margin-right: 60px;
-
 }
 
 .edit-contact {
@@ -88,31 +82,29 @@
     animation: slide-in 225ms ease-in-out;
 }
 
-
 @keyframes slide-in {
     from {
-      
+
         transform: translateX(150%);
     }
+
     to {
-       
+
         transform: translateX(0%);
     }
-
 }
 
 @media (max-width: 1440px) {
-   .initials {
-    margin-right: 32px;
-   }
+    .initials {
+        margin-right: 32px;
+    }
+
     .details-name {
         span {
             font-size: 40px;
         }
-
-       
     }
-   }
+}
 
 
 @media (max-width: 1300px) {
@@ -133,12 +125,11 @@
 
 @media (max-width: 920px) {
     .details-content {
-       margin-bottom: 122px; 
+        margin-bottom: 122px;
     }
-    
 }
+
 @media (max-width: 700px) {
-    
     .initials {
         height: 100px;
         width: 100px;
@@ -151,8 +142,6 @@
         span {
             font-size: 32px;
         }
-
-       
     }
 }
 
@@ -166,31 +155,30 @@
     .details-name {
         span {
             font-size: 32px;
-        }  
+        }
     }
 
     .initials {
         margin-right: 16px;
     }
-
 }
 
 
 @media (max-width: 450px) {
-
     .details-name {
         span {
             font-size: 26px;
-        }  
+        }
     }
-
 }
+
 @media (max-width: 350px) {
     .details-name {
         span {
             font-size: 21px;
         }
     }
+
     .initials {
         height: 60px;
         width: 60px;
@@ -199,5 +187,5 @@
 
     .info-header-text {
         font-size: 18px;
-    }  
+    }
 }

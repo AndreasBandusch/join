@@ -2,7 +2,6 @@
     min-height: calc(100% - 92px);
     padding-bottom: 48px;
     margin-left: 48px;
-    // margin-right: 48px;
 }
 
 .content-body {
@@ -43,7 +42,6 @@
     align-items: flex-start;
     height: 100%;
     width: 100%;
-    // gap: 32px;
 }
 
 .control-cont {
@@ -116,8 +114,6 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-
 }
 
 .bar {
@@ -185,9 +181,7 @@
 .cdk-drop-list {
     margin-top: 32px;
     gap: 32px;
-    // height: 100%;
     width: 100%;
-
 }
 
 .cdk-drag-placeholder {
@@ -220,9 +214,6 @@
 }
 
 @media (max-width: 1520px) {
-    // .status-header {
-    //     font-size: 18px;
-    // }
     .content-body {
         justify-content: space-between;
         row-gap: 48px;
@@ -231,8 +222,6 @@
 
     .status {
         width: 30%;
-        // max-height: 100%;
-        // overflow: auto;
     }
 
 }
@@ -290,7 +279,7 @@
     .content-body {
         gap: 128px;
     }
-    
+
     .cdk-drop-list {
         gap: 64px;
     }

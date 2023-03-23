@@ -38,6 +38,7 @@ export class TaskService {
       this.getMinDate();
     }
 
+
   getMinDate() {
     const today = new Date();
     this.minDate = today.toISOString().split('T')[0];
@@ -186,6 +187,7 @@ export class TaskService {
     this.dueDateTimestamp = new Date(this.dueDate).getTime();
   }
 
+
   updateSelectedContacts() {
     this.assignedContactIdsForTask = [];
     for (let key in this.selectedContacts) {
@@ -222,7 +224,6 @@ export class TaskService {
   }
 
 
-
   resetForm() {
     this.unsetFormControlErrorMsgs();
     this.description = '';
@@ -245,6 +246,7 @@ export class TaskService {
     this.fControl.hasSend = false;
   }
 
+
   unsetFormControlErrorMsgs() {
     this.fControl.noPrioErrorMsg = '';
     this.fControl.noAssignedContactsErrorMsg = '';
@@ -253,7 +255,6 @@ export class TaskService {
     this.fControl.noPrioErrorMsg = '';
     this.showSubtasksNotice = false
   }
-
 
 
   setDueDateOutput() {

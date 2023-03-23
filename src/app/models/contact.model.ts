@@ -24,19 +24,19 @@ export class Contact {
         let splittedName = fullName.trim().replace(/\s+/g, ' ').split(" ");
         firstName = splittedName[0].toLocaleLowerCase();
         lastName = splittedName[splittedName.length - 1].toLocaleLowerCase();
-
         firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
         lastName = lastName.charAt(0).toUpperCase() + lastName.slice(1);
-
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
 
     private initContact(phone?: string): void {
         this.createId();
         this.checkPhoneNumberExist(phone)
         this.getInitials();
     }
+
 
     private checkPhoneNumberExist(phone?: string) {
         if (!phone) this.phone = 'No phone number exists';
@@ -52,6 +52,7 @@ export class Contact {
         this.initials = this.firstName.charAt(0) + this.lastName.charAt(0);
     }
 
+
     public getRandomColor() {
         let colors =
             ['#FFB900', '#E60073', '#1D7AFF', '#FF55E6', '#00FF6E', '#FF0048',
@@ -60,10 +61,9 @@ export class Contact {
                 '#00FFA9', '#E6006D', '#9C7AFF', '#FF7A00', '#9327FF', '#29ABE2',
                 '#FC71FF', '#02CF2F', '#AF1616', '#462F8A'
             ];
-        
-           
-                this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.color = colors[Math.floor(Math.random() * colors.length)];
     }
+
 
     public toJSON(): object {
         return {
