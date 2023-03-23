@@ -27,14 +27,14 @@ export class SectionBoardComponent implements OnInit {
     public task: TaskService) { }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadContacts();
     this.loadCategorys();
     this.loadTasks();
   }
 
 
-  loadContacts() {
+  loadContacts(): void {
     this.afs.collection('contacts').valueChanges().subscribe(changes => {
       this.allContacts = changes;
       this.loadAssignedContactsInAllTasks();
@@ -43,7 +43,7 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  loadTasks() {
+  loadTasks(): void {
     this.afs.collection('tasks').valueChanges({ idField: 'docId' }).subscribe(changes => {
       this.allTasks = changes;
       this.loadContacts();
@@ -53,7 +53,7 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  loadCategorys() {
+  loadCategorys(): void {
     this.afs.collection('categorys').valueChanges().subscribe(changes => {
       this.allCategorys = changes;
       this.loadAssignedCategoryInAllTasks();
@@ -61,7 +61,7 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  loadAssignedContactsInAllTasks() {
+  loadAssignedContactsInAllTasks(): void {
     for (let task of this.allTasks) {
       let contacts = [];
       for (let assignedToId of task.assignedTo) {
@@ -91,7 +91,7 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  resetTasksArrays() {
+  resetTasksArrays(): void {
     this.todoTasks = [];
     this.inProgressTasks = [];
     this.awaitingFeedbackTasks = [];
@@ -99,7 +99,7 @@ export class SectionBoardComponent implements OnInit {
   }
 
 
-  sortAndFillTasksArrays() {
+  sortAndFillTasksArrays(): void {
     this.allTasks.forEach(task => {
       switch (task.status) {
         case 'todo':

@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  userLogin() {
+  userLogin(): void {
     this.noUserFound = false;
     this.wrongPassword = false;
     this.auth.signInWithEmailAndPassword(this.email, this.password)
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  loginIsSuccessful(res: any) {
+  loginIsSuccessful(res: any): void {
     this.authServ.loggedInUser = res;
     const displayName = this.authServ.loggedInUser.user._delegate.displayName;
     this.authServ.setDataToLocalStorage(true, displayName);
@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  showLoginError(error: any) {
+  showLoginError(error: any): void {
     if (error.message.includes('no user record corresponding')) {
       this.noUserFound = true;
     }
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
   }
 
 
-  guestLogin() {
+  guestLogin(): void {
     this.auth.signInAnonymously()
       .then(res => {
         this.authServ.loggedInUser = res;

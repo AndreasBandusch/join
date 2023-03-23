@@ -34,25 +34,25 @@ export class EditTaskComponent implements OnInit {
   }
 
 
-  setPrio() {
+  setPrio(): void {
     this.task.activePrio = this.task.currentTask.prio;
   }
 
 
-  loadContacts() {
+  loadContacts(): void {
     this.afs.collection('contacts').valueChanges().subscribe((changes) => {
       this.allContacts = changes;
     });
   }
 
 
-  addContact() {
+  addContact(): void {
     this.control.notRouteToContactList = true;
     this.control.addContactDialogOpen = true
   }
 
 
-  checkFormForUpdateTask() {
+  checkFormForUpdateTask(): void {
     this.fControl.hasSend = true;
     this.task.checkIfaContactIsAssigned();
     if (this.fControl.assignedToReady &&
@@ -62,7 +62,7 @@ export class EditTaskComponent implements OnInit {
   }
 
 
-  createUpdateTask() {
+  createUpdateTask(): void {
     const docId = this.task.currentTask.docId;
     this.setTaskValues();
     this.task.updateSelectedContacts();
@@ -71,7 +71,7 @@ export class EditTaskComponent implements OnInit {
   }
 
 
-  setTaskValues() {
+  setTaskValues(): void {
     this.task.currentTask.title = this.title;
     this.task.currentTask.description = this.description;
     this.task.currentTask.prio = this.task.activePrio;

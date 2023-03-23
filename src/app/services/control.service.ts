@@ -58,12 +58,12 @@ export class ControlService {
   }
 
 
-  dontCloseByClick(event: Event) {
+  dontCloseByClick(event: Event): void {
     event.stopPropagation();
   }
 
 
-  closeSubMenu(event: string) {
+  closeSubMenu(event: string): void {
     if (event === 'over') {
       this.showSubMenu = true;
     } else {
@@ -75,7 +75,7 @@ export class ControlService {
   }
 
 
-  openOverlay(overlayName: string, open: boolean) {
+  openOverlay(overlayName: string, open: boolean): void {
     this.setOrRemoveBodyScroll(open);
     switch (overlayName) {
       case 'addContact':
@@ -97,7 +97,7 @@ export class ControlService {
   }
 
 
-  setOrRemoveBodyScroll(open: boolean) {
+  setOrRemoveBodyScroll(open: boolean): void {
     const bodyTag = document.body;
     if (open) {
       bodyTag.classList.add('no-scroll');

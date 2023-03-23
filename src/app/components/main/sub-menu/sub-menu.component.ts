@@ -18,7 +18,7 @@ export class SubMenuComponent {
     private router: Router) { }
 
 
-  signOut() {
+  signOut(): void {
     this.control.firstSummaryCall = true;
     this.control.start = true;
     this.authServ.isLoggedIn = false;

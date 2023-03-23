@@ -11,7 +11,7 @@ export class OverlayComponent {
 
   constructor(public control: ControlService) { }
 
-  closeDialog() {
+  closeDialog(): void {
     this.animationStatus = true;
     setTimeout(() => {
       this.control.openOverlay('addTask', false)

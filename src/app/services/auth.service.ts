@@ -1,21 +1,18 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   loggedInUser: any = {};
   isLoggedIn = false;
   initials: string = '';
 
-  constructor(
-    private auth: AngularFireAuth,
-    private router: Router) { }
+  constructor() { }
 
 
-  setDataToLocalStorage(loggendIn: boolean, displayName: string) {
+  setDataToLocalStorage(loggendIn: boolean, displayName: string): void {
     const user = { login: loggendIn, displayName: displayName };
     const jsonString = JSON.stringify(user);
     localStorage.setItem('user', jsonString);
@@ -23,20 +20,20 @@ export class AuthService {
   }
 
 
-  getLogin() {
+  getLogin(): boolean{
     const myObj = this.loadDataFormLocaleStorage();
     return myObj.login;
   }
 
 
-  loadDataFormLocaleStorage() {
+  loadDataFormLocaleStorage(): any {
     const data = localStorage.getItem('user');
     const myObj = JSON.parse(data!);
     return myObj;
   }
 
 
-  getInitals() {
+  getInitals(): string {
     let displayName = this.getDisplayName();
     let initials;
     let splitedDisplayName = displayName.split(' ');;
@@ -46,12 +43,11 @@ export class AuthService {
   }
 
 
-  getDisplayName() {
+  getDisplayName(): string {
     const data = this.loadDataFormLocaleStorage();
     const displayName = data.displayName;
     return displayName;
   }
-
 }
 
 

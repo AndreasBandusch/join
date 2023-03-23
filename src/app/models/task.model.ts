@@ -38,7 +38,7 @@ export class Task {
         this.id = Date.now();
     }
 
-    public toJSON() {
+    public toJSON(): object {
         return {
             id: this.id,
             title: this.title,

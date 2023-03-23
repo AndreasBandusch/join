@@ -25,7 +25,7 @@ export class SectionSummaryComponent implements OnInit {
     public control: ControlService) { }
 
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.afs.collection('tasks').valueChanges().subscribe(changes => {
       this.tasks = changes;
       this.getSummaryContent();
@@ -34,7 +34,7 @@ export class SectionSummaryComponent implements OnInit {
   }
 
 
-  showWelcomeForMobile() {
+  showWelcomeForMobile(): void {
     if (this.control.firstSummaryCall) {
       setTimeout(() => {
         this.control.start = false;
@@ -45,7 +45,7 @@ export class SectionSummaryComponent implements OnInit {
   }
 
 
-  getSummaryContent() {
+  getSummaryContent(): void {
     this.unsetSummaryNumbers();
     this.taskInBoard = this.tasks.length;
     this.tasks.forEach(task => {
@@ -57,7 +57,7 @@ export class SectionSummaryComponent implements OnInit {
   }
 
 
-  unsetSummaryNumbers() {
+  unsetSummaryNumbers(): void {
     this.urgent = 0;
     this.todo = 0;
     this.taskInProgress = 0;
@@ -99,7 +99,7 @@ export class SectionSummaryComponent implements OnInit {
   }
 
 
-  setDueDateOutput() {
+  setDueDateOutput(): void {
     let date = new Date(this.dueDate);
     this.dueDateOutput = date.toLocaleString('en-EN', { month: 'long' })
       + ' ' + date.toLocaleString('en-US', { day: '2-digit' }) + ', '
@@ -107,7 +107,7 @@ export class SectionSummaryComponent implements OnInit {
   }
 
 
-  changeImage(area: string, isMouseOver: boolean) {
+  changeImage(area: string, isMouseOver: boolean): void {
     if (isMouseOver) {
       if (area === 'done') {
         this.doneImageSrc = 'assets/img/icons/done-white-icon.png';

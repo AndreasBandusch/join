@@ -32,7 +32,7 @@ export class AddContactComponent implements OnInit {
   }
 
 
-  createContact() {
+  createContact(): void {
     let newContact: Contact = new Contact(this.inputName, this.inputEmail, this.inputPhone);
     newContact.getRandomColor();
     this.currentContactId = newContact.id;
@@ -42,7 +42,7 @@ export class AddContactComponent implements OnInit {
   }
 
 
-  saveContact(newContact: any) {
+  saveContact(newContact: any): void {
     this.firestore
       .collection('contacts')
       .add(newContact.toJSON()).then(() => {
@@ -51,7 +51,7 @@ export class AddContactComponent implements OnInit {
   }
 
 
-  loadContacts() {
+  loadContacts(): void {
     this.firestore.collection('contacts').valueChanges({ idField: 'docId' }).subscribe(changes => {
       this.allContacts = changes;
       this.reloadContactDetails();
@@ -59,7 +59,7 @@ export class AddContactComponent implements OnInit {
   }
 
 
-  reloadContactDetails() {
+  reloadContactDetails(): void {
     this.allContacts.forEach(contact => {
       if (contact.id == this.currentContactId) {
         this.newContactId = contact.docId;
@@ -70,13 +70,13 @@ export class AddContactComponent implements OnInit {
   }
 
 
-  showFeedbackMessage() {
+  showFeedbackMessage(): void {
     this.closeDialog();
     this.control.getMessage('Contact succesfully created');
   }
 
 
-  closeDialog() {
+  closeDialog(): void {
     this.animationStatus = true;
     setTimeout(() => {
       this.control.openOverlay('addContact', false)

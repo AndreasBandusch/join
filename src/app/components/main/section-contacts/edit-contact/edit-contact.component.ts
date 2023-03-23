@@ -78,7 +78,7 @@ export class EditContactComponent implements OnInit {
   }
 
 
-  updateContact(newContact: any) {
+  updateContact(newContact: any): void {
     this.isLoading = true;
     this.firestore
       .collection('contacts')
@@ -91,18 +91,18 @@ export class EditContactComponent implements OnInit {
   }
 
 
-  showFeedbackMessage() {
+  showFeedbackMessage(): void {
     this.closeDialog();
     this.control.getMessage('Contact succesfully edited');
   }
 
 
-  dontCloseByClick(event: Event) {
+  dontCloseByClick(event: Event): void {
     event.stopPropagation();
   }
 
 
-  closeDialog() {
+  closeDialog(): void {
     this.animationStatus = true;
     setTimeout(() => {
       this.control.openOverlay('editContact',false);

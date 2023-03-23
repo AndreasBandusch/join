@@ -17,7 +17,7 @@ export class HelloComponent implements OnInit {
   }
 
 
-  getGreeting() {
+  getGreeting(): void {
     let now = new Date();
     let hour = now.getHours();
     if (hour >= 5 && hour < 11) {

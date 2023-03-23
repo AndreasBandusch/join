@@ -30,7 +30,7 @@ slideIn: boolean = true;
   }
 
 
-  toggleAnimationClass() {
+  toggleAnimationClass(): void {
     this.slideIn = true;
     setTimeout(() => {
       this.slideIn = false
@@ -38,7 +38,7 @@ slideIn: boolean = true;
   }
 
 
-  getCurrentContact() {
+  getCurrentContact(): void {
     this.afs
       .collection('contacts')
       .doc(this.contactId)

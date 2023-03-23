@@ -31,14 +31,14 @@ export class TaskDetailsComponent implements OnInit {
   }
 
 
-  loadSubTasksFromCurrentTask() {
+  loadSubTasksFromCurrentTask(): void {
     for (let i = 0; i < this.task.currentTask.subTasks.length; i++) {
       this.subTasks.push(this.task.currentTask.subTasks[i]);
     }
   }
 
 
-  updateSubTaskStatus(index: number) {
+  updateSubTaskStatus(index: number): void {
     let status = this.subTasks[index].done;
     if (status === false) {
       this.subTasks[index].done = true;
@@ -49,7 +49,7 @@ export class TaskDetailsComponent implements OnInit {
   }
 
 
-  setNewTaskStatus() {
+  setNewTaskStatus(): void {
     let changes = { 'status': this.currentTaskStatus };
     this.afs.collection('tasks')
       .doc(this.docId)
@@ -65,7 +65,7 @@ export class TaskDetailsComponent implements OnInit {
   }
 
 
-  openEditDialog() {
+  openEditDialog(): void {
     this.control.taskDetailsDialogOpen = false;
     this.control.openOverlay('editTask', true);
   }

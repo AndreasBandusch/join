@@ -27,7 +27,7 @@ export class SignUpComponent implements OnInit {
     this.fControl.userSignUp.reset();
   }
 
-  signUp() {
+  signUp(): void {
     this.auth
       .createUserWithEmailAndPassword(this.email, this.password)
       .then(res => {
@@ -39,7 +39,7 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  signUpIsSuccessful(res: any) {
+  signUpIsSuccessful(res: any): void {
     if (res.user) {
       res.user.updateProfile({ displayName: this.userName });
       this.control.getMessage('Sign up successful!');
@@ -48,14 +48,14 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  goToLogin() {
+  goToLogin(): void {
     setTimeout(() => {
       this.router.navigate(['/login']);
     }, 1500);
   }
 
 
-  showErrorMessage(error: any) {
+  showErrorMessage(error: any): void {
     console.log('my error', error.message);
     if (error.message.includes('email address is already in use')) {
       this.userAlreadyExists = true;

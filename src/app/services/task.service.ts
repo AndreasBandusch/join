@@ -39,7 +39,7 @@ export class TaskService {
     }
 
 
-  getMinDate() {
+  getMinDate(): void {
     const today = new Date();
     this.minDate = today.toISOString().split('T')[0];
   }
@@ -99,14 +99,14 @@ export class TaskService {
   }
 
 
-  noContactsAssigned() {
+  noContactsAssigned(): void {
     this.fControl.noAssignedContactsErrorMsg = this.fControl.noAssignedContactsErrorStartMsg;
     this.fControl.assignedToReady = false;
     this.showAssignedTo = true;
   }
 
 
-  contactsAssigned() {
+  contactsAssigned(): void {
     this.fControl.noAssignedContactsErrorMsg = '';
     this.fControl.assignedToReady = true;
   }
@@ -183,12 +183,12 @@ export class TaskService {
   }
 
 
-  getTimestamp() {
+  getTimestamp(): void {
     this.dueDateTimestamp = new Date(this.dueDate).getTime();
   }
 
 
-  updateSelectedContacts() {
+  updateSelectedContacts(): void {
     this.assignedContactIdsForTask = [];
     for (let key in this.selectedContacts) {
       if (this.selectedContacts[key] && !this.assignedContactIdsForTask.includes(key)) {
@@ -224,7 +224,7 @@ export class TaskService {
   }
 
 
-  resetForm() {
+  resetForm(): void {
     this.unsetFormControlErrorMsgs();
     this.description = '';
     this.selectedCategory = '';
@@ -247,7 +247,7 @@ export class TaskService {
   }
 
 
-  unsetFormControlErrorMsgs() {
+  unsetFormControlErrorMsgs(): void {
     this.fControl.noPrioErrorMsg = '';
     this.fControl.noAssignedContactsErrorMsg = '';
     this.fControl.noCategoryErrorMsg = '';
@@ -257,7 +257,7 @@ export class TaskService {
   }
 
 
-  setDueDateOutput() {
+  setDueDateOutput(): void {
     let date = new Date(this.dueDate);
     this.dueDateOutput = date.toLocaleString('en-US', { day: '2-digit' })
       + '-' + date.toLocaleString('en-EN', { month: '2-digit' })
@@ -265,7 +265,7 @@ export class TaskService {
   }
 
 
-  deleteTask() {
+  deleteTask(): void {
     const docId = this.currentTask.docId
     this.control.taskDetailsDialogOpen = false;
     this.db.collection('tasks').doc(docId).delete().then(() => {

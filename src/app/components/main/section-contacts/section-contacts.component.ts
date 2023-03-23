@@ -29,7 +29,7 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
   }
 
 
-  loadContacts() {
+  loadContacts(): void {
     this.control.currentContact = 0;
     this.firestore.collection('contacts').valueChanges({ idField: 'docId' }).subscribe((updates: any) => {
       this.allContacts = updates;
@@ -38,7 +38,7 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
   }
 
 
-  checkIfContactsAvailable() {
+  checkIfContactsAvailable(): void {
     if (this.allContacts.length > 0) {
       this.getCatagoryInitials();
       this.control.contactsAvailable = true;
@@ -48,7 +48,7 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
   }
 
 
-  getCatagoryInitials() {
+  getCatagoryInitials(): void {
     this.categoryInitials = [];
     this.allContacts.forEach(contact => {
       let initial = contact.initials[0];
@@ -60,17 +60,17 @@ export class SectionContactsComponent implements OnInit, OnDestroy {
   }
 
 
-  getFirstLetter(currentContact: string) {
+  getFirstLetter(currentContact: string): string {
     return currentContact.charAt(0);
   }
 
 
-  toggleDetails(isActiveContact: boolean) {
+  toggleDetails(isActiveContact: boolean): void {
     this.switchView = isActiveContact;
   }
 
 
-  addContact() {
+  addContact(): void {
     this.control.notRouteToContactList = false;
     this.control.openOverlay('addContact', true);
   }

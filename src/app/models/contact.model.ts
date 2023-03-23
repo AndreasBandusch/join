@@ -18,7 +18,7 @@ export class Contact {
         this.initContact(phone);
     }
 
-    private transformName(fullName: string) {
+    private transformName(fullName: string): void {
         let firstName;
         let lastName;
         let splittedName = fullName.trim().replace(/\s+/g, ' ').split(" ");
@@ -53,7 +53,7 @@ export class Contact {
     }
 
 
-    public getRandomColor() {
+    public getRandomColor(): void {
         let colors =
             ['#FFB900', '#E60073', '#1D7AFF', '#FF55E6', '#00FF6E', '#FF0048',
                 '#7A00FF', '#FFCF40', '#7A00E6', '#40FFCF', '#E67A00', '#00FFCF',

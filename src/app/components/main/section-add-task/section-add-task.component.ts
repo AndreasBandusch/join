@@ -54,21 +54,21 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
 
-  loadCategorys() {
+  loadCategorys(): void {
     this.afs.collection('categorys').valueChanges().subscribe((changes) => {
       this.allCategorys = changes;
     });
   }
 
 
-  loadContacts() {
+  loadContacts(): void {
     this.afs.collection('contacts').valueChanges().subscribe((changes) => {
       this.allContacts = changes;
     });
   }
 
 
-  checkMaxWidth(maxWidth: number) {
+  checkMaxWidth(maxWidth: number): void {
     if (window.innerWidth <= maxWidth) {
       this.control.showAddTaskBotton = true;
     } else {
@@ -77,7 +77,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
 
-  selectCategory(category: string, color: string, id: number) {
+  selectCategory(category: string, color: string, id: number): void {
     this.task.selectedCategory = category;
     this.task.catText = category;
     this.task.catColor = color;
@@ -87,14 +87,14 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
 
-  createCategory() {
+  createCategory(): void {
     this.showNewCategory = true;
     this.categoryName = '';
     this.task.catColor = '';
   }
 
   
-  saveCategory() {
+  saveCategory(): void {
     this.newCategory = new Category(this.categoryName, this.task.catColor);
     this.task.categoryId = this.newCategory.id;
     this.afs
@@ -107,7 +107,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
 
-  setNewCategory() {
+  setNewCategory(): void {
     this.task.catColor = this.newCategory.color;
     this.task.catText = this.categoryName;
     this.task.showCategorys = !this.task.showCategorys;
@@ -117,7 +117,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
 
-  cancel() {
+  cancel(): void {
     this.task.showCategorys = !this.task.showCategorys;
     this.showNewCategory = false;
     this.task.catColor = '';
@@ -127,7 +127,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
 
-  updateSelectedContacts() {
+  updateSelectedContacts(): void {
     this.task.assignedContactIdsForTask = [];
     for (let key in this.task.selectedContacts) {
       if (this.task.selectedContacts[key]) {
@@ -137,7 +137,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
 
-  updateAssignedSubtasks() {
+  updateAssignedSubtasks(): void {
     this.task.assignedSubtasks = [];
     for (let key in this.task.selectedSubtasks) {
       if (this.task.selectedSubtasks[key] && !this.task.assignedContactIdsForTask.includes(key)) {
@@ -148,27 +148,26 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
   }
 
 
-  setFocus() {
+  setFocus(): void {
     this.inputField.nativeElement.focus();
     this.task.showSubtask = true;
   }
 
 
-  createSubtask() {
+  createSubtask(): void {
     this.task.allSubtasks.push({ name: this.currentSubtask });
-    console.log('All subtasks: ', this.task.allSubtasks);
     this.currentSubtask = '';
     this.task.showSubtask = false;
     this.task.showSubtasksNotice = false;
   }
 
 
-  getTimestamp() {
+  getTimestamp(): void {
     this.task.dueDateTimestamp = new Date(this.task.dueDate).getTime();
   }
 
 
-  addContact() {
+  addContact(): void {
     this.control.notRouteToContactList = true;
     this.control.addContactDialogOpen = true
   }
