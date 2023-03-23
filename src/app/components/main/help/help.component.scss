@@ -18,15 +18,12 @@ ol {
             margin-left: 32px
         }
 
-
-
         &::before {
             content: counter(my-awesome-counter) ". ";
             font-size: 27px;
             font-weight: 700;
         }
     }
-
 }
 
 .content-header {
@@ -46,7 +43,6 @@ ol {
     flex-direction: column;
     gap: 16px;
 }
-
 
 .howto-cont {
     h2 {
@@ -68,7 +64,6 @@ ol {
         font-size: 21px;
     }
 
-
     li {
         &::before {
             content: counter(my-awesome-counter) ". ";
@@ -80,10 +75,7 @@ ol {
         }
     }
 
-    
-
     .content-body {
         font-size: 16px;
     }
-
 }

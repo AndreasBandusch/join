@@ -11,7 +11,6 @@
     overflow: hidden;
 }
 
-
 .edit-task-details {
     position: relative;
     z-index: 150;
@@ -88,13 +87,10 @@
 }
 
 .btn-cont {
-    // position: fixed;
-    // bottom: 32px;
-    // right: 0px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 100%;    
+    width: 100%;
 }
 
 .primary-btn {
@@ -159,7 +155,7 @@
     min-height: 50px;
     height: auto;
     padding: unset;
-  
+
     .dropdown-content {
         max-height: 150px;
         overflow-y: auto;
@@ -172,7 +168,7 @@
         justify-content: space-between;
         width: 100%;
         padding: 13px 21px;
-      
+
         .icon {
             width: 16px;
             height: 100%;
@@ -254,7 +250,7 @@
     input,
     .prio {
         font-size: 18px !important;
-    }  
+    }
 }
 
 @media (max-width: 550px) {
@@ -301,7 +297,7 @@
 
     .prio {
         font-size: 12px !important;
-       
+
         img {
             width: 15px;
         }
@@ -338,7 +334,7 @@
     .btn-cont {
         padding-right: 16px;
     }
-   
+
     .field-group {
         display: flex;
         flex-direction: column;
@@ -347,6 +343,7 @@
 
     .prio {
         padding: 12px 4px;
+
         img {
             margin-left: 4px;
         }

@@ -7,5 +7,5 @@ import { ControlService } from 'src/app/services/control.service';
   styleUrls: ['./impressum.component.scss']
 })
 export class ImpressumComponent {
-constructor(public control: ControlService){}
+  constructor(public control: ControlService) { }
 }

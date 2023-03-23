@@ -31,11 +31,11 @@
 
 @media (max-width: 1300px) {
     .greetings {
-        font-size: 28px;
+        font-size: 47px;;
     }
 
     .greetings-name {
-        font-size: 40px;
+        font-size: 64px;
     }
 
     .welcome {
@@ -45,20 +45,43 @@
 }
 
 
-@media (max-width: 1200px) {
-    .greetings {
-        font-size: 21px;
-    }
-
-    .greetings-name {
-        font-size: 32px;
-    }
-}
-
 @media (max-width: 920px) {
     @media (orientation: landscape) {
         .welcome {
             justify-content: flex-start;
         }
+    }
+}
+
+
+@media (max-width: 750px) {
+    .greetings {
+        font-size: 40px;;
+    }
+
+    .greetings-name {
+        font-size: 52px;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .greetings {
+        font-size: 28px;;
+    }
+
+    .greetings-name {
+        font-size: 38px;
+    }
+}
+
+
+@media (max-width: 350px) {
+    .greetings {
+        font-size: 18px;;
+    }
+
+    .greetings-name {
+        font-size: 27px;
     }
 }

@@ -19,7 +19,6 @@ export class EditTaskComponent implements OnInit {
     public fControl: CustomformcontrolModule,
     public task: TaskService,
     public control: ControlService) {
-
     this.title = task.currentTask.title;
     this.description = task.currentTask.description;
     this.task.dueDate = task.currentTask.dueDate;

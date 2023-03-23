@@ -31,7 +31,6 @@
     animation-fill-mode: forwards;
     animation-delay: 500ms;
 
-
     .primary-btn {
         height: unset;
         width: unset;
@@ -64,7 +63,6 @@
     animation-fill-mode: forwards;
     animation-delay: 500ms;
 }
-
 
 h1 {
     display: flex;
@@ -99,8 +97,6 @@ form {
     display: flex;
 }
 
-
-
 input[type="checkbox"],
 input[type="checkbox"]:active {
     margin-right: 16px;
@@ -121,8 +117,6 @@ input[type="checkbox"]:active {
 .secondary-btn {
     width: 160px;
 }
-
-
 
 @media (max-width: 1000px) {
     .logo {
@@ -174,8 +168,6 @@ input[type="checkbox"]:active {
     .site {
         padding: 0 16px;
     }
-
-
 
     .login-container {
         margin-top: 130px;

@@ -35,8 +35,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     public task: TaskService,
     private afs: AngularFirestore,
     public fControl: CustomformcontrolModule
-  ) { 
-  }
+  ) { }
 
 
   ngOnInit(): void {
@@ -94,7 +93,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.task.catColor = '';
   }
 
-
+  
   saveCategory() {
     this.newCategory = new Category(this.categoryName, this.task.catColor);
     this.task.categoryId = this.newCategory.id;

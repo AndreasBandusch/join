@@ -17,7 +17,6 @@
     width: 60%;
 }
 
-
 .content-inner {
     height: calc(100% - 138px);
 }
@@ -44,7 +43,6 @@
 .content-right {
     position: relative;
     padding-left: 80px;
-
 }
 
 .field-group {
@@ -105,8 +103,6 @@
     gap: 32px;
 }
 
-
-
 .dropdown {
     display: flex;
     flex-direction: column;
@@ -142,8 +138,6 @@
         align-items: center;
     }
 
-
-
     .item {
         cursor: pointer;
         display: flex;
@@ -152,7 +146,6 @@
         transition: all 75ms ease-in-out;
         display: flex;
         width: 100%;
-
 
         &:hover {
             background-color: #D1D1D1;
@@ -164,7 +157,6 @@
         width: 100%;
         justify-content: space-between;
         padding-right: 18px;
-
     }
 
     .contact {
@@ -174,7 +166,6 @@
         justify-content: space-between;
         width: 100%;
         transition: all 75ms ease-in-out;
-
 
         &:hover {
             background-color: #D1D1D1;
@@ -207,7 +198,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-
 }
 
 .left-icon,
@@ -257,7 +247,6 @@
 }
 
 .subtasks-area {
-    // margin-top: 16px;
     font-size: 16px;
     max-height: 150px;
     overflow-y: auto;
@@ -306,6 +295,7 @@
     .content-left {
         padding-right: 16px;
     }
+
     .due-date {
         width: 55%;
     }
@@ -315,7 +305,6 @@
     .content-body {
         flex-direction: column;
         gap: 32px;
-
     }
 
     .is-overlay {
@@ -331,14 +320,12 @@
         .content-left,
         .content-right {
             width: 50%;
-
         }
     }
 
     .content-left,
     .content-right {
         width: 100%;
-
     }
 
     .content-left {
@@ -350,7 +337,6 @@
         padding-left: unset;
     }
 }
-
 
 @media (max-width: 920px) {
     .content-body {
@@ -367,21 +353,16 @@
             border: unset;
         }
 
-
         .content {
             width: 100%;
-
         }
 
         .content-body {
             flex-direction: column;
-
         }
 
         .content-inner {
             width: 100%;
-           
-
         }
 
         .content-header-mobile {
@@ -391,9 +372,7 @@
         .btn-cont {
             display: none;
         }
-
     }
-
 }
 
 
@@ -412,7 +391,6 @@
 }
 
 @media (max-width: 600px) {
-
     input[type="date"],
     textarea,
     .content-body,
@@ -474,7 +452,6 @@
     .due-date {
         width: 60%;
     }
-
 }
 
 @media (max-width: 350px) {
@@ -495,8 +472,7 @@
     .select-menu,
     .add,
     ::placeholder,
-    .input-field
-    {
+    .input-field {
         font-size: 14px !important;
     }
 
@@ -507,5 +483,5 @@
 
     .due-date {
         width: 70%;
-    } 
+    }
 }

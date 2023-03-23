@@ -30,7 +30,7 @@ export class SectionSummaryComponent implements OnInit {
       this.tasks = changes;
       this.getSummaryContent();
     });
-    this.showWelcomeForMobile();
+    // this.showWelcomeForMobile();
   }
 
 

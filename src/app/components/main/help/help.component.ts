@@ -10,19 +10,18 @@ import { Location } from '@angular/common';
 export class HelpComponent implements OnInit, OnDestroy {
   currentPath: string = '';
 
-  constructor(public control: ControlService, public location: Location) { }
+  constructor(
+    public control: ControlService, 
+    public location: Location) { }
 
 
   ngOnInit(): void {
     this.control.inHelpSection = true;
     this.location.ngOnDestroy();
-
-
   }
+
 
   ngOnDestroy(): void {
     this.control.inHelpSection = false;
   }
-
-  
 }

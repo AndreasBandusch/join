@@ -14,35 +14,29 @@ export class TaskDetailsComponent implements OnInit {
   docId: string;
   currentTaskStatus: string;
 
-  constructor(public control: ControlService, private afs: AngularFirestore, public task: TaskService) {
+  constructor(
+    public control: ControlService,
+    private afs: AngularFirestore,
+    public task: TaskService) {
     this.task.dueDate = task.currentTask.dueDate;
     this.docId = task.currentTask.docId;
     this.currentTaskStatus = task.currentTask.status;
   }
 
 
-
   ngOnInit(): void {
     this.task.setDueDateOutput();
     this.task.updateSelectedContacts();
-    console.log(this.currentTaskStatus);
-
-    for (let i = 0; i < this.task.currentTask.subTasks.length; i++) {
-      this.subTasks.push(this.task.currentTask.subTasks[i]);
-    }
-
-
-
+    this.loadSubTasksFromCurrentTask();
   }
 
 
+  loadSubTasksFromCurrentTask() {
+    for (let i = 0; i < this.task.currentTask.subTasks.length; i++) {
+      this.subTasks.push(this.task.currentTask.subTasks[i]);
+    }
+  }
 
-
-  // updateSubTaskDoneStatus(status: boolean, index: number) {
-  //   console.log(status);
-  //   status = !status;
-  //   this.subTasks[index].done = status;
-  // }
 
   updateSubTaskStatus(index: number) {
     let status = this.subTasks[index].done;
@@ -53,7 +47,7 @@ export class TaskDetailsComponent implements OnInit {
     }
     this.saveStatus();
   }
-  
+
 
   setNewTaskStatus() {
     let changes = { 'status': this.currentTaskStatus };
@@ -75,5 +69,4 @@ export class TaskDetailsComponent implements OnInit {
     this.control.taskDetailsDialogOpen = false;
     this.control.openOverlay('editTask', true);
   }
-
 }

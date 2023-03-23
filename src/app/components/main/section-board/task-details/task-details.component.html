@@ -23,12 +23,14 @@
                         </div>
                         <div class="item">
                             <input type="checkbox" [checked]="currentTaskStatus == 'inProgress'"
-                                (change)="currentTaskStatus = 'inProgress'" id="inProgress" (change)="setNewTaskStatus()">
+                                (change)="currentTaskStatus = 'inProgress'" id="inProgress"
+                                (change)="setNewTaskStatus()">
                             <label for="inProgress">In progress</label>
                         </div>
                         <div class="item">
                             <input type="checkbox" [checked]="currentTaskStatus == 'awaitingFeedback'"
-                                (change)="currentTaskStatus = 'awaitingFeedback'" id="awaitingFeedback" (change)="setNewTaskStatus()">
+                                (change)="currentTaskStatus = 'awaitingFeedback'" id="awaitingFeedback"
+                                (change)="setNewTaskStatus()">
                             <label for="awaitingFeedback">Awaiting feedback</label>
                         </div>
                         <div class="item">
@@ -45,7 +47,7 @@
                         <img src="assets/img/icons/{{task.getPrioImage(task.currentTask.prio)}}-white.png">
                     </div>
                 </div>
-                
+
                 <div *ngIf="subTasks.length" class="subtasks-area">
                     <span class="text">Subtasks:</span>
                     <div class="subtasks-cont">

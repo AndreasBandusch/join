@@ -14,23 +14,32 @@
                                 formControlName="title">
                         </div>
                     </div>
-                    <ng-container *ngIf="(fControl.taskForm.controls['title'].touched || 
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['title'].touched || 
                     fControl.taskForm.controls['title'].dirty) || (fControl.hasSend && fControl.taskForm.controls['title'].invalid)">
-                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['required']">Title is required</span>
-                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['minlength']">Min. 5 and max. 50 chars</span>
-                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['maxlength']">Max. 50 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['required']">Title is
+                            required</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['minlength']">Min. 5 and
+                            max. 50 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['maxlength']">Max. 50
+                            chars</span>
                     </ng-container>
                 </div>
                 <div class="field-group">
                     <span>Description</span>
-                    <textarea name="description" [(ngModel)]="task.description"
-                        formControlName="description" placeholder="Enter a Description">
+                    <textarea name="description" [(ngModel)]="task.description" formControlName="description"
+                        placeholder="Enter a Description">
                     </textarea>
-                    <ng-container *ngIf="(fControl.taskForm.controls['description'].touched || 
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['description'].touched || 
                     fControl.taskForm.controls['description'].dirty) || (fControl.hasSend && fControl.taskForm.controls['description'].invalid)">
-                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['required']">Description is required</span>
-                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['minlength']">Min. 10 and max. 250 chars</span>
-                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['maxlength']">Max. 250 chars</span>
+                        <span class="error"
+                            *ngIf="fControl.taskForm.controls['description'].errors?.['required']">Description is
+                            required</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['minlength']">Min.
+                            10 and max. 250 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['maxlength']">Max.
+                            250 chars</span>
                     </ng-container>
                 </div>
                 <div class="field-group">
@@ -46,8 +55,7 @@
                                         src="assets/img/icons/menu-arrow-down.png"></div>
                             </div>
                             <div class="select-category" (mouseleave)="task.checkSelectedCategory()">
-                                <div *ngIf="task.showCategorys" class="dropdown-content"
-                                    >
+                                <div *ngIf="task.showCategorys" class="dropdown-content">
                                     <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
                                         category</span>
                                     <ng-container *ngFor="let cat of allCategorys">
@@ -66,8 +74,7 @@
                             <div class="input-field">
                                 <div class="field">
                                     <input name="categoryname" type="text" [(ngModel)]="categoryName"
-                                        [ngModelOptions]="{standalone: true}"
-                                        placeholder="New category name">
+                                        [ngModelOptions]="{standalone: true}" placeholder="New category name">
                                 </div>
                                 <div class="icon">
                                     <div class="left-icon" (click)="cancel()">
@@ -135,8 +142,10 @@
                                 (ngModelChange)="task.getTimestamp()" [min]="task.minDate">
                         </div>
                     </div>
-                    <ng-container *ngIf="(fControl.taskForm.controls['dueDate'].touched && (fControl.taskForm.controls['dueDate'].invalid)) || (fControl.hasSend)">
-                        <span class="error" *ngIf="fControl.taskForm.controls['dueDate'].errors?.['required']">Set a due date</span>
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['dueDate'].touched && (fControl.taskForm.controls['dueDate'].invalid)) || (fControl.hasSend)">
+                        <span class="error" *ngIf="fControl.taskForm.controls['dueDate'].errors?.['required']">Set a due
+                            date</span>
                     </ng-container>
                 </div>
 
