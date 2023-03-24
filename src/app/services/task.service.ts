@@ -195,6 +195,7 @@ export class TaskService {
         this.assignedContactIdsForTask.push(key);
       }
     }
+    console.log('Assigned Id: ', this.assignedContactIdsForTask);
   }
 
 

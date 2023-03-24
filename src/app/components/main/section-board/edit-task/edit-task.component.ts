@@ -30,6 +30,7 @@ export class EditTaskComponent implements OnInit {
     this.loadContacts();
     this.task.dueDate = new Date(this.task.currentTask.dueDate).toISOString().slice(0, 10);
     this.setPrio();
+    this.task.selectedContacts = {};
     this.task.loadAssignedContactsInSelectedContacts();
   }
 
