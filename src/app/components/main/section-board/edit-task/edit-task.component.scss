@@ -1,0 +1,366 @@
+.overlay {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.edit-task-details {
+    position: relative;
+    z-index: 150;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 30px;
+    width: 625px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    height: 80%;
+}
+
+.edit-task-outer {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.edit-task-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 32px;
+    margin-top: 8px;
+    margin-right: 32px;
+    margin-left: 32px;
+    min-height: 100%;
+}
+
+.due-date {
+    width: 55%;
+}
+
+.assigned {
+    position: relative;
+    display: flex;
+    height: 35px;
+}
+
+.contact-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 100%;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    cursor: pointer;
+}
+
+.btn-cont {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.primary-btn {
+    width: unset;
+}
+
+.prio-cont {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 16px;
+    cursor: pointer;
+}
+
+.prio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 18px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 30%;
+    transition: all 75ms ease-in-out;
+
+    img {
+        margin-left: 16px;
+        width: 20px;
+    }
+
+    &:hover {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        transition: all 75ms ease-in-out;
+    }
+}
+
+
+.urgent,
+.low {
+    img {
+        height: 15px;
+    }
+}
+
+.medium {
+    img {
+        height: 8px;
+    }
+}
+
+.urgent-color,
+.medium-color,
+.low-color {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    min-height: 50px;
+    height: auto;
+    padding: unset;
+
+    .dropdown-content {
+        max-height: 150px;
+        overflow-y: auto;
+        width: 100%;
+    }
+
+    .select-menu {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 13px 21px;
+
+        .icon {
+            width: 16px;
+            height: 100%;
+            margin-left: 16px;
+            cursor: pointer;
+        }
+    }
+
+    .select-catagory {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        transition: all 75ms ease-in-out;
+
+        &:hover {
+            background-color: #D1D1D1;
+            transition: all 75ms ease-in-out;
+        }
+
+        label {
+            width: 100%;
+            height: 100%;
+            padding: 13px 21px;
+        }
+    }
+
+    .cat-color {
+        display: flex;
+        height: 20px;
+        width: 20px;
+        border: 2px solid #FFFFFF;
+        border-radius: 100%;
+        margin-left: 16px;
+    }
+
+    .cat-header {
+        display: flex;
+        align-items: center
+    }
+}
+
+@media (max-width: 750px) {
+    .overlay {
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .edit-task-details {
+        width: 100%;
+    }
+
+    .prio {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .overlay {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    input[type="date"],
+    textarea,
+    .content-body,
+    .select-menu,
+    .add,
+    ::placeholder,
+    label,
+    .input-field,
+    input,
+    .prio {
+        font-size: 18px !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .overlay {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .prio-cont {
+        gap: 8px;
+    }
+
+    .prio {
+        padding: 12px 8px;
+
+        img {
+            margin-left: 8px;
+        }
+    }
+}
+
+@media (max-width: 450px) {
+    .overlay {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .edit-task-inner {
+        margin-right: 16px;
+        margin-left: 16px;
+    }
+
+    input[type="date"],
+    textarea,
+    .content-body,
+    .select-menu,
+    .add,
+    ::placeholder,
+    label,
+    .input-field,
+    input {
+        font-size: 16px !important;
+    }
+
+    .prio {
+        font-size: 12px !important;
+
+        img {
+            width: 15px;
+        }
+    }
+
+    .contact {
+        label {
+            padding: 4px 12px !important;
+        }
+    }
+
+    .select-menu {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+}
+
+@media (max-width: 350px) {
+    .edit-task-details {
+        border-radius: 0;
+        height: 100%;
+        background-color: #f5f5f5;
+    }
+
+    .due-date {
+        width: 100%;
+    }
+
+    .close {
+        top: 16px;
+        right: 8px;
+    }
+
+    .btn-cont {
+        padding-right: 16px;
+    }
+
+    .field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .prio {
+        padding: 12px 4px;
+
+        img {
+            margin-left: 4px;
+        }
+    }
+
+    input[type="date"],
+    textarea,
+    .content-body,
+    .select-menu,
+    .add,
+    ::placeholder,
+    .input-field,
+    input {
+        font-size: 14px !important;
+    }
+
+    label {
+        font-size: 12px;
+    }
+}

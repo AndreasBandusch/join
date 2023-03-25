@@ -1,0 +1,118 @@
+<div class="overlay" (click)="control.openOverlay('editTask', false)">
+    <div class="edit-task-details" (click)="control.dontCloseByClick($event)">
+        <form class="edit-task-outer" [formGroup]="fControl.taskForm" (submit)="checkFormForUpdateTask()">
+            <div class="edit-task-inner">
+                <div class="field-group">
+                    <span>Title</span>
+                    <div class="input-field">
+                        <div class="field">
+                            <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="title"
+                                formControlName="title">
+                        </div>
+                    </div>
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['title'].touched || 
+                    fControl.taskForm.controls['title'].dirty) || (fControl.hasSend && fControl.taskForm.controls['title'].invalid)">
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['required']">Title is
+                            required</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['minlength']">Min. 5
+                            and max. 50 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['maxlength']">Max. 50
+                            chars</span>
+                    </ng-container>
+                </div>
+                <div class="field-group">
+                    <span>Description</span>
+                    <textarea name="description" placeholder="Enter a Description" [(ngModel)]="description"
+                        formControlName="description"></textarea>
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['description'].touched || 
+                    fControl.taskForm.controls['description'].dirty) || (fControl.hasSend && fControl.taskForm.controls['description'].invalid)">
+                        <span class="error"
+                            *ngIf="fControl.taskForm.controls['description'].errors?.['required']">Description is
+                            required</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['minlength']">Min.
+                            10 and max. 250
+                            chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['maxlength']">Max.
+                            250 chars</span>
+                    </ng-container>
+                </div>
+                <div class="field-group">
+                    <span>Due Date</span>
+                    <div class="input-field due-date">
+                        <div class="field">
+                            <input name="date" type="date" [(ngModel)]="task.dueDate" formControlName="dueDate"
+                                (ngModelChange)="task.getTimestamp()" [min]="task.minDate">
+                        </div>
+                    </div>
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['dueDate'].touched && (fControl.taskForm.controls['dueDate'].invalid)) || (fControl.hasSend)">
+                        <span class="error" *ngIf="fControl.taskForm.controls['dueDate'].errors?.['required']">Set a due
+                            date</span>
+                    </ng-container>
+                </div>
+                <div class="field-group">
+                    <span>Prio</span>
+                    <div class="prio-cont">
+                        <div class="prio urgent" [class.urgent-color]="task.activePrio === 'urgent'"
+                            (click)="task.activePrio = 'urgent'">
+                            Urgent
+                            <img *ngIf="task.activePrio !== 'urgent'" src="assets/img/icons/add-task-urgent.png">
+                            <img *ngIf="task.activePrio === 'urgent'" src="assets/img/icons/add-task-urgent-white.png">
+                        </div>
+                        <div class="prio medium" [class.medium-color]="task.activePrio === 'medium'"
+                            (click)="task.activePrio = 'medium'">
+                            Medium
+                            <img *ngIf="task.activePrio !== 'medium'" src="assets/img/icons/add-task-medium.png">
+                            <img *ngIf="task.activePrio === 'medium'" src="assets/img/icons/add-task-medium-white.png">
+                        </div>
+                        <div class="prio low" [class.low-color]="task.activePrio === 'low'"
+                            (click)="task.activePrio = 'low'">
+                            Low
+                            <img *ngIf="task.activePrio !== 'low'" src="assets/img/icons/add-task-low.png">
+                            <img *ngIf="task.activePrio === 'low'" src="assets/img/icons/add-task-low-white.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="field-group">
+                    <span>Assigned to</span>
+                    <div class="dropdown">
+                        <div class="select-menu">
+                            <div class="cat-header">
+                                <span>{{assignedTotext}}</span>
+                            </div>
+                            <div class="icon" (click)="task.showAssignedTo = !task.showAssignedTo"><img class="arrow"
+                                    src="assets/img/icons/menu-arrow-down.png"></div>
+                        </div>
+                        <div *ngIf="task.showAssignedTo" class="dropdown-content"
+                            (mouseleave)="task.checkIfaContactIsAssigned()">
+                            <div *ngFor="let contact of allContacts;" class="select-contacts">
+                                <div class="contact">
+                                    <label class="contact" for="{{contact.id}}">{{contact.firstName}}
+                                        {{contact.lastName}}
+                                        <input type="checkbox" id="{{contact.id}}" name="{{contact.id}}"
+                                            value="{{contact.firstName}} {{contact.lastName}}"
+                                            [(ngModel)]="task.selectedContacts[contact.id]"
+                                            (ngModelChange)="task.updateSelectedContacts()"
+                                            [ngModelOptions]="{standalone: true}">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span *ngIf="fControl.noAssignedContactsErrorMsg"
+                        class="error">{{fControl.noAssignedContactsErrorMsg}}</span>
+                </div>
+                <img src="assets/img/icons/close-icon.png" (click)="control.openOverlay('editTask', false)"
+                    class="close">
+                <div class="btn-cont">
+                    <button class="primary-btn" type="submit">
+                        Ok
+                        <img src="assets/img/icons/checked-icon.png">
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="add-contact" [class.slide-out]="animationStatus" [class.fade-out]="animationStatus"
+    [class.fade-in]="!animationStatus" (click)="closeDialog()">
+    <div class="add-contact-cont" (click)="control.dontCloseByClick($event)" [class.slide-out]="animationStatus"
+        [class.slide-in]="!animationStatus" [class.slide-out-mobile]="animationStatus"
+        [class.slide-in-mobile]="!animationStatus">
+        <div class="add-contact-inner">
+            <div class="title-cont">
+                <div class="logo">
+                    <img src="assets/img/logo.png">
+                </div>
+                <div class="text">
+                    <h1>Add contact</h1>
+                    <div class="subtext">
+                        Tasks are better with a team!
+                        <div class="underline"></div>
+                    </div>
+                </div>
+                <img src="assets/img/profile-picture-add-contact.png" class="add-contact-picture">
+            </div>
+            <div class="content-cont">
+                <form class="form-cont" [formGroup]="fControl.createContactForm" (submit)="createContact()">
+                    <div class="field-group">
+                        <div class="input-field">
+                            <div class="field">
+                                <input name="name" type="text" placeholder="First and last name *"
+                                    formControlName="name" [(ngModel)]="inputName">
+                            </div>
+                            <div class="icon">
+                                <img src="/assets/img/icons/input-name.png">
+                            </div>
+                        </div>
+                        <ng-container
+                            *ngIf="fControl.createContactForm.controls['name'].dirty || fControl.createContactForm.controls['name'].touched">
+                            <p class="error" *ngIf="fControl.createContactForm.controls['name'].errors?.['required']">
+                                Name is required</p>
+                            <p class="error"
+                                *ngIf="fControl.createContactForm.controls['name'].errors?.['invalidName']">Please enter
+                                a correct first and last name</p>
+                        </ng-container>
+                    </div>
+                    <div class="field-group">
+                        <div class="input-field">
+                            <div class="field">
+                                <input name="email" type="email" placeholder="Email *" formControlName="email"
+                                    [(ngModel)]="inputEmail">
+                            </div>
+                            <div class="icon">
+                                <img src="/assets/img/icons/input-email.png">
+                            </div>
+                        </div>
+                        <ng-container
+                            *ngIf="fControl.createContactForm.controls['email'].dirty || fControl.createContactForm.controls['email'].touched">
+                            <p class="error" *ngIf="fControl.createContactForm.controls['email'].errors?.['required']">
+                                Email is required</p>
+                            <p class="error" *ngIf="fControl.createContactForm.controls['email'].errors?.['email']">
+                                Please enter
+                                a correct email</p>
+                        </ng-container>
+                    </div>
+                    <div class="field-group">
+                        <div class="input-field">
+                            <div class="field">
+                                <input name="phone" type="tel" placeholder="Phone" formControlName="phone"
+                                    [(ngModel)]="inputPhone">
+                            </div>
+                            <div class="icon">
+                                <img src="/assets/img/icons/input-phone.png">
+                            </div>
+                        </div>
+                        <ng-container
+                            *ngIf="fControl.createContactForm.controls['phone'].dirty || fControl.createContactForm.controls['phone'].touched">
+                            <p class="error"
+                                *ngIf="fControl.createContactForm.controls['phone'].errors?.['invalidTelephone']">
+                                Please enter a correct phone number</p>
+                        </ng-container>
+                    </div>
+                    <div class="button-cont">
+                        <button class="secondary-btn" (click)="closeDialog()" type="button">
+                            Cancel<span>x</span>
+                        </button>
+                        <button type="submit"
+                            [disabled]="!((fControl.createContactForm.valid) && (fControl.createContactForm.dirty || fControl.createContactForm.touched))"
+                            type="submit" class="primary-btn">
+                            Create Contact
+                            <img src="assets/img/icons/checked-icon.png">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <img src="assets/img/icons/close-icon.png" class="close-dialog" (click)="closeDialog()">
+        <img src="assets/img/icons/close-icon-mobile.png" class="close-dialog-mobile" (click)="closeDialog()">
+    </div>
+</div>

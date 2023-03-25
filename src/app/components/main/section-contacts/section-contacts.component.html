@@ -1,0 +1,52 @@
+<div class="content">
+    <div class="btn-cont" [class.btn-no-bg]="switchView">
+        <button class="primary-btn new-contact-btn" (click)="addContact()">New contact <img
+                src="assets/img/icons/new-contact-icon.png">
+        </button>
+        <img class="edit-mobile-btn" src="assets/img/icons/edit-contact-icon-mobile.png"
+            [class.edit-contact-mobile]="switchView" (click)="control.openOverlay('editContact', true)">
+    </div>
+    <div class="content-inner">
+        <img src="assets/img/icons/arrow-big-icon.png" class="back-to-contacts" [class.show-btn]="switchView"
+            (click)="toggleDetails(false)">
+        <div class="contacts" [class.d-none]="switchView">
+            <div *ngIf="control.contactsAvailable" class="contacts-inner">
+                <div *ngFor="let initial of categoryInitials;" class="category">
+                    <div class="category-header">
+                        <span class="letter">{{initial}}</span>
+                    </div>
+                    <div *ngFor="let contact of allContacts; index as i">
+                        <div *ngIf="getFirstLetter(contact.firstName) === initial" class="category-body">
+                            <a [routerLink]="['contact', contact.docId]" (click)="control.currentContact = contact.id"
+                                (click)="toggleDetails(true)">
+                                <div class="category-body-cont"
+                                    [class.active]="control.currentContact === contact.id && control.currentContact != 0">
+                                    <div class="contact-initials" [ngStyle]="{'background-color': contact.color}">
+                                        {{contact?.initials}}
+                                    </div>
+                                    <div class="contact-infos">
+                                        <span class="name">{{ contact?.firstName }} {{ contact?.lastName }}</span>
+                                        <span class="email">{{ contact?.email }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-details" [class.display]="switchView">
+            <div class="contact-details-inner">
+                <div class="content-header">
+                    <div class="content-header-mobile">Kanban Project Management Tool</div>
+                    <h1 class="title">Contacts</h1>
+                    <div class="sub-title">
+                        Better with a team
+                        <div class="underline"></div>
+                    </div>
+                </div>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>

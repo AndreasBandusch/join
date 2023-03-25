@@ -1,0 +1,6 @@
+<div class="sub-menu" (mouseover)="control.closeSubMenu('over')" (mouseleave)="control.closeSubMenu('out')">
+    <span routerLink="help" class="mobile link">Help</span>
+    <span routerLink="imprint" (click)="control.setActive('imprint')" class="mobile link">Imprint</span>
+    <span routerLink="privacy" (click)="control.setActive('imprint')" class="mobile link">Privacy</span>
+    <span (click)="signOut()" class="link">Logout</span>
+</div>

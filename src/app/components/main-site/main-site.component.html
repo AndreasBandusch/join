@@ -1,0 +1,10 @@
+<div class="site">
+    <app-sidebar></app-sidebar>
+    <app-main></app-main>
+    <app-add-contact *ngIf="control.addContactDialogOpen"></app-add-contact>
+    <app-edit-contact *ngIf="control.editContactDialogOpen"></app-edit-contact>
+    <app-overlay *ngIf="control.isOpenedInOverlay"></app-overlay>
+    <app-task-details *ngIf="control.taskDetailsDialogOpen"></app-task-details>
+    <app-edit-task *ngIf="control.editTasksDialogOpen"></app-edit-task>
+    <app-delete-task *ngIf="control.showDeleteTaskDialog"></app-delete-task>
+</div>

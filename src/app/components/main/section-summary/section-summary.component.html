@@ -1,0 +1,64 @@
+<div class="content" [class.show-hello]="control.start && control.firstSummaryCall" [class.no-hello]="!control.start">
+    <div class="content-inner">
+        <div class="content-header">
+            <div class="content-header-mobile">Kanban Project Management Tool</div>
+            <h1 class="title">Summary</h1>
+            <div class="sub-title">
+                Everything in a nutshell!
+                <div class="underline"></div>
+            </div>
+        </div>
+        <div class="content-body">
+            <div class="overview">
+                <div class="row">
+                    <div class="cont sum-cont" routerLink="../board" (click)="control.setActive('board')">
+                        <span class="sum-number">{{taskInBoard}}</span>
+                        <span class="sum-name">Tasks in <br> Board</span>
+                    </div>
+                    <div class="cont sum-cont" routerLink="../board" (click)="control.setActive('board')">
+                        <span class="sum-number">{{taskInProgress}}</span>
+                        <span class="sum-name">Tasks in <br> Progress</span>
+                    </div>
+                    <div class="cont sum-cont" routerLink="../board" (click)="control.setActive('board')">
+                        <span class="sum-number">{{awaitingFeedback}}</span>
+                        <span class="sum-name">Awaiting <br> Feedback</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cont urgent-cont" routerLink="../board" (click)="control.setActive('board')">
+                        <div class="urgent">
+                            <img src="assets/img/icons/urgent-high-icon.png">
+                            <div class="urgent-inner">
+                                <span class="urgent-number">{{urgent}}</span>
+                                <span class="urgent-text">Urgent</span>
+                            </div>
+                        </div>
+                        <div class="deadline">
+                            <span class="date">{{dueDateOutput}}</span>
+                            <span class="deadline-text">Upcomming Deadline</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cont todo-cont" routerLink="../board" (click)="control.setActive('board')"
+                        (mouseover)="changeImage('todo', true)" (mouseout)="changeImage('todo', false)">
+                        <img src="{{todoImageSrc}}">
+                        <div class="todo-inner">
+                            <span class="todo-number">{{todo}}</span>
+                            <span class="todo-text">To-do</span>
+                        </div>
+                    </div>
+                    <div class="cont todo-cont" routerLink="../board" (click)="control.setActive('board')"
+                        (mouseover)="changeImage('done' ,true)" (mouseout)="changeImage('done', false)">
+                        <img src="{{doneImageSrc}}">
+                        <div class="todo-inner">
+                            <span class="todo-number">{{done}}</span>
+                            <span class="todo-text">Done</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <app-hello></app-hello>
+        </div>
+    </div>
+</div>

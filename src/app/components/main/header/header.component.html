@@ -1,0 +1,17 @@
+<div class="left">
+    <div class="logo-header">
+        <img src="/assets/img/logo-dark.png">
+    </div>
+    <span class="title">Kanban Project Management Tool</span>
+</div>
+<div *ngIf="!control.showAddTaskBotton" class="right">
+    <img class="question-mark" src="/assets/img/icons/question-mark-icon.png" routerLink="help"
+        *ngIf="!control.inHelpSection" (click)="control.setActive('not')">
+    <div class="profile-picture" (click)="toggleSubMenu()">{{auth.getInitals()}}</div>
+</div>
+<div *ngIf="control.showAddTaskBotton" class="right">
+    <button type="submit" type="submit" class="primary-btn" (click)="task.checkForm()">
+        Create
+        <img src="assets/img/icons/checked-icon.png">
+    </button>
+</div>

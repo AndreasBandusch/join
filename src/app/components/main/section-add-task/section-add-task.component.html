@@ -1,0 +1,228 @@
+<div class="content" [class.is-overlay]="control.isOpenedInOverlay">
+    <div class="content-inner" [class.is-overlay]="control.isOpenedInOverlay">
+        <div class="content-header">
+            <div class="content-header-mobile">Kanban Project Management Tool</div>
+            <h1 class="title">Add Task</h1>
+        </div>
+        <form class="content-body" [formGroup]="fControl.taskForm" (submit)="task.checkForm()">
+            <div class="content-left">
+                <div class="field-group">
+                    <span>Title</span>
+                    <div class="input-field">
+                        <div class="field">
+                            <input name="title" type="text" placeholder="Enter a title" [(ngModel)]="task.title"
+                                formControlName="title">
+                        </div>
+                    </div>
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['title'].touched || 
+                    fControl.taskForm.controls['title'].dirty) || (fControl.hasSend && fControl.taskForm.controls['title'].invalid)">
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['required']">Title is
+                            required</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['minlength']">Min. 5 and
+                            max. 50 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['title'].errors?.['maxlength']">Max. 50
+                            chars</span>
+                    </ng-container>
+                </div>
+                <div class="field-group">
+                    <span>Description</span>
+                    <textarea name="description" [(ngModel)]="task.description" formControlName="description"
+                        placeholder="Enter a Description">
+                    </textarea>
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['description'].touched || 
+                    fControl.taskForm.controls['description'].dirty) || (fControl.hasSend && fControl.taskForm.controls['description'].invalid)">
+                        <span class="error"
+                            *ngIf="fControl.taskForm.controls['description'].errors?.['required']">Description is
+                            required</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['minlength']">Min.
+                            10 and max. 250 chars</span>
+                        <span class="error" *ngIf="fControl.taskForm.controls['description'].errors?.['maxlength']">Max.
+                            250 chars</span>
+                    </ng-container>
+                </div>
+                <div class="field-group">
+                    <span>Category</span>
+                    <ng-container *ngIf="!showNewCategory; else elseBlock">
+                        <div class="dropdown">
+                            <div class="select-menu">
+                                <div class="cat-header">
+                                    <span class="cat-name">{{task.catText}}</span>
+                                    <div class="cat-color" [style.backgroundColor]="task.catColor"></div>
+                                </div>
+                                <div class="icon" (click)="task.showCategorys = !task.showCategorys"><img class="arrow"
+                                        src="assets/img/icons/menu-arrow-down.png"></div>
+                            </div>
+                            <div class="select-category" (mouseleave)="task.checkSelectedCategory()">
+                                <div *ngIf="task.showCategorys" class="dropdown-content">
+                                    <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
+                                        category</span>
+                                    <ng-container *ngFor="let cat of allCategorys">
+                                        <div class="item" (click)="selectCategory(cat.name, cat.color, cat.id)"
+                                            (change)="task.checkSelectedCategory()">
+                                            <span>{{cat.name}}</span>
+                                            <div class="cat-color" [style.backgroundColor]="cat.color"></div>
+                                        </div>
+                                    </ng-container>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    <ng-template #elseBlock>
+                        <div class="new-category">
+                            <div class="input-field">
+                                <div class="field">
+                                    <input name="categoryname" type="text" [(ngModel)]="categoryName"
+                                        [ngModelOptions]="{standalone: true}" placeholder="New category name">
+                                </div>
+                                <div class="icon">
+                                    <div class="left-icon" (click)="cancel()">
+                                        <img src="assets/img/icons/cancel-icon-black.png">
+                                    </div>
+                                    <div class="right-icon" (click)="saveCategory()">
+                                        <img src="assets/img/icons/check-icon-black.png">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="color-cont">
+                                <div *ngFor="let color of catColors" class="color" [style.backgroundColor]="color"
+                                    [class.color-active]="task.catColor == color" (click)="task.catColor = color">
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <span *ngIf="fControl.noCategoryErrorMsg" class="error">{{fControl.noCategoryErrorMsg}}</span>
+                </div>
+                <div class="field-group">
+                    <span>Assigned to</span>
+                    <div class="dropdown">
+                        <div class="select-menu">
+                            <div class="cat-header">
+                                <span>{{assignedTotext}}</span>
+                            </div>
+                            <div class="icon" (click)="task.showAssignedTo = !task.showAssignedTo"><img class="arrow"
+                                    src="assets/img/icons/menu-arrow-down.png"></div>
+                        </div>
+                        <div *ngIf="task.showAssignedTo" class="dropdown-content"
+                            (mouseleave)="task.checkIfaContactIsAssigned()">
+                            <div *ngFor="let contact of allContacts" class="select-contacts">
+                                <div class="contact">
+                                    <label class="contact" for="{{contact.id}}">{{contact.firstName}}
+                                        {{contact.lastName}}
+                                        <input type="checkbox" id="{{contact.id}}" name="{{contact.id}}"
+                                            value="{{contact.firstName}} {{contact.lastName}}"
+                                            [(ngModel)]="task.selectedContacts[contact.id]"
+                                            [ngModelOptions]="{standalone: true}"
+                                            (ngModelChange)="task.updateSelectedContacts()">
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="item new-contact" (click)="addContact()">
+                                    <span class="add">Add new Contact</span>
+                                    <img src="assets/img/icons/add-new-contact-icon.png">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <span *ngIf="fControl.noAssignedContactsErrorMsg"
+                        class="error">{{fControl.noAssignedContactsErrorMsg}}</span>
+                </div>
+
+            </div>
+            <div class="content-right">
+                <div class="field-group">
+                    <span>Due Date</span>
+                    <div class="input-field due-date">
+                        <div class="field">
+                            <input name="date" type="date" [(ngModel)]="task.dueDate" formControlName="dueDate"
+                                (ngModelChange)="task.getTimestamp()" [min]="task.minDate">
+                        </div>
+                    </div>
+                    <ng-container
+                        *ngIf="(fControl.taskForm.controls['dueDate'].touched && (fControl.taskForm.controls['dueDate'].invalid)) || (fControl.hasSend)">
+                        <span class="error" *ngIf="fControl.taskForm.controls['dueDate'].errors?.['required']">Set a due
+                            date</span>
+                    </ng-container>
+                </div>
+
+                <div class="field-group">
+                    <span>Prio</span>
+                    <div class="prio-cont">
+                        <div class="prio urgent" [class.urgent-color]="task.activePrio === 'urgent'"
+                            (click)="task.setPrio('urgent')">
+                            Urgent
+                            <img *ngIf="task.activePrio !== 'urgent'" src="assets/img/icons/add-task-urgent.png">
+                            <img *ngIf="task.activePrio === 'urgent'" src="assets/img/icons/add-task-urgent-white.png">
+                        </div>
+                        <div class="prio medium" [class.medium-color]="task.activePrio === 'medium'"
+                            (click)="task.setPrio('medium')">
+                            Medium
+                            <img *ngIf="task.activePrio !== 'medium'" src="assets/img/icons/add-task-medium.png">
+                            <img *ngIf="task.activePrio === 'medium'" src="assets/img/icons/add-task-medium-white.png">
+                        </div>
+                        <div class="prio low" [class.low-color]="task.activePrio === 'low'"
+                            (click)="task.setPrio('low')">
+                            Low
+                            <img *ngIf="task.activePrio !== 'low'" src="assets/img/icons/add-task-low.png">
+                            <img *ngIf="task.activePrio === 'low'" src="assets/img/icons/add-task-low-white.png">
+                        </div>
+                    </div>
+                    <span *ngIf="fControl.noPrioErrorMsg" class="error">{{fControl.noPrioErrorMsg}}</span>
+                </div>
+                <div class="field-group">
+                    <span>Subtasks</span>
+                    <div class="input-field">
+                        <div class="field">
+                            <input #addSubtask name="subtask" type="text" placeholder="Add new subtask"
+                                [(ngModel)]="currentSubtask" [ngModelOptions]="{standalone: true}">
+                        </div>
+                        <div class="icon">
+                            <img *ngIf="!currentSubtask && !task.showSubtask"
+                                src="assets/img/icons/add-subtask-icon.png" class="add-subtask" (click)="setFocus()">
+                            <ng-container *ngIf="currentSubtask || task.showSubtask">
+                                <div class="left-icon">
+                                    <img src="assets/img/icons/cancel-icon-black.png"
+                                        (click)="currentSubtask = ''; task.showSubtask = false">
+                                </div>
+                                <div class="right-icon">
+                                    <img src="assets/img/icons/check-icon-black.png" (click)="createSubtask()">
+                                </div>
+                            </ng-container>
+
+                        </div>
+                    </div>
+
+                    <div *ngIf="task.allSubtasks.length > 0" class="subtasks-area">
+                        <div *ngFor="let subtask of task.allSubtasks; index as i">
+                            <label for="subtask-{{+ i}}" class="subtask">
+                                <input type="checkbox" id="subtask-{{+ i}}" name="{{subtask.name}}"
+                                    [(ngModel)]="task.selectedSubtasks[subtask.name]"
+                                    [ngModelOptions]="{standalone: true}" (ngModelChange)="updateAssignedSubtasks()">
+                                <span>{{subtask.name}}</span>
+                            </label>
+                        </div>
+                    </div>
+                    <span *ngIf="fControl.noSubtaskErrorMsg" class="error">{{fControl.noSubtaskErrorMsg}}</span>
+                    <span *ngIf="!task.assignedSubtasks.length && task.showSubtasksNotice"
+                        class="notice">{{fControl.noticeSubtasks}}</span>
+                </div>
+                <div *ngIf="!control.showAddTaskBotton || control.isOpenedInOverlay" class="btn-cont">
+                    <button class="secondary-btn" (click)="task.showCategorys = false; showNewCategory = false"
+                        (click)="task.resetForm()">
+                        Clear <span>x</span>
+                    </button>
+                    <button type="submit" class="primary-btn">
+                        Create Task
+                        <img src="assets/img/icons/checked-icon.png">
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>

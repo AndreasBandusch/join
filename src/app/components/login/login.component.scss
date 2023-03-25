@@ -1,0 +1,286 @@
+.site {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100%;
+    width: 100vw;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.logo {
+    position: absolute;
+    top: 80px;
+    left: 80px;
+    width: 100px;
+    height: 122px;
+    animation: logo-start 1s ease-in-out;
+}
+
+.sign-up-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    top: 80px;
+    right: 80px;
+    opacity: 0;
+    animation: fade-in 1s ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 500ms;
+
+    .primary-btn {
+        height: unset;
+        width: unset;
+        font-size: 16px;
+        margin-left: 32px;
+        height: 50px;
+    }
+
+    span {
+        font-size: 21px;
+        font-weight: 400;
+    }
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 625px;
+    padding-left: 115px;
+    padding-right: 115px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    gap: 32px;
+    background-color: #fff;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    opacity: 0;
+    animation: fade-in 1s ease-in-out;
+    animation-fill-mode: forwards;
+    animation-delay: 500ms;
+}
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 185px;
+    gap: 16px;
+
+    .underline {
+        border-top: 3px solid #29ABE2;
+        width: 80%;
+    }
+}
+
+.forgot-pw {
+    color: #29ABE2;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+}
+
+.rem-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.remember-me {
+    display: flex;
+}
+
+input[type="checkbox"],
+input[type="checkbox"]:active {
+    margin-right: 16px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    background-color: black;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 32px;
+}
+
+.primary-btn,
+.secondary-btn {
+    width: 160px;
+}
+
+@media (max-width: 1000px) {
+    .logo {
+        top: 32px;
+        left: 32px;
+    }
+
+    .sign-up-container {
+        top: 32px;
+        right: 32px;
+    }
+}
+
+@media (max-width: 920px) {
+    input {
+        height: unset;
+    }
+}
+
+@media (max-width: 750px) {
+    .logo {
+        top: 32px;
+        left: 32px;
+        height: 70px;
+        width: auto;
+        animation: logo-start-mobile 1s ease-in-out;
+    }
+
+    .sign-up-container {
+        top: unset;
+        right: auto;
+        left: auto;
+        margin: 0 16px;
+        bottom: 32px;
+    }
+
+    .site {
+        padding: 0 32px;
+    }
+
+    .login-container {
+        width: 100%;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+@media (max-width: 500px) {
+    .site {
+        padding: 0 16px;
+    }
+
+    .login-container {
+        margin-top: 130px;
+        margin-bottom: 100px;
+    }
+
+    .rem-container {
+        flex-direction: column;
+        justify-content: space-evenly;
+        gap: 32px;
+    }
+
+    .btn-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .sign-up-container {
+        bottom: 16px
+    }
+
+    .primary-btn,
+    .secondary-btn {
+        font-size: 16px;
+        width: 180px;
+    }
+
+    h1 {
+        font-size: 48px;
+        width: 150px;
+    }
+}
+
+@media (max-width: 450px) {
+    .login-container {
+        width: 100%;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+    input, ::placeholder {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 350px) {
+    .login-container {
+        margin-bottom: 130px;
+    }
+
+    .sign-up-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+
+        .primary-btn {
+            margin-left: 0;
+        }
+    }
+}
+
+@keyframes logo-start {
+    0% {
+        top: calc(50% - 167px);
+        left: calc(50% - 137px);
+        width: 275px;
+        height: 335px;
+    }
+
+    50% {
+        top: calc(50% - 167px);
+        left: calc(50% - 137px);
+        width: 275px;
+        height: 335px;
+    }
+
+    100% {
+        top: 80px;
+        left: 80px;
+        width: 100px;
+        height: 122px;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes logo-start-mobile {
+    0% {
+        top: calc(50% - 61px);
+        left: calc(50% - 50px);
+        height: 122px;
+        width: 100px;
+    }
+
+    50% {
+        top: calc(50% - 61px);
+        left: calc(50% - 50px);
+        height: 122px;
+        width: 100px;
+    }
+
+    100% {
+        top: 32px;
+        left: 32px;
+        height: 70px;
+        width: auto;
+    }
+}

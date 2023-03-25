@@ -1,0 +1,32 @@
+<div *ngIf="control.contactsAvailable" class="details-content" [class.slide-in]="slideIn">
+    <div class="details-name-cont">
+        <div>
+            <span class="initials" [ngStyle]="{'background-color': currentContact.color}">{{
+                currentContact.initials}}</span>
+        </div>
+        <div class="details-name">
+            <span>{{ currentContact.firstName }} {{ currentContact.lastName }}</span>
+            <div class="add-task" (click)="control.openOverlay('addTask', true)">+ Add Task</div>
+        </div>
+    </div>
+    <div class="details-info">
+        <div class="info-header">
+            <span class="info-header-text">Contact Information</span>
+            <div class="edit-contact" (click)="control.openOverlay('editContact', true)">
+                <img src="assets/img/icons/edit-contact-icon.png">
+                <span>Edit Contact</span>
+            </div>
+        </div>
+        <div class="info-body">
+            <div class="info-email-cont">
+                <span class="info-email-header">Email</span>
+                <span class="info-email">{{ currentContact.email }}</span>
+            </div>
+
+            <div class="info-phone-cont">
+                <span class="info-phone-header">Phone</span>
+                <span class="info-phone">{{ currentContact.phone}}</span>
+            </div>
+        </div>
+    </div>
+</div>
