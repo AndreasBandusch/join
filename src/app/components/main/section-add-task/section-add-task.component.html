@@ -45,13 +45,13 @@
                 <div class="field-group">
                     <span>Category</span>
                     <ng-container *ngIf="!showNewCategory; else elseBlock">
-                        <div class="dropdown" (mouseleave)="task.checkSelectedCategory()">
+                        <div class="dropdown" (mouseleave)="task.checkSelectedCategory()" (click)="task.showCategorys = !task.showCategorys">
                             <div class="select-menu">
                                 <div class="cat-header">
                                     <span class="cat-name">{{task.catText}}</span>
                                     <div class="cat-color" [style.backgroundColor]="task.catColor"></div>
                                 </div>
-                                <div class="icon" (click)="task.showCategorys = !task.showCategorys"><img class="arrow"
+                                <div class="icon"><img class="arrow"
                                         src="assets/img/icons/menu-arrow-down.png"></div>
                             </div>
                             <div class="select-category">
@@ -97,12 +97,12 @@
                 </div>
                 <div class="field-group">
                     <span>Assigned to</span>
-                    <div class="dropdown" (mouseleave)="task.closeDropdowns()">
+                    <div class="dropdown" (mouseleave)="task.closeDropdowns()" (click)="task.showAssignedTo = !task.showAssignedTo">
                         <div class="select-menu">
                             <div class="cat-header">
                                 <span>{{assignedTotext}}</span>
                             </div>
-                            <div class="icon" (click)="task.showAssignedTo = !task.showAssignedTo"><img class="arrow"
+                            <div class="icon"><img class="arrow"
                                     src="assets/img/icons/menu-arrow-down.png"></div>
                         </div>
                         <div *ngIf="task.showAssignedTo" class="dropdown-content"
