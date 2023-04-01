@@ -282,4 +282,12 @@ export class TaskService {
     this.fControl.noPrioErrorMsg = '';
     this.fControl.prioReady = true;
   }
+
+
+  closeDropdowns() {
+    setTimeout(() => {
+      this.showAssignedTo = false;
+      this.showCategorys = false;
+    }, 225)
+  }
 }

@@ -93,7 +93,7 @@ export class SectionAddTaskComponent implements OnInit, OnDestroy {
     this.task.catColor = '';
   }
 
-  
+
   saveCategory(): void {
     this.newCategory = new Category(this.categoryName, this.task.catColor);
     this.task.categoryId = this.newCategory.id;

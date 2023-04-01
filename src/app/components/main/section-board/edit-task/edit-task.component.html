@@ -77,7 +77,7 @@
                 </div>
                 <div class="field-group">
                     <span>Assigned to</span>
-                    <div class="dropdown">
+                    <div class="dropdown" (mouseleave)="task.closeDropdowns()">
                         <div class="select-menu">
                             <div class="cat-header">
                                 <span>{{assignedTotext}}</span>
