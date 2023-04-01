@@ -45,7 +45,7 @@
                 <div class="field-group">
                     <span>Category</span>
                     <ng-container *ngIf="!showNewCategory; else elseBlock">
-                        <div class="dropdown">
+                        <div class="dropdown" (mouseleave)="task.checkSelectedCategory()">
                             <div class="select-menu">
                                 <div class="cat-header">
                                     <span class="cat-name">{{task.catText}}</span>
@@ -54,7 +54,7 @@
                                 <div class="icon" (click)="task.showCategorys = !task.showCategorys"><img class="arrow"
                                         src="assets/img/icons/menu-arrow-down.png"></div>
                             </div>
-                            <div class="select-category" (mouseleave)="task.checkSelectedCategory()">
+                            <div class="select-category">
                                 <div *ngIf="task.showCategorys" class="dropdown-content">
                                     <span *ngIf="allCategorys" class="item" (click)="createCategory()">New
                                         category</span>
