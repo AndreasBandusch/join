@@ -77,12 +77,12 @@
                 </div>
                 <div class="field-group">
                     <span>Assigned to</span>
-                    <div class="dropdown" (mouseleave)="task.closeDropdowns()" (click)="task.showAssignedTo = !task.showAssignedTo">
+                    <div class="dropdown" (mouseleave)="task.closeDropdowns()">
                         <div class="select-menu">
                             <div class="cat-header">
                                 <span>{{assignedTotext}}</span>
                             </div>
-                            <div class="icon"><img class="arrow"
+                            <div class="icon"><img class="arrow" (click)="task.showAssignedTo = !task.showAssignedTo"
                                     src="assets/img/icons/menu-arrow-down.png"></div>
                         </div>
                         <div *ngIf="task.showAssignedTo" class="dropdown-content"
