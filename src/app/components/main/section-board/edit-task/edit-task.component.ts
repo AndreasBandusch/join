@@ -94,7 +94,7 @@ export class EditTaskComponent implements OnInit {
   saveTask(id: string, task: object): void {
     this.afs.collection('tasks').doc(id)
       .update(task).then(() => {
-        this.control.editTasksDialogOpen = false;
+        this.control.openOverlay('editTask', false);
         this.control.getMessage('Edited taks saved');
       });
   }

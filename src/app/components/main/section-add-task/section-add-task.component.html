@@ -45,7 +45,7 @@
                 <div class="field-group">
                     <span>Category</span>
                     <ng-container *ngIf="!showNewCategory; else elseBlock">
-                        <div class="dropdown" (mouseleave)="task.checkSelectedCategory()">
+                        <div class="dropdown" (mouseleave)="task.closeDropdowns()">
                             <div class="select-menu">
                                 <div class="cat-header">
                                     <span class="cat-name">{{task.catText}}</span>
