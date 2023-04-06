@@ -20,6 +20,7 @@ export class SectionBoardComponent implements OnInit {
   isDragging: boolean = false;
   currentSearch: string = '';
   maxDescriptionLength = 80;
+  assignedTo: any[] = [];
 
   constructor(
     private afs: AngularFirestore,
@@ -71,7 +72,7 @@ export class SectionBoardComponent implements OnInit {
         }
       }
       task.assignedTo = contacts;
-    } 
+    }
   }
 
 
@@ -207,6 +208,25 @@ export class SectionBoardComponent implements OnInit {
       }
     } else {
       return true;
+    }
+  }
+
+
+  setAssignedToArray(assignedTo: any) {  // Setzt das AssignedTo Array
+    this.assignedTo = [];
+
+    // Wenn mehr als 3 Mitarbeiter zugewiesen wurden, wird ein
+    // Suffix in Form +Anzahl hinzugefügt.
+    if (assignedTo.length > 3) {
+      let suffix;
+      for (let i = 0; i < 3; i++) {
+        let suffixNumber = assignedTo.length - 3;
+        suffix = '+' + suffixNumber;
+        this.assignedTo.push(assignedTo[i]);
+      }
+      this.assignedTo.push({ initials: suffix, color: '#2d3646' });
+    } else {
+      this.assignedTo = assignedTo;
     }
   }
 }

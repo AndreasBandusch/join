@@ -54,7 +54,8 @@
                             </div>
                             <div class="bottom-cont">
                                 <div class="assigned">
-                                    <div *ngFor="let contact of item.assignedTo let i = index" class="contact"
+                                    <ng-container>{{setAssignedToArray(item.assignedTo)}}</ng-container>
+                                    <div *ngFor="let contact of assignedTo let i = index" class="contact"
                                         [style]="task.getContactIntialsStyles(contact.color, i)">
                                         {{contact.initials}}
                                     </div>
@@ -100,7 +101,8 @@
                             </div>
                             <div class="bottom-cont">
                                 <div class="assigned">
-                                    <div *ngFor="let contact of item.assignedTo let i = index" class="contact"
+                                    <ng-container>{{setAssignedToArray(item.assignedTo)}}</ng-container>
+                                    <div *ngFor="let contact of assignedTo let i = index" class="contact"
                                         [style]="task.getContactIntialsStyles(contact.color, i)">
                                         {{contact.initials}}
                                     </div>
@@ -147,7 +149,8 @@
                             </div>
                             <div class="bottom-cont">
                                 <div class="assigned">
-                                    <div *ngFor="let contact of item.assignedTo let i = index" class="contact"
+                                    <ng-container>{{setAssignedToArray(item.assignedTo)}}</ng-container>
+                                    <div *ngFor="let contact of assignedTo let i = index" class="contact"
                                         [style]="task.getContactIntialsStyles(contact.color, i)">
                                         {{contact.initials}}
                                     </div>
@@ -194,7 +197,8 @@
                             </div>
                             <div class="bottom-cont">
                                 <div class="assigned">
-                                    <div *ngFor="let contact of item.assignedTo let i = index" class="contact"
+                                    <ng-container>{{setAssignedToArray(item.assignedTo)}}</ng-container>
+                                    <div *ngFor="let contact of assignedTo let i = index" class="contact"
                                         [style]="task.getContactIntialsStyles(contact.color, i)">
                                         {{contact.initials}}
                                     </div>
